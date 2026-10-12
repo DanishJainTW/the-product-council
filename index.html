@@ -146,6 +146,38 @@ footer{margin-top:60px;padding-top:20px;border-top:1px solid var(--line);color:v
   main{padding-top:0}
 }
 @media (max-width:560px){.cmd dl{grid-template-columns:1fr;gap:2px}.cmd dt{margin-top:7px}.stats div{flex:1 1 44%;border-right:0}}
+
+.panelcard{display:flex;flex-direction:column}
+.panelcard ul{flex:1}
+.panelcard .cta{margin-top:14px;align-self:flex-start;display:inline-flex;align-items:center;gap:8px;font:600 14px var(--body);color:var(--ink);background:var(--bg);border:1px solid var(--line);border-left:4px solid var(--c);padding:9px 14px;cursor:pointer}
+.panelcard .cta:hover{border-color:var(--c)}
+.panelcard .cta:focus-visible,.pd-close:focus-visible{outline:3px solid var(--c,var(--sapphire));outline-offset:2px}
+.panelcard .cta span{font-weight:500;color:var(--muted)}
+.panelcard .cta::after{content:"\2192";font-weight:700}
+dialog.pd{overflow:auto;width:min(880px,calc(100vw - 32px));max-height:calc(100vh - 48px);padding:0;border:0;border-top:8px solid var(--c);background:var(--bg);color:var(--ink);box-shadow:0 20px 60px rgba(0,0,0,.35)}
+dialog.pd::backdrop{background:rgba(0,20,28,.55)}
+.pd-head{position:sticky;top:0;background:var(--bg);padding:20px 24px 14px;border-bottom:1px solid var(--line);display:flex;gap:16px;align-items:flex-start;justify-content:space-between;z-index:1}
+.pd-head h3{font:700 22px var(--head);margin:0}
+.pd-head p{margin:4px 0 0;color:var(--muted);font-size:15px}
+.pd-close{flex:none;font:600 14px var(--body);background:var(--surface);color:var(--ink);border:1px solid var(--line);padding:7px 12px;cursor:pointer}
+.pd-body{padding:18px 24px 26px}
+.pd-body h4{font:600 13px var(--body);color:var(--muted);text-transform:uppercase;letter-spacing:.04em;margin:20px 0 8px}
+.pd-body h4:first-child{margin-top:4px}
+.pd-verdict{display:inline-block;background:var(--surface);border-left:4px solid var(--c);padding:6px 12px;font-size:14.5px;margin-top:8px}
+.pd-voices{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:10px}
+.pd-voice{background:var(--surface);padding:12px 14px;border-left:4px solid var(--c)}
+.pd-voice b{display:block;font-size:15.5px;margin-bottom:4px}
+.pd-voice dl{margin:0;font-size:14px;line-height:1.5}
+.pd-voice dt{font:600 12px var(--body);color:var(--muted);margin-top:6px}
+.pd-voice dd{margin:0}
+.pd-voices.compact{grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:6px}
+.pd-voice.row{display:flex;justify-content:space-between;align-items:baseline;gap:10px;padding:8px 12px}
+.pd-voice.row b{font-size:14.5px;margin:0}
+.pd-tags{flex:none;font-size:12.5px;color:var(--muted);text-align:right}
+.pd-note{font-size:14px;color:var(--muted);margin:10px 0 0}
+.pd-cmds pre{margin:0;background:var(--code);border:1px solid var(--line);padding:12px 14px;font:14px/1.7 var(--mono);white-space:pre-wrap;word-break:break-word}
+@media (max-width:640px){.pd-head,.pd-body{padding-left:16px;padding-right:16px}dialog.pd{width:calc(100vw - 16px);max-height:calc(100vh - 16px)}}
+@media print{dialog.pd{display:none}}
 </style>
 </head>
 <body>
@@ -290,33 +322,43 @@ Knowledge base (context/)
       <h4>Board of Advisors</h4>
       <p class="role">Nine thinking principles. Ready</p>
       <ul><li>First Principles</li><li>Skin in the Game</li><li>Contrarian</li><li>Outsider</li><li>Inversion</li><li>Executor</li><li>Occam's Razor</li><li>Expansionist</li><li>Premortem</li></ul>
+      <button type="button" class="cta" data-panel="board" aria-haspopup="dialog">Meet the panel <span>9 advisors</span></button>
     </div>
     <div class="panelcard" style="--c:var(--turmeric)">
       <h4>Product Leaders</h4>
       <p class="role">Six product minds, equal voices. Ready</p>
       <ul><li>Mike Krieger, focus and craft</li><li>Ivan Zhao, primitives and coherence</li><li>Shreyas Doshi, leverage and strategy</li><li>Stewart Butterfield, outcome and first experience</li><li>Neal Mohan, ecosystems and responsibility</li><li>Lenny Rachitsky, retention and activation</li></ul>
+      <button type="button" class="cta" data-panel="product" aria-haspopup="dialog">Meet the panel <span>6 leaders</span></button>
     </div>
     <div class="panelcard" style="--c:var(--jade)">
       <h4>Tech Council</h4>
       <p class="role">Five architects, no chair. Ready</p>
       <ul><li>Eric Evans, domain models</li><li>Martin Kleppmann, data and failure</li><li>Sam Newman, migration and operations</li><li>Kent Beck, smallest reversible step</li><li>Martin Fowler, evolvability and tech debt</li></ul>
+      <button type="button" class="cta" data-panel="tech" aria-haspopup="dialog">Meet the panel <span>5 architects</span></button>
     </div>
     <div class="panelcard" style="--c:var(--sapphire)">
       <h4>Industry SMEs</h4>
       <p class="role">Eleven archetypes, three tracks. Templates</p>
       <ul><li>Rideshare: marketplace operations, driver supply, trust and safety, high-growth markets</li><li>Mobility: microtransit, paratransit agency, NEMT operations</li><li>K-12: district transportation director, special education coordinator, state compliance, procurement</li></ul>
+      <button type="button" class="cta" data-panel="industry" aria-haspopup="dialog">Meet the panel <span>11 archetypes</span></button>
     </div>
     <div class="panelcard" style="--c:var(--amethyst)">
       <h4>Competitor Intel</h4>
       <p class="role">Six companies, evidence-bound. Ready</p>
       <ul><li>Alternative transport: EverDriven, HopSkipDrive, Zum</li><li>Bus: Student Transportation of America, Summit School Services, Beacon Mobility, Zum</li><li>No evidence pack means the persona stays silent</li></ul>
+      <button type="button" class="cta" data-panel="competitors" aria-haspopup="dialog">Meet the panel <span>6 companies</span></button>
     </div>
     <div class="panelcard" style="--c:var(--wave)">
       <h4>User Panel</h4>
       <p class="role">Eighteen simulated users. Nine drafted from 100 client transcripts</p>
       <ul><li>Drafted: active driver, onboarding driver, monitor, fleet partner, operations, client services, trip services, district transportation staff, parent or guardian</li><li>Templates: special-needs parent, students, independent operator, school staff, admin, dispatch, routing, support</li><li>Every draft is second-hand evidence, tagged V, I or U, and labelled SIMULATED</li></ul>
+      <button type="button" class="cta" data-panel="users" aria-haspopup="dialog">Meet the panel <span>18 personas</span></button>
     </div>
   </div>
+  <dialog class="pd" id="panelDialog" aria-labelledby="pdTitle">
+    <div class="pd-head"><div><h3 id="pdTitle"></h3><p id="pdAnswers"></p></div><button type="button" class="pd-close" id="pdClose">Close</button></div>
+    <div class="pd-body" id="pdBody"></div>
+  </dialog>
   <h3>Editing a persona</h3>
   <p>Persona files live in <code>personas/</code>. Change the file, commit it on a branch, and every future session uses the new voice. Templates carry fields marked "to confirm"; fill them from real role knowledge rather than guessing, because a vague persona gives vague answers.</p>
 </section>
@@ -398,7 +440,7 @@ Knowledge base (context/)
 <section id="analysis">
   <div class="rule"></div>
   <h2>Questions, data and analysis documents</h2>
-  <p class="intro">A decision is only as good as what the council knows. So at Tier 2 and 3 it asks twice, asks for numbers, and leaves you a document you can share and build on.</p>
+  <p class="intro">A decision is only as good as what the council knows. So at Tier 2 and 3 it asks twice, asks for numbers, and leaves you a one-page document you can share and build on. Every question is a click-to-answer prompt with the default first and marked recommended, and you can always type your own answer.</p>
 
   <h3>Context before questions</h3>
   <p>The council never asks you something it already knows. Before any question, the scout looks up everything your request names: features, personas, teams, systems, partners, districts, terms and figures, in the knowledge base, past sessions and analysis documents. For each intake topic it reports answered, partial or not in context.</p>
@@ -412,6 +454,17 @@ Knowledge base (context/)
     </tbody>
   </table>
   <p>The panels' questions and figures go through the same check before reply 2. A figure the context holds is used, never requested. When your answer names something new, it is looked up before the next round.</p>
+
+  <h3>Questions you can understand</h3>
+  <p>Every question follows the same writing rules as the answers: one decision per question, in your words, self-contained, under 25 words, with two to four real options, the default first. A check runs before every question and sends an unclear one back to be rewritten, so a question that mentions tiers, panels, coverage labels or files, or asks two things at once, never reaches you.</p>
+  <table>
+    <caption>Two questions the council used to ask, and how it asks them now.</caption>
+    <thead><tr><th>Before</th><th>After</th></tr></thead>
+    <tbody>
+      <tr><td>"Can you confirm the PARTIAL coverage on problem and who has it?"</td><td>"Is this about every parent, or mainly parents of special-needs students?"</td></tr>
+      <tr><td>"Should we go with B and also check consent before texting?"</td><td>Two questions: "Should parents get a text when a call goes unanswered?" and "Do parents have to agree before we text them?"</td></tr>
+    </tbody>
+  </table>
 
   <h3>Two rounds of questions</h3>
   <table>
@@ -452,16 +505,17 @@ Next: pull last semester's change log from Trip Services.</pre><button type="but
   <p>The full record, with every quote, sits in the saved session.</p>
 
   <h3>Analysis documents</h3>
-  <p>After the first decision in a chat, the council asks once whether to save an analysis document. Yes writes <code>analysis/&lt;slug&gt;.md</code> and updates it after every later turn in that chat. Continue in a new chat with <code>/council --analysis &lt;slug&gt; &lt;next question&gt;</code>.</p>
+  <p>After the first decision in a chat, the council asks once, as a click-to-answer question, whether to save an analysis document. Yes writes <code>analysis/&lt;slug&gt;.md</code> and rewrites it after every later turn in that chat. It is one page, 500 words at most, and the save check refuses more. The full detail stays in the session files, which have no limit. Continue in a new chat with <code>/council --analysis &lt;slug&gt; &lt;next question&gt;</code>.</p>
   <table>
     <caption>What an analysis document holds. It names no files, IDs, evidence tags, personas or panels, and the save hook checks.</caption>
     <thead><tr><th>Section</th><th>What it says</th></tr></thead>
     <tbody>
-      <tr><td>At a glance</td><td>The question, the recommendation, confidence, what it waits on, the first step</td></tr>
-      <tr><td>1 to 3</td><td>The problem, who is affected (parents and students, drivers, partners, districts, internal teams), how it works today</td></tr>
-      <tr><td>4 and 5</td><td>What we know, assume and do not know, and the data with what each figure did</td></tr>
-      <tr><td>6 to 8</td><td>Options for users, business and stakeholders, the recommendation, the iteration path</td></tr>
-      <tr><td>9 to 11</td><td>Risks, open questions, and a change log of how the thinking moved</td></tr>
+      <tr><td>Summary</td><td>The recommendation, how sure we are, and what would change it, in two or three sentences</td></tr>
+      <tr><td>Problem</td><td>Who has it, how often, how we know</td></tr>
+      <tr><td>Who it affects</td><td>Up to four groups, today against the recommendation</td></tr>
+      <tr><td>Options</td><td>Each approach with its verdict and one line of why, do nothing included</td></tr>
+      <tr><td>Recommendation</td><td>The pick, its main condition, and the Now, Next, Later path</td></tr>
+      <tr><td>Still open and changes</td><td>Up to five open questions or missing figures, and the last five changes</td></tr>
     </tbody>
   </table>
 
@@ -754,15 +808,16 @@ git add . &amp;&amp; git commit -m "FirstAlt Product Council v3.7"</pre><button 
 <section id="hooks">
   <div class="rule"></div>
   <h2>Automatic behavior</h2>
-  <p class="intro">These run on their own once hooks are enabled. Checks a script can do are never left to the model's memory.</p>
+  <p class="intro">These run on their own once hooks are enabled. Checks a script can do are never left to the model's memory. Run <code>python3 scripts/selftest.py</code> to check all of them on a throwaway copy.</p>
   <table>
-    <caption>The five hooks and what each one does.</caption>
+    <caption>The six hooks and what each one does.</caption>
     <thead><tr><th>When</th><th>What happens</th></tr></thead>
     <tbody>
       <tr><td>Session start</td><td>Rebuilds the index and lessons digest, then briefs you: branch, active lessons, open items, sources not yet ingested, days since the last <code>/check</code></td></tr>
+      <tr><td>Before a question</td><td>Checks every click-to-answer question is clear: one decision, your words, short, real options. An unclear one goes back to Claude to rewrite</td></tr>
       <tr><td>Before any edit</td><td>Blocks changes to existing raw sources (new ones can be saved, so <code>/ingest &lt;url&gt;</code> works), and edits to shared content on main</td></tr>
-      <tr><td>After any edit</td><td>Context: rebuilds the index. Session or draft: appends the ID legend and checks every quote. Analysis document or PRD: checks it names no files, IDs, personas or panels. Diagram spec: renders the HTML. Failures go back to Claude to fix</td></tr>
-      <tr><td>After every turn</td><td>Logs token usage, commands and session files to <code>metrics/usage/</code></td></tr>
+      <tr><td>After any edit</td><td>Context: rebuilds the index. Session or draft: checks every quote. Analysis document or PRD: checks it names no files, IDs, personas or panels, and the analysis fits on one page. Diagram spec: renders the HTML. Failures go back to Claude to fix</td></tr>
+      <tr><td>After every turn</td><td>Adds the ID legend to sessions and drafts written that turn, sends Claude back once if a decision was made without asking the analysis question, and logs token usage to <code>metrics/usage/</code></td></tr>
       <tr><td>Before any commit</td><td>Blocks shared-content commits on main and commits with invalid context frontmatter</td></tr>
     </tbody>
   </table>
@@ -828,7 +883,7 @@ git add . &amp;&amp; git commit -m "FirstAlt Product Council v3.7"</pre><button 
       <tr><td>V, I, ? badges</td><td>Evidence on a diagram node: verified with a quote, inferred, or unknown with a dashed outline</td></tr>
       <tr><td>Provisional</td><td>A pick that waits on a named figure. The reply says what the figure would change</td></tr>
       <tr><td>Iteration path</td><td>Now, Next, Later for the pick: the smallest viable version first, each step with what it proves</td></tr>
-      <tr><td>Analysis document</td><td>The shareable write-up of a feature or problem in <code>analysis/</code>, free of files, IDs, personas and panels</td></tr>
+      <tr><td>Analysis document</td><td>The one-page write-up of a feature or problem in <code>analysis/</code>, 500 words at most, free of files, IDs, personas and panels</td></tr>
       <tr><td>Comparison</td><td>A flow drawn as today against an option: green added, pink removed, amber changed, every change listed under it</td></tr>
     </tbody>
   </table>
@@ -840,15 +895,15 @@ git add . &amp;&amp; git commit -m "FirstAlt Product Council v3.7"</pre><button 
   <p class="intro">Upgrades never touch <code>context/</code>, <code>sessions/</code>, <code>analysis/</code>, <code>diagrams/</code>, <code>metrics/</code>, <code>reports/</code>, <code>lessons-log/</code>, <code>handoffs/</code> or <code>personas/</code>. The script fingerprints those folders before and after and prints both.</p>
   <ol class="flow">
     <li><div><strong>Back up</strong><div class="code"><pre>tar -czf ../council-backup-$(date +%Y%m%d).tar.gz .</pre><button type="button">Copy</button></div></div></li>
-    <li><div><strong>Start a branch</strong><div class="code"><pre>bash scripts/start_work.sh upgrade-v3-7</pre><button type="button">Copy</button></div></div></li>
+    <li><div><strong>Start a branch</strong><div class="code"><pre>bash scripts/start_work.sh upgrade-v3-7-3</pre><button type="button">Copy</button></div></div></li>
     <li><div><strong>Run the script from the unzipped pack</strong><div class="code"><pre>bash council-v3.7-upgrade/upgrade-to-v3.7.sh /path/to/your/council</pre><button type="button">Copy</button></div></div></li>
     <li><div><strong>Re-apply anything listed under CUSTOMISED</strong>Your version of each file is in the backup folder the script names.</div></li>
-    <li><div><strong>Restart Claude Code, try it, share it</strong>Run <code>/council help</code> and <code>/diagram demo</code>, commit on your branch, then <code>/open-pr</code>. Teammates pull and restart.</div></li>
+    <li><div><strong>Restart Claude Code, try it, share it</strong>Check every line of the self-test says PASS. The script then offers to run the behaviour evals, which use tokens, so the default is no. Run <code>/council help</code>, commit on your branch, then <code>/open-pr</code>. Teammates pull and restart.</div></li>
   </ol>
   <p>Full detail, the file-by-file table and the undo command are in <code>UPGRADE.md</code>.</p>
 </section>
 
-<footer>FirstAlt Product Council v3.7.1, updated 11 October 2026. The source of truth is the repository: skills in <code>.claude/skills/</code>, personas in <code>personas/</code>. Update this page in the same pull request as a skill change.</footer>
+<footer>FirstAlt Product Council v3.7.3, updated 11 October 2026. The source of truth is the repository: skills in <code>.claude/skills/</code>, personas in <code>personas/</code>. Update this page in the same pull request as a skill change.</footer>
 </main>
 </div>
 <script>
@@ -958,6 +1013,20 @@ const CMDS = [
     out: "Each problem with its line and a fix, or clean. Exit code 1 if any.",
     ex: "python3 scripts/check_clean.py analysis/driver-change-notice.md",
     keys: "analysis prd clean check persona panel path readable share" }
+  ,{ g: "terminal", name: "selftest.py", tag: "After an upgrade, or when something errors",
+    what: "Runs every hook the way Claude Code does, on a throwaway copy of the repo in a folder with a space in its name: session start, citation checks, analysis and PRD checks, diagram rendering, raw-source protection and the end-of-turn checks. 26 checks, each PASS or FAIL with the reason. Nothing in your repo changes.",
+    when: "After an upgrade, after editing a script or settings.json, or when a hook error appears and you want to know where.",
+    usage: "python3 scripts/selftest.py",
+    out: "One line per check and a total. Exit code 1 if anything failed.",
+    ex: "python3 scripts/selftest.py",
+    keys: "test selftest error debug hook check broken verify upgrade" }
+  ,{ g: "terminal", name: "run_evals.py", tag: "After an upgrade or a skill change",
+    what: "Runs the golden eval cases through Claude Code unattended, each on a throwaway copy of the repo, then grades them twice: script checks on what the session produced, and a separate Claude call that grades each case's Must and Must not lists. Two cases are also put to plain Claude and compared blind, so you can see whether the council adds value.",
+    when: "After an upgrade, after changing a skill, agent, rule or persona, and before sharing a version with the team. It asks before running, because it uses your Claude plan's tokens.",
+    usage: "python3 scripts/run_evals.py\npython3 scripts/run_evals.py --case EV-006\npython3 scripts/run_evals.py --dry-run",
+    out: "PASS or FAIL per check and rule, a row in evals/results.md, and a full report in evals/runs/.",
+    ex: "python3 scripts/run_evals.py --case EV-003",
+    keys: "eval evals test regression baseline grade quality behaviour plain claude compare" }
 ];
 
 const list=document.getElementById("cmdList");
@@ -1064,6 +1133,38 @@ themeBtn.addEventListener("click",()=>{
   root.dataset.theme=dark?"light":"dark";
   try{localStorage.setItem("council-theme",root.dataset.theme);}catch(e){}
 });
+</script>
+
+<script>
+(function(){
+  const PANELS = {"board": {"title": "Board of Advisors", "c": "--pink", "count": "9 advisors", "answers": "Is this worth doing, and how does it fail?", "decides": "Nine advisors judge on their own, without seeing each other. Fixed rules decide the verdict, first match wins: a blocker means KILL, an unproven problem means PIVOT to validate it first, three or more red flags mean PIVOT to redesign, otherwise BUILD with every amber and red turned into a testable condition. It also names the one thing the team is not seeing.", "verdict": "BUILD, PIVOT or KILL", "cols": ["Lens", "Never does", "Verdict scale"], "voices": [["First Principles", "Is the problem real and worth solving, from verified facts only?", "Judge the solution", "Validated, needs more evidence, unvalidated"], ["Skin in the Game", "Has anyone shown commitment by behaviour: workarounds, tickets, contracts, lost deals?", "Count opinions or enthusiasm", "High conviction, untested, low conviction"], ["Contrarian", "The risks nobody found yet: compliance, child safety, student data, ops load, churn", "Re-list risks already mitigated", "Safe to build, caution flags, do not build yet"], ["Outsider", "Zero context and cross-industry: jargon, habit versus law, how another industry solved it", "Test usability", "Outsider ready, needs simplification, insider trap"], ["Inversion", "The mechanisms that would guarantee failure, and the one load-bearing assumption", "Tell a story", "Defensible, fragile, assumption bomb"], ["Executor", "The smallest real-user test this week, with its success and kill signal", "Plan the roadmap", "Ship now, scope down first, wrong prototype"], ["Occam's Razor", "The fewest moving parts that still prove the idea, including non-software options", "Add \"while we're at it\"", "Lean enough, over-engineered, complexity red flag"], ["Expansionist", "Three-year upside: reach across FirstAlt and First Student, data flywheel, switching costs", "Decide validity", "High potential, niche play, commoditized"], ["Premortem", "It failed a year after launch: the story, the point of no return, the early warning signs", "Produce a mechanism list", "Strong foundations, manageable risks, high risk of failure"]], "cmds": ["/council --panels board <idea>", "/council --panels board --only premortem <idea>", "/council --panels board --dimension risk <idea>", "/ask premortem: <idea>"]}, "product": {"title": "Product Leaders", "c": "--turmeric", "count": "6 leaders", "answers": "Is this the right product bet, and how do we measure it?", "decides": "Six equal voices, no chair. Each gives its sharpest point, its questions, a recommendation and where its playbook does not transfer to FirstAlt. A neutral synthesis names where they agree, the real disagreements, the leaning and one success metric with the baseline still to find.", "verdict": "Strong product case, promising with changes, or weak product case", "cols": ["Lens", "Always asks", "Blind spot the others push on"], "voices": [["Mike Krieger", "Focus through subtraction, craft plus speed, AI where it removes real work", "What's the one thing they'll come back for, and what can we cut?", "Consumer instincts; safety steps can't be cut"], ["Ivan Zhao", "Building blocks over features, coherence across every app", "Is this a feature, or a building block that solves ten requests?", "Configurability doesn't suit time-pressed ops users"], ["Shreyas Doshi", "Impact over optics, leverage, strategy before execution, opportunity cost", "Is this leverage work, and what are we not doing instead?", "Frameworks can slow an operational call"], ["Stewart Butterfield", "Sell the outcome, not the tool; obsess over the first experience", "What outcome is the district actually buying?", "Bottom-up adoption versus top-down procurement"], ["Neal Mohan", "Every side of the ecosystem wins; responsibility built in; design for scale", "Who loses if this ships, and what's the child-safety implication?", "Platform ambitions can delay this semester's fix"], ["Lenny Rachitsky", "Retention and activation truth, supply constraints, benchmarks", "What one metric proves this worked?", "Consumer benchmarks may not fit contracted services"]], "cmds": ["/council --panels product <idea>", "/ask Shreyas Doshi: <question>", "/ask product leaders: how should we measure <feature>?"]}, "tech": {"title": "Tech Council", "c": "--jade", "count": "5 architects", "answers": "Can we build and run it well?", "decides": "Five equal voices, no chair. Each gives two or three concerns, questions and a recommendation. A neutral synthesis names agreement, trade-offs, the leaning, what needs a spike, and the effort with its main cost driver. Student data privacy and child safety are always flagged.", "verdict": "Feasible, feasible with conditions, or not yet feasible", "cols": ["Optimizes for", "Always asks", "Blind spot the others push on"], "voices": [["Eric Evans", "Model integrity, bounded contexts, a shared language", "Is this one model or two wearing the same name?", "Under-prices delivery and running cost"], ["Martin Kleppmann", "Correctness under failure, explicit consistency, schema evolution", "What happens when this message arrives twice or out of order?", "Over-invests in rigour where risk is low"], ["Sam Newman", "Incremental migration, ownership, operational reality", "Who is on call for this, and what is the rollback?", "Too conservative about real boundaries"], ["Kent Beck", "Smallest reversible step, fast feedback, cost of the next change", "What can we ship this week to learn?", "Treats hard-to-reverse choices as cheap"], ["Martin Fowler", "Evolvability, refactoring, deliberate tech debt", "Which decisions here are truly hard to reverse?", "Too balanced; hedges instead of committing"]], "cmds": ["/council --panels tech <idea>", "/ask Kleppmann: <question>", "/council --panels tech --full <idea>"]}, "industry": {"compact": true, "title": "Industry SMEs", "c": "--sapphire", "count": "11 archetypes", "answers": "How does transportation actually work here, and how would leading operators approach it?", "decides": "Archetypes with deep operating experience, never real named people. Each explains how the industry handles the problem, what operators learned the hard way, and what transfers to FirstAlt and what does not. One track runs at a time in compact mode.", "verdict": "Viability signal: strong, mixed or weak", "cols": ["Track", "Status"], "voices": [["K-12 district transportation director", "K-12", "Template"], ["Special education transportation coordinator", "K-12", "Template"], ["State pupil transportation compliance specialist", "K-12", "Template"], ["K-12 transportation procurement and contracts specialist", "K-12", "Template"], ["Former marketplace operations lead, global rideshare", "Rideshare", "Template"], ["Former driver supply and onboarding lead, rideshare", "Rideshare", "Template"], ["Former trust and safety lead, rideshare", "Rideshare", "Template"], ["Former city operations lead, high-growth markets", "Rideshare", "Template"], ["Former microtransit product and operations lead", "Mobility", "Template"], ["Public transit and ADA paratransit agency manager", "Mobility", "Template"], ["NEMT operations director", "Mobility", "Template"]], "note": "Templates speak from general, public industry practice. Fill them from real role knowledge to sharpen them.", "cmds": ["/council --panels industry <question>", "/ask industry: how do NEMT operators handle no-shows?"]}, "competitors": {"compact": true, "title": "Competitor Intel", "c": "--amethyst", "count": "6 companies", "answers": "What do competitors do, and has anyone already solved this?", "decides": "Each company expert speaks only from its evidence pack, and says what they have that we don't, what they do differently, what we do better, and whether they solved our problem. No pack means no voice. The summary names table stakes we are missing, differentiation we hold, and the competitive risk of doing nothing.", "verdict": "Competitive risk of doing nothing: low, medium or high", "cols": ["Segment", "Evidence"], "voices": [["EverDriven", "Alternative transport", "Live research, Sep 2026"], ["HopSkipDrive", "Alternative transport", "Live research, Sep 2026"], ["Zum", "Both segments", "Live research, Sep 2026"], ["Student Transportation of America", "Bus", "Baseline workbook only"], ["Summit School Services", "Bus", "Baseline workbook only"], ["Beacon Mobility", "Bus", "Baseline workbook only"]], "note": "Packs older than 90 days are flagged before a run. Refresh one with /ingest --competitor <company>.", "cmds": ["/council --panels competitors --segment alt <question>", "/ask HopSkipDrive expert: <question>", "/ingest --competitor everdriven"]}, "users": {"compact": true, "title": "User Panel", "c": "--wave", "count": "18 personas", "answers": "Would real users succeed and be satisfied?", "decides": "Simulated users walk through a flow or a concept step by step and say what broke, what was missing, what confused them and whether they would use it. Every output is labelled SIMULATED and ends with hypotheses to test with real users. It never counts as evidence of real behaviour.", "verdict": "Would use it: yes, reluctantly or no, with satisfaction 1 to 5", "cols": ["Group", "Status"], "voices": [["Parent or guardian", "Families", "Draft"], ["Parent of a special-needs student", "Families", "Template"], ["Student (general education)", "Families", "Template"], ["Student with special needs", "Families", "Template"], ["Active driver", "Supply", "Draft"], ["Driver in onboarding", "Supply", "Draft"], ["Monitor", "Supply", "Draft"], ["Transportation partner (fleet)", "Supply", "Draft"], ["Independent driver business", "Supply", "Template"], ["District user", "Customers", "Draft"], ["School staff", "Customers", "Template"], ["Client Services", "Internal", "Draft"], ["Trip Services", "Internal", "Draft"], ["Operations specialist", "Internal", "Draft"], ["Dispatch", "Internal", "Template"], ["Routing expert", "Internal", "Template"], ["Customer support", "Internal", "Template"], ["Internal admin", "Internal", "Template"]], "note": "Drafts come from client transcripts, which is second-hand evidence. Interviews with the users themselves would confirm them.", "cmds": ["/council --panels users <flow or concept>", "/council --mode improve <feature>", "/ask user panel, drivers only: <question>"]}};
+  const dlg = document.getElementById('panelDialog');
+  if (!dlg || typeof dlg.showModal !== 'function') return;
+  const esc = t => String(t).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+  let opener = null;
+  function render(key){
+    const d = PANELS[key];
+    dlg.style.setProperty('--c', 'var(' + d.c + ')');
+    document.getElementById('pdTitle').textContent = d.title;
+    document.getElementById('pdAnswers').textContent = d.answers;
+    const voices = d.compact ? d.voices.map(v => '<div class="pd-voice row"><b>' + esc(v[0]) + '</b><span class="pd-tags">' + v.slice(1).map(esc).join(' &middot; ') + '</span></div>').join('') : d.voices.map(v => {
+      const rows = d.cols.map((c, i) => v[i + 1] ? '<dt>' + esc(c) + '</dt><dd>' + esc(v[i + 1]) + '</dd>' : '').join('');
+      return '<div class="pd-voice"><b>' + esc(v[0]) + '</b><dl>' + rows + '</dl></div>';
+    }).join('');
+    document.getElementById('pdBody').innerHTML =
+      '<h4>How it decides</h4><p style="margin:0">' + esc(d.decides) + '</p>' +
+      '<div class="pd-verdict"><b>Returns</b> ' + esc(d.verdict) + '</div>' +
+      '<h4>The voices (' + d.voices.length + ')</h4><div class="pd-voices' + (d.compact ? ' compact' : '') + '">' + voices + '</div>' +
+      (d.note ? '<p class="pd-note">' + esc(d.note) + '</p>' : '') +
+      '<h4>Call it</h4><div class="pd-cmds"><pre>' + d.cmds.map(esc).join('\n') + '</pre></div>';
+  }
+  document.querySelectorAll('.panelcard .cta').forEach(b => b.addEventListener('click', () => {
+    opener = b; render(b.dataset.panel); dlg.showModal(); dlg.querySelector('.pd-body').scrollTop = 0; dlg.scrollTop = 0;
+  }));
+  document.getElementById('pdClose').addEventListener('click', () => dlg.close());
+  dlg.addEventListener('click', e => { if (e.target === dlg) dlg.close(); });
+  dlg.addEventListener('close', () => { if (opener) opener.focus(); });
+})();
 </script>
 </body>
 </html>
