@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>How it behaves | The Product Council</title>
+<meta name="description" content="Cost tiers, session flow, questions and analysis documents, evidence rules, delivery, learning loop and team working.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23003D4F'/%3E%3Cpath d='M18 6h5l-9 20H9z' fill='%23F2617A'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bitter:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/chrome.css">
+<link rel="stylesheet" href="assets/site.css">
+<script>try{var t=localStorage.getItem("council-theme");if(t)document.documentElement.dataset.theme=t;}catch(e){}</script>
+</head>
+<body>
+<a class="gh-skip" href="#content">Skip to content</a>
+<header class="gh">
+  <div class="gh-in">
+    <a class="gh-brand" href="index.html"><span class="gh-slash">/</span>The Product Council</a>
+    <button type="button" class="gh-btn gh-menu" id="ghMenu" aria-expanded="false" aria-controls="ghNav">Menu</button>
+    <nav class="gh-nav" id="ghNav" aria-label="Main">
+      <a href="index.html">Home</a>
+      <a href="use.html">Use it</a>
+      <a href="commands.html">Commands</a>
+      <a href="behaviour.html" aria-current="page">How it behaves</a>
+      <a href="knowledge.html">Knowledge</a>
+      <a href="diagrams.html">Diagrams</a>
+      <a href="technical.html">Technical</a>
+      <a href="reference.html">Reference</a>
+      <a href="comparisons.html">Comparisons</a>
+    </nav>
+    <button type="button" class="gh-btn" id="themeBtn" aria-label="Switch light or dark theme">Theme</button>
+  </div>
+</header>
+
+<div class="shell">
+  <nav class="sidebar" id="sidebar" aria-label="On this page">
+    <h2>On this page</h2>
+      <a href="#tiers">Cost tiers</a>
+      <a href="#flow">Session flow</a>
+      <a href="#analysis">Questions, data and analysis documents</a>
+      <a href="#evidence">Evidence, options and handoffs</a>
+      <a href="#flows">From decision to delivery</a>
+      <a href="#loop">Learning loop</a>
+      <a href="#hooks">Automatic behavior</a>
+      <a href="#team">Working as a team</a>
+  </nav>
+
+  <main id="content">
+<div class="pagehead"><div class="pagehead-in">
+  <nav class="crumbs" aria-label="Breadcrumb"><a href="index.html">Home</a><span aria-hidden="true">/</span><span aria-current="page">How it behaves</span></nav>
+  <h1>How it behaves</h1><p>What the council does on its own: depth, the order of a session, questions and data, evidence, delivery and learning.</p>
+</div></div>
+<details class="onpage"><summary>On this page</summary><div>
+      <a href="#tiers">Cost tiers</a>
+      <a href="#flow">Session flow</a>
+      <a href="#analysis">Questions, data and analysis documents</a>
+      <a href="#evidence">Evidence, options and handoffs</a>
+      <a href="#flows">From decision to delivery</a>
+      <a href="#loop">Learning loop</a>
+      <a href="#hooks">Automatic behavior</a>
+      <a href="#team">Working as a team</a>
+</div></details>
+
+<section id="tiers">
+  <div class="rule"></div>
+  <h2>Cost tiers</h2>
+  <p class="intro">The orchestrator picks the cheapest tier that can answer and says which it chose. Say "go deeper" to escalate.</p>
+  <table>
+    <caption>The four tiers, what runs at each, and whether a session file and diagram are produced.</caption>
+    <thead><tr><th>Tier</th><th>Use for</th><th>What runs</th><th>Replies</th><th>Saved?</th><th>Diagram?</th></tr></thead>
+    <tbody>
+      <tr><td>0 Answer</td><td>Facts, definitions, "what do we know about X"</td><td>The scout only. Under 150 words</td><td>One</td><td>No</td><td>No</td></tr>
+      <tr><td>1 Quick lens</td><td>One perspective, <code>--panels &lt;one&gt;</code>, <code>--only</code>, radar</td><td>One panel or persona, compact. Under 250 words</td><td>One</td><td>No</td><td>No</td></tr>
+      <tr><td>2 Focused</td><td>A real product decision. Default for every mode</td><td>Scout, intake questions, the one or two most relevant panels, their questions and data, then the decision. Decision reply under 300 words</td><td>Three</td><td>Yes</td><td>One page when the pick changes how something works</td></tr>
+      <tr><td>3 Full council</td><td>High stakes or cross-cutting, <code>--deep</code></td><td>Scout, intake questions, 3 to 6 panels in full, their questions and data, up to two challenge rounds. Decision reply under 450 words</td><td>Three or four</td><td>Yes</td><td>One page when the pick changes how something works</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section id="flow">
+  <div class="rule"></div>
+  <h2>Session flow</h2>
+  <p class="intro">Every Tier 2 and 3 session follows this order and ends in options with a pick and a path. Tier 0 and 1 stop after step one with a short answer.</p>
+  <figure class="fig"><div class="scroll"><img src="assets/img/session-flow.jpg" loading="lazy" alt="Sequence diagram. You send /council to the Product Lead, which picks mode and tier. Tier 0 or 1 returns a short answer. Tier 2 or 3 asks context-scout for facts, settles any conflict with you, briefs the panels, writes options and a diagram, and saves through the save hook, which sends back any quote not found in its file." style="width:880px"></div><figcaption>How a council session runs. Steps 6 and 7 happen only when a conflict decides the outcome. Steps 12 and 13 happen only when a quote fails the check.</figcaption></figure>
+  <ol class="steps n4">
+    <li><div><strong>Triage</strong>One line: the mode it inferred and the tier it picked.</div></li>
+    <li><div><strong>Scout your input first, alone</strong>The scout looks up everything the request names and returns the facts with quotes, plus what the context already says on each intake topic. The orchestrator gates them and sends a thin pack back once.</div></li>
+    <li><div><strong>Intake</strong>What I already know, then questions only on the gaps, each with a default, plus any conflict the decision depends on. Say "go" to use the defaults.</div></li>
+    <li><div><strong>Brief and panels</strong>The brief carries the facts, your answers and the named gaps. Panels answer in parallel without seeing each other, each ending with users, business and stakeholders, a viable first step, its questions and the data it needs.</div></li>
+    <li><div><strong>Panel questions and data</strong>The panels' questions and figures are checked against the context. What is left, up to five questions and one data table, comes back to you. Your answers and figures are tested against the emerging pick.</div></li>
+    <li><div><strong>Options, a pick and a path</strong>Two or three different approaches, do nothing included, a verdict each, one pick, its iteration path, and what would flip it. A short reply; the detail is in the record.</div></li>
+    <li><div><strong>Diagrams</strong>When the pick changes how something works, every flow it touches is drawn on one page.</div></li>
+    <li><div><strong>Save, then keep it current</strong>The hook checks every quote before you see "saved". If you say yes to an analysis document, it is updated after every later turn.</div></li>
+  </ol>
+</section>
+
+<section id="analysis">
+  <div class="rule"></div>
+  <h2>Questions, data and analysis documents</h2>
+  <p class="intro">A decision is only as good as what the council knows. So at Tier 2 and 3 it asks twice, asks for numbers, and leaves you a one-page document you can share and build on. Every question is a click-to-answer prompt with the default first and marked recommended, and you can always type your own answer.</p>
+
+  <h3>Questions you can understand</h3>
+  <p>Every question follows the same writing rules as the answers: one decision per question, in your words, self-contained, under 25 words, with two to four real options, the default first. A check runs before every question and sends an unclear one back to be rewritten, so a question that mentions tiers, panels, coverage labels or files, or asks two things at once, never reaches you.</p>
+  <table>
+    <caption>Two questions the council used to ask, and how it asks them now.</caption>
+    <thead><tr><th>Before</th><th>After</th></tr></thead>
+    <tbody>
+      <tr><td>"Can you confirm the PARTIAL coverage on problem and who has it?"</td><td>"Is this about every parent, or mainly parents of special-needs students?"</td></tr>
+      <tr><td>"Should we go with B and also check consent before texting?"</td><td>Two questions: "Should parents get a text when a call goes unanswered?" and "Do parents have to agree before we text them?"</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Two rounds of questions</h3>
+  <table>
+    <caption>The three replies of a Tier 2 or 3 session. Say "go" to any round to use the defaults, or pass <code>--fast</code>.</caption>
+    <thead><tr><th>Reply</th><th>What you get</th></tr></thead>
+    <tbody>
+      <tr><td>1. Intake</td><td>What I already know, with sources. Then up to four numbered questions on what the context cannot answer: the problem and who has it, the outcome and why now, the data you have, constraints. Each has a default. Skipped when nothing is missing</td></tr>
+      <tr><td>2. Panel questions and data</td><td>What the panels see so far, what the context answered for them, up to five remaining questions (who asked, why, the default), and one data table</td></tr>
+      <tr><td>3. Decision</td><td>The pick, the options, the path, data still needed, open questions, one next step. Under 300 words</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Data decides</h3>
+  <p>Each panel names up to two figures it needs. The council asks for them in one table. It never estimates a missing figure, never writes a query for you, and writes a threshold only when you or the context supply one.</p>
+  <table>
+    <caption>An example data request.</caption>
+    <thead><tr><th>Figure</th><th>Why it matters</th><th>Likely where</th><th>If it comes back...</th></tr></thead>
+    <tbody>
+      <tr><td>Driver changes per week on alt trips, last full semester</td><td>Sizes the problem</td><td>Trip Services reporting</td><td>Low: do nothing likely wins. High: the build options earn their cost</td></tr>
+    </tbody>
+  </table>
+  <p>A pick that waits on data says "provisional until" the figure. When you paste a number, the reply says whether it confirmed the pick, changed a condition, or flipped it.</p>
+
+  <h3>The decision reply</h3>
+  <p>An illustrative reply, to show the shape.</p>
+<div class="code"><pre>Pick: B, call then text (BUILD WITH CONDITIONS, provisional until weekly volume).
+Calls already happen, and a text closes the unanswered-call gap at low cost.
+
+| Option | Verdict | One line |
+| A  App notice only     | NEEDS EVIDENCE | Depends on FirstView adoption we cannot see |
+| B  Call, then text     | BUILD WITH CONDITIONS | Uses today's process, adds a safety net |
+| Do nothing             | KILL | Missed pickups continue |
+
+Path: Now, text when a call is unanswered (proves parents read it).
+Next, text on every change. Later, app notice once adoption is known.
+Data still needed: driver changes per week (low volume favours do nothing).
+Next: pull last semester's change log from Trip Services.</pre><button type="button">Copy</button></div>
+  <p>The full record, with every quote, sits in the saved session.</p>
+
+  <h3>Analysis documents</h3>
+  <p>After the first decision in a chat, the council asks once, as a click-to-answer question, whether to save an analysis document. Yes writes <code>analysis/&lt;slug&gt;.md</code> and rewrites it after every later turn in that chat. It is one page, 500 words at most, and the save check refuses more. The full detail stays in the session files, which have no limit. Continue in a new chat with <code>/council --analysis &lt;slug&gt; &lt;next question&gt;</code>.</p>
+  <table>
+    <caption>What an analysis document holds. It names no files, IDs, evidence tags, personas or panels, and the save hook checks.</caption>
+    <thead><tr><th>Section</th><th>What it says</th></tr></thead>
+    <tbody>
+      <tr><td>Summary</td><td>The recommendation, how sure we are, and what would change it, in two or three sentences</td></tr>
+      <tr><td>Problem</td><td>Who has it, how often, how we know</td></tr>
+      <tr><td>Who it affects</td><td>Up to four groups, today against the recommendation</td></tr>
+      <tr><td>Options</td><td>Each approach with its verdict and one line of why, do nothing included</td></tr>
+      <tr><td>Recommendation</td><td>The pick, its main condition, and the Now, Next, Later path</td></tr>
+      <tr><td>Still open and changes</td><td>Up to five open questions or missing figures, and the last five changes</td></tr>
+    </tbody>
+  </table>
+
+  <h3>The PRD</h3>
+  <p><code>/draft prd</code> builds a PRD from the decision record and the analysis document, in twelve fixed sections. Its body is clean like the analysis document, so it reads well in Confluence. The evidence stays in the decision record.</p>
+  <table>
+    <caption>The PRD sections, in order.</caption>
+    <thead><tr><th>Section</th><th>Answers</th></tr></thead>
+    <tbody>
+      <tr><td>Problem</td><td>What business problem are we solving?</td></tr>
+      <tr><td>Business need</td><td>Why is this important now?</td></tr>
+      <tr><td>Expected outcome</td><td>What measurable outcome are we expecting?</td></tr>
+      <tr><td>KPI</td><td>Baseline and target</td></tr>
+      <tr><td>Background and context</td><td>Current process (as-is), customer and user pain points, business drivers, regulatory drivers</td></tr>
+      <tr><td>Approach details</td><td>Approach, in scope, out of scope</td></tr>
+      <tr><td>Assumptions</td><td>What we take as true, and how it will be checked</td></tr>
+      <tr><td>Dependencies</td><td>Cross domains, teams or products</td></tr>
+      <tr><td>Persona affected</td><td>Who this changes, and how</td></tr>
+      <tr><td>Functional requirements</td><td>What the product must do</td></tr>
+      <tr><td>Non-functional requirements</td><td>How well it must do it</td></tr>
+      <tr><td>Open questions</td><td>What must be answered before or during build</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section id="evidence">
+  <div class="rule"></div>
+  <h2>Evidence, options and handoffs</h2>
+  <p class="intro">The three rules that decide whether a council output can be trusted and used.</p>
+
+  <h3>Evidence has to be quoted</h3>
+  <table>
+    <caption>The four citation forms and what each one actually proves.</caption>
+    <thead><tr><th>Form</th><th>What it proves</th></tr></thead>
+    <tbody>
+      <tr><td><code>[V: path]</code></td><td>The file exists. Acceptable only for background with no specific claim attached</td></tr>
+      <tr><td><code>[V: path "verbatim words"]</code></td><td>The file says this. Required for anything the recommendation rests on</td></tr>
+      <tr><td><code>[I] claim, because reasoning</code></td><td>An inference with its reasoning stated. An <code>[I]</code> with no reasoning is an assertion wearing a tag</td></tr>
+      <tr><td><code>[U]</code></td><td>Not in context. The honest answer, and the orchestrator names it as an unassessed risk</td></tr>
+    </tbody>
+  </table>
+  <p>The save hook checks every quote against its file automatically and sends a failure back to be fixed before you see the result. By hand: <code>python3 scripts/check_citations.py &lt;file&gt;</code>. Full rules in <code>rules/evidence.md</code>.</p>
+
+  <h3>Options, not one verdict</h3>
+  <p>Tier 2 and 3 return two or three options, each a genuinely different approach, each with its own verdict, and one named pick. "Do nothing" is always on the table with its cost stated, and the record says what would make you switch to the runner-up. Three sizes of one approach is one option, not three. The pick carries an iteration path: what ships now, what it proves, and what comes next.</p>
+  <p>The decision record opens with an at-a-glance table and maps field by field onto the twelve PRD sections, so <code>/draft prd</code> transforms it rather than rewriting it.</p>
+
+  <h3>IDs carry their titles</h3>
+  <p><code>OI-261005-H8</code> tells a reader nothing, so no output prints an ID alone. The save hook appends a legend resolving every ID to its title and file; <code>python3 scripts/resolve_ids.py sessions/ --check</code> finds bare ones.</p>
+
+  <h3>Handing a decision to the design project</h3>
+  <p><code>/handoff</code> writes one brief per option, so the design project produces variants per approach instead of one blend. Each brief links the user flow drawn for that option and ends in one paste-ready block: open the file, copy the block, paste it. No terminal, no credentials.</p>
+</section>
+
+<section id="flows">
+  <div class="rule"></div>
+  <h2>From decision to delivery</h2>
+  <p class="intro">What happens after a session, from a decision to Confluence and Jira. Scroll sideways on a small screen.</p>
+  
+  <figure class="fig"><div class="scroll"><img src="assets/img/decision-to-delivery.jpg" loading="lazy" alt="Workflow with four lanes: You, Council, Design project, Confluence and Jira. From a decision record you choose to build it with /draft, design it with /handoff, or show it with /diagram compare. An approved draft becomes a Confluence page and Jira tickets, and /check outcome records later whether it held up." style="width:1320px"></div><figcaption>Three ways out of a decision record. Nothing reaches Confluence or Jira without your approval, and the sync searches first so it never duplicates a page or ticket.</figcaption></figure>
+</section>
+
+<section id="loop">
+  <div class="rule"></div>
+  <h2>Learning loop</h2>
+  <p class="intro">One correction today prevents the same mistake in every future session.</p>
+  <div class="loop">
+    <div style="--c:var(--jade)"><b>AI produces output</b>A session, intake or draft.</div>
+    <div style="--c:var(--pink)"><b>You correct it</b>In plain words, as you normally would.</div>
+    <div style="--c:var(--turmeric)"><b>AI records the lesson</b>Mistake, root cause and a testable rule.</div>
+    <div style="--c:var(--sapphire)"><b>Next sessions read it</b>Active lessons load at session start.</div>
+    <div style="--c:var(--amethyst)"><b>Rule is promoted</b>Into the skill, rule file or check where it belongs.</div>
+    <div style="--c:var(--wave)"><b>Recurrence is tracked</b>A repeat raises the count and strengthens enforcement.</div>
+  </div>
+</section>
+
+<section id="hooks">
+  <div class="rule"></div>
+  <h2>Automatic behavior</h2>
+  <p class="intro">These run on their own once hooks are enabled. Checks a script can do are never left to the model's memory. Run <code>python3 scripts/selftest.py</code> to check all of them on a throwaway copy.</p>
+  <table>
+    <caption>The six hooks and what each one does.</caption>
+    <thead><tr><th>When</th><th>What happens</th></tr></thead>
+    <tbody>
+      <tr><td>Session start</td><td>Rebuilds the index and lessons digest, then briefs you: branch, active lessons, open items, sources not yet ingested, days since the last <code>/check</code></td></tr>
+      <tr><td>Before a question</td><td>Checks every click-to-answer question is clear: one decision, your words, short, real options. An unclear one goes back to Claude to rewrite</td></tr>
+      <tr><td>Before any edit</td><td>Blocks changes to existing raw sources (new ones can be saved, so <code>/ingest &lt;url&gt;</code> works), and edits to shared content on main</td></tr>
+      <tr><td>After any edit</td><td>Context: rebuilds the index. Session or draft: checks every quote. Analysis document or PRD: checks it names no files, IDs, personas or panels, and the analysis fits on one page. Diagram spec: renders the HTML. Failures go back to Claude to fix</td></tr>
+      <tr><td>After every turn</td><td>Adds the ID legend to sessions and drafts written that turn, sends Claude back once if a decision was made without asking the analysis question, and logs token usage to <code>metrics/usage/</code></td></tr>
+      <tr><td>Before any commit</td><td>Blocks shared-content commits on main and commits with invalid context frontmatter</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section id="team">
+  <div class="rule"></div>
+  <h2>Working as a team</h2>
+  <ol class="flow">
+    <li><div><strong>Start a branch</strong><code>bash scripts/start_work.sh &lt;topic&gt;</code> creates <code>pm/&lt;you&gt;/&lt;topic&gt;</code> from the latest main.</div></li>
+    <li><div><strong>Work</strong>Sessions, intake, drafts and diagrams. IDs carry a date and a random suffix, so nobody's IDs clash.</div></li>
+    <li><div><strong>Open a pull request</strong><code>/open-pr</code> checks quality, ID clashes and conflicts with the latest main, then opens the request.</div></li>
+    <li><div><strong>Review and merge</strong>The curator reviews shared content. Append-only logs merge automatically.</div></li>
+  </ol>
+  <p>Branch protection for GitHub, Bitbucket and AWS CodeCommit is covered in <code>CONTRIBUTING.md</code>.</p>
+</section>
+
+<nav class="pager" aria-label="Previous and next page"><a class="prev" href="commands.html"><small>Previous</small>Commands</a><a class="next" href="knowledge.html"><small>Next</small>Knowledge</a></nav>
+  </main>
+</div>
+<footer class="gf">
+  <div class="gf-in">
+    <div class="gf-brand"><span class="gh-slash">/</span>The Product Council<p>Expert panels for FirstAlt product decisions, grounded in evidence.</p></div>
+    <div><h2>Use</h2><a href="use.html">Get started</a><a href="commands.html">Commands</a><a href="behaviour.html">How it behaves</a><a href="diagrams.html">Diagrams</a></div>
+    <div><h2>Understand</h2><a href="knowledge.html">Knowledge and context</a><a href="technical.html">Technical</a><a href="reference.html">Reference</a></div>
+    <div><h2>Competitors</h2><a href="comparisons/driver-app.html">Driver apps</a><a href="comparisons/parent-app.html">Parent apps</a><a href="comparisons/provider-portal.html">Provider portals</a><a href="comparisons/district-portal.html">District portals</a></div>
+  </div>
+  <p class="gf-note">FirstAlt Product Council v3.7.3, updated 11 October 2026. The repository is the source of truth: update these pages in the same pull request as a skill, agent or persona change.</p>
+</footer>
+<script src="assets/chrome.js"></script>
+<script src="assets/site.js"></script>
+</body>
+</html>

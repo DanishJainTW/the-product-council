@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Reference | The Product Council</title>
+<meta name="description" content="Repository map, verdicts and tags, and upgrading.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23003D4F'/%3E%3Cpath d='M18 6h5l-9 20H9z' fill='%23F2617A'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bitter:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/chrome.css">
+<link rel="stylesheet" href="assets/site.css">
+<script>try{var t=localStorage.getItem("council-theme");if(t)document.documentElement.dataset.theme=t;}catch(e){}</script>
+</head>
+<body>
+<a class="gh-skip" href="#content">Skip to content</a>
+<header class="gh">
+  <div class="gh-in">
+    <a class="gh-brand" href="index.html"><span class="gh-slash">/</span>The Product Council</a>
+    <button type="button" class="gh-btn gh-menu" id="ghMenu" aria-expanded="false" aria-controls="ghNav">Menu</button>
+    <nav class="gh-nav" id="ghNav" aria-label="Main">
+      <a href="index.html">Home</a>
+      <a href="use.html">Use it</a>
+      <a href="commands.html">Commands</a>
+      <a href="behaviour.html">How it behaves</a>
+      <a href="knowledge.html">Knowledge</a>
+      <a href="diagrams.html">Diagrams</a>
+      <a href="technical.html">Technical</a>
+      <a href="reference.html" aria-current="page">Reference</a>
+      <a href="comparisons.html">Comparisons</a>
+    </nav>
+    <button type="button" class="gh-btn" id="themeBtn" aria-label="Switch light or dark theme">Theme</button>
+  </div>
+</header>
+
+<div class="shell">
+  <nav class="sidebar" id="sidebar" aria-label="On this page">
+    <h2>On this page</h2>
+      <a href="#files">Repository map</a>
+      <a href="#glossary">Verdicts and tags</a>
+      <a href="#upgrade">Upgrading</a>
+  </nav>
+
+  <main id="content">
+<div class="pagehead"><div class="pagehead-in">
+  <nav class="crumbs" aria-label="Breadcrumb"><a href="index.html">Home</a><span aria-hidden="true">/</span><span aria-current="page">Reference</span></nav>
+  <h1>Reference</h1><p>Where things live, what the tags mean, and how to upgrade.</p>
+</div></div>
+<details class="onpage"><summary>On this page</summary><div>
+      <a href="#files">Repository map</a>
+      <a href="#glossary">Verdicts and tags</a>
+      <a href="#upgrade">Upgrading</a>
+</div></details>
+
+<section id="files">
+  <div class="rule"></div>
+  <h2>Repository map</h2>
+  <table>
+    <caption>Where everything lives.</caption>
+    <thead><tr><th>Path</th><th>What it holds</th></tr></thead>
+    <tbody>
+      <tr><td><code>CLAUDE.md</code></td><td>Global rules, loaded on every turn</td></tr>
+      <tr><td><code>engagement.config.md</code></td><td>Every path and setting. Change paths here only</td></tr>
+      <tr><td><code>.claude/skills/</code></td><td>The eight commands, with the diagram spec reference and examples</td></tr>
+      <tr><td><code>.claude/agents/</code></td><td>Six panels, problem-radar, context-scout, knowledge-curator</td></tr>
+      <tr><td><code>procedures/</code>, <code>rules/</code>, <code>templates/</code></td><td>Steps, rules and output shapes the commands follow, including the PRD and analysis templates</td></tr>
+      <tr><td><code>personas/</code></td><td>Persona files and compact cards</td></tr>
+      <tr><td><code>context/</code></td><td>The four-layer knowledge base, manifest and self-building index</td></tr>
+      <tr><td><code>sessions/</code>, <code>diagrams/</code></td><td>Saved sessions with decision records, and their diagram pages (JSON spec plus one HTML page each)</td></tr>
+      <tr><td><code>analysis/</code></td><td>Clean analysis documents, one per feature or problem, kept current through the chat</td></tr>
+      <tr><td><code>lessons-log/</code>, <code>evals/</code></td><td>Lessons and the active digest, regression cases</td></tr>
+      <tr><td><code>metrics/</code>, <code>reports/</code></td><td>Usage logs and report, health and intake reports</td></tr>
+      <tr><td><code>scripts/</code></td><td>Hooks, index, lint, IDs, citations, diagrams, health, metrics</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section id="glossary">
+  <div class="rule"></div>
+  <h2>Verdicts and tags</h2>
+  <table>
+    <thead><tr><th>Term</th><th>Meaning</th></tr></thead>
+    <tbody>
+      <tr><td>BUILD</td><td>Go ahead</td></tr>
+      <tr><td>BUILD WITH CONDITIONS</td><td>Go ahead once each named, testable condition is met</td></tr>
+      <tr><td>NEEDS EVIDENCE</td><td>Not enough proof yet. The record names the cheapest test to run</td></tr>
+      <tr><td>KILL</td><td>Stop. A blocker stands or the problem is not real</td></tr>
+      <tr><td>BUILD, PIVOT, KILL</td><td>The Board of Advisors' own verdict, decided by explicit rules</td></tr>
+      <tr><td>[V: source]</td><td>Verified from a context file or something you supplied</td></tr>
+      <tr><td>[I]</td><td>Inferred by reasoning, with the reasoning shown</td></tr>
+      <tr><td>[U]</td><td>Unknown, raised as a question</td></tr>
+      <tr><td>SIMULATED</td><td>User Panel output: hypotheses to test with real users, not research</td></tr>
+      <tr><td>S-, D-, OI-, L-, EV-</td><td>IDs for sources, decisions, open items, lessons and eval cases. Always printed with their title</td></tr>
+      <tr><td>Mode</td><td>brainstorm, improve, solve, validate or radar. Inferred from your request</td></tr>
+      <tr><td>Tier</td><td>0 answer, 1 quick lens, 2 focused, 3 full council</td></tr>
+      <tr><td>CONTEXT THIN</td><td>The scout could not find enough on a risk. The record marks that risk "not assessed" rather than guessing</td></tr>
+      <tr><td>V, I, ? badges</td><td>Evidence on a diagram node: verified with a quote, inferred, or unknown with a dashed outline</td></tr>
+      <tr><td>Provisional</td><td>A pick that waits on a named figure. The reply says what the figure would change</td></tr>
+      <tr><td>Iteration path</td><td>Now, Next, Later for the pick: the smallest viable version first, each step with what it proves</td></tr>
+      <tr><td>Analysis document</td><td>The one-page write-up of a feature or problem in <code>analysis/</code>, 500 words at most, free of files, IDs, personas and panels</td></tr>
+      <tr><td>Comparison</td><td>A flow drawn as today against an option: green added, pink removed, amber changed, every change listed under it</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section id="upgrade">
+  <div class="rule"></div>
+  <h2>Upgrading</h2>
+  <p class="intro">Upgrades never touch <code>context/</code>, <code>sessions/</code>, <code>analysis/</code>, <code>diagrams/</code>, <code>metrics/</code>, <code>reports/</code>, <code>lessons-log/</code>, <code>handoffs/</code> or <code>personas/</code>. The script fingerprints those folders before and after and prints both.</p>
+  <ol class="flow">
+    <li><div><strong>Back up</strong><div class="code"><pre>tar -czf ../council-backup-$(date +%Y%m%d).tar.gz .</pre><button type="button">Copy</button></div></div></li>
+    <li><div><strong>Start a branch</strong><div class="code"><pre>bash scripts/start_work.sh upgrade-v3-7-3</pre><button type="button">Copy</button></div></div></li>
+    <li><div><strong>Run the script from the unzipped pack</strong><div class="code"><pre>bash council-v3.7-upgrade/upgrade-to-v3.7.sh /path/to/your/council</pre><button type="button">Copy</button></div></div></li>
+    <li><div><strong>Re-apply anything listed under CUSTOMISED</strong>Your version of each file is in the backup folder the script names.</div></li>
+    <li><div><strong>Restart Claude Code, try it, share it</strong>Check every line of the self-test says PASS. The script then offers to run the behaviour evals, which use tokens, so the default is no. Run <code>/council help</code>, commit on your branch, then <code>/open-pr</code>. Teammates pull and restart.</div></li>
+  </ol>
+  <p>Full detail, the file-by-file table and the undo command are in <code>UPGRADE.md</code>.</p>
+</section>
+
+<nav class="pager" aria-label="Previous and next page"><a class="prev" href="technical.html"><small>Previous</small>Technical</a><a class="next" href="comparisons.html"><small>Next</small>Comparisons</a></nav>
+  </main>
+</div>
+<footer class="gf">
+  <div class="gf-in">
+    <div class="gf-brand"><span class="gh-slash">/</span>The Product Council<p>Expert panels for FirstAlt product decisions, grounded in evidence.</p></div>
+    <div><h2>Use</h2><a href="use.html">Get started</a><a href="commands.html">Commands</a><a href="behaviour.html">How it behaves</a><a href="diagrams.html">Diagrams</a></div>
+    <div><h2>Understand</h2><a href="knowledge.html">Knowledge and context</a><a href="technical.html">Technical</a><a href="reference.html">Reference</a></div>
+    <div><h2>Competitors</h2><a href="comparisons/driver-app.html">Driver apps</a><a href="comparisons/parent-app.html">Parent apps</a><a href="comparisons/provider-portal.html">Provider portals</a><a href="comparisons/district-portal.html">District portals</a></div>
+  </div>
+  <p class="gf-note">FirstAlt Product Council v3.7.3, updated 11 October 2026. The repository is the source of truth: update these pages in the same pull request as a skill, agent or persona change.</p>
+</footer>
+<script src="assets/chrome.js"></script>
+<script src="assets/site.js"></script>
+</body>
+</html>

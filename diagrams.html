@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Diagrams | The Product Council</title>
+<meta name="description" content="What a Product Council diagram page holds and how to get one.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23003D4F'/%3E%3Cpath d='M18 6h5l-9 20H9z' fill='%23F2617A'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bitter:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/chrome.css">
+<link rel="stylesheet" href="assets/site.css">
+<script>try{var t=localStorage.getItem("council-theme");if(t)document.documentElement.dataset.theme=t;}catch(e){}</script>
+</head>
+<body>
+<a class="gh-skip" href="#content">Skip to content</a>
+<header class="gh">
+  <div class="gh-in">
+    <a class="gh-brand" href="index.html"><span class="gh-slash">/</span>The Product Council</a>
+    <button type="button" class="gh-btn gh-menu" id="ghMenu" aria-expanded="false" aria-controls="ghNav">Menu</button>
+    <nav class="gh-nav" id="ghNav" aria-label="Main">
+      <a href="index.html">Home</a>
+      <a href="use.html">Use it</a>
+      <a href="commands.html">Commands</a>
+      <a href="behaviour.html">How it behaves</a>
+      <a href="knowledge.html">Knowledge</a>
+      <a href="diagrams.html" aria-current="page">Diagrams</a>
+      <a href="technical.html">Technical</a>
+      <a href="reference.html">Reference</a>
+      <a href="comparisons.html">Comparisons</a>
+    </nav>
+    <button type="button" class="gh-btn" id="themeBtn" aria-label="Switch light or dark theme">Theme</button>
+  </div>
+</header>
+
+<div class="shell">
+  <nav class="sidebar" id="sidebar" aria-label="On this page">
+    <h2>On this page</h2>
+      <a href="#diagrams">Diagrams</a>
+  </nav>
+
+  <main id="content">
+<div class="pagehead"><div class="pagehead-in">
+  <nav class="crumbs" aria-label="Breadcrumb"><a href="index.html">Home</a><span aria-hidden="true">/</span><span aria-current="page">Diagrams</span></nav>
+  <h1>Diagrams</h1><p>One static page that draws every flow a feature touches.</p>
+</div></div>
+<details class="onpage"><summary>On this page</summary><div>
+      <a href="#diagrams">Diagrams</a>
+</div></details>
+
+<section id="diagrams">
+  <div class="rule"></div>
+  <h2>Diagrams</h2>
+  <p class="intro">Built in. A feature rarely changes one flow, so <code>/diagram</code> draws every flow it touches on one static page: the parent's journey, the team handoff, the system calls, and today against the option. No npm, no network, no separate tool.</p>
+  <figure style="margin:0 0 18px"><img src="assets/img/diagram-page-example.jpg" loading="lazy" alt="A diagram page titled Driver change notification, every touchpoint. A summary table lists three flows, a comparison, a parent user flow and a system sequence, each with its unknowns count. Below it the first flow starts, with PNG and SVG buttons." style="width:100%;height:auto;border:1px solid var(--line)"><figcaption style="font-size:13.5px;color:var(--muted);padding-top:8px">The shipped example page: one feature, three flows, a summary table on top. Each flow has its own PNG and SVG export.</figcaption></figure>
+  <h3>What one page holds</h3>
+  <table>
+    <caption>Everything on a diagram page, top to bottom.</caption>
+    <thead><tr><th>Part</th><th>What it is</th></tr></thead>
+    <tbody>
+      <tr><td>Header</td><td>The feature or decision, the question the page answers, the session it came from, and Print or PDF and Spec (JSON) buttons</td></tr>
+      <tr><td>Summary table</td><td>Every flow on the page with its type and unknowns count, each linking to the flow. Shown when there is more than one flow</td></tr>
+      <tr><td>One section per flow</td><td>Title, question, the picture fitted to the page width, and PNG and SVG buttons</td></tr>
+      <tr><td>Under each flow</td><td>A legend of what is drawn, evidence counts, unknowns, assumptions, out of scope, and a notes table with every evidence tag, source quote and note</td></tr>
+      <tr><td>Comparison flows</td><td>Today against an option drawn once, added steps in green, removed in pink, changed in amber, with every change listed</td></tr>
+    </tbody>
+  </table>
+  <table>
+    <caption>The six flow types and the question each one answers. A comparison can use any of the first five except sequence.</caption>
+    <thead><tr><th>Type</th><th>Answers</th></tr></thead>
+    <tbody>
+      <tr><td>userflow</td><td>What one user does, screen by screen. One per persona whose journey changes</td></tr>
+      <tr><td>workflow</td><td>What happens in what order, across teams. Swimlanes, decisions, failure paths</td></tr>
+      <tr><td>sequence</td><td>Who talks to whom over time for one case, with alt, opt and loop fragments</td></tr>
+      <tr><td>dataflow</td><td>Where a record travels, who changes it, where personal data moves</td></tr>
+      <tr><td>lifecycle</td><td>The states a thing can be in and what moves it between them</td></tr>
+      <tr><td>architecture</td><td>Who calls what, what stores the data, where the boundaries are</td></tr>
+    </tbody>
+  </table>
+  <h3>Evidence on the picture</h3>
+  <p>A step can carry V, I or U, the same tags as everywhere else. V needs a quote, and the renderer checks the quote against the file exactly as the citation checker does: a quote that is not there stops the render. U draws a dashed outline and a question mark, so a gap is visible instead of filled. Every unknown is listed under its flow as a question for the next client session.</p>
+  <h3>Three ways to get one</h3>
+  <div class="code"><pre>/diagram the driver change notice, every touchpoint
+/diagram sessions/2026-10-14-driver-change-7F.md
+/diagram compare sessions/2026-10-14-driver-change-7F.md</pre><button type="button">Copy</button></div>
+  <p>And automatically: a council session at Tier 2 or 3 draws one page when the recommended option changes a workflow, journey, system, data path or state. <code>/handoff</code> draws every option's user flows on one page, and each design brief links its own flows. The page is static by design: it prints, pastes into Confluence and exports to slides. Edit the JSON spec beside it and the hook re-renders the page.</p>
+</section>
+
+<nav class="pager" aria-label="Previous and next page"><a class="prev" href="knowledge.html"><small>Previous</small>Knowledge</a><a class="next" href="technical.html"><small>Next</small>Technical</a></nav>
+  </main>
+</div>
+<footer class="gf">
+  <div class="gf-in">
+    <div class="gf-brand"><span class="gh-slash">/</span>The Product Council<p>Expert panels for FirstAlt product decisions, grounded in evidence.</p></div>
+    <div><h2>Use</h2><a href="use.html">Get started</a><a href="commands.html">Commands</a><a href="behaviour.html">How it behaves</a><a href="diagrams.html">Diagrams</a></div>
+    <div><h2>Understand</h2><a href="knowledge.html">Knowledge and context</a><a href="technical.html">Technical</a><a href="reference.html">Reference</a></div>
+    <div><h2>Competitors</h2><a href="comparisons/driver-app.html">Driver apps</a><a href="comparisons/parent-app.html">Parent apps</a><a href="comparisons/provider-portal.html">Provider portals</a><a href="comparisons/district-portal.html">District portals</a></div>
+  </div>
+  <p class="gf-note">FirstAlt Product Council v3.7.3, updated 11 October 2026. The repository is the source of truth: update these pages in the same pull request as a skill, agent or persona change.</p>
+</footer>
+<script src="assets/chrome.js"></script>
+<script src="assets/site.js"></script>
+</body>
+</html>

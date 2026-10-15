@@ -1,0 +1,710 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Driver apps compared: HopSkipDrive, EverDriven and Zum, side by side.">
+<title>Driver apps compared: HopSkipDrive, EverDriven, Zum</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23003D4F'/%3E%3Cpath d='M18 6h5l-9 20H9z' fill='%23F2617A'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="../assets/chrome.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bitter:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --wave:#003D4F;--flamingo:#F2617A;--jade:#6B9E78;--turmeric:#CC850A;--sapphire:#47A1AD;--amethyst:#634F7D;
+  --mist:#EDF1F3;--ink:#14262E;--muted:#55686F;--line:#CBD5DA;--white:#FFFFFF;
+  --yes:#3F7A50;--part:#CC850A;--no:#D9435C;--unk:#8A9AA1;
+  --radius-s:4px;--radius-m:10px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
+body{margin:0;background:var(--white);color:var(--ink);font:16px/1.55 Inter,"Segoe UI",system-ui,-apple-system,sans-serif}
+h1,h2,h3{font-family:Bitter,Georgia,serif;color:var(--wave);margin:0}
+h1{font-size:clamp(30px,4.6vw,48px);line-height:1.08;font-weight:700;letter-spacing:-.01em}
+h2{font-size:clamp(24px,3vw,32px);line-height:1.15;font-weight:700}
+h3{font-size:20px;line-height:1.25;font-weight:700}
+p{margin:0}
+a{color:var(--wave)}
+button{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--flamingo);outline-offset:2px;border-radius:3px}
+.wrap{max-width:1180px;margin:0 auto;padding:0 clamp(16px,4vw,40px)}
+
+/* top bar */
+.bar{position:sticky;top:0;z-index:20;background:var(--wave);color:#fff}
+.bar .wrap{display:flex;align-items:center;gap:18px;min-height:56px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:10px;font-weight:600;white-space:nowrap}
+.brand .mark{width:10px;height:24px;background:var(--flamingo);transform:skewX(-18deg)}
+.bar nav{display:flex;gap:4px;overflow-x:auto;flex:1;scrollbar-width:none}
+.bar nav a{color:#fff;text-decoration:none;padding:8px 10px;border-radius:var(--radius-s);font-size:14px;white-space:nowrap;opacity:.85}
+.bar nav a:hover,.bar nav a.on{opacity:1;background:rgba(255,255,255,.12)}
+
+/* hero */
+.hero{background:var(--mist);padding:48px 0 40px;border-bottom:1px solid var(--line)}
+.hero .lede{max-width:64ch;margin-top:14px;font-size:18px;color:var(--ink)}
+.hero .meta{margin-top:10px;color:var(--muted);font-size:14px;max-width:70ch}
+.prints{margin-top:34px;display:grid;gap:14px}
+.print{display:grid;grid-template-columns:200px 1fr 92px;align-items:center;gap:16px;background:#fff;border:1px solid var(--line);border-radius:var(--radius-m);padding:14px 16px;cursor:pointer;text-align:left;width:100%}
+.print[aria-pressed=true]{border-color:var(--wave);box-shadow:inset 5px 0 0 var(--flamingo)}
+.print .who strong{display:block;font-family:Bitter,Georgia,serif;font-size:19px;color:var(--wave)}
+.print .who span{font-size:13px;color:var(--muted)}
+.cells{display:flex;flex-wrap:wrap;gap:4px 3px}
+.cells .grp{display:flex;gap:3px;padding-right:5px;border-right:1px solid var(--line)}
+.cells .grp:last-child{border-right:0}
+.sq{width:clamp(11px,1.35vw,18px);height:clamp(11px,1.35vw,18px);border-radius:3px;display:inline-block}
+.sq.y{background:var(--yes)}.sq.p{background:linear-gradient(135deg,var(--part) 50%,#F3DDB5 50%)}
+.sq.n{background:#fff;border:2px solid var(--no)}.sq.u{background:#fff;border:2px dashed var(--unk)}
+.score{font-family:Bitter,Georgia,serif;font-size:26px;color:var(--wave);text-align:right;line-height:1}
+.score small{display:block;font:12px Inter,sans-serif;color:var(--muted);margin-top:3px}
+.areakey{display:flex;flex-wrap:wrap;gap:6px 14px;margin-top:14px;font-size:13px;color:var(--muted)}
+
+/* legend */
+.legend{display:flex;flex-wrap:wrap;gap:8px 20px;align-items:center;font-size:14px}
+.legend span{display:inline-flex;align-items:center;gap:7px}
+.ico{width:22px;height:22px;flex:none;display:inline-block;vertical-align:middle}
+
+section.block{padding:56px 0 8px}
+.intro{max-width:68ch;margin-top:10px;color:var(--muted)}
+.tools{display:flex;flex-wrap:wrap;gap:8px;margin:22px 0 14px;align-items:center}
+.chip{border:1px solid var(--line);background:#fff;border-radius:999px;padding:6px 12px 6px 8px;font-size:14px;cursor:pointer;display:inline-flex;align-items:center;gap:7px}
+.chip .dot{width:12px;height:12px;border-radius:50%}
+.chip[aria-pressed=true]{background:var(--wave);color:#fff;border-color:var(--wave)}
+.chip[aria-pressed=true] .dot{box-shadow:0 0 0 2px #fff}
+.toggle{display:inline-flex;align-items:center;gap:8px;font-size:14px;margin-left:auto;cursor:pointer}
+.toggle input{width:18px;height:18px;accent-color:var(--wave)}
+
+/* tables */
+.tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:var(--radius-m);background:#fff}
+table{border-collapse:separate;border-spacing:0;width:100%;min-width:720px}
+caption{caption-side:top;text-align:left;padding:12px 16px;font-size:14px;color:var(--muted);border-bottom:1px solid var(--line);background:var(--mist)}
+th,td{padding:10px 14px;border-bottom:1px solid var(--line);vertical-align:top;text-align:left}
+thead th{position:sticky;top:0;background:#fff;font-size:14px;font-weight:600;color:var(--wave);z-index:1}
+tbody th{font-weight:500;width:34%;background:#fff;position:sticky;left:0;z-index:1}
+tbody th .what{display:block}
+tbody th .plain{display:block;font-weight:400;font-size:13px;color:var(--muted);margin-top:2px}
+tr.areahead th{background:var(--mist);font-family:Bitter,Georgia,serif;font-size:16px;color:var(--wave);padding-top:14px;position:sticky;left:0}
+tr.areahead th .tag{display:inline-flex;align-items:center;gap:8px}
+tr.areahead th .stripe{width:6px;height:20px;border-radius:2px}
+td.cell{padding:6px 8px}
+.cellbtn{display:flex;align-items:flex-start;gap:8px;width:100%;background:none;border:1px solid transparent;border-radius:var(--radius-s);padding:6px;cursor:pointer;text-align:left;font-size:13px;line-height:1.35;color:var(--ink)}
+.cellbtn:hover{border-color:var(--line);background:var(--mist)}
+.cellbtn .lbl{display:block}
+.cellbtn .lbl b{display:block;font-weight:600;font-size:13px}
+.cellbtn .lbl i{font-style:normal;color:var(--muted)}
+.build{display:inline-block;font-size:11px;font-weight:600;color:var(--amethyst);border:1px solid var(--amethyst);border-radius:3px;padding:0 4px;margin-left:4px;vertical-align:1px}
+.dim{opacity:.28}
+tr.hidden{display:none}
+col.focus,th.focus,td.focus{background:#F6FAFB}
+
+/* roles */
+.tabs{display:flex;gap:6px;flex-wrap:wrap;margin:22px 0 14px}
+.tab{border:1px solid var(--line);background:#fff;border-radius:var(--radius-s);padding:9px 16px;cursor:pointer;font-weight:600;color:var(--wave)}
+.tab[aria-selected=true]{background:var(--wave);color:#fff;border-color:var(--wave)}
+.roles td{font-size:13px;line-height:1.35;min-width:150px}
+.roles td .r{display:flex;gap:8px;align-items:flex-start}
+.roles thead th .aico{display:flex;align-items:center;gap:7px}
+.roles tbody th .rico{display:flex;gap:10px;align-items:center}
+.roles tbody th .rico svg,.roles td .r .ico{flex:none}
+.rolenote{margin-top:10px;font-size:14px;color:var(--muted);max-width:75ch}
+
+/* safety */
+.safety tbody th{width:40%}
+.safety td{text-align:center;vertical-align:middle}
+.safety td .ico{width:26px;height:26px}
+.safety tr.same{}
+.stage{display:inline-flex;align-items:center;gap:8px}
+
+/* cards */
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px;margin-top:24px}
+.card{border:1px solid var(--line);border-radius:var(--radius-m);background:#fff;display:flex;flex-direction:column;overflow:hidden}
+.card header{display:flex;gap:14px;align-items:center;padding:18px 18px 14px;border-bottom:1px solid var(--line)}
+.card header svg{width:56px;height:56px;flex:none}
+.card header p{font-size:13px;color:var(--muted)}
+.card .body{padding:14px 18px 18px;display:grid;gap:14px}
+.card .oneline{font-size:15px}
+.card h4{margin:0 0 6px;font-size:14px;font-weight:600;color:var(--wave)}
+.card ul{margin:0;padding-left:0;list-style:none;display:grid;gap:7px;font-size:14px}
+.card li{display:flex;gap:8px;align-items:flex-start}
+.card li svg{width:18px;height:18px;flex:none;margin-top:2px}
+.ratings{display:flex;gap:10px;flex-wrap:wrap}
+.rating{background:var(--mist);border-radius:var(--radius-s);padding:6px 10px;font-size:13px}
+.rating b{font-family:Bitter,Georgia,serif;font-size:18px;color:var(--wave);margin-right:4px}
+.rating.low b{color:var(--no)}
+
+/* journeys */
+.jgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;margin-top:8px}
+.journey{border-top:4px solid var(--wave);background:var(--mist);border-radius:0 0 var(--radius-m) var(--radius-m);padding:16px 18px 18px}
+.journey h3{font-size:18px}
+.journey p.when{font-size:13px;color:var(--muted);margin:4px 0 10px}
+.journey ol{margin:0;padding-left:0;list-style:none;counter-reset:s;display:grid;gap:8px}
+.journey li{counter-increment:s;display:grid;grid-template-columns:28px 1fr;gap:8px;font-size:14px;line-height:1.4}
+.journey li::before{content:counter(s);width:24px;height:24px;border-radius:50%;background:var(--wave);color:#fff;font-size:12px;font-weight:600;display:grid;place-items:center}
+.journey li.safety::before{background:var(--flamingo)}
+.journey li .tagline{display:block;font-size:12px;color:var(--muted)}
+.jkey{font-size:13px;color:var(--muted);display:flex;gap:16px;flex-wrap:wrap;margin-bottom:12px}
+.jkey span{display:inline-flex;gap:6px;align-items:center}
+.jkey i{width:14px;height:14px;border-radius:50%;display:inline-block}
+
+/* notes */
+.notes{margin:56px 0 0;padding:32px 0 48px;background:var(--mist);border-top:1px solid var(--line)}
+.notes ul{margin:12px 0 0;padding-left:20px;max-width:80ch;display:grid;gap:6px;font-size:14px}
+
+/* evidence drawer */
+.drawer{position:fixed;right:16px;bottom:16px;width:min(420px,calc(100vw - 32px));max-height:70vh;overflow:auto;background:#fff;border:1px solid var(--wave);border-radius:var(--radius-m);box-shadow:0 12px 32px rgba(0,61,79,.22);padding:18px 18px 16px;z-index:30;display:none}
+.drawer.open{display:block}
+.drawer .x{position:absolute;right:10px;top:8px;border:0;background:none;font-size:24px;line-height:1;cursor:pointer;color:var(--muted);padding:4px 8px}
+.drawer .co{font-size:13px;color:var(--muted)}
+.drawer h3{font-size:18px;margin:2px 28px 8px 0}
+.drawer .st{display:flex;align-items:center;gap:8px;font-weight:600;margin-bottom:10px}
+.drawer blockquote{margin:0 0 10px;padding:10px 12px;border-left:4px solid var(--flamingo);background:var(--mist);font-size:14px}
+.drawer .note{font-size:14px;margin-bottom:10px}
+.drawer .src{font-size:13px;color:var(--muted)}
+@media (max-width:760px){
+  .print{grid-template-columns:1fr;gap:10px}
+  .score{text-align:left}
+  tbody th{width:auto;min-width:170px}
+  .toggle{margin-left:0}
+  .drawer{right:0;bottom:0;width:100%;border-radius:var(--radius-m) var(--radius-m) 0 0;max-height:60vh}
+}
+@media print{.bar,.drawer,.tools,.tabs{display:none!important}.tablewrap{overflow:visible}section.block{break-inside:avoid-page}[data-panel]{display:block!important}}
+.bar nav a.other{border:1px solid rgba(255,255,255,.35);margin-left:6px}
+.sq.x{background:#E3EBEE}
+.bar.subnav{top:var(--gh-h);z-index:20;background:#0B5163}
+.crumb{display:flex;flex:none;gap:8px;align-items:center;font-weight:600;white-space:nowrap}
+.crumb a{color:#CFE3E8}
+.crumb [aria-current]{color:#fff}
+html{scroll-padding-top:124px}
+.notes{margin-bottom:0}
+.gf{margin-top:0}
+</style>
+</head>
+<body>
+<a class="gh-skip" href="#content">Skip to content</a>
+<header class="gh">
+  <div class="gh-in">
+    <a class="gh-brand" href="../index.html"><span class="gh-slash">/</span>The Product Council</a>
+    <button type="button" class="gh-btn gh-menu" id="ghMenu" aria-expanded="false" aria-controls="ghNav">Menu</button>
+    <nav class="gh-nav" id="ghNav" aria-label="Main">
+      <a href="../index.html">Home</a>
+      <a href="../use.html">Use it</a>
+      <a href="../commands.html">Commands</a>
+      <a href="../behaviour.html">How it behaves</a>
+      <a href="../knowledge.html">Knowledge</a>
+      <a href="../diagrams.html">Diagrams</a>
+      <a href="../technical.html">Technical</a>
+      <a href="../reference.html">Reference</a>
+      <a href="../comparisons.html" aria-current="page">Comparisons</a>
+    </nav>
+  </div>
+</header>
+
+<div class="bar subnav">
+  <div class="wrap">
+    <nav class="crumb" aria-label="Breadcrumb"><a href="../comparisons.html">Comparisons</a><span aria-hidden="true">/</span><span aria-current="page">Driver apps</span></nav>
+    <nav aria-label="Sections">
+      <a href="#matrix">Comparison</a>
+      <a href="#roles">Who can do what</a>
+      <a href="#safety">Safety checklist</a>
+      <a href="#cards">App cards</a>
+      <a href="#journeys">Journeys</a>
+      <a href="#notes">What we could not see</a>
+      <a href="parent-app.html" class="other">Parent apps</a>
+      <a href="provider-portal.html" class="other">Provider portals</a>
+      <a href="district-portal.html" class="other">District portals</a>
+    </nav>
+  </div>
+</div>
+
+<main id="content">
+<section class="hero">
+  <div class="wrap">
+    <h1>How three competitors equip their drivers</h1>
+    <p class="lede">HopSkipDrive, EverDriven and Zum each run a driver app. Each strip below is one app. Every square is one thing a driver can do, grouped by area and coloured by what we found.</p>
+    <p class="meta">Built from our competitor research packs and our reading of each Android app's code, October 2026. Select a strip to highlight that app across the page.</p>
+    <div class="prints" id="prints"></div>
+    <div class="areakey" id="areakey"></div>
+    <div class="legend" style="margin-top:16px" id="legend"></div>
+  </div>
+</section>
+
+<section class="block" id="matrix">
+  <div class="wrap">
+    <h2>Side-by-side comparison</h2>
+    <p class="intro">Select any answer to read the evidence behind it. A purple <span class="build">in build</span> tag means we found the feature in the app's code. It exists, but we cannot prove every driver uses it.</p>
+    <div class="tools" id="areaFilter" role="group" aria-label="Filter by area"></div>
+    <div class="tools" style="margin-top:0">
+      <label class="toggle"><input type="checkbox" id="diffOnly"> Show only rows where the apps differ</label>
+    </div>
+    <div class="tablewrap">
+      <table id="matrixTable"><caption>Driver app capabilities, by area. Rows: what a driver can do. Columns: each competitor's app.</caption></table>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="roles">
+  <div class="wrap">
+    <h2>Who can do what</h2>
+    <p class="intro">A driver app sits inside a wider system. This grid shows which people can get a trip moving, follow it, stop it, handle the money and keep watch over safety. Choose a company.</p>
+    <div class="tabs" role="tablist" id="roleTabs"></div>
+    <div id="rolePanels"></div>
+  </div>
+</section>
+
+<section class="block" id="safety">
+  <div class="wrap">
+    <h2>Safety checklist</h2>
+    <p class="intro">Every safety step we found, in the order a trip happens: before the ride, at pickup, on the road, at drop-off, and the checks done on the driver before they ever drive.</p>
+    <div class="tools"><label class="toggle" style="margin-left:0"><input type="checkbox" id="safetyDiff"> Show only checks where the apps differ</label></div>
+    <div class="tablewrap">
+      <table class="safety" id="safetyTable"><caption>Safety features by stage of the trip. Select an icon for the evidence.</caption></table>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="cards">
+  <div class="wrap">
+    <h2>Each app in plain words</h2>
+    <p class="intro">What each app is for, what stands out, and where it falls short.</p>
+    <div class="cards" id="cardGrid"></div>
+  </div>
+</section>
+
+<section class="block" id="journeys">
+  <div class="wrap">
+    <h2>A driver's day, step by step</h2>
+    <p class="intro">The journeys are written as numbered steps, the same way we write our own workflows. The step order comes from screen names in each app's code, so treat it as close, not exact.</p>
+    <div class="tabs" role="tablist" id="jTabs"></div>
+    <div class="jkey"><span><i style="background:var(--wave)"></i>Step</span><span><i style="background:var(--flamingo)"></i>Safety step</span></div>
+    <div id="jPanels"></div>
+  </div>
+</section>
+
+<section class="notes" id="notes">
+  <div class="wrap">
+    <h2>What we could not see</h2>
+    <ul>
+      <li>We read each app's code. We did not run the apps, so we cannot say which switched-off features drivers actually see.</li>
+      <li>EverDriven's iPhone release notes mention live chat, but the Android code has chat wording and no working chat screen. This is still open.</li>
+      <li>EverDriven's automatic arrival at a stop sits behind a setting we cannot see. Only the manual "I Have Arrived" button is confirmed.</li>
+      <li>Zum markets its drivers as hourly employees, yet the Android app also contains weekly payouts and 1099 tax forms used for contractors. Who sees those screens is unknown.</li>
+      <li>HopSkipDrive's offline behaviour is not described anywhere we looked.</li>
+      <li>No pay or earnings screen was found in EverDriven's app. Drivers are paid by their transport provider.</li>
+      <li>Ratings come from store listings read in September and October 2026.</li>
+    </ul>
+  </div>
+</section>
+</main>
+<footer class="gf">
+  <div class="gf-in">
+    <div class="gf-brand"><span class="gh-slash">/</span>The Product Council<p>Expert panels for FirstAlt product decisions, grounded in evidence.</p></div>
+    <div><h2>Use</h2><a href="../use.html">Get started</a><a href="../commands.html">Commands</a><a href="../behaviour.html">How it behaves</a><a href="../diagrams.html">Diagrams</a></div>
+    <div><h2>Understand</h2><a href="../knowledge.html">Knowledge and context</a><a href="../technical.html">Technical</a><a href="../reference.html">Reference</a></div>
+    <div><h2>Competitors</h2><a href="../comparisons/driver-app.html">Driver apps</a><a href="../comparisons/parent-app.html">Parent apps</a><a href="../comparisons/provider-portal.html">Provider portals</a><a href="../comparisons/district-portal.html">District portals</a></div>
+  </div>
+  <p class="gf-note">FirstAlt Product Council v3.7.3, updated 11 October 2026. The repository is the source of truth: update these pages in the same pull request as a skill, agent or persona change.</p>
+</footer>
+
+<aside class="drawer" id="drawer" role="dialog" aria-modal="false" aria-labelledby="dTitle">
+  <button class="x" id="dClose" aria-label="Close evidence">×</button>
+  <div class="co" id="dCo"></div>
+  <h3 id="dTitle"></h3>
+  <div class="st" id="dSt"></div>
+  <div id="dBody"></div>
+</aside>
+
+<script src="../assets/chrome.js"></script>
+<script>
+/* ---------- icons ---------- */
+const S = {
+ y:'<svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="#3F7A50"/><path d="M7 12.5l3.2 3.2L17 9" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+ p:'<svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="#fff" stroke="#CC850A" stroke-width="2"/><path d="M12 2a10 10 0 0 0 0 20z" fill="#CC850A"/></svg>',
+ n:'<svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="#fff" stroke="#D9435C" stroke-width="2"/><path d="M8.5 8.5l7 7M15.5 8.5l-7 7" stroke="#D9435C" stroke-width="2.4" stroke-linecap="round"/></svg>',
+ u:'<svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="#fff" stroke="#8A9AA1" stroke-width="2" stroke-dasharray="3 2.4"/><text x="12" y="16.5" text-anchor="middle" font-size="12" font-weight="700" fill="#55686F" font-family="Inter,sans-serif">?</text></svg>',
+ x:'<svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 12h10" stroke="#B5C1C6" stroke-width="2.4" stroke-linecap="round"/></svg>'
+};
+const SL = {y:'Has it',p:'Partly',n:'Not offered',u:'Not found in our research',x:'Not their role'};
+
+const AREA_ICON = {
+ key:'<path d="M14.5 9.5a4.5 4.5 0 1 1-1.4-3.3" /><circle cx="10" cy="10" r="1.6"/><path d="M13.5 12.5L20 19l-1.6 1.6M17 16l-1.6 1.6"/>',
+ cal:'<rect x="3.5" y="5" width="17" height="15" rx="2"/><path d="M3.5 10h17M8 3v4M16 3v4M8 14h3"/>',
+ pin:'<path d="M12 21s-6.5-6.2-6.5-11a6.5 6.5 0 0 1 13 0c0 4.8-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.4"/>',
+ kid:'<circle cx="12" cy="6.5" r="3"/><path d="M6 21v-4.5a6 6 0 0 1 12 0V21M12 13v8"/>',
+ shield:'<path d="M12 3l7.5 3v5.5c0 4.6-3.2 8-7.5 9.5-4.3-1.5-7.5-4.9-7.5-9.5V6z"/><path d="M8.8 12l2.3 2.3L15.5 10"/>',
+ coin:'<circle cx="12" cy="12" r="8.5"/><path d="M14.6 9.2c-.5-.9-1.5-1.4-2.6-1.4-1.5 0-2.6.8-2.6 2s1.1 1.7 2.6 2 2.6.8 2.6 2-1.1 2-2.6 2c-1.2 0-2.2-.5-2.7-1.5M12 6.3v1.5M12 16.2v1.5"/>',
+ bell:'<path d="M6 16.5V11a6 6 0 0 1 12 0v5.5l1.5 2h-15z"/><path d="M10 20.5a2 2 0 0 0 4 0"/>',
+ buoy:'<circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="3.5"/><path d="M6 6l3.5 3.5M18 6l-3.5 3.5M6 18l3.5-3.5M18 18l-3.5-3.5"/>',
+ stop:'<path d="M8.3 3.5h7.4l4.8 4.8v7.4l-4.8 4.8H8.3l-4.8-4.8V8.3z"/><path d="M9 12h6"/>',
+ globe:'<circle cx="12" cy="12" r="8.5"/><path d="M3.5 12h17M12 3.5c2.6 2.4 3.8 5.2 3.8 8.5s-1.2 6.1-3.8 8.5c-2.6-2.4-3.8-5.2-3.8-8.5S9.4 5.9 12 3.5z"/>'
+};
+function aIco(name,color,size=20){return `<svg width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="${color}" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${AREA_ICON[name]}</svg>`}
+
+const AREAS = [
+ {id:'signin',name:'Sign-in and setup',color:'#47A1AD',icon:'key'},
+ {id:'trips',name:'Getting trips',color:'#003D4F',icon:'cal'},
+ {id:'track',name:'Navigation and tracking',color:'#634F7D',icon:'pin'},
+ {id:'kids',name:'Students on board',color:'#6B9E78',icon:'kid'},
+ {id:'safety',name:'Safety checks',color:'#F2617A',icon:'shield'},
+ {id:'pay',name:'Pay',color:'#CC850A',icon:'coin'},
+ {id:'alerts',name:'Messages and alerts',color:'#2B7A86',icon:'bell'},
+ {id:'help',name:'Help and problems',color:'#8E4A5B',icon:'buoy'},
+ {id:'access',name:'Language and offline',color:'#5B6E76',icon:'globe'}
+];
+
+const COS = [
+ {id:'hsd',name:'HopSkipDrive',app:'CareDriver',model:'Gig drivers who pick their own rides'},
+ {id:'ed',name:'EverDriven',app:'SafeRoute',model:'Drivers work for local transport providers'},
+ {id:'zum',name:'Zum',app:'Zum Driver',model:'Own fleet, drivers on staff'}
+];
+
+/* plain source names */
+const AN = {
+ hsd:{AN1:'Our reading of the CareDriver Android app code (v6.9.9, Oct 2026)',AN3:'Our reading of the HopSkipDrive family app code (Oct 2026)',AN4:'Our reading of the RideIQ web code (Oct 2026)'},
+ ed:{AN2:'Our reading of the RideAware Android app code (Oct 2026)',AN4:'Our reading of the SafeRoute Android app code (v3.1.0, Oct 2026)',AN5:'Our reading of the service provider portal code (Oct 2026)'},
+ zum:{AN1:'Our reading of the Zum Driver Android app code (v4.0.5, Oct 2026)',AN3:'Our reading of the Zum school portal code (Oct 2026)'}
+};
+function srcName(co,keys){
+  const c=COS.find(x=>x.id===co).name;
+  return keys.split(/,\s*/).filter(Boolean).map(k=>{
+    if(k.startsWith('AN')) return AN[co][k]||'Our code reading';
+    const t={W:c+' website',H:c+' help centre',A:'App store listing',P:'Press coverage',R:'App store reviews',C:'District contract'}[k[0]];
+    return t||k;
+  }).filter((v,i,a)=>a.indexOf(v)===i).join('; ');
+}
+
+/* ---------- matrix data ----------
+ each cell: [status, text, sourceKeys, date, isQuote, inBuild]  */
+const ROWS = [
+ {a:'signin',w:'Sign in to the app',d:'How a driver gets into their account',
+  hsd:['y','Phone number and SMS code, with checks that the driver is in a service area.','AN1','2026-10-15',0,1],
+  ed:['y','Company sign-in page inside the app, plus fingerprint or face sign-in.','AN4','2026-10-14',0,1],
+  zum:['y','Shared Zum login: phone, email, PIN or company single sign-on.','AN1','2026-10-15',0,1]},
+ {a:'signin',w:'Upload documents and get approved',d:'Licence, insurance and other papers',
+  hsd:['y','You can upload all required documents directly in the CareDriver app','H10','2026-10-10',1,0],
+  ed:['y','Streamlined account set-up that allows drivers to upload compliance eligibility documents','A1, H2','2026-08-01',1,0,'The Android app sends drivers to outside compliance websites rather than an upload screen in the app.'],
+  zum:['y','Upload credentials, track certifications, and receive automated renewal reminders.','W2','2026-10-14',1,0]},
+ {a:'signin',w:'Blocked from driving until papers are current',d:'The app stops trips if something has lapsed',
+  hsd:['y','failures can pause the account','AN1','2026-10-15',1,1,'Applies to the required Daily Safety Check.'],
+  ed:['y',"Your compliance requirements aren't met, so we can't offer you trips right now.",'AN4','2026-10-14',1,1,'There is also a separate check per school district.'],
+  zum:['y','your documents must be current to keep driving','AN1','2026-10-15',1,1]},
+
+ {a:'trips',w:"See today's trips",d:'A list of the day’s rides and stops',
+  hsd:['y','In select markets, you can now join the Consistent CareDriver Program by claiming a program Ride Series in the CareDriver app.','H1, H2','2026-09-23',1,0],
+  ed:['y','Drivers can view and accept multiple trips for the current and next day','A1','2026-08-01',1,0],
+  zum:['y','Review your assigned rides, including estimated payments, ride directions, student information and any specific instructions','A3','2026-04-29',1,0]},
+ {a:'trips',w:'Pick or accept trips',d:'How work reaches the driver',
+  hsd:['y','Drivers browse a marketplace of single rides and repeat series, add them to a cart that holds them for 5 minutes, then claim them together.','AN1','2026-10-15',0,1],
+  ed:['p','Drivers accept or decline trip offers, but some declines are blocked: “Please call Dispatch to decline this trip.”','AN4','2026-10-14',0,1],
+  zum:['p','Rides are assigned. Drivers can accept or reject an assigned ride and give a reason.','AN1','2026-10-15',0,1]},
+ {a:'trips',w:'Handle trip changes',d:'What happens when a trip is changed or cancelled',
+  hsd:['y','when a ride is changed after you check in you will still earn at least the estimated fare displayed at the time you checked in.','H2, H1','2026-09-27',1,0],
+  ed:['p','Changes are pushed to the driver (“Trip details have changed. Updating route”). Drivers cannot edit a trip.','AN4','2026-10-14',0,1],
+  zum:['y','Automated route updates make it easy to act on last-minute changes without disruption','W1','2026-10-14',1,0]},
+
+ {a:'track',w:'Share live location',d:'Others can see where the driver is',
+  hsd:['y',"CareDriver Arrival is the most up-to-date estimated arrival time based on the CareDriver's app data.",'H14','2026-09-24',1,0],
+  ed:['y','Through GPS tracking and trip logging, the app provides real-time visibility into driver routes','W7, A1','2026-10-14',1,0],
+  zum:['y','Driver live location status is now displayed on the ride map view!','A4','2024-01-24',1,0,'This quote is from 2024. The 2026 Android code still sends live location in the background.']},
+ {a:'track',w:'Turn-by-turn directions',d:'Spoken directions inside the app',
+  hsd:['y','This is required to move forward with the ride, even if you choose not to use Google Maps.','H8','2026-01-10',1,0],
+  ed:['y','In October 2025, the company partnered with Google to bring best-in-class navigation to its driver app','P2, A1','2026-07-29',1,0],
+  zum:['y','Turn-by-turn guidance adapts in real-time to traffic and changing conditions.','W2, A3','2026-10-14',1,0]},
+ {a:'track',w:'Smart routing',d:'The route adjusts itself to save time',
+  hsd:['u','We searched the driver help centre. Rides can be sorted and stacked, but we found no optimised routing for drivers.','','',0,0],
+  ed:['p','The app utilizes Google Navigation for route optimization','W7','2026-10-14',1,0,'This is Google’s routing, not EverDriven’s own.'],
+  zum:['y','Self-learning traffic models power real-time route adjustments, keeping drivers on the most efficient path','W1','2026-10-14',1,0]},
+ {a:'track',w:'Confirm arrival at the stop',d:'The app checks the driver is really there',
+  hsd:['y',"the I've arrived button will be hidden until you are close to the next stop.",'H1','2026-09-23',1,0],
+  ed:['y','Drivers tap “I Have Arrived” and the app checks the distance (“Too far from stop”). Automatic arrival exists but may be switched off.','AN4','2026-10-14',0,1],
+  zum:['u','No automatic or distance-checked arrival found on the driver page, product pages, store listings or in the code. Drivers can send an “I have arrived” message.','W2, A3, AN1','2026-10-15',0,0]},
+
+ {a:'kids',w:'Read student notes',d:'Medical, behaviour and care notes before pickup',
+  hsd:['y',"information that is critical to the rider's physical safety, such as allergies. This information is highlighted in a red box.",'H22','2026-10-13',1,0],
+  ed:['y','Drivers can view important notes about students—such as medical considerations, behavioral needs, or preferred routines—before pick-up','W7','2026-10-14',1,0],
+  zum:['y','Attendance tracking, individual care instructions, and incident reporting are all accessible in-app','W1, W2','2026-10-14',1,0]},
+ {a:'kids',w:'Check students on and off',d:'Recording who got in and who got out',
+  hsd:['y','Tap Pick Up [rider]. ... When you have successfully dropped off the rider, tap Confirm Drop-off.','H4, H5','2026-09-21',1,0],
+  ed:['y','Pickup asks “Is this the right passenger?”. Drop-off asks “Are All Passengers and Equipment Out?”.','AN4, A1','2026-10-14',0,1],
+  zum:['y','Drivers receive training on RFID student check-in, safe drop-off protocols, vehicle inspection, and post-ride safety sweeps.','W2, H1','2026-10-14',1,0,'Students tap a card on the bus or the driver scans it with the phone.']},
+
+ {a:'safety',w:'Check the vehicle before driving',d:'A guided inspection in the app',
+  hsd:['y','A Daily Safety Check, about 5 minutes: body, lights, engine, brakes and interior. Failing it can pause the account.','AN1','2026-10-15',0,1],
+  ed:['y','required safety checklists that drivers complete before and after each trip','W7, W10','2026-10-14',1,0],
+  zum:['y','Step-by-step task workflows ensure drivers complete all pre- and post-ride inspections','W1','2026-10-14',1,0]},
+ {a:'safety',w:'Watch over the ride',d:'Cameras, alerts and live monitoring',
+  hsd:['y','Our telematics capabilities enable us to utilize a proactive alert system to automatically detect and flag critical events','W4, H14, AN1','2026-10-14',1,0,'The app also has crash detection and an alert if a driver fakes their location.'],
+  ed:['y','SafeView camera starts automatically and captures internal and external views of the vehicle with audio and high-resolution video','W10, W8','2026-10-14',1,0],
+  zum:['y','AI-powered cameras, real-time vehicle monitoring, and safe drop-off protocols','W3, AN1','2026-10-14',1,0,'The app locks the screen while the vehicle moves and asks “are any students left in the vehicle?”.']},
+ {a:'safety',w:'Track driving behaviour',d:'Harsh braking, speed, phone use',
+  hsd:['y','an audio alert will sound on your phone when hard braking is detected.','H8, H1, AN1','2026-10-14',1,0],
+  ed:['y','Detect harsh braking, rapid acceleration, and sharp turns','W8, H4, AN4','2026-10-14',1,0,'The phone also tracks “vehicle speed, turning, braking, and phone usage”.'],
+  zum:['y','Continuously improve driver behavior with real-time performance scoring, data-driven coaching, and targeted training','W3, W4, AN3','2026-10-14',1,0]},
+
+ {a:'pay',w:'See earnings',d:'What the driver has earned and when it arrives',
+  hsd:['y',"You'll see payments for the previous week deposited in your bank account by Wednesday each week.",'H7, A4','2026-10-14',1,0,'The app also shows boosts, streak bonuses and toll refunds.'],
+  ed:['u','Drivers are paid by their transport provider. No pay screen was found in the app, and reviews say pay is not shown.','W4','2026-10-14',0,0],
+  zum:['y','Clock in and out, complete vehicle inspections, and submit timesheets all from one platform','W1, A3','2026-10-14',1,0,'The Android code also has weekly payouts and tax forms.']},
+ {a:'pay',w:'Clock in and keep a timesheet',d:'Shift hours recorded in the app',
+  hsd:['u','No shifts or timesheets found. Drivers are paid per ride.','AN1','2026-10-15',0,0],
+  ed:['u','No timesheet found in the app.','AN4','2026-10-14',0,0],
+  zum:['y','Shift sign-on and sign-off, time punches and change requests against approved hours.','AN1','2026-10-15',0,1]},
+
+ {a:'alerts',w:'Message the office or the family',d:'Chat or call from inside the app',
+  hsd:['y','You will not see the actual phone numbers of users you are contacting, and other users will not see yours.','H8','2026-01-10',1,0],
+  ed:['p','Easily accessible emergency button with live-chat or call for help options','A1, AN4','2026-08-01',1,0,'iPhone release notes promise chat. The Android code has chat wording but no working chat screen.'],
+  zum:['y','In-app messaging keeps drivers informed of route changes and operational updates','W1, W2','2026-10-14',1,0,'Drivers can also message or call a parent through a masked number.']},
+ {a:'alerts',w:'Trip alerts and reminders',d:'Notifications about new, changed or upcoming trips',
+  hsd:['y','A “Leave by” reminder before each ride, urgent-ride alerts and alerts on the lock screen.','AN1','2026-10-15',0,1],
+  ed:['y','Alerts for trip offers, updates, cancellations and reminders, plus an inbox in the app.','AN4','2026-10-14',0,1],
+  zum:['y','Alerts for new or changed rides, tasks and prompts, messages, expiring documents and payment holds.','AN1','2026-10-15',0,1]},
+
+ {a:'help',w:'Handle a late start or no-show',d:'What the driver does when a student is not there',
+  hsd:['y','the CareDriver is required to wait for a set time indicated by a countdown timer in the app.','H6','2026-10-12',1,0],
+  ed:['p','Improved no-show flow','A1','2026-08-01',1,0,'A wait timer runs, then EverDriven approves the no-show. How late running is handled is not public.'],
+  zum:['p','Drivers report vehicle issues or in-ride incidents quickly using structured in-app workflows.','W2','2026-10-14',1,0,'Drivers can mark a student as a no-show. A late-running flow is not described.']},
+ {a:'help',w:'Report an incident or emergency',d:'Getting help when something goes wrong',
+  hsd:['y','Contact ride support from the ride. Crash detection checks for an accident and confirms it with the driver.','AN1','2026-10-15',0,1],
+  ed:['y','An emergency option confirms, then calls emergency services or Dispatch.','AN4','2026-10-14',0,1],
+  zum:['y','Incident reports with type, reason, location and people involved, saved as drafts.','AN1','2026-10-15',0,1]},
+ {a:'help',w:'Get help from support',d:'Help centre, chat or ticket',
+  hsd:['p','A help centre and support messaging exist, but some sit behind switches we cannot see.','AN1','2026-10-15',0,1],
+  ed:['p','A driver support website and a service status page. In-app chat is not confirmed.','AN4','2026-10-14',0,1],
+  zum:['y','“Contact Zum”, leave a message, and chat with support inside the app.','AN1','2026-10-15',0,1]},
+
+ {a:'access',w:'Use the app in another language',d:'Languages a driver can choose',
+  hsd:['n','English is the only language listed for the CareDriver app.','A4','2026-10-14',0,0],
+  ed:['y','Language selector; “English/Spanish strings ship” (English and Spanish only).','AN4, A1','2026-10-14',0,1],
+  zum:['n','The App Store lists English only for Zum Driver.','A3','2026-04-29',0,0]},
+ {a:'access',w:'Keep working with no signal',d:'The app still records the trip offline',
+  hsd:['u','Searched help for offline and signal; only “Turning wifi off can often solve connection issues.” found.','H23','2026-10-08',0,0],
+  ed:['y','Persistent offline queue for run events and app events, stored in Realm','AN4','2026-10-14',1,1,'Trip events are saved and sent later.'],
+  zum:['p','Pre-configured Mapbox offline regions: Fresno, Humble, Millard, Omaha, Palm Springs, St. Louis, Stockton','AN1','2026-10-15',1,1,'Maps work offline in these areas. Offline trip events were not seen.']}
+];
+
+/* ---------- roles data ---------- */
+const ACTIONS = [
+ {id:'book',name:'Get a trip',icon:'cal'},{id:'track',name:'Track it',icon:'pin'},
+ {id:'cancel',name:'Cancel or decline',icon:'stop'},{id:'pay',name:'Pay or get paid',icon:'coin'},{id:'watch',name:'Watch over safety',icon:'shield'}
+];
+const ROLE_ICON = {
+ driver:'<circle cx="12" cy="8" r="3.2"/><path d="M5.5 20c.6-4 3.2-6 6.5-6s5.9 2 6.5 6"/><circle cx="12" cy="17.3" r="1.6"/>',
+ office:'<rect x="3.5" y="5" width="11" height="8" rx="1.2"/><path d="M7 16h4M9 13v3"/><circle cx="18" cy="9" r="2.4"/><path d="M14.5 19c.4-2.4 1.8-3.6 3.5-3.6s3.1 1.2 3.5 3.6"/>',
+ firm:'<path d="M3.5 20.5h17M5 20.5V9l7-4.5L19 9v11.5M9 20.5v-5h6v5"/>',
+ family:'<circle cx="8" cy="7.5" r="2.6"/><circle cx="16.5" cy="10" r="2"/><path d="M3.5 19.5c.4-3.8 2.3-6 4.5-6s4.1 2.2 4.5 6M13 19.5c.3-2.8 1.7-4.3 3.5-4.3s3.2 1.5 3.5 4.3"/>',
+ aide:'<circle cx="12" cy="7" r="3"/><path d="M6 20.5c.5-4.4 2.8-6.6 6-6.6s5.5 2.2 6 6.6"/><path d="M12 15.5v3M10.5 17h3"/>',
+ school:'<path d="M3 9.5L12 5l9 4.5-9 4.5z"/><path d="M7 11.5V16c1.4 1.4 3 2 5 2s3.6-.6 5-2v-4.5"/>'
+};
+function rIco(n){return `<svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#003D4F" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="11.4" fill="#EDF1F3" stroke="none"/>${ROLE_ICON[n]}</svg>`}
+
+const ROLES = {
+ hsd:{note:'HopSkipDrive runs a marketplace. Schools and agencies set up rides, CareDrivers choose which to take, and a central support team watches every ride.',rows:[
+  {r:'CareDriver',i:'driver',book:['y','Claims single rides or repeat series from the marketplace'],track:['y','Shares live location during the ride'],cancel:['p','Can unclaim with a warning; some rides cannot be cancelled'],pay:['y','Paid weekly, with boosts and bonuses'],watch:['x','Is monitored: driving alerts, crash detection, ride recording']},
+  {r:'School or agency (Ride Organizer)',i:'school',book:['y','Books rides and can schedule a ride again'],track:['y','Sees the same live ride record'],cancel:['p','Can confirm a rider is not riding'],pay:['u','Billing not seen in the driver app research'],watch:['y','Can ask for a ride to be recorded: “Your Ride Organizer requested it”']},
+  {r:'Caregiver or family',i:'family',book:['p','Families paying privately can book; others see rides read-only'],track:['y','Live tracking and arrival time'],cancel:['p','Can confirm a rider is not riding'],pay:['p','Private-pay families pay in the app'],watch:['y','Sees driver photo, car and plate; sets a code word']},
+  {r:'Rider Assistant',i:'aide',book:['p','Can claim Rider Assistant series (behind a switch we cannot see)'],track:['u','Not seen'],cancel:['u','Not seen'],pay:['u','Not seen'],watch:['y','Rides in the back seat to support riders who need extra care']},
+  {r:'Safe Ride Support (HopSkipDrive staff)',i:'office',book:['u','Not seen'],track:['y','“monitors every ride in real time”'],cancel:['u','Not seen'],pay:['x','Not their role'],watch:['y','Answers driver and family questions during the ride']}
+ ]},
+ ed:{note:'EverDriven sits between districts and local transport providers. Providers employ and pay drivers; EverDriven dispatch sends work and approves exceptions.',rows:[
+  {r:'Driver',i:'driver',book:['y','Accepts trip offers for today, tomorrow and later'],track:['y','Phone sends location on a timer and with every trip event'],cancel:['p','Can decline, but some trips need a call to Dispatch'],pay:['u','Paid by their provider; no pay screen found'],watch:['x','Is monitored: phone telematics and SafeView camera']},
+  {r:'EverDriven dispatch',i:'office',book:['y','Sends offers and pushes trip changes to the driver'],track:['y','Receives the driver’s location'],cancel:['y','Can cancel a trip mid-run'],pay:['u','Not seen'],watch:['y','Approves no-shows; receives driving data']},
+  {r:'Transport provider',i:'firm',book:['y','Assigns rides and swaps drivers for illness'],track:['p','Sees fleet, trip status and reports'],cancel:['u','Not seen'],pay:['y','“EverSafe Drivers are paid by their service provider”'],watch:['y','Receives driving-behaviour data; camera install is mandatory']},
+  {r:'Caregiver or family',i:'family',book:['u','Rides are arranged by the district'],track:['y','Live driver location and pickup and drop-off alerts'],cancel:['p','Can cancel, but not “within an hour of their start time” in the app'],pay:['x','Not their role'],watch:['y','Sees the driver’s digital badge, car and plate']},
+  {r:'Monitor (aide)',i:'aide',book:['x','Not their role'],track:['u','Not seen'],cancel:['x','Not their role'],pay:['u','Not seen'],watch:['y','Driver confirms the monitor was picked up, or records a no-show']}
+ ]},
+ zum:{note:'Zum owns its buses and vans and employs its drivers. Work is assigned from a yard and command centre, not chosen by drivers.',rows:[
+  {r:'Driver',i:'driver',book:['p','Receives assigned rides; can accept or reject with a reason'],track:['y','Location and route trace sent in the background'],cancel:['p','Can reject an assigned ride with a reason'],pay:['y','Clocks in, keeps a timesheet; payout screens in the code'],watch:['x','Is monitored: performance scoring and cameras']},
+  {r:'Yard and command centre',i:'office',book:['y','Assigns routes to cover every run'],track:['y','“Live insights for proactive ride monitoring”'],cancel:['y','Pushes route updates and last-minute changes'],pay:['p','Approves timesheet change requests'],watch:['y','Driver no-show detection and performance scoring']},
+  {r:'Parent or guardian',i:'family',book:['n','Address and schedule changes go through the school or district'],track:['y','Live tracking with AI arrival times'],cancel:['y','Can cancel same-day and upcoming rides'],pay:['p','The school portal shows parent payment history'],watch:['y','Sees driver and vehicle details before the bus arrives']},
+  {r:'Monitor (aide)',i:'aide',book:['x','Not their role'],track:['u','Not seen'],cancel:['x','Not their role'],pay:['u','Not seen'],watch:['y','Signs on and off with a card inside the driver app']}
+ ]}
+};
+
+/* ---------- safety data ---------- [status, text, source, inBuild, isQuote] */
+const STAGES = [
+ {id:'before',name:'Before the ride',icon:'cal'},{id:'pickup',name:'At pickup',icon:'kid'},
+ {id:'road',name:'On the road',icon:'pin'},{id:'drop',name:'At drop-off',icon:'shield'},{id:'vet',name:'Checks on the driver',icon:'key'}
+];
+const SAFE = [
+ {s:'before',w:'Vehicle inspection in the app',hsd:['y','Daily Safety Check, about 5 minutes, required to pick up riders.','AN1',1],ed:['y','required safety checklists that drivers complete before and after each trip','W7',0,1],zum:['y','Inspections before the trip, at the end of a ride and at the end of the day, with photos.','AN1',1]},
+ {s:'before',w:'Daily health check-in',hsd:['u','Not found.','',0],ed:['y','A daily health check-in with a “Notify EverDriven” option.','AN4',1],zum:['u','Not found.','',0]},
+ {s:'before',w:'Required equipment confirmed',hsd:['p','Booster seats are checked when a ride is claimed. All rides with car seats have a Meet at car Must Be Met requirement.','AN1, H31',1],ed:['y','Car seat, booster seat, buckle guard, safety vest, wheelchair and emergency equipment confirmed per trip.','AN4',1],zum:['u','Not found.','',0]},
+ {s:'before',w:'Blocked if documents lapse',hsd:['y','failures can pause the account','AN1',1,1],ed:['y',"Your compliance requirements aren't met, so we can't offer you trips right now.",'AN4',1,1],zum:['y','your documents must be current to keep driving','AN1',1,1]},
+ {s:'pickup',w:'Code word',hsd:['y','The driver says the family’s code word at pickup.','AN1, H4',1],ed:['u','Not found.','',0],zum:['u','Not found. Zum uses student cards instead.','',0]},
+ {s:'pickup',w:'Birthday check',hsd:['y','The driver asks the rider’s birthday at pickup.','AN1, H4',1],ed:['u','Not found.','',0],zum:['u','Not found.','',0]},
+ {s:'pickup',w:'Confirm the right student',hsd:['y','Code word and birthday, then the driver confirms the rider.','AN1',1],ed:['y','Is this the right passenger?','AN4',1,1],zum:['y','Students scan a card by tap or QR; the app checks they are allowed on the ride.','AN1',1]},
+ {s:'pickup',w:'Arrival only when near the stop',hsd:['y',"the I've arrived button will be hidden until you are close to the next stop.",'H1',0,1],ed:['y','Distance checked: “Too far from stop”.','AN4',1],zum:['u','Not found.','',0]},
+ {s:'pickup',w:'Digital driver ID',hsd:['y','A digital ID (“Waybill”), available after the first ride.','AN1',1],ed:['y','A digital badge so “parents, school staff, and passengers can identify you”.','AN4',1],zum:['u','Not found.','',0]},
+ {s:'road',w:'Screen locks while moving',hsd:['u','Not found.','',0],ed:['u','Not found.','',0],zum:['y','Screen locking while the vehicle is moving','AN1',1,1]},
+ {s:'road',w:'Driving behaviour tracked',hsd:['y','an audio alert will sound on your phone when hard braking is detected.','H8',0,1],ed:['y','Phone telematics monitors “vehicle speed, turning, braking, and phone usage”.','AN4',1],zum:['y','Continuously improve driver behavior with real-time performance scoring, data-driven coaching, and targeted training','W3',0,1]},
+ {s:'road',w:'Crash detection',hsd:['y','crash assist: detects and verifies an accident.','AN1',1],ed:['u','Not found.','',0],zum:['u','Not found.','',0]},
+ {s:'road',w:'Camera or ride recording',hsd:['p','Ride recording runs “on rides that require it”, using the driver’s phone.','AN1, H12',1],ed:['y','SafeView camera starts automatically and captures internal and external views of the vehicle with audio and high-resolution video','W10, W8',0,1],zum:['y','AI-powered cameras, real-time vehicle monitoring, and safe drop-off protocols','W3',0,1]},
+ {s:'road',w:'Alert if location is faked',hsd:['y','A fake-location alert ships in the app.','AN1',1],ed:['u','Not found.','',0],zum:['u','Not found.','',0]},
+ {s:'road',w:'Phone numbers hidden',hsd:['y','You will not see the actual phone numbers of users you are contacting, and other users will not see yours.','H8',0,1],ed:['u','Not found.','',0],zum:['y','Calls go through masked numbers.','AN1',1]},
+ {s:'road',w:'Emergency button',hsd:['p','Contact ride support from the ride.','AN1',1],ed:['y','Emergency option calls emergency services or Dispatch.','AN4',1],zum:['p','An emergency unlock on the locked screen; incident reports.','AN1',1]},
+ {s:'drop',w:'Hand the student to an adult',hsd:['y','Drop-off tasks include handing the rider to a responsible adult.','AN1, H5',1],ed:['y','Passengers must be handed to an adult.','AN4',1,1],zum:['p','safe drop-off protocols','W3',0,1]},
+ {s:'drop',w:'Nobody left on board',hsd:['u','Not found.','',0],ed:['y','Are All Passengers and Equipment Out?','AN4',1,1],zum:['y','are any students left in the vehicle?','AN1',1,1]},
+ {s:'vet',w:'Background checks',hsd:['y','HopSkipDrive believes in administering the most extensive background checks possible.','H11',0,1],ed:['y','multi-layered background checks, including the National Sex Offender Registry','W10',0,1],zum:['y','Background check information, such as your credit history, prior employment, and motor vehicle and law enforcement records','W7',0,1]},
+ {s:'vet',w:'Drug testing',hsd:['p','Drug test required in California; an in-app drug test booking flow exists.','H11, AN1',0],ed:['y','Random and post-accident drug testing for drivers','W10',0,1],zum:['u','Not stated on careers, driver or operations pages.','W6',0]},
+ {s:'vet',w:'Driving record monitored',hsd:['y','the Department of Motor Vehicles will notify HopSkipDrive to any changes to your driving record through ongoing monitoring.','H11',0,1],ed:['y','motor vehicle record reviews and ongoing DMV and criminal monitoring','W10',0,1],zum:['y','motor vehicle and law enforcement records','W7',0,1]},
+ {s:'vet',w:'Safety training',hsd:['y','CareDrivers complete a 15-point certification','W4',0,1],ed:['y','An education course, which includes six modules and a 40-question final exam, taken semiannually','W10',0,1],zum:['y','The Zum SafeGuard Driver program is a multi-module, mandatory training course','W2',0,1]}
+];
+
+/* ---------- cards ---------- */
+const VEH = {
+ hsd:'<svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="14" fill="#EDF1F3"/><path d="M12 40v-6l5-9c.6-1.2 1.8-2 3.2-2h23.6c1.4 0 2.6.8 3.2 2l5 9v6z" fill="#003D4F"/><path d="M19 32l3.6-6.4h18.8L45 32z" fill="#47A1AD"/><circle cx="21" cy="41" r="4.5" fill="#fff" stroke="#003D4F" stroke-width="3"/><circle cx="43" cy="41" r="4.5" fill="#fff" stroke="#003D4F" stroke-width="3"/><circle cx="48" cy="16" r="6" fill="#F2617A"/><path d="M45.5 16l1.8 1.8 3.3-3.6" stroke="#fff" stroke-width="1.8" fill="none" stroke-linecap="round"/></svg>',
+ ed:'<svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="14" fill="#EDF1F3"/><path d="M9 42V24c0-1.7 1.3-3 3-3h30l9 9h3c1.7 0 3 1.3 3 3v9z" fill="#003D4F"/><path d="M14 25h10v6H14zM27 25h11v6H27zM41 25l5 6h-5z" fill="#47A1AD"/><circle cx="19" cy="43" r="4.5" fill="#fff" stroke="#003D4F" stroke-width="3"/><circle cx="46" cy="43" r="4.5" fill="#fff" stroke="#003D4F" stroke-width="3"/><path d="M9 36h48" stroke="#F2617A" stroke-width="2.5"/></svg>',
+ zum:'<svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="14" fill="#EDF1F3"/><rect x="8" y="18" width="48" height="24" rx="4" fill="#CC850A"/><path d="M12 22h8v8h-8zM23 22h8v8h-8zM34 22h8v8h-8zM45 22h7v8h-7z" fill="#fff" opacity=".85"/><path d="M8 34h48" stroke="#003D4F" stroke-width="2"/><circle cx="18" cy="43" r="4.5" fill="#fff" stroke="#003D4F" stroke-width="3"/><circle cx="46" cy="43" r="4.5" fill="#fff" stroke="#003D4F" stroke-width="3"/></svg>'
+};
+const PLUS='<svg viewBox="0 0 18 18" aria-hidden="true"><circle cx="9" cy="9" r="8" fill="#3F7A50"/><path d="M9 5.5v7M5.5 9h7" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/></svg>';
+const MINUS='<svg viewBox="0 0 18 18" aria-hidden="true"><circle cx="9" cy="9" r="8" fill="#fff" stroke="#D9435C" stroke-width="1.6"/><path d="M5.5 9h7" stroke="#D9435C" stroke-width="1.8" stroke-linecap="round"/></svg>';
+const CARDS = {
+ hsd:{line:'A marketplace app. Drivers sign up on their phone, pick the rides they want, and are paid by the week.',
+  ratings:[['4.8','iPhone, 7.9K ratings'],['4.6','Android']],
+  good:['Drivers choose rides from a list or map and hold them in a cart for 5 minutes','Code word and birthday check at every pickup','A 5-minute daily vehicle check that can pause the account if failed','Ride recording on the phone for rides that need it, plus crash detection','Clear earnings: weekly pay, boosts, streak bonuses and toll refunds'],
+  gaps:['English only','No student card scanning: identity is by code word and birthday','Offline use not described','Public complaints about late driver swaps, pay and support']},
+ ed:{line:'A tightly controlled app for drivers who work for local providers. It checks the driver, the vehicle and the equipment before every trip.',
+  ratings:[['2.8','iPhone, 142 ratings',1],['3.8 to 3.9','Android']],
+  good:['Health, cleaning, equipment and vehicle checks before trips','Confirms the right passenger at pickup and that nobody is left at drop-off','Saves trip events with no signal and sends them later','English and Spanish','Digital badge so families and schools can identify the driver'],
+  gaps:['Lowest iPhone rating of the three','Documents are handled on outside websites, not in the app','No earnings screen; pay comes from the provider','Some trips cannot be declined without phoning Dispatch','In-app chat is unconfirmed on Android']},
+ zum:{line:'A shift-work app for staff drivers. It runs the day from yard to yard as much as the ride itself.',
+  ratings:[['4.4','iPhone, 405 ratings'],['4.8','Android (reviews may be prompted)']],
+  good:['Clock in, timesheets and shift sign-off','Links driver to vehicle by tag; fuel cards; Daily Bus Report','Students tap or scan a card to board','Screen locks while the vehicle moves','Asks “are any students left in the vehicle?” at the end of a ride','Practice mode with pretend rides for training'],
+  gaps:['iPhone app is English only','Only one iPhone release in 12 months','No stop-arrival check found','Store listing still sells gig work while the website hires staff']}
+};
+
+/* ---------- journeys ---------- [text, isSafety] */
+const JOURNEYS = {
+ hsd:[
+  {t:'Become a CareDriver',w:'Once, before the first ride',s:[['Sign up with a phone number and text code; the app checks the area is served'],['Upload licence, registration, insurance, inspection and first-aid papers in the app'],['Complete background checks and fingerprints outside the app',1],['Finish online training and certification',1],['Book a drug test where it is required',1],['Submit tax details and sign']]},
+  {t:'Pick up work',w:'Any time',s:[['Browse rides on a list or map, sorted by pay or distance'],['Add rides to the cart; they are held for 5 minutes'],['Claim the cart; the app checks seats, boosters and qualifications'],['Urgent rides are claimed straight away, without the cart'],['Claim a repeat series to become the regular driver for a student']]},
+  {t:'Ride day',w:'Each ride',s:[['Complete the Daily Safety Check, about 5 minutes',1],['Follow the “Leave by” reminder and check in; checking in late removes the driver from the ride'],['Navigate with built-in directions'],['Tap “I’ve Arrived”, which only works within about 2 blocks of the stop',1],['Ask the rider’s birthday and say the code word',1],['Confirm pickup; recording starts on rides that need it',1],['If the rider cannot be found, contact the responsible adult or support'],['Hand the rider to a responsible adult and confirm drop-off',1],['Rate the ride']]},
+  {t:'Get paid',w:'Weekly',s:[['See the weekly estimate and payment history'],['Earn boosts, streak bonuses and region bonuses'],['Receive the previous week’s pay by Wednesday']]}
+ ],
+ ed:[
+  {t:'Get ready to drive',w:'Start of the day',s:[['Sign in, with fingerprint or face if set up'],['Accept privacy, terms and health-data policies when they change'],['Pass the compliance check and any district-specific check',1],['Go online to receive offers'],['Accept trip offers for today, tomorrow or later']]},
+  {t:'Before the trip',w:'Each trip',s:[['Daily health check-in',1],['Confirm required equipment: car seat, booster, buckle guard, wheelchair kit',1],['Confirm the vehicle is clean',1],['Complete the interior and exterior vehicle checklist',1]]},
+  {t:'Run the trip',w:'Each trip',s:[['Start the trip; the app blocks a start that is too early or has no signal'],['Navigate with Google directions'],['Tap “I Have Arrived”; the app checks the driver is close enough',1],['Confirm “Is this the right passenger?” and mark picked up',1],['Confirm the monitor was picked up, if the trip has one',1],['If nobody comes out, wait out the timer and let EverDriven approve the no-show'],['Accept any change EverDriven pushes to the route'],['Hand passengers to an adult',1],['Confirm “Are All Passengers and Equipment Out?”',1]]},
+  {t:'If something goes wrong',w:'Any time',s:[['Use the emergency option to call emergency services or Dispatch',1],['If the signal drops, the app saves trip events and sends them later'],['Call Dispatch to decline a trip the app will not release']]}
+ ],
+ zum:[
+  {t:'Start the shift',w:'Start of the day',s:[['Sign in with phone, email, PIN or company login'],['Sign on to the shift; this starts the timesheet'],['Link to the vehicle by its tag or ID'],['Run the pre-trip inspection by holding the phone to the vehicle sensor',1],['The monitor signs on with a card, if there is one']]},
+  {t:'Run a route',w:'Each ride',s:[['Accept or reject the assigned ride, with a reason'],['Start the ride and follow the directions, which also work offline in some areas'],['The screen locks while the vehicle moves',1],['Students tap or scan a card; the app flags anyone not on the ride',1],['Mark each student boarded, dropped off or no-show',1],['Message or call a parent through a masked number']]},
+  {t:'End the shift',w:'End of the day',s:[['Answer “are any students left in the vehicle?” and log items left behind',1],['Complete the end-of-day inspection',1],['Return to the yard; blocked while a ride is still open'],['Certify and submit the Daily Bus Report'],['Sign off and check the timesheet']]},
+  {t:'Get paid',w:'Weekly',s:[['Request changes to recorded hours'],['Payout and tax-form screens are in the code; who sees them is unknown']]}
+ ]
+};
+
+/* ---------- render ---------- */
+const $=s=>document.querySelector(s);
+let focus=null, area=null;
+
+function legendHTML(){return ['y','p','n','u'].map(k=>`<span>${S[k]}${SL[k]}</span>`).join('')+`<span><span class="build" style="margin:0">in build</span> found in the app's code</span>`}
+$('#legend').innerHTML=legendHTML();
+$('#areakey').innerHTML=AREAS.map(a=>`<span style="display:inline-flex;align-items:center;gap:6px">${aIco(a.icon,a.color,16)}${a.name}</span>`).join('');
+
+function renderPrints(){
+  $('#prints').innerHTML=COS.map(c=>{
+    let has=0,part=0;
+    const grps=AREAS.map(a=>`<span class="grp" title="${a.name}">`+ROWS.filter(r=>r.a===a.id).map(r=>{const s=r[c.id][0];if(s==='y')has++;if(s==='p')part++;return `<span class="sq ${s}" title="${r.w}: ${SL[s]}"></span>`}).join('')+'</span>').join('');
+    return `<button class="print" data-co="${c.id}" aria-pressed="${focus===c.id}"><span class="who"><strong>${c.name}</strong><span>${c.app}: ${c.model}</span></span><span class="cells">${grps}</span><span class="score">${has}<small>of ${ROWS.length} in full${part?`, ${part} in part`:''}</small></span></button>`;
+  }).join('');
+  document.querySelectorAll('.print').forEach(b=>b.onclick=()=>{focus=focus===b.dataset.co?null:b.dataset.co;renderPrints();applyFocus();});
+}
+
+function renderFilter(){
+  $('#areaFilter').innerHTML=`<button class="chip" data-a="" aria-pressed="${!area}"><span class="dot" style="background:#C9D3D8"></span>All areas</button>`+AREAS.map(a=>`<button class="chip" data-a="${a.id}" aria-pressed="${area===a.id}"><span class="dot" style="background:${a.color}"></span>${a.name}</button>`).join('');
+  document.querySelectorAll('#areaFilter .chip').forEach(b=>b.onclick=()=>{area=b.dataset.a||null;renderFilter();renderMatrix();});
+}
+
+function head(){return `<thead><tr><th scope="col">What a driver can do</th>${COS.map(c=>`<th scope="col" data-co="${c.id}">${c.name}<br><span style="font-weight:400;color:var(--muted);font-size:13px">${c.app}</span></th>`).join('')}</tr></thead>`}
+
+function renderMatrix(){
+  const diff=$('#diffOnly').checked;
+  let h=`<caption>Driver app capabilities, by area. Rows: what a driver can do. Columns: each competitor's app.</caption>`+head()+'<tbody>';
+  AREAS.forEach(a=>{
+    if(area&&area!==a.id)return;
+    const rows=ROWS.map((r,i)=>[r,i]).filter(([r])=>r.a===a.id&&(!diff||new Set(COS.map(c=>r[c.id][0])).size>1));
+    if(!rows.length)return;
+    h+=`<tr class="areahead"><th colspan="${COS.length+1}" scope="rowgroup"><span class="tag"><span class="stripe" style="background:${a.color}"></span>${aIco(a.icon,a.color)}${a.name}</span></th></tr>`;
+    rows.forEach(([r,i])=>{
+      h+=`<tr><th scope="row" style="box-shadow:inset 4px 0 0 ${a.color}"><span class="what">${r.w}</span><span class="plain">${r.d}</span></th>`+COS.map(c=>{const v=r[c.id];return `<td class="cell" data-co="${c.id}"><button class="cellbtn" data-k="m" data-i="${i}" data-co="${c.id}" aria-label="${c.name}, ${r.w}: ${SL[v[0]]}. Show evidence">${S[v[0]]}<span class="lbl"><b>${SL[v[0]]}${v[5]?'<span class="build">in build</span>':''}</b><i>${short(v)}</i></span></button></td>`}).join('')+'</tr>';
+    });
+  });
+  $('#matrixTable').innerHTML=h+'</tbody>';
+  bindCells('#matrixTable');applyFocus();
+}
+function short(v){let t=v[6]||v[1];t=t.replace(/^[“"]|[”"]$/g,'');return t.length>78?t.slice(0,76).replace(/\s\S*$/,'')+'…':t}
+
+function renderRoles(){
+  const tabs=COS.map((c,i)=>`<button class="tab" role="tab" id="rt-${c.id}" aria-controls="rp-${c.id}" aria-selected="${i===0}" data-co="${c.id}">${c.name}</button>`).join('');
+  $('#roleTabs').innerHTML=tabs;
+  $('#rolePanels').innerHTML=COS.map((c,i)=>{const R=ROLES[c.id];return `<div role="tabpanel" id="rp-${c.id}" aria-labelledby="rt-${c.id}" data-panel ${i?'hidden':''}><div class="tablewrap"><table class="roles"><caption>${c.name}: who can do what, around the ${c.app} app.</caption><thead><tr><th scope="col">Person</th>${ACTIONS.map(a=>`<th scope="col"><span class="aico">${aIco(a.icon,'#003D4F',18)}${a.name}</span></th>`).join('')}</tr></thead><tbody>${R.rows.map(r=>`<tr><th scope="row"><span class="rico">${rIco(r.i)}${r.r}</span></th>${ACTIONS.map(a=>{const v=r[a.id];return `<td><span class="r">${S[v[0]]}<span>${v[1]}</span></span></td>`}).join('')}</tr>`).join('')}</tbody></table></div><p class="rolenote">${R.note}</p></div>`}).join('');
+  tabsBind('#roleTabs','#rolePanels','rp-');
+}
+function tabsBind(tabSel,panelSel,prefix){
+  const tabs=[...document.querySelectorAll(tabSel+' .tab')];
+  tabs.forEach((t,idx)=>{
+    t.onclick=()=>{tabs.forEach(x=>x.setAttribute('aria-selected',x===t));document.querySelectorAll(panelSel+' [role=tabpanel]').forEach(p=>p.hidden=p.id!==prefix+t.dataset.co);};
+    t.onkeydown=e=>{if(e.key==='ArrowRight'||e.key==='ArrowLeft'){const n=tabs[(idx+(e.key==='ArrowRight'?1:-1)+tabs.length)%tabs.length];n.focus();n.click();}};
+  });
+}
+
+function renderSafety(){
+  const diff=$('#safetyDiff').checked;
+  let h=`<caption>Safety features by stage of the trip. Select an icon for the evidence.</caption>`+head().replace('What a driver can do','Safety step')+'<tbody>';
+  STAGES.forEach(st=>{
+    const rows=SAFE.map((r,i)=>[r,i]).filter(([r])=>r.s===st.id&&(!diff||new Set(COS.map(c=>r[c.id][0])).size>1));
+    if(!rows.length)return;
+    h+=`<tr class="areahead"><th colspan="${COS.length+1}" scope="rowgroup"><span class="stage">${aIco(st.icon,'#F2617A')}${st.name}</span></th></tr>`;
+    rows.forEach(([r,i])=>{h+=`<tr><th scope="row">${r.w}</th>`+COS.map(c=>{const v=r[c.id];return `<td data-co="${c.id}"><button class="cellbtn" style="justify-content:center" data-k="s" data-i="${i}" data-co="${c.id}" aria-label="${c.name}, ${r.w}: ${SL[v[0]]}. Show evidence">${S[v[0]]}</button></td>`}).join('')+'</tr>'});
+  });
+  $('#safetyTable').innerHTML=h+'</tbody>';
+  bindCells('#safetyTable');applyFocus();
+}
+
+function renderCards(){
+  $('#cardGrid').innerHTML=COS.map(c=>{const k=CARDS[c.id];return `<article class="card" data-co="${c.id}"><header>${VEH[c.id]}<div><h3>${c.name} ${c.app}</h3><p>${c.model}</p></div></header><div class="body"><p class="oneline">${k.line}</p><div class="ratings">${k.ratings.map(r=>`<span class="rating${r[2]?' low':''}"><b>${r[0]}</b>${r[1]}</span>`).join('')}</div><div><h4>Stands out</h4><ul>${k.good.map(g=>`<li>${PLUS}<span>${g}</span></li>`).join('')}</ul></div><div><h4>Falls short</h4><ul>${k.gaps.map(g=>`<li>${MINUS}<span>${g}</span></li>`).join('')}</ul></div></div></article>`}).join('');
+}
+
+function renderJourneys(){
+  $('#jTabs').innerHTML=COS.map((c,i)=>`<button class="tab" role="tab" id="jt-${c.id}" aria-controls="jp-${c.id}" aria-selected="${i===0}" data-co="${c.id}">${c.name}</button>`).join('');
+  $('#jPanels').innerHTML=COS.map((c,i)=>`<div role="tabpanel" id="jp-${c.id}" aria-labelledby="jt-${c.id}" data-panel ${i?'hidden':''}><div class="jgrid">${JOURNEYS[c.id].map(j=>`<div class="journey"><h3>${j.t}</h3><p class="when">${j.w}</p><ol>${j.s.map(s=>`<li class="${s[1]?'safety':''}"><span>${s[0]}${s[1]?'<span class="tagline">Safety step</span>':''}</span></li>`).join('')}</ol></div>`).join('')}</div></div>`).join('');
+  tabsBind('#jTabs','#jPanels','jp-');
+}
+
+function bindCells(sel){document.querySelectorAll(sel+' .cellbtn').forEach(b=>b.onclick=()=>openDrawer(b));}
+let lastBtn=null;
+function openDrawer(b){
+  lastBtn=b;
+  const co=COS.find(c=>c.id===b.dataset.co), i=+b.dataset.i;
+  let title,v,quote,src,date,extra='',build=0;
+  if(b.dataset.k==='m'){const r=ROWS[i];v=r[co.id];title=r.w;quote=v[4];src=v[2];date=v[3];extra=v[6]||'';build=v[5];}
+  else{const r=SAFE[i];v=r[co.id];title=r.w;src=v[2];quote=v[4];build=v[3];date='';}
+  $('#dCo').textContent=co.name+' '+co.app;
+  $('#dTitle').textContent=title;
+  $('#dSt').innerHTML=S[v[0]]+SL[v[0]]+(build?'<span class="build">in build</span>':'');
+  const text=v[1];
+  $('#dBody').innerHTML=(quote?`<blockquote>“${esc(text)}”</blockquote>`:`<p class="note">${esc(text)}</p>`)+(extra?`<p class="note">${esc(extra)}</p>`:'')+`<p class="src">${src?'Source: '+esc(srcName(co.id,src))+'.':'No source found after searching.'}${date?' Dated '+date+'.':''}${quote?' Quoted in the source’s own words.':' Summarised in our words.'}</p>`;
+  $('#drawer').classList.add('open');$('#dClose').focus();
+}
+function esc(s){return String(s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]))}
+$('#dClose').onclick=()=>{$('#drawer').classList.remove('open');lastBtn&&lastBtn.focus();};
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&$('#drawer').classList.contains('open'))$('#dClose').click();});
+
+function applyFocus(){
+  document.querySelectorAll('[data-co]').forEach(el=>{
+    if(el.classList.contains('print')||el.classList.contains('tab')||el.classList.contains('cellbtn'))return;
+    el.classList.toggle('dim',!!focus&&el.dataset.co!==focus&&!el.closest('.drawer'));
+  });
+}
+
+$('#diffOnly').onchange=renderMatrix;
+$('#safetyDiff').onchange=renderSafety;
+renderPrints();renderFilter();renderMatrix();renderRoles();renderSafety();renderCards();renderJourneys();
+
+/* highlight current section in the bar */
+const links=[...document.querySelectorAll('.bar nav a')];
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)links.forEach(l=>l.classList.toggle('on',l.getAttribute('href')==='#'+e.target.id))}),{rootMargin:'-40% 0px -55% 0px'});
+['matrix','roles','safety','cards','journeys','notes'].forEach(id=>io.observe(document.getElementById(id)));
+</script>
+</body>
+</html>

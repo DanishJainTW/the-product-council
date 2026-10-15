@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Commands | The Product Council</title>
+<meta name="description" content="Searchable reference of every Product Council command and script.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23003D4F'/%3E%3Cpath d='M18 6h5l-9 20H9z' fill='%23F2617A'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bitter:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/chrome.css">
+<link rel="stylesheet" href="assets/site.css">
+<script>try{var t=localStorage.getItem("council-theme");if(t)document.documentElement.dataset.theme=t;}catch(e){}</script>
+</head>
+<body>
+<a class="gh-skip" href="#content">Skip to content</a>
+<header class="gh">
+  <div class="gh-in">
+    <a class="gh-brand" href="index.html"><span class="gh-slash">/</span>The Product Council</a>
+    <button type="button" class="gh-btn gh-menu" id="ghMenu" aria-expanded="false" aria-controls="ghNav">Menu</button>
+    <nav class="gh-nav" id="ghNav" aria-label="Main">
+      <a href="index.html">Home</a>
+      <a href="use.html">Use it</a>
+      <a href="commands.html" aria-current="page">Commands</a>
+      <a href="behaviour.html">How it behaves</a>
+      <a href="knowledge.html">Knowledge</a>
+      <a href="diagrams.html">Diagrams</a>
+      <a href="technical.html">Technical</a>
+      <a href="reference.html">Reference</a>
+      <a href="comparisons.html">Comparisons</a>
+    </nav>
+    <button type="button" class="gh-btn" id="themeBtn" aria-label="Switch light or dark theme">Theme</button>
+  </div>
+</header>
+
+<div class="shell">
+  <nav class="sidebar" id="sidebar" aria-label="On this page">
+    <h2>On this page</h2>
+      <a href="#commands">Command reference</a>
+  </nav>
+
+  <main id="content">
+<div class="pagehead"><div class="pagehead-in">
+  <nav class="crumbs" aria-label="Breadcrumb"><a href="index.html">Home</a><span aria-hidden="true">/</span><span aria-current="page">Commands</span></nav>
+  <h1>Commands</h1><p>Every command and script. Search by what you want to do.</p>
+</div></div>
+<details class="onpage"><summary>On this page</summary><div>
+      <a href="#commands">Command reference</a>
+</div></details>
+
+<section id="commands">
+  <div class="rule"></div>
+  <h2>Command reference</h2>
+  <p class="intro">Slash commands run inside Claude Code. Terminal commands run in the VS Code terminal. Search by name or by what you want to do.</p>
+  <div class="finder" role="search">
+    <label for="q">Find a command</label>
+    <input id="q" type="search" placeholder="Try: transcript, competitor, PRD, conflict, cost" autocomplete="off">
+    <div class="chips" id="chips" aria-label="Filter by group"></div>
+    <div class="count" id="count" aria-live="polite"></div>
+  </div>
+  <div id="cmdList"></div>
+  <p class="intro" style="margin-top:14px">Other scripts in <code>scripts/</code> (index, lint, IDs, citations, health, metrics, lessons digest) run through hooks or inside commands. Call them by hand only when you are debugging.</p>
+  <div class="empty" id="empty">No command matches that search. Try a shorter word, or clear the search.</div>
+</section>
+
+<nav class="pager" aria-label="Previous and next page"><a class="prev" href="use.html"><small>Previous</small>Use it</a><a class="next" href="behaviour.html"><small>Next</small>How it behaves</a></nav>
+  </main>
+</div>
+<footer class="gf">
+  <div class="gf-in">
+    <div class="gf-brand"><span class="gh-slash">/</span>The Product Council<p>Expert panels for FirstAlt product decisions, grounded in evidence.</p></div>
+    <div><h2>Use</h2><a href="use.html">Get started</a><a href="commands.html">Commands</a><a href="behaviour.html">How it behaves</a><a href="diagrams.html">Diagrams</a></div>
+    <div><h2>Understand</h2><a href="knowledge.html">Knowledge and context</a><a href="technical.html">Technical</a><a href="reference.html">Reference</a></div>
+    <div><h2>Competitors</h2><a href="comparisons/driver-app.html">Driver apps</a><a href="comparisons/parent-app.html">Parent apps</a><a href="comparisons/provider-portal.html">Provider portals</a><a href="comparisons/district-portal.html">District portals</a></div>
+  </div>
+  <p class="gf-note">FirstAlt Product Council v3.7.3, updated 11 October 2026. The repository is the source of truth: update these pages in the same pull request as a skill, agent or persona change.</p>
+</footer>
+<script src="assets/chrome.js"></script>
+<script src="assets/site.js"></script>
+<script src="assets/commands.js"></script>
+</body>
+</html>

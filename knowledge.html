@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Knowledge and context | The Product Council</title>
+<meta name="description" content="The layered knowledge base, ingestion, the context scout and context-first questions.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23003D4F'/%3E%3Cpath d='M18 6h5l-9 20H9z' fill='%23F2617A'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bitter:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/chrome.css">
+<link rel="stylesheet" href="assets/site.css">
+<script>try{var t=localStorage.getItem("council-theme");if(t)document.documentElement.dataset.theme=t;}catch(e){}</script>
+</head>
+<body>
+<a class="gh-skip" href="#content">Skip to content</a>
+<header class="gh">
+  <div class="gh-in">
+    <a class="gh-brand" href="index.html"><span class="gh-slash">/</span>The Product Council</a>
+    <button type="button" class="gh-btn gh-menu" id="ghMenu" aria-expanded="false" aria-controls="ghNav">Menu</button>
+    <nav class="gh-nav" id="ghNav" aria-label="Main">
+      <a href="index.html">Home</a>
+      <a href="use.html">Use it</a>
+      <a href="commands.html">Commands</a>
+      <a href="behaviour.html">How it behaves</a>
+      <a href="knowledge.html" aria-current="page">Knowledge</a>
+      <a href="diagrams.html">Diagrams</a>
+      <a href="technical.html">Technical</a>
+      <a href="reference.html">Reference</a>
+      <a href="comparisons.html">Comparisons</a>
+    </nav>
+    <button type="button" class="gh-btn" id="themeBtn" aria-label="Switch light or dark theme">Theme</button>
+  </div>
+</header>
+
+<div class="shell">
+  <nav class="sidebar" id="sidebar" aria-label="On this page">
+    <h2>On this page</h2>
+      <a href="#knowledge">Knowledge base</a>
+      <a href="#ingest-flow">How knowledge gets in</a>
+      <a href="#scout">The scout runs first, and alone</a>
+      <a href="#context-first">Context before questions</a>
+      <a href="#new-context">New context from the chat</a>
+  </nav>
+
+  <main id="content">
+<div class="pagehead"><div class="pagehead-in">
+  <nav class="crumbs" aria-label="Breadcrumb"><a href="index.html">Home</a><span aria-hidden="true">/</span><span aria-current="page">Knowledge and context</span></nav>
+  <h1>Knowledge and context</h1><p>How knowledge gets in, how it is curated, and how the council fetches it before asking you anything.</p>
+</div></div>
+<details class="onpage"><summary>On this page</summary><div>
+      <a href="#knowledge">Knowledge base</a>
+      <a href="#ingest-flow">How knowledge gets in</a>
+      <a href="#scout">The scout runs first, and alone</a>
+      <a href="#context-first">Context before questions</a>
+      <a href="#new-context">New context from the chat</a>
+</div></details>
+
+<section id="knowledge">
+  <div class="rule"></div>
+  <h2>Knowledge base</h2>
+  <p class="intro">Four layers under <code>context/</code>. Knowledge moves left to right, and agents read curated truth first.</p>
+  <div class="blocks">
+    <div class="b1"><b>00 Sources</b><span>Raw transcripts, Confluence exports, PDFs, decks. Immutable, and agents never read them directly</span></div>
+    <div class="b2"><b>10 Processed</b><span>Cleaned transcripts, source reviews, stakeholder notes. Used as evidence</span></div>
+    <div class="b3"><b>20 Curated</b><span>Key facts, glossary, decisions, open items, themes, competitor packs. Changed only with your go</span></div>
+    <div class="b4"><b>30 Working</b><span>Discovery packages, PRDs, epics, stories, synced to Confluence and Jira</span></div>
+  </div>
+  <h3>What keeps it trustworthy</h3>
+  <table>
+    <thead><tr><th>Mechanism</th><th>What it does</th></tr></thead>
+    <tbody>
+      <tr><td>Source manifest</td><td>Every source gets an ID, and every curated fact cites one</td></tr>
+      <tr><td>Authority and volatility</td><td>Each file says how authoritative it is and how often it should change. The index flags files past review</td></tr>
+      <tr><td>Conflict questions</td><td>Two files that disagree stop the work. You choose, and the choice goes to the decisions ledger</td></tr>
+      <tr><td>Open items register</td><td>One home for every unresolved question, with an owner</td></tr>
+      <tr><td>Self-building index</td><td>Rebuilt at session start and after every edit, so nothing is invisible</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section id="ingest-flow">
+  <div class="rule"></div>
+  <h2>How knowledge gets in</h2>
+  <p class="intro">From a raw file to curated truth. Scroll sideways on a small screen.</p>
+  <figure class="fig"><div class="scroll"><img src="assets/img/knowledge-in.jpg" loading="lazy" alt="Workflow with three lanes: You, /ingest and Knowledge base. A file, folder or URL is registered, cleaned and reviewed. A conflict goes to you to choose. Proposed curated edits need your go; otherwise the source stays as evidence only." style="width:1900px"></div><figcaption><code>/ingest</code> never changes curated truth without your go, and every conflict you settle goes to the decisions ledger so it is never asked again.</figcaption></figure>
+</section>
+
+<section id="scout">
+  <div class="rule"></div>
+  <h2>The scout runs first, and alone</h2>
+  <p class="intro">How the council fetches context before anyone else speaks.</p>
+  <ol class="steps n3">
+    <li><div>The orchestrator states which facts the decision needs</div></li>
+    <li><div><code>context-scout</code> runs by itself and returns a Context Pack with a coverage verdict</div></li>
+    <li><div>The orchestrator gates it: sends a thin pack back once, and asks you about any conflict the decision depends on <b>before</b> a panel runs</div></li>
+    <li><div>The orchestrator writes the panel brief from the pack, naming the gaps so no panel assumes them</div></li>
+    <li><div>Panels run in parallel with each other, on that one brief</div></li>
+    <li><div>Citations are checked, then the options and the recommendation are written</div></li>
+  </ol>
+  <p>A panel briefed before the facts arrive fills the gap with a guess, and a guess with a citation attached is worse than silence. A conflict the gate finds goes into the intake questions, so you hear one set of questions, not two.</p>
+</section>
+
+<section id="context-first">
+  <div class="rule"></div>
+  <h2>Context before questions</h2>
+  <p>The council never asks you something it already knows. Before any question, the scout looks up everything your request names: features, personas, teams, systems, partners, districts, terms and figures, in the knowledge base, past sessions and analysis documents. For each intake topic it reports answered, partial or not in context.</p>
+  <table>
+    <caption>What happens to a topic or question, by what the context holds.</caption>
+    <thead><tr><th>Context says</th><th>What you see</th></tr></thead>
+    <tbody>
+      <tr><td>Answered</td><td>Not asked. Shown under "What I already know" with its source, so you can correct it</td></tr>
+      <tr><td>Partial</td><td>A question for the missing piece only, quoting what is known</td></tr>
+      <tr><td>Not in context</td><td>A full question with a default</td></tr>
+    </tbody>
+  </table>
+  <p>The panels' questions and figures go through the same check before reply 2. A figure the context holds is used, never requested. When your answer names something new, it is looked up before the next round.</p>
+</section>
+
+<section id="new-context">
+  <div class="rule"></div>
+  <h2>New context from the chat</h2>
+  <p>When you say something the knowledge base does not hold, the council asks once where it goes.</p>
+  <table>
+    <caption>Where new context can go. Options 2 to 4 show a before and after and wait for your go, on your branch.</caption>
+    <thead><tr><th>Choice</th><th>Where it goes</th></tr></thead>
+    <tbody>
+      <tr><td>1. This analysis only</td><td>The session file and the analysis document. The knowledge base does not change</td></tr>
+      <tr><td>2. Key fact</td><td>A number, date, name or status, in the curated key facts</td></tr>
+      <tr><td>3. Rule</td><td>A business, policy or compliance rule, in the curated topic file it belongs to</td></tr>
+      <tr><td>4. Background context</td><td>A process, pain point or driver, in the curated topic or theme file</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<nav class="pager" aria-label="Previous and next page"><a class="prev" href="behaviour.html"><small>Previous</small>How it behaves</a><a class="next" href="diagrams.html"><small>Next</small>Diagrams</a></nav>
+  </main>
+</div>
+<footer class="gf">
+  <div class="gf-in">
+    <div class="gf-brand"><span class="gh-slash">/</span>The Product Council<p>Expert panels for FirstAlt product decisions, grounded in evidence.</p></div>
+    <div><h2>Use</h2><a href="use.html">Get started</a><a href="commands.html">Commands</a><a href="behaviour.html">How it behaves</a><a href="diagrams.html">Diagrams</a></div>
+    <div><h2>Understand</h2><a href="knowledge.html">Knowledge and context</a><a href="technical.html">Technical</a><a href="reference.html">Reference</a></div>
+    <div><h2>Competitors</h2><a href="comparisons/driver-app.html">Driver apps</a><a href="comparisons/parent-app.html">Parent apps</a><a href="comparisons/provider-portal.html">Provider portals</a><a href="comparisons/district-portal.html">District portals</a></div>
+  </div>
+  <p class="gf-note">FirstAlt Product Council v3.7.3, updated 11 October 2026. The repository is the source of truth: update these pages in the same pull request as a skill, agent or persona change.</p>
+</footer>
+<script src="assets/chrome.js"></script>
+<script src="assets/site.js"></script>
+</body>
+</html>

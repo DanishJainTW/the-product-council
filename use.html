@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Use it | The Product Council</title>
+<meta name="description" content="Quick start, which command to use, modes, flags and what to say mid-session.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23003D4F'/%3E%3Cpath d='M18 6h5l-9 20H9z' fill='%23F2617A'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bitter:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/chrome.css">
+<link rel="stylesheet" href="assets/site.css">
+<script>try{var t=localStorage.getItem("council-theme");if(t)document.documentElement.dataset.theme=t;}catch(e){}</script>
+</head>
+<body>
+<a class="gh-skip" href="#content">Skip to content</a>
+<header class="gh">
+  <div class="gh-in">
+    <a class="gh-brand" href="index.html"><span class="gh-slash">/</span>The Product Council</a>
+    <button type="button" class="gh-btn gh-menu" id="ghMenu" aria-expanded="false" aria-controls="ghNav">Menu</button>
+    <nav class="gh-nav" id="ghNav" aria-label="Main">
+      <a href="index.html">Home</a>
+      <a href="use.html" aria-current="page">Use it</a>
+      <a href="commands.html">Commands</a>
+      <a href="behaviour.html">How it behaves</a>
+      <a href="knowledge.html">Knowledge</a>
+      <a href="diagrams.html">Diagrams</a>
+      <a href="technical.html">Technical</a>
+      <a href="reference.html">Reference</a>
+      <a href="comparisons.html">Comparisons</a>
+    </nav>
+    <button type="button" class="gh-btn" id="themeBtn" aria-label="Switch light or dark theme">Theme</button>
+  </div>
+</header>
+
+<div class="shell">
+  <nav class="sidebar" id="sidebar" aria-label="On this page">
+    <h2>On this page</h2>
+      <a href="#quick-start">Quick start</a>
+      <a href="#which-command">Which command do I need?</a>
+      <a href="#modes">Modes</a>
+      <a href="#flags">Flags</a>
+      <a href="#phrases">What to say mid-session</a>
+  </nav>
+
+  <main id="content">
+<div class="pagehead"><div class="pagehead-in">
+  <nav class="crumbs" aria-label="Breadcrumb"><a href="index.html">Home</a><span aria-hidden="true">/</span><span aria-current="page">Use it</span></nav>
+  <h1>Use it</h1><p>Everything you need to run the council day to day.</p>
+</div></div>
+<details class="onpage"><summary>On this page</summary><div>
+      <a href="#quick-start">Quick start</a>
+      <a href="#which-command">Which command do I need?</a>
+      <a href="#modes">Modes</a>
+      <a href="#flags">Flags</a>
+      <a href="#phrases">What to say mid-session</a>
+</div></details>
+
+<section id="quick-start">
+  <div class="rule"></div>
+  <h2>Quick start</h2>
+  <p class="intro">First time only. Run these in the VS Code terminal, from the folder that contains CLAUDE.md.</p>
+  <ol class="flow">
+    <li><div><strong>Put the folder under git and enable the hooks</strong>
+      <div class="code"><pre>git init -b main
+git config core.hooksPath .githooks
+git add . &amp;&amp; git commit -m "FirstAlt Product Council v3.7"</pre><button type="button">Copy</button></div></div></li>
+    <li><div><strong>Nothing to register or install</strong>IDs carry a date and a random suffix. Diagrams render with Python's standard library.</div></li>
+    <li><div><strong>Start work on your own branch</strong>
+      <div class="code"><pre>bash scripts/start_work.sh first-context</pre><button type="button">Copy</button></div></div></li>
+    <li><div><strong>Open Claude Code and check health</strong>The session briefing appears on its own. Then run <code>/check</code>.</div></li>
+    <li><div><strong>Add context</strong>Drop files into <code>context/00-sources/</code> and run <code>/ingest &lt;folder&gt;</code>, or <code>/ingest &lt;url&gt;</code> for a web page.</div></li>
+    <li><div><strong>See a diagram page</strong><code>/diagram demo</code> renders an example of every type and a three-flow feature page into <code>diagrams/demo/</code>.</div></li>
+  </ol>
+</section>
+
+<section id="which-command">
+  <div class="rule"></div>
+  <h2>Which command do I need?</h2>
+  <p class="intro">Start from what you want to get done.</p>
+  <table>
+    <caption>Goals mapped to the command that does them.</caption>
+    <thead><tr><th>I want to</th><th>Use</th></tr></thead>
+    <tbody>
+      <tr><td>Get a quick fact or one expert's view</td><td><code>/ask</code></td></tr>
+      <tr><td>Decide anything: stress-test a proposal, solve a problem, improve a feature, find ideas</td><td><code>/council</code> (the mode is inferred)</td></tr>
+      <tr><td>Challenge an idea with thinking principles only</td><td><code>/council --panels board</code></td></tr>
+      <tr><td>See what competitors do</td><td><code>/council --panels competitors</code></td></tr>
+      <tr><td>Find problems worth solving</td><td><code>/council what are we missing in onboarding</code></td></tr>
+      <tr><td>Draw every flow a feature touches, on one page</td><td><code>/diagram</code></td></tr>
+      <tr><td>See what changes between today and the recommendation</td><td><code>/diagram compare &lt;session&gt;</code></td></tr>
+      <tr><td>Add a transcript, PDF, deck, Confluence page or web page</td><td><code>/ingest</code></td></tr>
+      <tr><td>Pick up an earlier analysis and build on it</td><td><code>/council --analysis &lt;slug&gt;</code></td></tr>
+      <tr><td>Turn a decision into a PRD, epics or stories</td><td><code>/draft</code></td></tr>
+      <tr><td>Turn a decision into design variants</td><td><code>/handoff</code></td></tr>
+      <tr><td>Find contradictions, staleness, or whether verdicts held up</td><td><code>/check</code></td></tr>
+      <tr><td>Record that the AI got something wrong</td><td>Just correct it. A lesson is captured automatically</td></tr>
+      <tr><td>Share my changes with the team</td><td><code>/open-pr</code></td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section id="modes">
+  <div class="rule"></div>
+  <h2>Modes</h2>
+  <p class="intro"><code>/council</code> reads the mode from your request and names it in its first line, for example <code>Mode: solve. Tier 2: a symptom of unknown size.</code> Override with <code>--mode</code>.</p>
+  <table>
+    <caption>The five modes. A mode changes only what it needs before starting, which panels it leans on, and the shape of the round.</caption>
+    <thead><tr><th>Mode</th><th>Your request sounds like</th><th>Needs before starting</th><th>Default panels</th><th>Round shape</th></tr></thead>
+    <tbody>
+      <tr><td>brainstorm</td><td>"Ideas for X". No solution yet, no confirmed problem</td><td>Which user, which outcome, which part of the journey. A vague theme is refused</td><td>product, board, industry, competitors, users</td><td>At most 3 ideas per panel, each tied to an evidenced problem. Shortlist 3, cross-examine only those</td></tr>
+      <tr><td>improve</td><td>"The Y flow is clunky". A named existing feature</td><td>The feature as it works today, from context or from you. Never imagined</td><td>users, product, competitors, tech</td><td>User Panel reads today's flow first. Draws today against the pick with <code>/diagram compare</code></td></tr>
+      <tr><td>solve</td><td>A complaint or symptom of unknown size</td><td>Nothing</td><td>board, industry, users, tech</td><td>Problem half first (real, who, how often, root cause), a checkpoint on the problem statement, then solutions</td></tr>
+      <tr><td>validate</td><td>"Should we build X". A proposal, PRD or design</td><td>The proposal, with every assumption tagged V, I or U</td><td>board, product, tech, users, competitors</td><td>Panels attack the proposal and never rewrite it</td></tr>
+      <tr><td>radar</td><td>"What are we missing"</td><td>Nothing</td><td>problem-radar alone</td><td>Ranked problems with evidence, no verdict. Saved to <code>reports/problems/</code></td></tr>
+    </tbody>
+  </table>
+  <p>At Tier 2 only the one or two most relevant default panels run. <code>--panels</code> replaces the defaults.</p>
+</section>
+
+<section id="flags">
+  <div class="rule"></div>
+  <h2>Flags</h2>
+  <p class="intro">For <code>/council</code> unless the row says otherwise.</p>
+  <table>
+    <caption>Every flag worth knowing.</caption>
+    <thead><tr><th>Flag</th><th>What it does</th><th>Example</th></tr></thead>
+    <tbody>
+      <tr><td><code>--mode</code></td><td>Override the inferred mode: brainstorm, improve, solve, validate or radar</td><td><code>--mode validate</code></td></tr>
+      <tr><td><code>--panels</code></td><td>Choose panels: board, product, tech, industry, competitors, users. One panel runs at Tier 1</td><td><code>--panels board,users</code></td></tr>
+      <tr><td><code>--only</code></td><td>One voice inside a panel</td><td><code>--panels board --only premortem</code></td></tr>
+      <tr><td><code>--dimension</code></td><td>Board only. One lens: problem, risk, clarity, scope or strategy</td><td><code>--panels board --dimension risk</code></td></tr>
+      <tr><td><code>--iterate</code></td><td>Re-run against a revised idea, carrying the previous findings</td><td><code>--iterate sessions/&lt;file&gt;.md</code></td></tr>
+      <tr><td><code>--segment</code></td><td>Competitor segment: alt, bus or both</td><td><code>--segment alt</code></td></tr>
+      <tr><td><code>--thorough</code></td><td>One challenge round at Tier 2. Cheaper than --deep</td><td><code>--thorough</code></td></tr>
+      <tr><td><code>--deep</code></td><td>Tier 3: 3 to 6 panels, full personas, up to two challenge rounds</td><td><code>--deep</code></td></tr>
+      <tr><td><code>--full</code></td><td>Full persona files instead of compact cards, without going to Tier 3</td><td><code>--panels tech --full</code></td></tr>
+      <tr><td><code>--diagram</code>, <code>--no-diagram</code></td><td>Force or skip the diagram step</td><td><code>--no-diagram</code></td></tr>
+      <tr><td><code>--fast</code></td><td>Skip both question rounds and decide on the stated defaults</td><td><code>--fast</code></td></tr>
+      <tr><td><code>--analysis</code></td><td>Continue from an analysis document: its answers, data and open questions are the starting point, and it is updated as you go</td><td><code>--analysis driver-change-notice</code></td></tr>
+      <tr><td><code>--dry-run</code>, <code>--limit</code></td><td><code>/ingest</code> on a folder: the plan only, or the first n files</td><td><code>/ingest context/00-sources/transcripts --dry-run</code></td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section id="phrases">
+  <div class="rule"></div>
+  <h2>What to say mid-session</h2>
+  <p class="intro">You steer the council in plain words at any point.</p>
+  <table>
+    <thead><tr><th>Say</th><th>What happens</th></tr></thead>
+    <tbody>
+      <tr><td>"Go deeper"</td><td>Moves up one cost tier and reuses the work already done</td></tr>
+      <tr><td>"Go"</td><td>Answers a question round with the defaults it offered</td></tr>
+      <tr><td>"Decide now"</td><td>Skips any remaining question round and decides on the stated defaults</td></tr>
+      <tr><td>"About 40 a week"</td><td>A figure for the data request. The reply says whether it confirmed, changed or flipped the pick</td></tr>
+      <tr><td>"Continue the driver change analysis"</td><td>Same as <code>--analysis</code>: picks up that document and builds on it</td></tr>
+      <tr><td>"Premortem, what if districts refuse?"</td><td>That persona answers in character, then the session continues</td></tr>
+      <tr><td>"Add the user panel, drivers and providers only"</td><td>Brings in a panel mid-session with the personas you name</td></tr>
+      <tr><td>"New fact: providers approve within 2 days"</td><td>Used straight away, then you are asked once: this analysis only, or a curated key fact, rule or background</td></tr>
+      <tr><td>"Focus on adoption, not pricing"</td><td>The Product Lead redirects the discussion</td></tr>
+      <tr><td>"No, that was only a proposal"</td><td>Any correction fixes the output, and a lesson is captured</td></tr>
+      <tr><td>"A" or "B" when asked about a conflict</td><td>Your choice goes to the decisions ledger, so it is never asked again</td></tr>
+      <tr><td>"Draw it" or "show me the flows"</td><td>Draws every flow the pick touches on one page, even where the council would have skipped it</td></tr>
+      <tr><td>"Compare with today"</td><td>Adds today against the pick to the page, with every change colored and listed</td></tr>
+      <tr><td>"No diagram"</td><td>Skips the diagram step for this session</td></tr>
+      <tr><td>"Run the premortem on this"</td><td>Same as <code>--panels board --only premortem</code></td></tr>
+    </tbody>
+  </table>
+</section>
+
+<nav class="pager" aria-label="Previous and next page"><a class="prev" href="index.html"><small>Previous</small>Home</a><a class="next" href="commands.html"><small>Next</small>Commands</a></nav>
+  </main>
+</div>
+<footer class="gf">
+  <div class="gf-in">
+    <div class="gf-brand"><span class="gh-slash">/</span>The Product Council<p>Expert panels for FirstAlt product decisions, grounded in evidence.</p></div>
+    <div><h2>Use</h2><a href="use.html">Get started</a><a href="commands.html">Commands</a><a href="behaviour.html">How it behaves</a><a href="diagrams.html">Diagrams</a></div>
+    <div><h2>Understand</h2><a href="knowledge.html">Knowledge and context</a><a href="technical.html">Technical</a><a href="reference.html">Reference</a></div>
+    <div><h2>Competitors</h2><a href="comparisons/driver-app.html">Driver apps</a><a href="comparisons/parent-app.html">Parent apps</a><a href="comparisons/provider-portal.html">Provider portals</a><a href="comparisons/district-portal.html">District portals</a></div>
+  </div>
+  <p class="gf-note">FirstAlt Product Council v3.7.3, updated 11 October 2026. The repository is the source of truth: update these pages in the same pull request as a skill, agent or persona change.</p>
+</footer>
+<script src="assets/chrome.js"></script>
+<script src="assets/site.js"></script>
+</body>
+</html>

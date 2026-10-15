@@ -1,0 +1,701 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Provider portals compared: HopSkipDrive, EverDriven and Zum, side by side.">
+<title>Provider portals compared: HopSkipDrive, EverDriven, Zum</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23003D4F'/%3E%3Cpath d='M18 6h5l-9 20H9z' fill='%23F2617A'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="../assets/chrome.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bitter:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --wave:#003D4F;--flamingo:#F2617A;--jade:#6B9E78;--turmeric:#CC850A;--sapphire:#47A1AD;--amethyst:#634F7D;
+  --mist:#EDF1F3;--ink:#14262E;--muted:#55686F;--line:#CBD5DA;--white:#FFFFFF;
+  --yes:#3F7A50;--part:#CC850A;--no:#D9435C;--unk:#8A9AA1;
+  --radius-s:4px;--radius-m:10px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
+body{margin:0;background:var(--white);color:var(--ink);font:16px/1.55 Inter,"Segoe UI",system-ui,-apple-system,sans-serif}
+h1,h2,h3{font-family:Bitter,Georgia,serif;color:var(--wave);margin:0}
+h1{font-size:clamp(30px,4.6vw,48px);line-height:1.08;font-weight:700;letter-spacing:-.01em}
+h2{font-size:clamp(24px,3vw,32px);line-height:1.15;font-weight:700}
+h3{font-size:20px;line-height:1.25;font-weight:700}
+p{margin:0}
+a{color:var(--wave)}
+button{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--flamingo);outline-offset:2px;border-radius:3px}
+.wrap{max-width:1180px;margin:0 auto;padding:0 clamp(16px,4vw,40px)}
+
+/* top bar */
+.bar{position:sticky;top:0;z-index:20;background:var(--wave);color:#fff}
+.bar .wrap{display:flex;align-items:center;gap:18px;min-height:56px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:10px;font-weight:600;white-space:nowrap}
+.brand .mark{width:10px;height:24px;background:var(--flamingo);transform:skewX(-18deg)}
+.bar nav{display:flex;gap:4px;overflow-x:auto;flex:1;scrollbar-width:none}
+.bar nav a{color:#fff;text-decoration:none;padding:8px 10px;border-radius:var(--radius-s);font-size:14px;white-space:nowrap;opacity:.85}
+.bar nav a:hover,.bar nav a.on{opacity:1;background:rgba(255,255,255,.12)}
+
+/* hero */
+.hero{background:var(--mist);padding:48px 0 40px;border-bottom:1px solid var(--line)}
+.hero .lede{max-width:64ch;margin-top:14px;font-size:18px;color:var(--ink)}
+.hero .meta{margin-top:10px;color:var(--muted);font-size:14px;max-width:70ch}
+.prints{margin-top:34px;display:grid;gap:14px}
+.print{display:grid;grid-template-columns:200px 1fr 92px;align-items:center;gap:16px;background:#fff;border:1px solid var(--line);border-radius:var(--radius-m);padding:14px 16px;cursor:pointer;text-align:left;width:100%}
+.print[aria-pressed=true]{border-color:var(--wave);box-shadow:inset 5px 0 0 var(--flamingo)}
+.print .who strong{display:block;font-family:Bitter,Georgia,serif;font-size:19px;color:var(--wave)}
+.print .who span{display:block;font-size:13px;color:var(--muted)}
+.print .who span::first-letter{text-transform:uppercase}
+.cells{display:flex;flex-wrap:wrap;gap:4px 3px}
+.cells .grp{display:flex;gap:3px;padding-right:5px;border-right:1px solid var(--line)}
+.cells .grp:last-child{border-right:0}
+.sq{width:clamp(11px,1.35vw,18px);height:clamp(11px,1.35vw,18px);border-radius:3px;display:inline-block}
+.sq.y{background:var(--yes)}.sq.p{background:linear-gradient(135deg,var(--part) 50%,#F3DDB5 50%)}
+.sq.n{background:#fff;border:2px solid var(--no)}.sq.u{background:#fff;border:2px dashed var(--unk)}
+.score{font-family:Bitter,Georgia,serif;font-size:26px;color:var(--wave);text-align:right;line-height:1}
+.score small{display:block;font:12px Inter,sans-serif;color:var(--muted);margin-top:3px}
+.areakey{display:flex;flex-wrap:wrap;gap:6px 14px;margin-top:14px;font-size:13px;color:var(--muted)}
+
+/* legend */
+.legend{display:flex;flex-wrap:wrap;gap:8px 20px;align-items:center;font-size:14px}
+.legend span{display:inline-flex;align-items:center;gap:7px}
+.ico{width:22px;height:22px;flex:none;display:inline-block;vertical-align:middle}
+
+section.block{padding:56px 0 8px}
+.intro{max-width:68ch;margin-top:10px;color:var(--muted)}
+.tools{display:flex;flex-wrap:wrap;gap:8px;margin:22px 0 14px;align-items:center}
+.chip{border:1px solid var(--line);background:#fff;border-radius:999px;padding:6px 12px 6px 8px;font-size:14px;cursor:pointer;display:inline-flex;align-items:center;gap:7px}
+.chip .dot{width:12px;height:12px;border-radius:50%}
+.chip[aria-pressed=true]{background:var(--wave);color:#fff;border-color:var(--wave)}
+.chip[aria-pressed=true] .dot{box-shadow:0 0 0 2px #fff}
+.toggle{display:inline-flex;align-items:center;gap:8px;font-size:14px;margin-left:auto;cursor:pointer}
+.toggle input{width:18px;height:18px;accent-color:var(--wave)}
+
+/* tables */
+.tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:var(--radius-m);background:#fff}
+table{border-collapse:separate;border-spacing:0;width:100%;min-width:720px}
+caption{caption-side:top;text-align:left;padding:12px 16px;font-size:14px;color:var(--muted);border-bottom:1px solid var(--line);background:var(--mist)}
+th,td{padding:10px 14px;border-bottom:1px solid var(--line);vertical-align:top;text-align:left}
+thead th{position:sticky;top:0;background:#fff;font-size:14px;font-weight:600;color:var(--wave);z-index:1}
+tbody th{font-weight:500;width:34%;background:#fff;position:sticky;left:0;z-index:1}
+tbody th .what{display:block}
+tbody th .plain{display:block;font-weight:400;font-size:13px;color:var(--muted);margin-top:2px}
+tr.areahead th{background:var(--mist);font-family:Bitter,Georgia,serif;font-size:16px;color:var(--wave);padding-top:14px;position:sticky;left:0}
+tr.areahead th .tag{display:inline-flex;align-items:center;gap:8px}
+tr.areahead th .stripe{width:6px;height:20px;border-radius:2px}
+td.cell{padding:6px 8px}
+.cellbtn{display:flex;align-items:flex-start;gap:8px;width:100%;background:none;border:1px solid transparent;border-radius:var(--radius-s);padding:6px;cursor:pointer;text-align:left;font-size:13px;line-height:1.35;color:var(--ink)}
+.cellbtn:hover{border-color:var(--line);background:var(--mist)}
+.cellbtn .lbl{display:block}
+.cellbtn .lbl b{display:block;font-weight:600;font-size:13px}
+.cellbtn .lbl i{font-style:normal;color:var(--muted)}
+.build{display:inline-block;font-size:11px;font-weight:600;color:var(--amethyst);border:1px solid var(--amethyst);border-radius:3px;padding:0 4px;margin-left:4px;vertical-align:1px}
+.dim{opacity:.28}
+tr.hidden{display:none}
+col.focus,th.focus,td.focus{background:#F6FAFB}
+
+/* roles */
+.tabs{display:flex;gap:6px;flex-wrap:wrap;margin:22px 0 14px}
+.tab{border:1px solid var(--line);background:#fff;border-radius:var(--radius-s);padding:9px 16px;cursor:pointer;font-weight:600;color:var(--wave)}
+.tab[aria-selected=true]{background:var(--wave);color:#fff;border-color:var(--wave)}
+.roles td{font-size:13px;line-height:1.35;min-width:150px}
+.roles td .r{display:flex;gap:8px;align-items:flex-start}
+.roles thead th .aico{display:flex;align-items:center;gap:7px}
+.roles tbody th .rico{display:flex;gap:10px;align-items:center}
+.roles tbody th .rico svg,.roles td .r .ico{flex:none}
+.rolenote{margin-top:10px;font-size:14px;color:var(--muted);max-width:75ch}
+
+/* safety */
+.safety tbody th{width:40%}
+.safety td{text-align:center;vertical-align:middle}
+.safety td .ico{width:26px;height:26px}
+.safety tr.same{}
+.stage{display:inline-flex;align-items:center;gap:8px}
+
+/* cards */
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px;margin-top:24px}
+.card{border:1px solid var(--line);border-radius:var(--radius-m);background:#fff;display:flex;flex-direction:column;overflow:hidden}
+.card header{display:flex;gap:14px;align-items:center;padding:18px 18px 14px;border-bottom:1px solid var(--line)}
+.card header svg{width:56px;height:56px;flex:none}
+.card header p{font-size:13px;color:var(--muted)}
+.card .body{padding:14px 18px 18px;display:grid;gap:14px}
+.card .oneline{font-size:15px}
+.card h4{margin:0 0 6px;font-size:14px;font-weight:600;color:var(--wave)}
+.card ul{margin:0;padding-left:0;list-style:none;display:grid;gap:7px;font-size:14px}
+.card li{display:flex;gap:8px;align-items:flex-start}
+.card li svg{width:18px;height:18px;flex:none;margin-top:2px}
+.ratings{display:flex;gap:10px;flex-wrap:wrap}
+.rating{background:var(--mist);border-radius:var(--radius-s);padding:6px 10px;font-size:13px}
+.rating b{font-family:Bitter,Georgia,serif;font-size:18px;color:var(--wave);margin-right:4px}
+.rating.low b{color:var(--no)}
+
+/* journeys */
+.jgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;margin-top:8px}
+.journey{border-top:4px solid var(--wave);background:var(--mist);border-radius:0 0 var(--radius-m) var(--radius-m);padding:16px 18px 18px}
+.journey h3{font-size:18px}
+.journey p.when{font-size:13px;color:var(--muted);margin:4px 0 10px}
+.journey ol{margin:0;padding-left:0;list-style:none;counter-reset:s;display:grid;gap:8px}
+.journey li{counter-increment:s;display:grid;grid-template-columns:28px 1fr;gap:8px;font-size:14px;line-height:1.4}
+.journey li::before{content:counter(s);width:24px;height:24px;border-radius:50%;background:var(--wave);color:#fff;font-size:12px;font-weight:600;display:grid;place-items:center}
+.journey li.safety::before{background:var(--flamingo)}
+.journey li .tagline{display:block;font-size:12px;color:var(--muted)}
+.jkey{font-size:13px;color:var(--muted);display:flex;gap:16px;flex-wrap:wrap;margin-bottom:12px}
+.jkey span{display:inline-flex;gap:6px;align-items:center}
+.jkey i{width:14px;height:14px;border-radius:50%;display:inline-block}
+
+/* notes */
+.notes{margin:56px 0 0;padding:32px 0 48px;background:var(--mist);border-top:1px solid var(--line)}
+.notes ul{margin:12px 0 0;padding-left:20px;max-width:80ch;display:grid;gap:6px;font-size:14px}
+
+/* evidence drawer */
+.drawer{position:fixed;right:16px;bottom:16px;width:min(420px,calc(100vw - 32px));max-height:70vh;overflow:auto;background:#fff;border:1px solid var(--wave);border-radius:var(--radius-m);box-shadow:0 12px 32px rgba(0,61,79,.22);padding:18px 18px 16px;z-index:30;display:none}
+.drawer.open{display:block}
+.drawer .x{position:absolute;right:10px;top:8px;border:0;background:none;font-size:24px;line-height:1;cursor:pointer;color:var(--muted);padding:4px 8px}
+.drawer .co{font-size:13px;color:var(--muted)}
+.drawer h3{font-size:18px;margin:2px 28px 8px 0}
+.drawer .st{display:flex;align-items:center;gap:8px;font-weight:600;margin-bottom:10px}
+.drawer blockquote{margin:0 0 10px;padding:10px 12px;border-left:4px solid var(--flamingo);background:var(--mist);font-size:14px}
+.drawer .note{font-size:14px;margin-bottom:10px}
+.drawer .src{font-size:13px;color:var(--muted)}
+@media (max-width:760px){
+  .print{grid-template-columns:1fr;gap:10px}
+  .score{text-align:left}
+  tbody th{width:auto;min-width:170px}
+  .toggle{margin-left:0}
+  .drawer{right:0;bottom:0;width:100%;border-radius:var(--radius-m) var(--radius-m) 0 0;max-height:60vh}
+}
+@media print{.bar,.drawer,.tools,.tabs{display:none!important}.tablewrap{overflow:visible}section.block{break-inside:avoid-page}[data-panel]{display:block!important}}
+.sq.x{background:#E3EBEE}
+.bar nav a.other{border:1px solid rgba(255,255,255,.35);margin-left:6px}
+.bar.subnav{top:var(--gh-h);z-index:20;background:#0B5163}
+.crumb{display:flex;flex:none;gap:8px;align-items:center;font-weight:600;white-space:nowrap}
+.crumb a{color:#CFE3E8}
+.crumb [aria-current]{color:#fff}
+html{scroll-padding-top:124px}
+.notes{margin-bottom:0}
+.gf{margin-top:0}
+</style>
+</head>
+<body>
+<a class="gh-skip" href="#content">Skip to content</a>
+<header class="gh">
+  <div class="gh-in">
+    <a class="gh-brand" href="../index.html"><span class="gh-slash">/</span>The Product Council</a>
+    <button type="button" class="gh-btn gh-menu" id="ghMenu" aria-expanded="false" aria-controls="ghNav">Menu</button>
+    <nav class="gh-nav" id="ghNav" aria-label="Main">
+      <a href="../index.html">Home</a>
+      <a href="../use.html">Use it</a>
+      <a href="../commands.html">Commands</a>
+      <a href="../behaviour.html">How it behaves</a>
+      <a href="../knowledge.html">Knowledge</a>
+      <a href="../diagrams.html">Diagrams</a>
+      <a href="../technical.html">Technical</a>
+      <a href="../reference.html">Reference</a>
+      <a href="../comparisons.html" aria-current="page">Comparisons</a>
+    </nav>
+  </div>
+</header>
+
+<div class="bar subnav">
+  <div class="wrap">
+    <nav class="crumb" aria-label="Breadcrumb"><a href="../comparisons.html">Comparisons</a><span aria-hidden="true">/</span><span aria-current="page">Provider portals</span></nav>
+    <nav aria-label="Sections">
+      <a href="#matrix">Comparison</a>
+      <a href="#roles">Who can do what</a>
+      <a href="#safety">Safety checklist</a>
+      <a href="#cards">Portal cards</a>
+      <a href="#journeys">Journeys</a>
+      <a href="#notes">What we could not see</a>
+      <a href="driver-app.html" class="other">Driver apps</a>
+      <a href="parent-app.html" class="other">Parent apps</a>
+      <a href="district-portal.html" class="other">District portals</a>
+    </nav>
+  </div>
+</div>
+
+<main id="content">
+<section class="hero">
+  <div class="wrap">
+    <h1>How three competitors work with transport providers</h1>
+    <p class="lede">A provider portal is where a transport company picks up trips, assigns its drivers, proves they are compliant and gets paid. The three competitors run this in very different ways. Each strip below is one company. Every square is one job a provider can do.</p>
+    <p class="meta">EverDriven works through local transport companies, as FirstAlt does. HopSkipDrive uses gig drivers and brings in partner fleets only for wheelchair rides. Zum owns its fleet and employs its drivers, so it has no provider portal. Built from our competitor research packs and our reading of the portal code, October 2026.</p>
+    <div class="prints" id="prints"></div>
+    <div class="areakey" id="areakey"></div>
+    <div class="legend" style="margin-top:16px" id="legend"></div>
+  </div>
+</section>
+
+<section class="block" id="matrix">
+  <div class="wrap">
+    <h2>Side-by-side comparison</h2>
+    <p class="intro">Select any answer to read the evidence behind it. A purple <span class="build">in build</span> tag means we found the feature in the portal's code. Some EverDriven screens load only after sign-in, so we saw their wording but not the whole screen.</p>
+    <div class="tools" id="areaFilter" role="group" aria-label="Filter by area"></div>
+    <div class="tools" style="margin-top:0">
+      <label class="toggle"><input type="checkbox" id="diffOnly"> Show only rows where the companies differ</label>
+    </div>
+    <div class="tablewrap">
+      <table id="matrixTable"></table>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="roles">
+  <div class="wrap">
+    <h2>Who can do what</h2>
+    <p class="intro">Who gets a trip to a driver, follows it, can hand it back, handles the money and keeps watch over safety. Choose a company.</p>
+    <div class="tabs" role="tablist" id="roleTabs"></div>
+    <div id="rolePanels"></div>
+  </div>
+</section>
+
+<section class="block" id="safety">
+  <div class="wrap">
+    <h2>Safety checklist</h2>
+    <p class="intro">The safety and compliance checks a provider must meet, from joining to handling problems after a trip.</p>
+    <div class="tools"><label class="toggle" style="margin-left:0"><input type="checkbox" id="safetyDiff"> Show only checks where the companies differ</label></div>
+    <div class="tablewrap">
+      <table class="safety" id="safetyTable"></table>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="cards">
+  <div class="wrap">
+    <h2>Each portal in plain words</h2>
+    <p class="intro">What each company gives providers, what stands out, and where it falls short.</p>
+    <div class="cards" id="cardGrid"></div>
+  </div>
+</section>
+
+<section class="block" id="journeys">
+  <div class="wrap">
+    <h2>A provider's work, step by step</h2>
+    <p class="intro">The journeys are written as numbered steps, the same way we write our own workflows. The step order comes from screen names and help pages, so treat it as close, not exact.</p>
+    <div class="tabs" role="tablist" id="jTabs"></div>
+    <div class="jkey"><span><i style="background:var(--wave)"></i>Step</span><span><i style="background:var(--flamingo)"></i>Safety step</span></div>
+    <div id="jPanels"></div>
+  </div>
+</section>
+
+<section class="notes" id="notes">
+  <div class="wrap">
+    <h2>What we could not see</h2>
+    <ul>
+      <li>We read the EverDriven portal's sign-in page and main code only. About 20 screens load after sign-in, so trip offers, at-risk trips, compliance and pay are seen in part.</li>
+      <li>EverDriven pays providers every Friday, yet the portal also shows daily pay summaries. How the two fit is open.</li>
+      <li>HopSkipDrive's partner portal sits behind a login. Only its help articles are public, and they cover accepting requests and assigning drivers.</li>
+      <li>Zum's school portal code has records for vendors and vendor staff behind a switch. Who uses them is unknown.</li>
+      <li>Beacon's ADROIT also places drivers through transport companies, like FirstAlt. It is not part of this comparison.</li>
+    </ul>
+  </div>
+</section>
+</main>
+<footer class="gf">
+  <div class="gf-in">
+    <div class="gf-brand"><span class="gh-slash">/</span>The Product Council<p>Expert panels for FirstAlt product decisions, grounded in evidence.</p></div>
+    <div><h2>Use</h2><a href="../use.html">Get started</a><a href="../commands.html">Commands</a><a href="../behaviour.html">How it behaves</a><a href="../diagrams.html">Diagrams</a></div>
+    <div><h2>Understand</h2><a href="../knowledge.html">Knowledge and context</a><a href="../technical.html">Technical</a><a href="../reference.html">Reference</a></div>
+    <div><h2>Competitors</h2><a href="../comparisons/driver-app.html">Driver apps</a><a href="../comparisons/parent-app.html">Parent apps</a><a href="../comparisons/provider-portal.html">Provider portals</a><a href="../comparisons/district-portal.html">District portals</a></div>
+  </div>
+  <p class="gf-note">FirstAlt Product Council v3.7.3, updated 11 October 2026. The repository is the source of truth: update these pages in the same pull request as a skill, agent or persona change.</p>
+</footer>
+
+<aside class="drawer" id="drawer" role="dialog" aria-modal="false" aria-labelledby="dTitle">
+  <button class="x" id="dClose" aria-label="Close evidence">×</button>
+  <div class="co" id="dCo"></div>
+  <h3 id="dTitle"></h3>
+  <div class="st" id="dSt"></div>
+  <div id="dBody"></div>
+</aside>
+
+<script src="../assets/chrome.js"></script>
+<script>
+const PAGE = {who:'What a provider can do', cap:"Provider portal capabilities, by area. Rows: what a transport provider can do. Columns: each competitor.", unit:'provider'};
+const S = {
+ y:'<svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="#3F7A50"/><path d="M7 12.5l3.2 3.2L17 9" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+ p:'<svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="#fff" stroke="#CC850A" stroke-width="2"/><path d="M12 2a10 10 0 0 0 0 20z" fill="#CC850A"/></svg>',
+ n:'<svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="#fff" stroke="#D9435C" stroke-width="2"/><path d="M8.5 8.5l7 7M15.5 8.5l-7 7" stroke="#D9435C" stroke-width="2.4" stroke-linecap="round"/></svg>',
+ u:'<svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="#fff" stroke="#8A9AA1" stroke-width="2" stroke-dasharray="3 2.4"/><text x="12" y="16.5" text-anchor="middle" font-size="12" font-weight="700" fill="#55686F" font-family="Inter,sans-serif">?</text></svg>',
+ x:'<svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 12h10" stroke="#B5C1C6" stroke-width="2.4" stroke-linecap="round"/></svg>'
+};
+const SL = {y:'Has it',p:'Partly',n:'Not offered',u:'Not found in our research',x:'Does not apply'};
+
+const AREA_ICON = {
+ key:'<path d="M14.5 9.5a4.5 4.5 0 1 1-1.4-3.3" /><circle cx="10" cy="10" r="1.6"/><path d="M13.5 12.5L20 19l-1.6 1.6M17 16l-1.6 1.6"/>',
+ cal:'<rect x="3.5" y="5" width="17" height="15" rx="2"/><path d="M3.5 10h17M8 3v4M16 3v4M8 14h3"/>',
+ team:'<circle cx="8" cy="8" r="2.6"/><circle cx="16" cy="8" r="2.6"/><path d="M3.5 19c.4-3.6 2.2-5.6 4.5-5.6s4.1 2 4.5 5.6M11.5 19c.4-3.6 2.2-5.6 4.5-5.6s4.1 2 4.5 5.6"/>',
+ shield:'<path d="M12 3l7.5 3v5.5c0 4.6-3.2 8-7.5 9.5-4.3-1.5-7.5-4.9-7.5-9.5V6z"/><path d="M8.8 12l2.3 2.3L15.5 10"/>',
+ pin:'<path d="M12 21s-6.5-6.2-6.5-11a6.5 6.5 0 0 1 13 0c0 4.8-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.4"/>',
+ coin:'<circle cx="12" cy="12" r="8.5"/><path d="M14.6 9.2c-.5-.9-1.5-1.4-2.6-1.4-1.5 0-2.6.8-2.6 2s1.1 1.7 2.6 2 2.6.8 2.6 2-1.1 2-2.6 2c-1.2 0-2.2-.5-2.7-1.5M12 6.3v1.5M12 16.2v1.5"/>',
+ buoy:'<circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="3.5"/><path d="M6 6l3.5 3.5M18 6l-3.5 3.5M6 18l3.5-3.5M18 18l-3.5-3.5"/>',
+ stop:'<path d="M8.3 3.5h7.4l4.8 4.8v7.4l-4.8 4.8H8.3l-4.8-4.8V8.3z"/><path d="M9 12h6"/>',
+ alert:'<path d="M12 4l9 16H3z"/><path d="M12 10v4.5M12 17.2v.3"/>',
+ car:'<path d="M4 16v-3.5l2.2-4.3c.4-.7 1-1.2 1.8-1.2h8c.8 0 1.4.5 1.8 1.2l2.2 4.3V16z"/><circle cx="8" cy="16.5" r="1.8"/><circle cx="16" cy="16.5" r="1.8"/>',
+ doc:'<path d="M6 3.5h8l4 4V20.5H6z"/><path d="M14 3.5v4h4M9 12h6M9 15.5h6"/>'
+};
+function aIco(name,color,size=20){return `<svg width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="${color}" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${AREA_ICON[name]}</svg>`}
+
+const AREAS = [
+ {id:'signin',name:'Joining and sign-in',color:'#47A1AD',icon:'key'},
+ {id:'trips',name:'Getting and assigning trips',color:'#003D4F',icon:'cal'},
+ {id:'team',name:'Drivers and vehicles',color:'#6B9E78',icon:'team'},
+ {id:'safety',name:'Compliance and safety',color:'#F2617A',icon:'shield'},
+ {id:'track',name:'Live operations',color:'#634F7D',icon:'pin'},
+ {id:'pay',name:'Payments and insurance',color:'#CC850A',icon:'coin'},
+ {id:'help',name:'Help and language',color:'#8E4A5B',icon:'buoy'}
+];
+
+const COS = [
+ {id:'ed',name:'EverDriven',app:'Service Provider Portal',model:'Local transport companies run the trips'},
+ {id:'hsd',name:'HopSkipDrive',app:'CarePartner Portal',model:'Gig drivers, with partner fleets for wheelchair rides'},
+ {id:'zum',name:'Zum',app:'operations team (no provider portal)',model:'Own fleet and staff drivers, so no providers'}
+];
+
+const AN = {
+ ed:{AN4:'Our reading of the SafeRoute driver app code (Oct 2026)',AN5:'Our reading of the Service Provider Portal code (Oct 2026)'},
+ hsd:{AN1:'Our reading of the CareDriver Android app code (Oct 2026)'},
+ zum:{AN1:'Our reading of the Zum Driver Android app code (Oct 2026)',AN3:'Our reading of the Zum school portal code (Oct 2026)'}
+};
+function srcName(co,keys){
+  const c=COS.find(x=>x.id===co).name;
+  return keys.split(/,\s*/).filter(Boolean).map(k=>{
+    if(k.startsWith('AN')) return AN[co][k]||'Our code reading';
+    const t={W:c+' website',H:c+' help centre',A:'App store listing',P:'Press coverage',R:'App store reviews',C:'District contract'}[k[0]];
+    return t||k;
+  }).filter((v,i,a)=>a.indexOf(v)===i).join('; ');
+}
+
+const ZUM_NA = (t,src='W2, W6',d='2026-10-14')=>['x',t,src,d,0,0];
+
+/* ---------- matrix: [status, text, sourceKeys, date, isQuote, inBuild, extraNote] ---------- */
+const ROWS = [
+ {a:'signin',w:'Join as a provider',d:'How a transport company signs up',
+  ed:['y','EverDriven partners with transportation service providers across the U.S.','W5','2026-10-14',1,0,'Companies apply through a partnership form and run test routes.'],
+  hsd:['p','you will receive an email invitation to complete your account setup.','H20','2026-02-05',1,0,'Invitation only. How partners are contracted is not public.'],
+  zum:ZUM_NA('Zum owns “the staff, drivers, depots, yards, buses, vans, hardware, and charging infrastructure”, so there are no providers to join.')},
+ {a:'signin',w:'Sign in to the portal',d:'Accounts for the provider’s office staff',
+  ed:['y','Company sign-in page with password reset. There is “no self sign-up”: admin accounts are requested.','AN5','2026-10-15',0,1],
+  hsd:['y','A login-only portal; partner staff get an email invitation.','H20','2026-02-05',0,0],
+  zum:ZUM_NA('No provider portal.')},
+ {a:'signin',w:'Run several companies from one login',d:'For owners with more than one business',
+  ed:['y','“Change Provider” lets a user switch between the companies they serve.','AN5','2026-10-15',0,1],
+  hsd:['u','Not described.','','',0,0],
+  zum:ZUM_NA('No provider portal.')},
+
+ {a:'trips',w:'Receive trip offers',d:'Work offered to the provider',
+  ed:['y','Open, sent, accepted and past offers, with assign, decline and cancel actions.','AN5','2026-10-15',0,1,'These screens load after sign-in, so we saw them in part.'],
+  hsd:['y','You must review all assigned requests within 24 hours, or they will be re-assigned to another CarePartner.','H20','2026-02-05',1,0],
+  zum:ZUM_NA('Zum’s own dispatch assigns routes: “Route assignment and management”.','W3')},
+ {a:'trips',w:'Hand a trip back',d:'What happens when the provider cannot take it',
+  ed:['y','Declined trips show “a countdown until broadcast”, then go to other providers.','AN5','2026-10-15',0,1],
+  hsd:['p','Requests not reviewed within 24 hours are re-assigned to another partner.','H20','2026-02-05',0,0],
+  zum:ZUM_NA('No providers to hand back to.')},
+ {a:'trips',w:'Assign a driver to a trip',d:'Pick who drives',
+  ed:['y','quickly assign new drivers in the case of an emergency or illness','W6','2026-10-14',1,0],
+  hsd:['y','Partner dispatchers assign drivers and Rider Assistants to accepted requests.','H20','2026-02-05',0,0],
+  zum:ZUM_NA('Done in-house by Zum’s operations team.','W3')},
+ {a:'trips',w:'Change the driver late',d:'Swapping a driver close to the start',
+  ed:['p',"Sorry, it's too close to the run start time to make a driver change…",'AN5','2026-10-15',1,1,'Swaps are blocked after a cut-off.'],
+  hsd:['u','Not described.','','',0,0],
+  zum:ZUM_NA('Done in-house.','W3')},
+ {a:'trips',w:'Print or export run sheets',d:'Trip details for drivers and the office',
+  ed:['y','Run details with times, students and “Monitor Required”; print run sheets; download runs and drivers as a spreadsheet.','AN5','2026-10-15',0,1],
+  hsd:['u','Not described.','','',0,0],
+  zum:ZUM_NA('No provider portal.')},
+
+ {a:'team',w:'Keep a list of drivers',d:'Driver profiles and their runs',
+  ed:['y','expedites the compliance process, so you can add new drivers without any time lags','W6','2026-10-14',1,0,'Drivers can be searched by name or ID.'],
+  hsd:['u','Roster screens are not described in the partner portal help.','','',0,0],
+  zum:ZUM_NA('Drivers are Zum staff: “Full medical benefits and 401K”.','W6')},
+ {a:'team',w:'Keep a list of vehicles',d:'Make, model, plate',
+  ed:['y','manage your fleet, assign rides, maintain compliance, and run reports','W6','2026-10-14',1,0],
+  hsd:['u','Fleet screens are not described in the partner portal help.','','',0,0],
+  zum:ZUM_NA('Zum runs its own fleet: “Get a real-time view of your fleet to know which vehicles are available and ready”.','W3')},
+
+ {a:'safety',w:'Track driver compliance',d:'Who is cleared to drive',
+  ed:['y','clear view that every ride is handled by eligible, compliant drivers with fully vetted vehicles','W6, H4','2026-10-14',1,0,'Status is shown per driver and per district.'],
+  hsd:['u','Partner drivers “undergo HopSkipDrive\'s rigorous and comprehensive certification process”, but no tracking screen was found.','H21','2026-08-04',0,0],
+  zum:ZUM_NA('Zum checks its own applicants.','W7','2024-07-05')},
+ {a:'safety',w:'Upload certificates',d:'Sending proof of checks and training',
+  ed:['p','Certificate upload in the portal, plus a separate compliance website.','AN5','2026-10-15',0,1],
+  hsd:['u','Not described.','','',0,0],
+  zum:ZUM_NA('No provider portal.')},
+ {a:'safety',w:'Appeal a driver removal',d:'Challenging a decision to stop a driver',
+  ed:['y','Appeal forms cover background checks, English language checks and removals based on driving data.','H4','2026-10-14',0,0],
+  hsd:['u','Not described.','','',0,0],
+  zum:ZUM_NA('No provider portal.')},
+ {a:'safety',w:'Required in-vehicle cameras',d:'Equipment the provider must fit',
+  ed:['y','installation is simple and mandatory','AN5','2026-10-15',1,1,'From the portal’s camera installation guide.'],
+  hsd:['u','Not described for partner fleets.','','',0,0],
+  zum:ZUM_NA('Zum fits “AI-powered cameras” to its own vehicles.','W3')},
+
+ {a:'track',w:'Watch live trips',d:'Trips in progress across the company',
+  ed:['p','At-Risk and Active Trip Workflows','AN5','2026-10-15',1,1,'Statuses include At Risk, In-Progress, To Stop and At Stop. Seen in part.'],
+  hsd:['u','Not described.','','',0,0],
+  zum:ZUM_NA('Zum’s own command centre: “full visibility across routes, vehicles, and driver performance”.','W2')},
+ {a:'track',w:'Alerts for trips at risk',d:'Warning before a trip goes wrong',
+  ed:['p','You may have trips that are At Risk!','AN5','2026-10-15',1,1,'Trips starting within 45 minutes are flagged. Seen in part.'],
+  hsd:['u','Not described.','','',0,0],
+  zum:ZUM_NA('In-house: “Proactive issue detection including driver no-show notification”.','W3')},
+ {a:'track',w:'See a performance score',d:'How well the provider is doing',
+  ed:['p','No provider scorecard found. Removals based on driving data exist.','AN5, H4','2026-10-15',0,0],
+  hsd:['u','Not described.','','',0,0],
+  zum:ZUM_NA('In-house scoring of its own drivers.','W3')},
+
+ {a:'pay',w:'Get paid',d:'How and when the provider is paid',
+  ed:['y','Service providers are compensated every Friday for the trips serviced in the previous week.','W5','2026-10-14',1,0],
+  hsd:['u','Billing is not described in the partner portal help.','','',0,0],
+  zum:ZUM_NA('Drivers are paid as staff: “Great pay per hour, based on experience”.','W6')},
+ {a:'pay',w:'See pay statements',d:'Receipts and summaries',
+  ed:['p','Find Cashiering Receipts and Daily Pay Summaries','AN5','2026-10-15',1,1,'Seen in part.'],
+  hsd:['u','Not described.','','',0,0],
+  zum:ZUM_NA('No providers to pay.')},
+ {a:'pay',w:'Dispute a charge',d:'Challenge a deduction or reversal',
+  ed:['y','A charge discrepancy form, with reasons such as driver behaviour or student behaviour.','H3','2026-10-14',0,0],
+  hsd:['u','Not described.','','',0,0],
+  zum:ZUM_NA('No providers to pay.')},
+ {a:'pay',w:'Insurance through the company',d:'Cover while running trips',
+  ed:['y','A “While Under Dispatch” insurance programme, with deductions taken per trip.','H5','2026-10-14',0,0],
+  hsd:['u','Not described.','','',0,0],
+  zum:ZUM_NA('No providers.')},
+ {a:'pay',w:'Help to lease vehicles',d:'Fleet finance or leasing',
+  ed:['u','Searched provider pages: retail discounts only, no leasing or fleet finance.','W5','2026-10-14',0,0],
+  hsd:['x','Own or lease a four-door vehicle no more than 15 years old','W3','2026-10-14',1,0,'Gig drivers bring their own car.'],
+  zum:ZUM_NA('Zum supplies its own “buses, vans, hardware, and charging infrastructure”.','W2')},
+
+ {a:'help',w:'Guides and training',d:'Help for the provider’s office',
+  ed:['y','User guides, training documents, emergency contacts and phone support in the portal.','AN5','2026-10-15',0,1],
+  hsd:['y','Help articles for the partner portal, published February 2026.','H20','2026-02-05',0,0],
+  zum:ZUM_NA('No provider portal.')},
+ {a:'help',w:'Support by form or phone',d:'Raising a problem',
+  ed:['y','Forms for portal support, eligibility, compliance, insurance and claims, plus a provider phone line.','H3, H1','2026-10-14',0,0],
+  hsd:['u','Not described.','','',0,0],
+  zum:ZUM_NA('No provider portal.')},
+ {a:'help',w:'Portal in another language',d:'Languages for office staff',
+  ed:['y','The portal ships in English and Spanish.','AN5','2026-10-15',0,1],
+  hsd:['u','Not described.','','',0,0],
+  zum:ZUM_NA('No provider portal.')}
+];
+
+/* ---------- roles ---------- */
+const ACTIONS = [
+ {id:'book',name:'Get a trip to a driver',icon:'cal'},{id:'track',name:'Track it',icon:'pin'},
+ {id:'cancel',name:'Decline or hand back',icon:'stop'},{id:'pay',name:'Pay or get paid',icon:'coin'},{id:'watch',name:'Watch over safety',icon:'shield'}
+];
+const ROLE_ICON = {
+ firm:'<path d="M3.5 20.5h17M5 20.5V9l7-4.5L19 9v11.5M9 20.5v-5h6v5"/>',
+ driver:'<circle cx="12" cy="8" r="3.2"/><path d="M5.5 20c.6-4 3.2-6 6.5-6s5.9 2 6.5 6"/><circle cx="12" cy="17.3" r="1.6"/>',
+ aide:'<circle cx="12" cy="7" r="3"/><path d="M6 20.5c.5-4.4 2.8-6.6 6-6.6s5.5 2.2 6 6.6"/><path d="M12 15.5v3M10.5 17h3"/>',
+ office:'<rect x="3.5" y="5" width="11" height="8" rx="1.2"/><path d="M7 16h4M9 13v3"/><circle cx="18" cy="9" r="2.4"/><path d="M14.5 19c.4-2.4 1.8-3.6 3.5-3.6s3.1 1.2 3.5 3.6"/>',
+ school:'<path d="M3 9.5L12 5l9 4.5-9 4.5z"/><path d="M7 11.5V16c1.4 1.4 3 2 5 2s3.6-.6 5-2v-4.5"/>',
+ vendor:'<rect x="4" y="7" width="16" height="12" rx="1.6"/><path d="M9 7V5h6v2M4 12h16"/>'
+};
+function rIco(n){return `<svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#003D4F" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="11.4" fill="#EDF1F3" stroke="none"/>${ROLE_ICON[n]}</svg>`}
+
+const ROLES = {
+ ed:{note:'EverDriven sends work to local transport companies. They accept trips, assign their own drivers and pay them; EverDriven pays the companies weekly and polices compliance.',rows:[
+  {r:'Transport provider office',i:'firm',book:['y','Accepts offers and assigns its drivers'],track:['p','Live and at-risk trip views (seen in part)'],cancel:['y','Declines or cancels offers; trips then go to others'],pay:['y','Paid every Friday; pays its own drivers'],watch:['y','Keeps drivers compliant; must fit cameras']},
+  {r:'Driver',i:'driver',book:['y','Accepts offers in the SafeRoute app'],track:['y','Phone shares location during trips'],cancel:['p','Can decline, but some trips need a call to Dispatch'],pay:['y','“paid by their service provider”'],watch:['x','Is monitored: phone telematics and camera']},
+  {r:'Monitor (aide)',i:'aide',book:['x','A record, not a portal user'],track:['u','Not seen'],cancel:['x','Does not apply'],pay:['u','Not seen'],watch:['y','Runs flag “Monitor Required”']},
+  {r:'EverDriven operations',i:'office',book:['y','Sends offers; broadcasts declined trips to other providers'],track:['y','Receives location and trip events'],cancel:['y','Cancels or changes trips'],pay:['y','Pays providers; takes per-trip insurance deductions'],watch:['y','Removes drivers on driving data; handles appeals']},
+  {r:'School district',i:'school',book:['y','Requests trips'],track:['y','Sees route details in its own portal'],cancel:['y','Cancels in its portal; may be charged within 2 hours'],pay:['y','Pays EverDriven'],watch:['p','Chooses a district or EverDriven monitor']}
+ ]},
+ hsd:{note:'HopSkipDrive gives most rides to gig drivers. Partner fleets (CarePartners) get wheelchair rides only, through a small portal.',rows:[
+  {r:'Partner fleet dispatcher',i:'firm',book:['y','Reviews requests sent to the partner within 24 hours'],track:['u','Not described'],cancel:['p','A request not reviewed in time goes to another partner'],pay:['u','Not described'],watch:['p','Assigns drivers and Rider Assistants']},
+  {r:'Partner driver',i:'driver',book:['p','Assigned by the partner dispatcher'],track:['u','Not described'],cancel:['u','Not described'],pay:['u','Not described'],watch:['y','Certified by HopSkipDrive']},
+  {r:'HopSkipDrive',i:'office',book:['y','Sends wheelchair rides only to partner fleets'],track:['y','Safe Ride Support watches rides in real time'],cancel:['y','Re-assigns requests not reviewed in time'],pay:['u','Not described'],watch:['y','Runs the certification process']},
+  {r:'School or agency',i:'school',book:['y','Adds a wheelchair ride to a rider’s profile, 72 hours ahead'],track:['y','Sees the live ride record'],cancel:['u','Not described'],pay:['y','Pays a per-ride fee for wheelchair rides'],watch:['p','Sets rider needs and drop-off rules']}
+ ]},
+ zum:{note:'Zum has no providers. Its operations team does the jobs a provider would: assigning routes, watching trips, paying drivers and checking safety.',rows:[
+  {r:'Zum operations team',i:'office',book:['y','Assigns routes to cover every run'],track:['y','Real-time command centre'],cancel:['y','Pushes route updates and last-minute changes'],pay:['y','Pays drivers by the hour'],watch:['y','Driver scoring, coaching and no-show detection']},
+  {r:'Driver (Zum staff)',i:'driver',book:['p','Receives assigned rides; can accept or reject with a reason'],track:['y','Location shared in the background'],cancel:['p','Can reject an assigned ride with a reason'],pay:['y','Clocks in and keeps a timesheet'],watch:['x','Is monitored: scoring and cameras']},
+  {r:'Vendor (unclear)',i:'vendor',book:['u','Vendor records exist in the portal code; use unknown'],track:['u','Unknown'],cancel:['u','Unknown'],pay:['u','Unknown'],watch:['u','Unknown']},
+  {r:'School or district',i:'school',book:['y','“build and optimise routes for students”'],track:['y','Live ride tracking'],cancel:['u','Not stated'],pay:['y','Quotes and invoices in the school portal'],watch:['y','Sees vehicle GPS locations']}
+ ]}
+};
+
+/* ---------- safety: [status, text, source, inBuild, isQuote] ---------- */
+const Z=['x','Zum has no providers; it runs these checks on its own staff and vehicles.','W2',0];
+const STAGES = [
+ {id:'join',name:'Joining',icon:'key'},{id:'driver',name:'Checks on drivers',icon:'team'},
+ {id:'vehicle',name:'Checks on vehicles',icon:'car'},{id:'trip',name:'During trips',icon:'pin'},{id:'after',name:'When something goes wrong',icon:'alert'}
+];
+const SAFE = [
+ {s:'join',w:'Provider vetted before joining',ed:['y','A partnership form and test routes before trips are offered.','W5',0],hsd:['p','Invitation only; contracting is not public.','H20',0],zum:Z},
+ {s:'join',w:'Insurance cover in place',ed:['y','A “While Under Dispatch” insurance programme with per-trip deductions.','H5',0],hsd:['u','Not described.','',0],zum:Z},
+ {s:'driver',w:'Background checks, kept up to date',ed:['y','Appeals mention background checks including continuous monitoring.','H4',0],hsd:['y','undergo HopSkipDrive\'s rigorous and comprehensive certification process','H21',0,1],zum:Z},
+ {s:'driver',w:'Drug and alcohol testing',ed:['y','The portal sets out required drug and alcohol testing.','AN5',1],hsd:['u','Not described for partners.','',0],zum:Z},
+ {s:'driver',w:'Required safety course',ed:['y','A required SafeRide Driver Education Course.','AN5',1],hsd:['y','Partner drivers go through HopSkipDrive certification.','H21',0],zum:Z},
+ {s:'driver',w:'English language check',ed:['y','Appeals cover an English language proficiency check.','H4',0],hsd:['u','Not described.','',0],zum:Z},
+ {s:'driver',w:'Cleared for each district',ed:['y','Compliance is tracked per driver and per district.','AN5',1],hsd:['u','Not described.','',0],zum:Z},
+ {s:'vehicle',w:'Vehicles vetted',ed:['y','clear view that every ride is handled by eligible, compliant drivers with fully vetted vehicles','W6',0,1],hsd:['u','Not described for partner fleets.','',0],zum:Z},
+ {s:'vehicle',w:'Ramp and lift inspection',ed:['y','50-point annual safety inspection, which includes ramp and lift equipment for relevant vehicles','W10',0,1],hsd:['u','Not described.','',0],zum:Z},
+ {s:'vehicle',w:'Cameras fitted',ed:['y','installation is simple and mandatory','AN5',1,1],hsd:['u','Not described.','',0],zum:Z},
+ {s:'trip',w:'Aide required flag on the trip',ed:['y','Run details show “Monitor Required”.','AN5',1],hsd:['y','Partner dispatchers assign Rider Assistants.','H20',0],zum:Z},
+ {s:'trip',w:'Late driver swaps blocked',ed:['y',"Sorry, it's too close to the run start time to make a driver change…",'AN5',1,1],hsd:['u','Not described.','',0],zum:Z},
+ {s:'trip',w:'Trips at risk flagged',ed:['p','Trips starting within 45 minutes are flagged as at risk. Seen in part.','AN5',1],hsd:['u','Not described.','',0],zum:Z},
+ {s:'trip',w:'Driving behaviour watched',ed:['y','Driver telematics feed removals: “Telematics Decision”.','H4, AN4',0],hsd:['u','Not described for partners.','',0],zum:Z},
+ {s:'after',w:'Appeal a driver removal',ed:['y','Appeal forms for background, English language and driving-data removals.','H4',0],hsd:['u','Not described.','',0],zum:Z},
+ {s:'after',w:'Insurance claims',ed:['y','An insurance and claims form for providers.','H3',0],hsd:['u','Not described.','',0],zum:Z},
+ {s:'after',w:'Unable to run a trip',ed:['y','A run can be marked “Unable to Service Run” or “No Show”.','AN5',1],hsd:['u','Not described.','',0],zum:Z}
+];
+
+/* ---------- cards ---------- */
+const VEH = {
+ ed:'<svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="14" fill="#EDF1F3"/><rect x="9" y="12" width="46" height="32" rx="3" fill="#003D4F"/><rect x="13" y="16" width="38" height="24" rx="1.5" fill="#fff"/><path d="M17 22h12M17 27h18M17 32h9" stroke="#47A1AD" stroke-width="2.2" stroke-linecap="round"/><rect x="38" y="21" width="9" height="13" rx="1.5" fill="#F2617A"/><path d="M24 50h16M32 44v6" stroke="#003D4F" stroke-width="3" stroke-linecap="round"/></svg>',
+ hsd:'<svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="14" fill="#EDF1F3"/><path d="M10 44V28c0-1.7 1.3-3 3-3h27l8 8h3c1.7 0 3 1.3 3 3v8z" fill="#003D4F"/><path d="M15 29h9v6h-9zM27 29h10v6H27z" fill="#47A1AD"/><circle cx="20" cy="45" r="4.5" fill="#fff" stroke="#003D4F" stroke-width="3"/><circle cx="45" cy="45" r="4.5" fill="#fff" stroke="#003D4F" stroke-width="3"/><circle cx="46" cy="16" r="7" fill="#F2617A"/><circle cx="46" cy="13" r="1.6" fill="#fff"/><path d="M44 16.5h3v3.5" stroke="#fff" stroke-width="1.6" fill="none" stroke-linecap="round"/></svg>',
+ zum:'<svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="14" fill="#EDF1F3"/><path d="M8 50V26l12-8 12 8v24z" fill="#003D4F"/><rect x="14" y="34" width="12" height="16" fill="#47A1AD"/><rect x="34" y="30" width="22" height="14" rx="3" fill="#CC850A"/><circle cx="39" cy="45" r="3.5" fill="#fff" stroke="#003D4F" stroke-width="2.5"/><circle cx="51" cy="45" r="3.5" fill="#fff" stroke="#003D4F" stroke-width="2.5"/></svg>'
+};
+const PLUS='<svg viewBox="0 0 18 18" aria-hidden="true"><circle cx="9" cy="9" r="8" fill="#3F7A50"/><path d="M9 5.5v7M5.5 9h7" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/></svg>';
+const MINUS='<svg viewBox="0 0 18 18" aria-hidden="true"><circle cx="9" cy="9" r="8" fill="#fff" stroke="#D9435C" stroke-width="1.6"/><path d="M5.5 9h7" stroke="#D9435C" stroke-width="1.8" stroke-linecap="round"/></svg>';
+const CARDS = {
+ ed:{line:'The full back office for transport companies that run EverDriven trips: offers, drivers, vehicles, compliance and pay. The closest match to FirstAlt’s own model.',
+  ratings:[['Web','portal, no store rating']],
+  good:['A trip-offer marketplace: declined trips count down, then go to other providers','Assign and swap drivers, with a cut-off close to the start','Compliance tracked per driver and per district, with an appeals route','Paid every Friday, with receipts and daily pay summaries','At-risk alerts for trips starting within 45 minutes','English and Spanish'],
+  gaps:['No self sign-up: admin accounts must be requested','Compliance and contracting live on separate websites','No provider performance scorecard found','No vehicle leasing, only retail discounts','Mandatory cameras and per-trip insurance deductions fall on the provider']},
+ hsd:{line:'A small, login-only portal for partner fleets that handle wheelchair rides. Most HopSkipDrive rides go to gig drivers instead.',
+  ratings:[['Web','portal, no store rating']],
+  good:['Partners review assigned requests and assign drivers and Rider Assistants','A clear 24-hour deadline before a request moves to another partner','Help articles for the portal'],
+  gaps:['New: help articles first published in February 2026','Driver, vehicle, compliance, billing and performance screens are not described','Only for wheelchair rides, which need 72 hours’ notice']},
+ zum:{line:'No provider portal. Zum owns its vehicles and employs its drivers, so its own operations team does the jobs a provider portal would.',
+  ratings:[['None','owned fleet, staff drivers']],
+  good:['A real-time command centre for routes, vehicles and drivers','Route assignment to cover every run','Driver no-show detection and performance scoring','Predictive maintenance on its own fleet'],
+  gaps:['Nothing to compare for providers','Vendor records in the school portal code; who uses them is unknown']}
+};
+
+/* ---------- journeys ---------- */
+const JOURNEYS = {
+ ed:[
+  {t:'Join EverDriven',w:'Once',s:[['Fill in the partnership form'],['Run test routes'],['Request an admin account for the portal; there is no self sign-up'],['Add drivers through the compliance process',1],['Upload certificates on the compliance website',1],['Fit the required cameras',1],['Make sure drivers finish the safety course and drug testing',1]]},
+  {t:'Run the day',w:'Daily',s:[['Open the list of trip offers'],['Accept an offer and assign a driver, or decline it'],['A declined trip counts down, then goes to other providers'],['Print run sheets or download them as a spreadsheet'],['Watch the at-risk list for trips starting within 45 minutes',1],['Swap a driver before the cut-off if someone is ill'],['Mark a run “Unable to Service Run” if it cannot go ahead']]},
+  {t:'Get paid',w:'Weekly',s:[['Receive pay every Friday for last week’s trips'],['Check cashiering receipts and daily pay summaries'],['Insurance is deducted per trip'],['Use the charge discrepancy form to dispute a deduction']]},
+  {t:'When a driver is removed',w:'As needed',s:[['EverDriven removes a driver after a check or driving data',1],['Appeal through the compliance form: background, English language or driving data',1],['Call the provider support line if stuck']]}
+ ],
+ hsd:[
+  {t:'Join as a partner',w:'Once',s:[['Receive an email invitation from HopSkipDrive'],['Complete the account set-up'],['Partner drivers go through HopSkipDrive certification',1]]},
+  {t:'Handle a wheelchair ride',w:'Each request',s:[['A school adds a wheelchair ride to a rider’s profile, at least 72 hours ahead'],['HopSkipDrive sends the request only to partner fleets'],['Review the request within 24 hours'],['Assign a driver and, if needed, a Rider Assistant',1],['If not reviewed in time, the request goes to another partner']]},
+  {t:'Everything else',w:'Not public',s:[['Tracking, billing and performance steps are not described in the public help']]}
+ ],
+ zum:[
+  {t:'How Zum does it in-house',w:'Daily',s:[['Operations assign routes to cover every run'],['Drivers sign on to a shift and link to a vehicle'],['Drivers inspect the vehicle before the trip',1],['The command centre watches every vehicle live'],['The system flags driver no-shows and other problems',1],['Drivers are scored and coached on their driving',1],['Vehicles get predictive maintenance']]}
+ ]
+};
+
+/* ---------- render ---------- */
+const $=s=>document.querySelector(s);
+let focus=null, area=null;
+
+function legendHTML(){return ['y','p','n','u'].map(k=>`<span>${S[k]}${SL[k]}</span>`).join('')+`<span><span class="build" style="margin:0">in build</span> found in the app's code</span>`}
+$('#legend').innerHTML=legendHTML();
+$('#areakey').innerHTML=AREAS.map(a=>`<span style="display:inline-flex;align-items:center;gap:6px">${aIco(a.icon,a.color,16)}${a.name}</span>`).join('');
+
+function renderPrints(){
+  $('#prints').innerHTML=COS.map(c=>{
+    let has=0,part=0,na=0;
+    const grps=AREAS.map(a=>`<span class="grp" title="${a.name}">`+ROWS.filter(r=>r.a===a.id).map(r=>{const s=r[c.id][0];if(s==='y')has++;if(s==='p')part++;if(s==='x')na++;return `<span class="sq ${s}" title="${r.w}: ${SL[s]}"></span>`}).join('')+'</span>').join('');
+    return `<button class="print" data-co="${c.id}" aria-pressed="${focus===c.id}"><span class="who"><strong>${c.name}</strong><span>${c.app}: ${c.model}</span></span><span class="cells">${grps}</span><span class="score">${na===ROWS.length?'None':has}<small>${na===ROWS.length?'no provider layer':`of ${ROWS.length-na} in full${part?`, ${part} in part`:''}${na?`; ${na} ${na===1?'does':'do'} not apply`:''}`}</small></span></button>`;
+  }).join('');
+  document.querySelectorAll('.print').forEach(b=>b.onclick=()=>{focus=focus===b.dataset.co?null:b.dataset.co;renderPrints();applyFocus();});
+}
+
+function renderFilter(){
+  $('#areaFilter').innerHTML=`<button class="chip" data-a="" aria-pressed="${!area}"><span class="dot" style="background:#C9D3D8"></span>All areas</button>`+AREAS.map(a=>`<button class="chip" data-a="${a.id}" aria-pressed="${area===a.id}"><span class="dot" style="background:${a.color}"></span>${a.name}</button>`).join('');
+  document.querySelectorAll('#areaFilter .chip').forEach(b=>b.onclick=()=>{area=b.dataset.a||null;renderFilter();renderMatrix();});
+}
+
+function head(){return `<thead><tr><th scope="col">${PAGE.who}</th>${COS.map(c=>`<th scope="col" data-co="${c.id}">${c.name}<br><span style="font-weight:400;color:var(--muted);font-size:13px">${c.app}</span></th>`).join('')}</tr></thead>`}
+
+function renderMatrix(){
+  const diff=$('#diffOnly').checked;
+  let h=`<caption>${PAGE.cap}</caption>`+head()+'<tbody>';
+  AREAS.forEach(a=>{
+    if(area&&area!==a.id)return;
+    const rows=ROWS.map((r,i)=>[r,i]).filter(([r])=>r.a===a.id&&(!diff||new Set(COS.map(c=>r[c.id][0])).size>1));
+    if(!rows.length)return;
+    h+=`<tr class="areahead"><th colspan="${COS.length+1}" scope="rowgroup"><span class="tag"><span class="stripe" style="background:${a.color}"></span>${aIco(a.icon,a.color)}${a.name}</span></th></tr>`;
+    rows.forEach(([r,i])=>{
+      h+=`<tr><th scope="row" style="box-shadow:inset 4px 0 0 ${a.color}"><span class="what">${r.w}</span><span class="plain">${r.d}</span></th>`+COS.map(c=>{const v=r[c.id];return `<td class="cell" data-co="${c.id}"><button class="cellbtn" data-k="m" data-i="${i}" data-co="${c.id}" aria-label="${c.name}, ${r.w}: ${SL[v[0]]}. Show evidence">${S[v[0]]}<span class="lbl"><b>${SL[v[0]]}${v[5]?'<span class="build">in build</span>':''}</b><i>${short(v)}</i></span></button></td>`}).join('')+'</tr>';
+    });
+  });
+  $('#matrixTable').innerHTML=h+'</tbody>';
+  bindCells('#matrixTable');applyFocus();
+}
+function short(v){let t=v[6]||v[1];t=t.replace(/^[“"]|[”"]$/g,'');return t.length>78?t.slice(0,76).replace(/\s\S*$/,'')+'…':t}
+
+function renderRoles(){
+  const tabs=COS.map((c,i)=>`<button class="tab" role="tab" id="rt-${c.id}" aria-controls="rp-${c.id}" aria-selected="${i===0}" data-co="${c.id}">${c.name}</button>`).join('');
+  $('#roleTabs').innerHTML=tabs;
+  $('#rolePanels').innerHTML=COS.map((c,i)=>{const R=ROLES[c.id];return `<div role="tabpanel" id="rp-${c.id}" aria-labelledby="rt-${c.id}" data-panel ${i?'hidden':''}><div class="tablewrap"><table class="roles"><caption>${c.name}: who can do what, around the ${c.app}.</caption><thead><tr><th scope="col">Person</th>${ACTIONS.map(a=>`<th scope="col"><span class="aico">${aIco(a.icon,'#003D4F',18)}${a.name}</span></th>`).join('')}</tr></thead><tbody>${R.rows.map(r=>`<tr><th scope="row"><span class="rico">${rIco(r.i)}${r.r}</span></th>${ACTIONS.map(a=>{const v=r[a.id];return `<td><span class="r">${S[v[0]]}<span>${v[1]}</span></span></td>`}).join('')}</tr>`).join('')}</tbody></table></div><p class="rolenote">${R.note}</p></div>`}).join('');
+  tabsBind('#roleTabs','#rolePanels','rp-');
+}
+function tabsBind(tabSel,panelSel,prefix){
+  const tabs=[...document.querySelectorAll(tabSel+' .tab')];
+  tabs.forEach((t,idx)=>{
+    t.onclick=()=>{tabs.forEach(x=>x.setAttribute('aria-selected',x===t));document.querySelectorAll(panelSel+' [role=tabpanel]').forEach(p=>p.hidden=p.id!==prefix+t.dataset.co);};
+    t.onkeydown=e=>{if(e.key==='ArrowRight'||e.key==='ArrowLeft'){const n=tabs[(idx+(e.key==='ArrowRight'?1:-1)+tabs.length)%tabs.length];n.focus();n.click();}};
+  });
+}
+
+function renderSafety(){
+  const diff=$('#safetyDiff').checked;
+  let h=`<caption>Safety features by stage of the trip. Select an icon for the evidence.</caption>`+head().replace(PAGE.who,'Safety step')+'<tbody>';
+  STAGES.forEach(st=>{
+    const rows=SAFE.map((r,i)=>[r,i]).filter(([r])=>r.s===st.id&&(!diff||new Set(COS.map(c=>r[c.id][0])).size>1));
+    if(!rows.length)return;
+    h+=`<tr class="areahead"><th colspan="${COS.length+1}" scope="rowgroup"><span class="stage">${aIco(st.icon,'#F2617A')}${st.name}</span></th></tr>`;
+    rows.forEach(([r,i])=>{h+=`<tr><th scope="row">${r.w}</th>`+COS.map(c=>{const v=r[c.id];return `<td data-co="${c.id}"><button class="cellbtn" style="justify-content:center" data-k="s" data-i="${i}" data-co="${c.id}" aria-label="${c.name}, ${r.w}: ${SL[v[0]]}. Show evidence">${S[v[0]]}</button></td>`}).join('')+'</tr>'});
+  });
+  $('#safetyTable').innerHTML=h+'</tbody>';
+  bindCells('#safetyTable');applyFocus();
+}
+
+function renderCards(){
+  $('#cardGrid').innerHTML=COS.map(c=>{const k=CARDS[c.id];return `<article class="card" data-co="${c.id}"><header>${VEH[c.id]}<div><h3>${c.name} ${c.app}</h3><p>${c.model}</p></div></header><div class="body"><p class="oneline">${k.line}</p><div class="ratings">${k.ratings.map(r=>`<span class="rating${r[2]?' low':''}"><b>${r[0]}</b>${r[1]}</span>`).join('')}</div><div><h4>Stands out</h4><ul>${k.good.map(g=>`<li>${PLUS}<span>${g}</span></li>`).join('')}</ul></div><div><h4>Falls short</h4><ul>${k.gaps.map(g=>`<li>${MINUS}<span>${g}</span></li>`).join('')}</ul></div></div></article>`}).join('');
+}
+
+function renderJourneys(){
+  $('#jTabs').innerHTML=COS.map((c,i)=>`<button class="tab" role="tab" id="jt-${c.id}" aria-controls="jp-${c.id}" aria-selected="${i===0}" data-co="${c.id}">${c.name}</button>`).join('');
+  $('#jPanels').innerHTML=COS.map((c,i)=>`<div role="tabpanel" id="jp-${c.id}" aria-labelledby="jt-${c.id}" data-panel ${i?'hidden':''}><div class="jgrid">${JOURNEYS[c.id].map(j=>`<div class="journey"><h3>${j.t}</h3><p class="when">${j.w}</p><ol>${j.s.map(s=>`<li class="${s[1]?'safety':''}"><span>${s[0]}${s[1]?'<span class="tagline">Safety step</span>':''}</span></li>`).join('')}</ol></div>`).join('')}</div></div>`).join('');
+  tabsBind('#jTabs','#jPanels','jp-');
+}
+
+function bindCells(sel){document.querySelectorAll(sel+' .cellbtn').forEach(b=>b.onclick=()=>openDrawer(b));}
+let lastBtn=null;
+function openDrawer(b){
+  lastBtn=b;
+  const co=COS.find(c=>c.id===b.dataset.co), i=+b.dataset.i;
+  let title,v,quote,src,date,extra='',build=0;
+  if(b.dataset.k==='m'){const r=ROWS[i];v=r[co.id];title=r.w;quote=v[4];src=v[2];date=v[3];extra=v[6]||'';build=v[5];}
+  else{const r=SAFE[i];v=r[co.id];title=r.w;src=v[2];quote=v[4];build=v[3];date='';}
+  $('#dCo').textContent=co.name+' '+co.app;
+  $('#dTitle').textContent=title;
+  $('#dSt').innerHTML=S[v[0]]+SL[v[0]]+(build?'<span class="build">in build</span>':'');
+  const text=v[1];
+  $('#dBody').innerHTML=(quote?`<blockquote>“${esc(text)}”</blockquote>`:`<p class="note">${esc(text)}</p>`)+(extra?`<p class="note">${esc(extra)}</p>`:'')+`<p class="src">${src?'Source: '+esc(srcName(co.id,src))+'.':'No source found after searching.'}${date?' Dated '+date+'.':''}${quote?' Quoted in the source’s own words.':' Summarised in our words.'}</p>`;
+  $('#drawer').classList.add('open');$('#dClose').focus();
+}
+function esc(s){return String(s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]))}
+$('#dClose').onclick=()=>{$('#drawer').classList.remove('open');lastBtn&&lastBtn.focus();};
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&$('#drawer').classList.contains('open'))$('#dClose').click();});
+
+function applyFocus(){
+  document.querySelectorAll('[data-co]').forEach(el=>{
+    if(el.classList.contains('print')||el.classList.contains('tab')||el.classList.contains('cellbtn'))return;
+    el.classList.toggle('dim',!!focus&&el.dataset.co!==focus&&!el.closest('.drawer'));
+  });
+}
+
+$('#diffOnly').onchange=renderMatrix;
+$('#safetyDiff').onchange=renderSafety;
+renderPrints();renderFilter();renderMatrix();renderRoles();renderSafety();renderCards();renderJourneys();
+
+/* highlight current section in the bar */
+const links=[...document.querySelectorAll('.bar nav a')];
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)links.forEach(l=>l.classList.toggle('on',l.getAttribute('href')==='#'+e.target.id))}),{rootMargin:'-40% 0px -55% 0px'});
+['matrix','roles','safety','cards','journeys','notes'].forEach(id=>io.observe(document.getElementById(id)));
+</script>
+</body>
+</html>
