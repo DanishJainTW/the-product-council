@@ -1,3 +1,5 @@
+https://danishjaintw.github.io/the-product-council
+
 # Docs
 
 The Product Council documentation, as a static multi-page site. Open `index.html` in a browser, or publish the folder with GitHub Pages (Settings, Pages, deploy from branch, folder `/docs`). `.nojekyll` makes GitHub serve the files as they are, and `404.html` is shown for any missing page.
