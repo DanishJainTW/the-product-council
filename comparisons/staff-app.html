@@ -1,0 +1,681 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex, notranslate, noai, noimageai">
+<meta name="googlebot" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
+<meta name="bingbot" content="noindex, nofollow, noarchive, nosnippet">
+<meta name="referrer" content="no-referrer">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Staff apps compared: Beacon Mobility's MyBeacon and Student Transportation of America's Ridesta staff web app, side by side.">
+<title>Staff apps compared: Beacon Mobility, Student Transportation of America</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23003D4F'/%3E%3Cpath d='M18 6h5l-9 20H9z' fill='%23F2617A'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="../assets/chrome.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bitter:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --wave:#003D4F;--flamingo:#F2617A;--jade:#6B9E78;--turmeric:#CC850A;--sapphire:#47A1AD;--amethyst:#634F7D;
+  --mist:#EDF1F3;--ink:#14262E;--muted:#55686F;--line:#CBD5DA;--white:#FFFFFF;
+  --yes:#3F7A50;--part:#CC850A;--no:#D9435C;--unk:#8A9AA1;
+  --radius-s:4px;--radius-m:10px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
+body{margin:0;background:var(--white);color:var(--ink);font:16px/1.55 Inter,"Segoe UI",system-ui,-apple-system,sans-serif}
+h1,h2,h3{font-family:Bitter,Georgia,serif;color:var(--wave);margin:0}
+h1{font-size:clamp(30px,4.6vw,48px);line-height:1.08;font-weight:700;letter-spacing:-.01em}
+h2{font-size:clamp(24px,3vw,32px);line-height:1.15;font-weight:700}
+h3{font-size:20px;line-height:1.25;font-weight:700}
+p{margin:0}
+a{color:var(--wave)}
+button{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--flamingo);outline-offset:2px;border-radius:3px}
+.wrap{max-width:1180px;margin:0 auto;padding:0 clamp(16px,4vw,40px)}
+
+/* top bar */
+.bar{position:sticky;top:0;z-index:20;background:var(--wave);color:#fff}
+.bar .wrap{display:flex;align-items:center;gap:18px;min-height:56px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:10px;font-weight:600;white-space:nowrap}
+.brand .mark{width:10px;height:24px;background:var(--flamingo);transform:skewX(-18deg)}
+.bar nav{display:flex;gap:4px;overflow-x:auto;flex:1;scrollbar-width:none}
+.bar nav a{color:#fff;text-decoration:none;padding:8px 10px;border-radius:var(--radius-s);font-size:14px;white-space:nowrap;opacity:.85}
+.bar nav a:hover,.bar nav a.on{opacity:1;background:rgba(255,255,255,.12)}
+
+/* hero */
+.hero{background:var(--mist);padding:48px 0 40px;border-bottom:1px solid var(--line)}
+.hero .lede{max-width:64ch;margin-top:14px;font-size:18px;color:var(--ink)}
+.hero .meta{margin-top:10px;color:var(--muted);font-size:14px;max-width:70ch}
+.prints{margin-top:34px;display:grid;gap:14px}
+.print{display:grid;grid-template-columns:200px 1fr 92px;align-items:center;gap:16px;background:#fff;border:1px solid var(--line);border-radius:var(--radius-m);padding:14px 16px;cursor:pointer;text-align:left;width:100%}
+.print[aria-pressed=true]{border-color:var(--wave);box-shadow:inset 5px 0 0 var(--flamingo)}
+.print .who strong{display:block;font-family:Bitter,Georgia,serif;font-size:19px;color:var(--wave)}
+.print .who span{font-size:13px;color:var(--muted)}
+.cells{display:flex;flex-wrap:wrap;gap:4px 3px}
+.cells .grp{display:flex;gap:3px;padding-right:5px;border-right:1px solid var(--line)}
+.cells .grp:last-child{border-right:0}
+.sq{width:clamp(11px,1.35vw,18px);height:clamp(11px,1.35vw,18px);border-radius:3px;display:inline-block}
+.sq.y{background:var(--yes)}.sq.p{background:linear-gradient(135deg,var(--part) 50%,#F3DDB5 50%)}
+.sq.n{background:#fff;border:2px solid var(--no)}.sq.u{background:#fff;border:2px dashed var(--unk)}
+.score{font-family:Bitter,Georgia,serif;font-size:26px;color:var(--wave);text-align:right;line-height:1}
+.score small{display:block;font:12px Inter,sans-serif;color:var(--muted);margin-top:3px}
+.areakey{display:flex;flex-wrap:wrap;gap:6px 14px;margin-top:14px;font-size:13px;color:var(--muted)}
+
+/* legend */
+.legend{display:flex;flex-wrap:wrap;gap:8px 20px;align-items:center;font-size:14px}
+.legend span{display:inline-flex;align-items:center;gap:7px}
+.ico{width:22px;height:22px;flex:none;display:inline-block;vertical-align:middle}
+
+section.block{padding:56px 0 8px}
+.intro{max-width:68ch;margin-top:10px;color:var(--muted)}
+.tools{display:flex;flex-wrap:wrap;gap:8px;margin:22px 0 14px;align-items:center}
+.chip{border:1px solid var(--line);background:#fff;border-radius:999px;padding:6px 12px 6px 8px;font-size:14px;cursor:pointer;display:inline-flex;align-items:center;gap:7px}
+.chip .dot{width:12px;height:12px;border-radius:50%}
+.chip[aria-pressed=true]{background:var(--wave);color:#fff;border-color:var(--wave)}
+.chip[aria-pressed=true] .dot{box-shadow:0 0 0 2px #fff}
+.toggle{display:inline-flex;align-items:center;gap:8px;font-size:14px;margin-left:auto;cursor:pointer}
+.toggle input{width:18px;height:18px;accent-color:var(--wave)}
+
+/* tables */
+.tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:var(--radius-m);background:#fff}
+table{border-collapse:separate;border-spacing:0;width:100%;min-width:720px}
+caption{caption-side:top;text-align:left;padding:12px 16px;font-size:14px;color:var(--muted);border-bottom:1px solid var(--line);background:var(--mist)}
+th,td{padding:10px 14px;border-bottom:1px solid var(--line);vertical-align:top;text-align:left}
+thead th{position:sticky;top:0;background:#fff;font-size:14px;font-weight:600;color:var(--wave);z-index:1}
+tbody th{font-weight:500;width:34%;background:#fff;position:sticky;left:0;z-index:1}
+tbody th .what{display:block}
+tbody th .plain{display:block;font-weight:400;font-size:13px;color:var(--muted);margin-top:2px}
+tr.areahead th{background:var(--mist);font-family:Bitter,Georgia,serif;font-size:16px;color:var(--wave);padding-top:14px;position:sticky;left:0}
+tr.areahead th .tag{display:inline-flex;align-items:center;gap:8px}
+tr.areahead th .stripe{width:6px;height:20px;border-radius:2px}
+td.cell{padding:6px 8px}
+.cellbtn{display:flex;align-items:flex-start;gap:8px;width:100%;background:none;border:1px solid transparent;border-radius:var(--radius-s);padding:6px;cursor:pointer;text-align:left;font-size:13px;line-height:1.35;color:var(--ink)}
+.cellbtn:hover{border-color:var(--line);background:var(--mist)}
+.cellbtn .lbl{display:block}
+.cellbtn .lbl b{display:block;font-weight:600;font-size:13px}
+.cellbtn .lbl i{font-style:normal;color:var(--muted)}
+.build{display:inline-block;font-size:11px;font-weight:600;color:var(--amethyst);border:1px solid var(--amethyst);border-radius:3px;padding:0 4px;margin-left:4px;vertical-align:1px}
+.dim{opacity:.28}
+tr.hidden{display:none}
+col.focus,th.focus,td.focus{background:#F6FAFB}
+
+/* roles */
+.tabs{display:flex;gap:6px;flex-wrap:wrap;margin:22px 0 14px}
+.tab{border:1px solid var(--line);background:#fff;border-radius:var(--radius-s);padding:9px 16px;cursor:pointer;font-weight:600;color:var(--wave)}
+.tab[aria-selected=true]{background:var(--wave);color:#fff;border-color:var(--wave)}
+.roles td{font-size:13px;line-height:1.35;min-width:150px}
+.roles td .r{display:flex;gap:8px;align-items:flex-start}
+.roles thead th .aico{display:flex;align-items:center;gap:7px}
+.roles tbody th .rico{display:flex;gap:10px;align-items:center}
+.roles tbody th .rico svg,.roles td .r .ico{flex:none}
+.rolenote{margin-top:10px;font-size:14px;color:var(--muted);max-width:75ch}
+
+/* safety */
+.safety tbody th{width:40%}
+.safety td{text-align:center;vertical-align:middle}
+.safety td .ico{width:26px;height:26px}
+.safety tr.same{}
+.stage{display:inline-flex;align-items:center;gap:8px}
+
+/* cards */
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px;margin-top:24px}
+.card{border:1px solid var(--line);border-radius:var(--radius-m);background:#fff;display:flex;flex-direction:column;overflow:hidden}
+.card header{display:flex;gap:14px;align-items:center;padding:18px 18px 14px;border-bottom:1px solid var(--line)}
+.card header svg{width:56px;height:56px;flex:none}
+.card header p{font-size:13px;color:var(--muted)}
+.card .body{padding:14px 18px 18px;display:grid;gap:14px}
+.card .oneline{font-size:15px}
+.card h4{margin:0 0 6px;font-size:14px;font-weight:600;color:var(--wave)}
+.card ul{margin:0;padding-left:0;list-style:none;display:grid;gap:7px;font-size:14px}
+.card li{display:flex;gap:8px;align-items:flex-start}
+.card li svg{width:18px;height:18px;flex:none;margin-top:2px}
+.ratings{display:flex;gap:10px;flex-wrap:wrap}
+.rating{background:var(--mist);border-radius:var(--radius-s);padding:6px 10px;font-size:13px}
+.rating b{font-family:Bitter,Georgia,serif;font-size:18px;color:var(--wave);margin-right:4px}
+.rating.low b{color:var(--no)}
+
+/* journeys */
+.jgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;margin-top:8px}
+.journey{border-top:4px solid var(--wave);background:var(--mist);border-radius:0 0 var(--radius-m) var(--radius-m);padding:16px 18px 18px}
+.journey h3{font-size:18px}
+.journey p.when{font-size:13px;color:var(--muted);margin:4px 0 10px}
+.journey ol{margin:0;padding-left:0;list-style:none;counter-reset:s;display:grid;gap:8px}
+.journey li{counter-increment:s;display:grid;grid-template-columns:28px 1fr;gap:8px;font-size:14px;line-height:1.4}
+.journey li::before{content:counter(s);width:24px;height:24px;border-radius:50%;background:var(--wave);color:#fff;font-size:12px;font-weight:600;display:grid;place-items:center}
+.journey li.safety::before{background:var(--flamingo)}
+.journey li .tagline{display:block;font-size:12px;color:var(--muted)}
+.jkey{font-size:13px;color:var(--muted);display:flex;gap:16px;flex-wrap:wrap;margin-bottom:12px}
+.jkey span{display:inline-flex;gap:6px;align-items:center}
+.jkey i{width:14px;height:14px;border-radius:50%;display:inline-block}
+
+/* notes */
+.notes{margin:56px 0 0;padding:32px 0 48px;background:var(--mist);border-top:1px solid var(--line)}
+.notes ul{margin:12px 0 0;padding-left:20px;max-width:80ch;display:grid;gap:6px;font-size:14px}
+
+/* evidence drawer */
+.drawer{position:fixed;right:16px;bottom:16px;width:min(420px,calc(100vw - 32px));max-height:70vh;overflow:auto;background:#fff;border:1px solid var(--wave);border-radius:var(--radius-m);box-shadow:0 12px 32px rgba(0,61,79,.22);padding:18px 18px 16px;z-index:30;display:none}
+.drawer.open{display:block}
+.drawer .x{position:absolute;right:10px;top:8px;border:0;background:none;font-size:24px;line-height:1;cursor:pointer;color:var(--muted);padding:4px 8px}
+.drawer .co{font-size:13px;color:var(--muted)}
+.drawer h3{font-size:18px;margin:2px 28px 8px 0}
+.drawer .st{display:flex;align-items:center;gap:8px;font-weight:600;margin-bottom:10px}
+.drawer blockquote{margin:0 0 10px;padding:10px 12px;border-left:4px solid var(--flamingo);background:var(--mist);font-size:14px}
+.drawer .note{font-size:14px;margin-bottom:10px}
+.drawer .src{font-size:13px;color:var(--muted)}
+@media (max-width:760px){
+  .print{grid-template-columns:1fr;gap:10px}
+  .score{text-align:left}
+  tbody th{width:auto;min-width:170px}
+  .toggle{margin-left:0}
+  .drawer{right:0;bottom:0;width:100%;border-radius:var(--radius-m) var(--radius-m) 0 0;max-height:60vh}
+}
+@media print{.bar,.drawer,.tools,.tabs{display:none!important}.tablewrap{overflow:visible}section.block{break-inside:avoid-page}[data-panel]{display:block!important}}
+.bar nav a.other{border:1px solid rgba(255,255,255,.35);margin-left:6px}
+.sq.x{background:#E3EBEE}
+.bar.subnav{top:var(--gh-h);z-index:20;background:#0B5163}
+.crumb{display:flex;flex:none;gap:8px;align-items:center;font-weight:600;white-space:nowrap}
+.crumb a{color:#CFE3E8}
+.crumb [aria-current]{color:#fff}
+html{scroll-padding-top:124px}
+.notes{margin-bottom:0}
+.gf{margin-top:0}
+</style>
+</head>
+<body>
+<a class="gh-skip" href="#content">Skip to content</a>
+<header class="gh">
+  <div class="gh-in">
+    <a class="gh-brand" href="../index.html"><span class="gh-slash">/</span>The Product Council</a>
+    <button type="button" class="gh-btn gh-menu" id="ghMenu" aria-expanded="false" aria-controls="ghNav">Menu</button>
+    <nav class="gh-nav" id="ghNav" aria-label="Main">
+      <a href="../index.html">Home</a>
+      <a href="../use.html">Use it</a>
+      <a href="../commands.html">Commands</a>
+      <a href="../behaviour.html">How it behaves</a>
+      <a href="../knowledge.html">Knowledge</a>
+      <a href="../diagrams.html">Diagrams</a>
+      <a href="../technical.html">Technical</a>
+      <a href="../reference.html">Reference</a>
+      <a href="../comparisons.html" aria-current="page">Comparisons</a>
+    </nav>
+  </div>
+</header>
+
+<div class="bar subnav">
+  <div class="wrap">
+    <nav class="crumb" aria-label="Breadcrumb"><a href="../comparisons.html">Comparisons</a><span aria-hidden="true">/</span><span aria-current="page">Staff apps</span></nav>
+    <nav aria-label="Sections">
+      <a href="#matrix">Comparison</a>
+      <a href="#roles">Who can do what</a>
+      <a href="#compliance">Compliance checklist</a>
+      <a href="#cards">App cards</a>
+      <a href="#journeys">Journeys</a>
+      <a href="#notes">What we could not see</a>
+      <a href="driver-app.html" class="other">Driver apps</a>
+      <a href="parent-app.html" class="other">Parent apps</a>
+      <a href="provider-portal.html" class="other">Provider portals</a>
+      <a href="district-portal.html" class="other">District portals</a>
+      <a href="payment-portal.html" class="other">Payment portals</a>
+    </nav>
+  </div>
+</div>
+
+<main id="content">
+<section class="hero">
+  <div class="wrap">
+    <h1>How two bus operators equip their staff</h1>
+    <p class="lede">Beacon Mobility and Student Transportation of America each run a tool for their own staff. The two do very different jobs: one is a news and recognition app, the other an HR records tool. Each strip below is one app. Every square is one thing staff can do, grouped by area and coloured by what we found.</p>
+    <p class="meta">Built from our reading of each app's code, October 2026. Select a strip to highlight that app across the page.</p>
+    <div class="prints" id="prints"></div>
+    <div class="areakey" id="areakey"></div>
+    <div class="legend" style="margin-top:16px" id="legend"></div>
+  </div>
+</section>
+
+<section class="block" id="matrix">
+  <div class="wrap">
+    <h2>Side-by-side comparison</h2>
+    <p class="intro">Select any answer to read the evidence behind it. A purple <span class="build">in build</span> tag means we found the feature in the app's code. It exists, but we cannot prove every staff member uses it.</p>
+    <div class="tools" id="areaFilter" role="group" aria-label="Filter by area"></div>
+    <div class="tools" style="margin-top:0">
+      <label class="toggle"><input type="checkbox" id="diffOnly"> Show only rows where the apps differ</label>
+    </div>
+    <div class="tablewrap">
+      <table id="matrixTable"><caption>Staff app capabilities, by area. Rows: what staff need. Columns: each competitor's app.</caption></table>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="roles">
+  <div class="wrap">
+    <h2>Who can do what</h2>
+    <p class="intro">A staff app sits inside a wider HR setup. This grid shows which people can sign in, get company news, post or recognise others, hire and onboard, and manage employee records. Choose a company.</p>
+    <div class="tabs" role="tablist" id="roleTabs"></div>
+    <div id="rolePanels"></div>
+  </div>
+</section>
+
+<section class="block" id="compliance">
+  <div class="wrap">
+    <h2>Compliance checklist</h2>
+    <p class="intro">Every compliance check we found, in the order it happens: at hiring, during new-hire paperwork, and once the person is working.</p>
+    <div class="tools"><label class="toggle" style="margin-left:0"><input type="checkbox" id="safetyDiff"> Show only checks where the apps differ</label></div>
+    <div class="tablewrap">
+      <table class="safety" id="safetyTable"><caption>Compliance checks by stage. Select an icon for the evidence.</caption></table>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="cards">
+  <div class="wrap">
+    <h2>Each app in plain words</h2>
+    <p class="intro">What each app is for, what stands out, and where it falls short.</p>
+    <div class="cards" id="cardGrid"></div>
+  </div>
+</section>
+
+<section class="block" id="journeys">
+  <div class="wrap">
+    <h2>How staff use each tool, step by step</h2>
+    <p class="intro">The journeys are written as numbered steps, the same way we write our own workflows. The step order is inferred from screen and page names in each app's code, so treat it as close, not exact.</p>
+    <div class="tabs" role="tablist" id="jTabs"></div>
+    <div class="jkey"><span><i style="background:var(--wave)"></i>Step</span><span><i style="background:var(--flamingo)"></i>Compliance step</span></div>
+    <div id="jPanels"></div>
+  </div>
+</section>
+
+<section class="notes" id="notes">
+  <div class="wrap">
+    <h2>What we could not see</h2>
+    <ul>
+      <li>We read each app's code. We did not run either app, sign in, or see any real content or records.</li>
+      <li>The two tools do different jobs. Beacon's is for news and engagement; STA's is for HR records. Many "not found" answers reflect that, not a gap in one product.</li>
+      <li>Beacon's admin portal, and the Workday, PerkSpot and chatbot content it links to, sit outside the app. We could not see them.</li>
+      <li>A store review says drivers open the driver app from MyBeacon. The code has no driver tools, so this may be a link in the Hub. Not confirmed.</li>
+      <li>Our analysis says MyBeacon is used by drivers, monitors and office staff. No role data in the code proves it.</li>
+      <li>For STA we loaded the public sign-in page once. Server logic, permissions and the UKG, WorkBright and DriverHub syncs are not visible.</li>
+      <li>"DriverHub" in STA's app is a source of job applicants. It is not First Student's DriverHub. What it is exactly is unknown.</li>
+      <li>We do not know whether drivers use STA's app themselves, or only office and HR staff.</li>
+      <li>We do not know which states' exams STA uses beyond the examples in the code.</li>
+      <li>The MyBeacon rating comes from the iPhone store listing read in October 2026. STA's tool is a web app with no store listing.</li>
+    </ul>
+  </div>
+</section>
+</main>
+<footer class="gf">
+  <div class="gf-in">
+    <div class="gf-brand"><span class="gh-slash">/</span>The Product Council<p>Expert panels for FirstAlt product decisions, grounded in evidence.</p></div>
+    <div><h2>Use</h2><a href="../use.html">Get started</a><a href="../commands.html">Commands</a><a href="../behaviour.html">How it behaves</a><a href="../diagrams.html">Diagrams</a></div>
+    <div><h2>Understand</h2><a href="../knowledge.html">Knowledge and context</a><a href="../technical.html">Technical</a><a href="../reference.html">Reference</a></div>
+    <div><h2>Competitors</h2><a href="../comparisons/driver-app.html">Driver apps</a><a href="../comparisons/parent-app.html">Parent apps</a><a href="../comparisons/staff-app.html">Staff apps</a><a href="../comparisons/provider-portal.html">Provider portals</a><a href="../comparisons/district-portal.html">District portals</a><a href="../comparisons/payment-portal.html">Payment portals</a></div>
+  </div>
+  <p class="gf-note">FirstAlt Product Council v3.7.3, updated 11 October 2026. The repository is the source of truth: update these pages in the same pull request as a skill, agent or persona change.</p>
+</footer>
+
+<aside class="drawer" id="drawer" role="dialog" aria-modal="false" aria-labelledby="dTitle">
+  <button class="x" id="dClose" aria-label="Close evidence">×</button>
+  <div class="co" id="dCo"></div>
+  <h3 id="dTitle"></h3>
+  <div class="st" id="dSt"></div>
+  <div id="dBody"></div>
+</aside>
+
+<script src="../assets/chrome.js"></script>
+<script>
+/* ---------- icons ---------- */
+const S = {
+ y:'<svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="#3F7A50"/><path d="M7 12.5l3.2 3.2L17 9" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+ p:'<svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="#fff" stroke="#CC850A" stroke-width="2"/><path d="M12 2a10 10 0 0 0 0 20z" fill="#CC850A"/></svg>',
+ n:'<svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="#fff" stroke="#D9435C" stroke-width="2"/><path d="M8.5 8.5l7 7M15.5 8.5l-7 7" stroke="#D9435C" stroke-width="2.4" stroke-linecap="round"/></svg>',
+ u:'<svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="#fff" stroke="#8A9AA1" stroke-width="2" stroke-dasharray="3 2.4"/><text x="12" y="16.5" text-anchor="middle" font-size="12" font-weight="700" fill="#55686F" font-family="Inter,sans-serif">?</text></svg>',
+ x:'<svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 12h10" stroke="#B5C1C6" stroke-width="2.4" stroke-linecap="round"/></svg>'
+};
+const SL = {y:'Has it',p:'Partly',n:'Not offered',u:'Not found in our research',x:'Not their role'};
+
+const AREA_ICON = {
+ key:'<path d="M14.5 9.5a4.5 4.5 0 1 1-1.4-3.3" /><circle cx="10" cy="10" r="1.6"/><path d="M13.5 12.5L20 19l-1.6 1.6M17 16l-1.6 1.6"/>',
+ cal:'<rect x="3.5" y="5" width="17" height="15" rx="2"/><path d="M3.5 10h17M8 3v4M16 3v4M8 14h3"/>',
+ pin:'<path d="M12 21s-6.5-6.2-6.5-11a6.5 6.5 0 0 1 13 0c0 4.8-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.4"/>',
+ kid:'<circle cx="12" cy="6.5" r="3"/><path d="M6 21v-4.5a6 6 0 0 1 12 0V21M12 13v8"/>',
+ shield:'<path d="M12 3l7.5 3v5.5c0 4.6-3.2 8-7.5 9.5-4.3-1.5-7.5-4.9-7.5-9.5V6z"/><path d="M8.8 12l2.3 2.3L15.5 10"/>',
+ coin:'<circle cx="12" cy="12" r="8.5"/><path d="M14.6 9.2c-.5-.9-1.5-1.4-2.6-1.4-1.5 0-2.6.8-2.6 2s1.1 1.7 2.6 2 2.6.8 2.6 2-1.1 2-2.6 2c-1.2 0-2.2-.5-2.7-1.5M12 6.3v1.5M12 16.2v1.5"/>',
+ bell:'<path d="M6 16.5V11a6 6 0 0 1 12 0v5.5l1.5 2h-15z"/><path d="M10 20.5a2 2 0 0 0 4 0"/>',
+ buoy:'<circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="3.5"/><path d="M6 6l3.5 3.5M18 6l-3.5 3.5M6 18l3.5-3.5M18 18l-3.5-3.5"/>',
+ stop:'<path d="M8.3 3.5h7.4l4.8 4.8v7.4l-4.8 4.8H8.3l-4.8-4.8V8.3z"/><path d="M9 12h6"/>',
+ globe:'<circle cx="12" cy="12" r="8.5"/><path d="M3.5 12h17M12 3.5c2.6 2.4 3.8 5.2 3.8 8.5s-1.2 6.1-3.8 8.5c-2.6-2.4-3.8-5.2-3.8-8.5S9.4 5.9 12 3.5z"/>',
+ news:'<rect x="3.5" y="4.5" width="17" height="15" rx="2"/><path d="M7 8.5h10M7 12h10M7 15.5h6"/>',
+ star:'<path d="M12 3.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8-5.2-2.8-5.2 2.8 1-5.8-4.3-4.1 5.9-.9z"/>',
+ brief:'<rect x="3.5" y="7.5" width="17" height="12" rx="2"/><path d="M9 7.5v-2h6v2M3.5 12.5h17"/>',
+ doc:'<path d="M6.5 3.5h7.5l4 4v13H6.5z"/><path d="M14 3.5v4h4M9 12h6M9 15.5h6"/>',
+ card:'<rect x="3" y="5.5" width="18" height="13" rx="2"/><circle cx="8.5" cy="11" r="2"/><path d="M5.5 16c.5-1.6 1.6-2.4 3-2.4s2.5.8 3 2.4M14 10h4M14 13.5h3"/>',
+ user:'<circle cx="12" cy="8" r="3.5"/><path d="M5 20.5c.6-4.2 3.3-6.5 7-6.5s6.4 2.3 7 6.5"/>'
+};
+function aIco(name,color,size=20){return `<svg width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="${color}" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${AREA_ICON[name]}</svg>`}
+
+const AREAS = [
+ {id:'signin',name:'Sign-in and accounts',color:'#47A1AD',icon:'key'},
+ {id:'feed',name:'News and feed',color:'#003D4F',icon:'news'},
+ {id:'alerts',name:'Messages and alerts',color:'#2B7A86',icon:'bell'},
+ {id:'engage',name:'Surveys and recognition',color:'#634F7D',icon:'star'},
+ {id:'hr',name:'HR, pay and perks',color:'#CC850A',icon:'coin'},
+ {id:'hire',name:'Hiring and applicants',color:'#6B9E78',icon:'brief'},
+ {id:'onboard',name:'Onboarding and paperwork',color:'#8E4A5B',icon:'doc'},
+ {id:'records',name:'Employee records',color:'#1F6F5C',icon:'card'},
+ {id:'comply',name:'Compliance and training',color:'#F2617A',icon:'shield'},
+ {id:'access',name:'Language and access',color:'#5B6E76',icon:'globe'}
+];
+
+const COS = [
+ {id:'bcn',name:'Beacon Mobility',app:'MyBeacon',model:'Internal comms and engagement app for staff'},
+ {id:'sta',name:'Student Transportation of America',app:'Ridesta staff web app',model:'Internal HR tool for terminals, employees and applicants'}
+];
+
+/* plain source names */
+const AN = {
+ bcn:{AN3:'Our reading of the MyBeacon Android app code (v2.6.1, Oct 2026)'},
+ sta:{AN1:'Our reading of the Ridesta staff web app code, sign-in page only (Oct 2026)'}
+};
+function srcName(co,keys){
+  const c=COS.find(x=>x.id===co).name;
+  return keys.split(/,\s*/).filter(Boolean).map(k=>{
+    if(k.startsWith('AN')) return AN[co][k]||'Our code reading';
+    const t={W:c+' website',H:c+' help centre',A:'App store listing',P:'Press coverage',R:'App store reviews',C:'District contract'}[k[0]];
+    return t||k;
+  }).filter((v,i,a)=>a.indexOf(v)===i).join('; ');
+}
+
+/* ---------- matrix data ----------
+ each cell: [status, text, sourceKeys, date, isQuote, inBuild, note]  */
+const D='2026-10-16';
+const ROWS = [
+ {a:'signin',w:'Sign in with the company account',d:'One work login, no separate password',
+  bcn:['y','Login with SSO','AN3',D,1,1,'Single sign-on through the Beacon admin portal, with token refresh and log out.'],
+  sta:['y','Login with OneLogin','AN1',D,1,1,'Company single sign-on only. There is no public sign-in.']},
+ {a:'signin',w:'Sign in with fingerprint or face',d:'Faster sign-in on a phone',
+  bcn:['y','Enable to login using Biometrics','AN3',D,1,1,'Face ID, fingerprint, iris and Touch ID are listed.'],
+  sta:['u','Not found. The tool is a web app reached through company sign-in.','AN1',D,0,0]},
+ {a:'signin',w:'Keep the app safe on any phone',d:'Blocks unsafe phones and old versions',
+  bcn:['y',"Due to a security policy, MyBeacon Employee App can't be opened on a rooted device.",'AN3',D,1,1,'It also checks for tampering and forces staff to update to the latest version.'],
+  sta:['u','Not found. The tool is a web app, so phone checks were not looked for.','AN1',D,0,0]},
+ {a:'signin',w:'Learn the app on first use',d:'A guided tour for new users',
+  bcn:['y','An app tour on the welcome screens.','AN3',D,0,1],
+  sta:['u','Not found. The access pages are sign-in, welcome and log out.','AN1',D,0,0]},
+ {a:'signin',w:'Control who can see and do what',d:'Users, roles and permissions',
+  bcn:['p','Screen and action permissions come from the server. The admin portal that sets them was not visible.','AN3',D,0,1],
+  sta:['y','Create and update users and roles. Role and policy checks run on the server.','AN1',D,0,1]},
+
+ {a:'feed',w:'Read company news',d:'A feed of posts from the company and colleagues',
+  bcn:['y','A news feed of posts with text, images, video, documents and links, by category and group, with search.','AN3',D,0,1],
+  sta:['u','No news or feed pages among the app pages we read.','AN1',D,0,0]},
+ {a:'feed',w:'Post to the feed',d:'Staff share an update with a group',
+  bcn:['y','Regular, recognition and poll posts, up to 5 attachments, sent to chosen groups and a category.','AN3',D,0,1,'Staff can post as themselves, or as Beacon Communications or Beacon Admin where allowed.'],
+  sta:['u','Not found.','AN1',D,0,0]},
+ {a:'feed',w:'See announcements and pinned posts',d:'Important company notices stay on top',
+  bcn:['y','An announcements list, an announcement card on Home, and pinned posts.','AN3',D,0,1],
+  sta:['u','Not found.','AN1',D,0,0]},
+ {a:'feed',w:'Like, comment, share and save posts',d:'React to what colleagues post',
+  bcn:['y','Likes, comments with threaded replies, sharing and saved posts.','AN3',D,0,1],
+  sta:['u','Not found.','AN1',D,0,0]},
+ {a:'feed',w:'Keep posts clean',d:'Stop bad language and unwanted links',
+  bcn:['y','You cannot post a comment with bad words.','AN3',D,1,1,'Some groups also block posts with links, and the author can turn comments off.'],
+  sta:['u','Not found.','AN1',D,0,0]},
+ {a:'feed',w:'See how staff use the app',d:'Usage numbers for the company',
+  bcn:['y','App clicks, post views and time spent are sent to Beacon.','AN3',D,0,1],
+  sta:['u','Not found.','AN1',D,0,0]},
+
+ {a:'alerts',w:'Get alerts on the phone',d:'Push alerts and a list of past alerts',
+  bcn:['y','Push alerts for new posts and announcements, a notifications list, mark as read, and pause.','AN3',D,0,1],
+  sta:['u','No notifications visible in the app.','AN1',D,0,0]},
+ {a:'alerts',w:'Ask an HR helper',d:'A chatbot that answers staff questions',
+  bcn:['y',"Hi, I'm Beacon Buddy, how can I help you?",'AN3',D,1,1,'An HR and help chatbot, powered by Leena AI.'],
+  sta:['u','Not found.','AN1',D,0,0]},
+
+ {a:'engage',w:'Run polls',d:'Ask staff a question and count the votes',
+  bcn:['y','Poll posts with a question, unique options and a length in days.','AN3',D,0,1],
+  sta:['u','Not found.','AN1',D,0,0]},
+ {a:'engage',w:'Recognise a colleague',d:'Give someone a public thank-you',
+  bcn:['y','Recognition posts give one or more colleagues a badge such as HQ Hero, Top Learner or Epic Performance.','AN3',D,0,1],
+  sta:['u','Not found.','AN1',D,0,0]},
+ {a:'engage',w:'See my own awards',d:'A personal list of recognitions earned',
+  bcn:['y','An earned recognitions page, with details for each award.','AN3',D,0,1],
+  sta:['u','Not found.','AN1',D,0,0]},
+
+ {a:'hr',w:'Reach HR self-service',d:'Pay, time off and HR records',
+  bcn:['p','A shortcut on Home opens Beacon’s Workday site.','AN3',D,0,1,'We read this as HR, pay and time off. The Workday content itself was not visible.'],
+  sta:['p','A connection to UKG, the HR and payroll system, exists as a page. Its details were not visible.','AN1',D,0,1]},
+ {a:'hr',w:'Find staff discounts',d:'Perks and offers for employees',
+  bcn:['y','A link to the PerkSpot employee discount programme.','AN3',D,0,1],
+  sta:['u','Not found.','AN1',D,0,0]},
+ {a:'hr',w:'Find useful links in one place',d:'Company tools and pages from one tab',
+  bcn:['y','Server-managed list of links opened in an in-app web view','AN3, R4',D,1,1,'A store review says drivers “launch the driver app directly from it”. A link to a separate driver app could explain this. Not confirmed.'],
+  sta:['u','Not found.','AN1',D,0,0]},
+
+ {a:'hire',w:'Apply for a job',d:'A job seeker sends an application',
+  bcn:['u','No job application found in the app.','AN3',D,0,0],
+  sta:['y','Thank you for your application! We will be in touch.','AN1',D,1,1,'Applicants use separate application pages, with a confirmation page and an error page.']},
+ {a:'hire',w:'Bring in applicants from a hiring source',d:'Move a job seeker into the HR system',
+  bcn:['u','Not found.','AN3',D,0,0],
+  sta:['y','Select the identifier type for the applicant you want to sync','AN1',D,1,1,'Staff sync an applicant by hand from a source the app calls DriverHub. This is not First Student’s DriverHub.']},
+
+ {a:'onboard',w:'Run new-hire paperwork',d:'Forms a new employee must complete',
+  bcn:['u','Not found.','AN3',D,0,0],
+  sta:['y','Onboarding paperwork runs through WorkBright','AN1',D,1,1,'Staff manage WorkBright sites and groups and sync them. The paperwork itself happens in WorkBright.']},
+
+ {a:'records',w:'Look up and edit an employee',d:'One record per person: role, depot, licence',
+  bcn:['u','No employee records. Staff see only their own profile.','AN3',D,0,0],
+  sta:['y','A grid of employees with detail and edit: employee ID, position, work terminal and licence type.','AN1',D,0,1,'There is also a list of people, with create and update.']},
+ {a:'records',w:'Assign staff to a depot',d:'Which terminal a person works from',
+  bcn:['u','Not found.','AN3',D,0,0],
+  sta:['y','A list of terminals (depots), with edit, and assign or unassign an employee’s terminal.','AN1',D,0,1]},
+ {a:'records',w:'See my own profile and settings',d:'Name, contact details and preferences',
+  bcn:['y','A profile with name, email, phone and groups, plus language and notification settings.','AN3',D,0,1,'Whether staff can edit these details is not visible.'],
+  sta:['u','Not found. The source shows staff roles only, not employee self-service.','AN1',D,0,0]},
+ {a:'records',w:'Export lists',d:'Download staff lists to a spreadsheet or PDF',
+  bcn:['u','Not found.','AN3',D,0,0],
+  sta:['y','Data grids export to Excel and PDF.','AN1',D,0,1]},
+
+ {a:'comply',w:'Record driver qualification exams',d:'State bus-driver and federal exams',
+  bcn:['u','Not found. The app has no routes, buses, students or driver tools.','AN3',D,0,0],
+  sta:['y','State bus-driver exam types, for example FL, GA, IL, IN, MA, OH, OR, PA and TX, with or without the Federal DOT exam.','AN1',D,0,1]},
+ {a:'comply',w:'Record the licence type',d:'Commercial licence or not',
+  bcn:['u','Not found.','AN3',D,0,0],
+  sta:['y','CDL and non-CDL licence types.','AN1',D,0,1]},
+
+ {a:'access',w:'Use the app in another language',d:'Languages staff can choose',
+  bcn:['y','English, Spanish and Haitian Creole.','AN3',D,0,1],
+  sta:['u','No language choice found.','AN1',D,0,0]},
+ {a:'access',w:'Use it on a phone',d:'A mobile app for staff on the move',
+  bcn:['y','An Android app, with an iPhone version in the store.','AN3, A4',D,0,1],
+  sta:['u','A web app. Whether it works well on a phone was not tested.','AN1',D,0,0]}
+];
+
+/* ---------- roles data ---------- */
+const ACTIONS = [
+ {id:'in',name:'Sign in',icon:'key'},{id:'read',name:'Get company news',icon:'news'},
+ {id:'post',name:'Post or recognise',icon:'star'},{id:'hire',name:'Hire and onboard',icon:'brief'},{id:'rec',name:'Manage records',icon:'card'}
+];
+const ROLE_ICON = {
+ driver:'<circle cx="12" cy="8" r="3.2"/><path d="M5.5 20c.6-4 3.2-6 6.5-6s5.9 2 6.5 6"/><circle cx="12" cy="17.3" r="1.6"/>',
+ office:'<rect x="3.5" y="5" width="11" height="8" rx="1.2"/><path d="M7 16h4M9 13v3"/><circle cx="18" cy="9" r="2.4"/><path d="M14.5 19c.4-2.4 1.8-3.6 3.5-3.6s3.1 1.2 3.5 3.6"/>',
+ firm:'<path d="M3.5 20.5h17M5 20.5V9l7-4.5L19 9v11.5M9 20.5v-5h6v5"/>',
+ admin:'<circle cx="12" cy="12" r="3"/><path d="M12 4v3M12 17v3M4 12h3M17 12h3M6.3 6.3l2.1 2.1M15.6 15.6l2.1 2.1M6.3 17.7l2.1-2.1M15.6 8.4l2.1-2.1"/>',
+ applicant:'<circle cx="9" cy="8" r="3"/><path d="M3.5 19.5c.5-3.8 2.6-5.8 5.5-5.8s5 2 5.5 5.8"/><path d="M15.5 6.5h5v8h-5zM17 9h2M17 11.5h2"/>'
+};
+function rIco(n){return `<svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#003D4F" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="11.4" fill="#EDF1F3" stroke="none"/>${ROLE_ICON[n]}</svg>`}
+
+const ROLES = {
+ bcn:{note:'MyBeacon is a company news and engagement app. Our analysis says drivers, monitors and office staff use it, but the code holds no role data to prove it. The communications team and admins post as the company; admins set groups, categories and links in a separate portal.',rows:[
+  {r:'Employee (driver, monitor or office staff)',i:'driver',in:['y','Company sign-in, then fingerprint or face'],read:['y','Reads the feed and announcements; gets push alerts'],post:['p','Comments, likes and votes; posts and gives recognitions where permitted'],hire:['u','Not seen'],rec:['p','Sees own profile and earned awards only']},
+  {r:'Communications team',i:'office',in:['y','Same company sign-in'],read:['y','Reads the feed'],post:['y','Posts as “Beacon Communications”; publishes announcements'],hire:['u','Not seen'],rec:['u','Not seen']},
+  {r:'Admin',i:'admin',in:['y','Same company sign-in'],read:['y','Reads the feed'],post:['y','Posts as “Beacon Admin” and pins posts'],hire:['u','Not seen'],rec:['p','Manages groups, categories and links in an admin portal we could not see']}
+ ]},
+ sta:{note:'STA’s tool is for office and HR staff only. Applicants use separate application pages. We found no sign-in or self-service for drivers or other employees.',rows:[
+  {r:'Applicant',i:'applicant',in:['u','No applicant sign-in seen'],read:['x','Not their role'],post:['x','Not their role'],hire:['y','Fills in the application and sees a confirmation'],rec:['x','Not their role']},
+  {r:'HR and onboarding staff',i:'office',in:['y','Company sign-in with OneLogin'],read:['u','No news found'],post:['u','Not found'],hire:['y','Syncs applicants and runs paperwork through WorkBright'],rec:['y','Edits position, terminal, licence type and exams']},
+  {r:'Admin',i:'admin',in:['y','Company sign-in with OneLogin'],read:['u','No news found'],post:['u','Not found'],hire:['p','Manages the WorkBright sites and groups'],rec:['y','Creates users and sets roles and policies']},
+  {r:'Driver or other employee',i:'driver',in:['u','Not seen: the code shows staff roles only'],read:['u','Not seen'],post:['u','Not seen'],hire:['x','Not their role'],rec:['x','Is the subject of the record, not its editor']}
+ ]}
+};
+
+/* ---------- compliance data ---------- [status, text, source, inBuild, isQuote] */
+const STAGES = [
+ {id:'hire',name:'At hiring',icon:'brief'},{id:'paper',name:'New-hire paperwork',icon:'doc'},{id:'ongoing',name:'Once working',icon:'cal'}
+];
+const SAFE = [
+ {s:'hire',w:'State bus-driver exam recorded',bcn:['u','Not found.','AN3',0],sta:['y','State bus-driver exam types, for example FL, GA, IL, IN, MA, OH, OR, PA and TX.','AN1',1]},
+ {s:'hire',w:'Federal DOT exam recorded',bcn:['u','Not found.','AN3',0],sta:['y','Exam types come with or without the Federal DOT exam.','AN1',1]},
+ {s:'hire',w:'Licence type recorded',bcn:['u','Not found.','AN3',0],sta:['y','CDL and non-CDL licence types.','AN1',1]},
+ {s:'paper',w:'New-hire paperwork tracked',bcn:['u','Not found.','AN3',0],sta:['p','Onboarding paperwork runs through WorkBright','AN1',1,1]},
+ {s:'ongoing',w:'Reminders before an exam or licence expires',bcn:['u','Not found.','AN3',0],sta:['u','Not found. No notifications are visible in the app.','AN1',0]},
+ {s:'ongoing',w:'Training records',bcn:['u','Not found.','AN3',0],sta:['u','Not found.','AN1',0]}
+];
+
+/* ---------- cards ---------- */
+const VEH = {
+ bcn:'<svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="14" fill="#EDF1F3"/><rect x="20" y="8" width="24" height="48" rx="4" fill="#003D4F"/><rect x="23" y="13" width="18" height="36" rx="1.5" fill="#fff"/><rect x="25" y="16" width="14" height="8" rx="1" fill="#47A1AD"/><path d="M25 28h14M25 32h10M25 37h14M25 41h8" stroke="#003D4F" stroke-width="1.6" stroke-linecap="round"/><circle cx="46" cy="16" r="6" fill="#F2617A"/><path d="M46 12.4l1.1 2.2 2.4.4-1.7 1.6.4 2.4-2.2-1.1-2.2 1.1.4-2.4-1.7-1.6 2.4-.4z" fill="#fff"/></svg>',
+ sta:'<svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="14" fill="#EDF1F3"/><rect x="8" y="12" width="48" height="38" rx="4" fill="#003D4F"/><rect x="11" y="19" width="42" height="28" rx="1.5" fill="#fff"/><circle cx="13.5" cy="15.5" r="1.4" fill="#F2617A"/><circle cx="18" cy="15.5" r="1.4" fill="#CC850A"/><circle cx="22.5" cy="15.5" r="1.4" fill="#6B9E78"/><rect x="11" y="19" width="42" height="7" fill="#47A1AD"/><path d="M11 33h42M11 40h42M24 26v21M38 26v21" stroke="#CBD5DA" stroke-width="1.4"/></svg>'
+};
+const PLUS='<svg viewBox="0 0 18 18" aria-hidden="true"><circle cx="9" cy="9" r="8" fill="#3F7A50"/><path d="M9 5.5v7M5.5 9h7" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/></svg>';
+const MINUS='<svg viewBox="0 0 18 18" aria-hidden="true"><circle cx="9" cy="9" r="8" fill="#fff" stroke="#D9435C" stroke-width="1.6"/><path d="M5.5 9h7" stroke="#D9435C" stroke-width="1.8" stroke-linecap="round"/></svg>';
+const CARDS = {
+ bcn:{line:'A company news and engagement app for all staff. It keeps people informed and thanked, and points them to HR tools elsewhere.',
+  ratings:[['4.69','iPhone, 1,319 ratings'],['Not public','Android']],
+  good:['News feed, announcements and pinned posts in one place','Recognition posts with named badges and a personal awards page','Polls with a set length','One front door to HR: Workday, staff discounts and an HR chatbot','English, Spanish and Haitian Creole','Blocks unsafe phones and forces updates'],
+  gaps:['No routes, buses, students or schedules: it is not a driver tool','No hiring, onboarding or employee records','No exam, licence or training tracking found','HR tasks happen in Workday, outside the app']},
+ sta:{line:'An HR records tool for office and HR staff. It moves job applicants into employee records and keeps each person’s depot, licence and exams.',
+  ratings:[['Web','No store listing: staff sign-in only']],
+  good:['One place for employees, applicants and depots','Records state bus-driver exams and the Federal DOT exam','Connects the hiring source, paperwork and payroll systems','Company single sign-on only','Export to Excel and PDF'],
+  gaps:['Office staff only: no driver or employee self-service seen','No notifications seen','No news, messages or recognition','Paperwork and payroll happen in outside systems','Applicants are synced by hand','No language choice found']}
+};
+
+/* ---------- journeys ---------- [text, isCompliance] */
+const JOURNEYS = {
+ bcn:[
+  {t:'Sign in',w:'First use, then each visit',s:[['Open the welcome screen'],['Sign in with the company account through the Beacon admin portal'],['Turn on fingerprint or face sign-in for next time']]},
+  {t:'Catch up on news',w:'Daily',s:[['See the Home greeting, announcements and pinned posts'],['Open the News feed'],['Like, comment, share or save a post']]},
+  {t:'Post an update',w:'Any time',s:[['Tap Add Post and choose regular, recognition or poll'],['Add text, up to 5 photos, videos or documents, or a link'],['Choose the groups and a category'],['Set comments, mentions, sharing, push alerts and pinning'],['Choose to post as yourself or as the company, then post']]},
+  {t:'Recognise a colleague',w:'Any time',s:[['Start a recognition post'],['Choose one or more colleagues and a badge'],['The colleague sees it in their earned recognitions']]},
+  {t:'Find HR help',w:'Any time',s:[['Open the Hub for company links'],['Open Workday or the staff discounts site'],['Ask Beacon Buddy, the HR chatbot']]}
+ ],
+ sta:[
+  {t:'Hire a new driver',w:'Each new hire',s:[['Sign in with OneLogin'],['The applicant fills in the application and sees a confirmation'],['Staff sync the applicant from the DriverHub hiring source'],['New-hire paperwork runs through WorkBright',1],['Staff keep the employee record: position, terminal and licence type',1],['Staff record state bus-driver and Federal DOT exams',1],['The record connects to UKG for HR and payroll']]},
+  {t:'Run the system',w:'As needed',s:[['Create and update users'],['Set roles and policies'],['Map WorkBright sites and groups and sync them'],['Edit terminals and assign staff to them'],['Export lists to Excel or PDF']]}
+ ]
+};
+
+/* ---------- render ---------- */
+const $=s=>document.querySelector(s);
+let focus=null, area=null;
+
+function legendHTML(){return ['y','p','n','u'].map(k=>`<span>${S[k]}${SL[k]}</span>`).join('')+`<span><span class="build" style="margin:0">in build</span> found in the app's code</span>`}
+$('#legend').innerHTML=legendHTML();
+$('#areakey').innerHTML=AREAS.map(a=>`<span style="display:inline-flex;align-items:center;gap:6px">${aIco(a.icon,a.color,16)}${a.name}</span>`).join('');
+
+function renderPrints(){
+  $('#prints').innerHTML=COS.map(c=>{
+    let has=0,part=0;
+    const grps=AREAS.map(a=>`<span class="grp" title="${a.name}">`+ROWS.filter(r=>r.a===a.id).map(r=>{const s=r[c.id][0];if(s==='y')has++;if(s==='p')part++;return `<span class="sq ${s}" title="${r.w}: ${SL[s]}"></span>`}).join('')+'</span>').join('');
+    return `<button class="print" data-co="${c.id}" aria-pressed="${focus===c.id}"><span class="who"><strong>${c.name}</strong><span>${c.app}: ${c.model}</span></span><span class="cells">${grps}</span><span class="score">${has}<small>of ${ROWS.length} in full${part?`, ${part} in part`:''}</small></span></button>`;
+  }).join('');
+  document.querySelectorAll('.print').forEach(b=>b.onclick=()=>{focus=focus===b.dataset.co?null:b.dataset.co;renderPrints();applyFocus();});
+}
+
+function renderFilter(){
+  $('#areaFilter').innerHTML=`<button class="chip" data-a="" aria-pressed="${!area}"><span class="dot" style="background:#C9D3D8"></span>All areas</button>`+AREAS.map(a=>`<button class="chip" data-a="${a.id}" aria-pressed="${area===a.id}"><span class="dot" style="background:${a.color}"></span>${a.name}</button>`).join('');
+  document.querySelectorAll('#areaFilter .chip').forEach(b=>b.onclick=()=>{area=b.dataset.a||null;renderFilter();renderMatrix();});
+}
+
+function head(){return `<thead><tr><th scope="col">What staff can do</th>${COS.map(c=>`<th scope="col" data-co="${c.id}">${c.name}<br><span style="font-weight:400;color:var(--muted);font-size:13px">${c.app}</span></th>`).join('')}</tr></thead>`}
+
+function renderMatrix(){
+  const diff=$('#diffOnly').checked;
+  let h=`<caption>Staff app capabilities, by area. Rows: what staff need. Columns: each competitor's app.</caption>`+head()+'<tbody>';
+  AREAS.forEach(a=>{
+    if(area&&area!==a.id)return;
+    const rows=ROWS.map((r,i)=>[r,i]).filter(([r])=>r.a===a.id&&(!diff||new Set(COS.map(c=>r[c.id][0])).size>1));
+    if(!rows.length)return;
+    h+=`<tr class="areahead"><th colspan="${COS.length+1}" scope="rowgroup"><span class="tag"><span class="stripe" style="background:${a.color}"></span>${aIco(a.icon,a.color)}${a.name}</span></th></tr>`;
+    rows.forEach(([r,i])=>{
+      h+=`<tr><th scope="row" style="box-shadow:inset 4px 0 0 ${a.color}"><span class="what">${r.w}</span><span class="plain">${r.d}</span></th>`+COS.map(c=>{const v=r[c.id];return `<td class="cell" data-co="${c.id}"><button class="cellbtn" data-k="m" data-i="${i}" data-co="${c.id}" aria-label="${c.name}, ${r.w}: ${SL[v[0]]}. Show evidence">${S[v[0]]}<span class="lbl"><b>${SL[v[0]]}${v[5]?'<span class="build">in build</span>':''}</b><i>${short(v)}</i></span></button></td>`}).join('')+'</tr>';
+    });
+  });
+  $('#matrixTable').innerHTML=h+'</tbody>';
+  bindCells('#matrixTable');applyFocus();
+}
+function short(v){let t=v[6]||v[1];t=t.replace(/^[“"]|[”"]$/g,'');return t.length>78?t.slice(0,76).replace(/\s\S*$/,'')+'…':t}
+
+function renderRoles(){
+  const tabs=COS.map((c,i)=>`<button class="tab" role="tab" id="rt-${c.id}" aria-controls="rp-${c.id}" aria-selected="${i===0}" data-co="${c.id}">${c.name}</button>`).join('');
+  $('#roleTabs').innerHTML=tabs;
+  $('#rolePanels').innerHTML=COS.map((c,i)=>{const R=ROLES[c.id];return `<div role="tabpanel" id="rp-${c.id}" aria-labelledby="rt-${c.id}" data-panel ${i?'hidden':''}><div class="tablewrap"><table class="roles"><caption>${c.name}: who can do what, around the ${c.app}.</caption><thead><tr><th scope="col">Person</th>${ACTIONS.map(a=>`<th scope="col"><span class="aico">${aIco(a.icon,'#003D4F',18)}${a.name}</span></th>`).join('')}</tr></thead><tbody>${R.rows.map(r=>`<tr><th scope="row"><span class="rico">${rIco(r.i)}${r.r}</span></th>${ACTIONS.map(a=>{const v=r[a.id];return `<td><span class="r">${S[v[0]]}<span>${v[1]}</span></span></td>`}).join('')}</tr>`).join('')}</tbody></table></div><p class="rolenote">${R.note}</p></div>`}).join('');
+  tabsBind('#roleTabs','#rolePanels','rp-');
+}
+function tabsBind(tabSel,panelSel,prefix){
+  const tabs=[...document.querySelectorAll(tabSel+' .tab')];
+  tabs.forEach((t,idx)=>{
+    t.onclick=()=>{tabs.forEach(x=>x.setAttribute('aria-selected',x===t));document.querySelectorAll(panelSel+' [role=tabpanel]').forEach(p=>p.hidden=p.id!==prefix+t.dataset.co);};
+    t.onkeydown=e=>{if(e.key==='ArrowRight'||e.key==='ArrowLeft'){const n=tabs[(idx+(e.key==='ArrowRight'?1:-1)+tabs.length)%tabs.length];n.focus();n.click();}};
+  });
+}
+
+function renderSafety(){
+  const diff=$('#safetyDiff').checked;
+  let h=`<caption>Compliance checks by stage. Select an icon for the evidence.</caption>`+head().replace('What staff can do','Compliance check')+'<tbody>';
+  STAGES.forEach(st=>{
+    const rows=SAFE.map((r,i)=>[r,i]).filter(([r])=>r.s===st.id&&(!diff||new Set(COS.map(c=>r[c.id][0])).size>1));
+    if(!rows.length)return;
+    h+=`<tr class="areahead"><th colspan="${COS.length+1}" scope="rowgroup"><span class="stage">${aIco(st.icon,'#F2617A')}${st.name}</span></th></tr>`;
+    rows.forEach(([r,i])=>{h+=`<tr><th scope="row">${r.w}</th>`+COS.map(c=>{const v=r[c.id];return `<td data-co="${c.id}"><button class="cellbtn" style="justify-content:center" data-k="s" data-i="${i}" data-co="${c.id}" aria-label="${c.name}, ${r.w}: ${SL[v[0]]}. Show evidence">${S[v[0]]}</button></td>`}).join('')+'</tr>'});
+  });
+  $('#safetyTable').innerHTML=h+'</tbody>';
+  bindCells('#safetyTable');applyFocus();
+}
+
+function renderCards(){
+  $('#cardGrid').innerHTML=COS.map(c=>{const k=CARDS[c.id];return `<article class="card" data-co="${c.id}"><header>${VEH[c.id]}<div><h3>${c.name} ${c.app}</h3><p>${c.model}</p></div></header><div class="body"><p class="oneline">${k.line}</p><div class="ratings">${k.ratings.map(r=>`<span class="rating${r[2]?' low':''}"><b>${r[0]}</b>${r[1]}</span>`).join('')}</div><div><h4>Stands out</h4><ul>${k.good.map(g=>`<li>${PLUS}<span>${g}</span></li>`).join('')}</ul></div><div><h4>Falls short</h4><ul>${k.gaps.map(g=>`<li>${MINUS}<span>${g}</span></li>`).join('')}</ul></div></div></article>`}).join('');
+}
+
+function renderJourneys(){
+  $('#jTabs').innerHTML=COS.map((c,i)=>`<button class="tab" role="tab" id="jt-${c.id}" aria-controls="jp-${c.id}" aria-selected="${i===0}" data-co="${c.id}">${c.name}</button>`).join('');
+  $('#jPanels').innerHTML=COS.map((c,i)=>`<div role="tabpanel" id="jp-${c.id}" aria-labelledby="jt-${c.id}" data-panel ${i?'hidden':''}><div class="jgrid">${JOURNEYS[c.id].map(j=>`<div class="journey"><h3>${j.t}</h3><p class="when">${j.w}</p><ol>${j.s.map(s=>`<li class="${s[1]?'safety':''}"><span>${s[0]}${s[1]?'<span class="tagline">Compliance step</span>':''}</span></li>`).join('')}</ol></div>`).join('')}</div></div>`).join('');
+  tabsBind('#jTabs','#jPanels','jp-');
+}
+
+function bindCells(sel){document.querySelectorAll(sel+' .cellbtn').forEach(b=>b.onclick=()=>openDrawer(b));}
+let lastBtn=null;
+function openDrawer(b){
+  lastBtn=b;
+  const co=COS.find(c=>c.id===b.dataset.co), i=+b.dataset.i;
+  let title,v,quote,src,date,extra='',build=0;
+  if(b.dataset.k==='m'){const r=ROWS[i];v=r[co.id];title=r.w;quote=v[4];src=v[2];date=v[3];extra=v[6]||'';build=v[5];}
+  else{const r=SAFE[i];v=r[co.id];title=r.w;src=v[2];quote=v[4];build=v[3];date='';}
+  $('#dCo').textContent=co.name+' '+co.app;
+  $('#dTitle').textContent=title;
+  $('#dSt').innerHTML=S[v[0]]+SL[v[0]]+(build?'<span class="build">in build</span>':'');
+  const text=v[1];
+  $('#dBody').innerHTML=(quote?`<blockquote>“${esc(text)}”</blockquote>`:`<p class="note">${esc(text)}</p>`)+(extra?`<p class="note">${esc(extra)}</p>`:'')+`<p class="src">${src?'Source: '+esc(srcName(co.id,src))+'.':'No source found after searching.'}${date?' Dated '+date+'.':''}${quote?' Quoted in the source’s own words.':' Summarised in our words.'}</p>`;
+  $('#drawer').classList.add('open');$('#dClose').focus();
+}
+function esc(s){return String(s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]))}
+$('#dClose').onclick=()=>{$('#drawer').classList.remove('open');lastBtn&&lastBtn.focus();};
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&$('#drawer').classList.contains('open'))$('#dClose').click();});
+
+function applyFocus(){
+  document.querySelectorAll('[data-co]').forEach(el=>{
+    if(el.classList.contains('print')||el.classList.contains('tab')||el.classList.contains('cellbtn'))return;
+    el.classList.toggle('dim',!!focus&&el.dataset.co!==focus&&!el.closest('.drawer'));
+  });
+}
+
+$('#diffOnly').onchange=renderMatrix;
+$('#safetyDiff').onchange=renderSafety;
+renderPrints();renderFilter();renderMatrix();renderRoles();renderSafety();renderCards();renderJourneys();
+
+/* highlight current section in the bar */
+const links=[...document.querySelectorAll('.bar nav a')];
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)links.forEach(l=>l.classList.toggle('on',l.getAttribute('href')==='#'+e.target.id))}),{rootMargin:'-40% 0px -55% 0px'});
+['matrix','roles','compliance','cards','journeys','notes'].forEach(id=>io.observe(document.getElementById(id)));
+</script>
+</body>
+</html>

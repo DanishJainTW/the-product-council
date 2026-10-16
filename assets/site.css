@@ -318,7 +318,7 @@ a.card:hover b{text-decoration:underline}
 .band{background:var(--surface);margin-top:clamp(48px,6vw,80px);padding-bottom:clamp(40px,5vw,64px)}
 .shell.home main>section.band{max-width:none}
 .band-in{max-width:1120px;margin:0 auto}
-.comp3{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-top:8px}
+.comp3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:8px}
 .comp3 a{display:flex;flex-direction:column;text-decoration:none;color:var(--ink);background:var(--bg);padding:20px;border-bottom:6px solid var(--c);transition:transform .15s}
 .comp3 a:hover{transform:translateY(-3px)}
 .comp3 svg{width:48px;height:48px;fill:none;stroke:var(--c);stroke-width:3.5;stroke-linecap:round;stroke-linejoin:round;margin-bottom:12px}

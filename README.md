@@ -1,5 +1,3 @@
-https://danishjaintw.github.io/the-product-council
-
 # Docs
 
 The Product Council documentation, as a static multi-page site. Open `index.html` in a browser, or publish the folder with GitHub Pages (Settings, Pages, deploy from branch, folder `/docs`). `.nojekyll` makes GitHub serve the files as they are, and `404.html` is shown for any missing page.
@@ -14,7 +12,7 @@ The Product Council documentation, as a static multi-page site. Open `index.html
 | `diagrams.html` | Everyone | Diagram pages |
 | `technical.html` | Maintainers | Architecture, agents, personas in detail, skills |
 | `reference.html` | Maintainers | Repository map, verdicts and tags, upgrading |
-| `comparisons.html` and `comparisons/` | Product leads | Driver, parent, provider and district portal comparisons |
+| `comparisons.html` and `comparisons/` | Product leads | Driver, parent, staff, provider and district comparisons, and a payment portal page with no comparison yet |
 
 Shared files in `assets/`:
 - `chrome.css` and `chrome.js`: the header and footer used by every page, comparisons included, and the phone menu and theme switch.
@@ -22,6 +20,6 @@ Shared files in `assets/`:
 - `commands.js`: command data and search.
 - `img/`: flow images.
 
-Every page has the same header and footer markup. When you add a page, add it to the header nav and footer of every page, including the four comparison pages, and to the previous and next links.
+Every page has the same header and footer markup. When you add a page, add it to the header nav and footer of every page, including the six comparison pages, and to the previous and next links.
 
 The repository is the source of truth. When a command, agent or persona changes, update the matching page in the same pull request. Command entries live in `assets/commands.js`.

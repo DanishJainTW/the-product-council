@@ -1,0 +1,4 @@
+# Spawning ai.txt: no AI training or use of any content on this site.
+User-Agent: *
+Disallow: /
+Disallow: *

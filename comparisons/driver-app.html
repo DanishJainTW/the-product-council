@@ -2,9 +2,13 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex, notranslate, noai, noimageai">
+<meta name="googlebot" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
+<meta name="bingbot" content="noindex, nofollow, noarchive, nosnippet">
+<meta name="referrer" content="no-referrer">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="Driver apps compared: HopSkipDrive, EverDriven and Zum, side by side.">
-<title>Driver apps compared: HopSkipDrive, EverDriven, Zum</title>
+<meta name="description" content="Driver apps compared: HopSkipDrive, EverDriven, Zum and ByteCurve DriveOn, side by side.">
+<title>Driver apps compared: HopSkipDrive, EverDriven, Zum, ByteCurve DriveOn</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23003D4F'/%3E%3Cpath d='M18 6h5l-9 20H9z' fill='%23F2617A'/%3E%3C/svg%3E">
 <link rel="stylesheet" href="../assets/chrome.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -75,11 +79,11 @@ section.block{padding:56px 0 8px}
 
 /* tables */
 .tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:var(--radius-m);background:#fff}
-table{border-collapse:separate;border-spacing:0;width:100%;min-width:720px}
+table{border-collapse:separate;border-spacing:0;width:100%;min-width:860px}
 caption{caption-side:top;text-align:left;padding:12px 16px;font-size:14px;color:var(--muted);border-bottom:1px solid var(--line);background:var(--mist)}
 th,td{padding:10px 14px;border-bottom:1px solid var(--line);vertical-align:top;text-align:left}
 thead th{position:sticky;top:0;background:#fff;font-size:14px;font-weight:600;color:var(--wave);z-index:1}
-tbody th{font-weight:500;width:34%;background:#fff;position:sticky;left:0;z-index:1}
+tbody th{font-weight:500;width:28%;background:#fff;position:sticky;left:0;z-index:1}
 tbody th .what{display:block}
 tbody th .plain{display:block;font-weight:400;font-size:13px;color:var(--muted);margin-top:2px}
 tr.areahead th{background:var(--mist);font-family:Bitter,Georgia,serif;font-size:16px;color:var(--wave);padding-top:14px;position:sticky;left:0}
@@ -209,8 +213,10 @@ html{scroll-padding-top:124px}
       <a href="#journeys">Journeys</a>
       <a href="#notes">What we could not see</a>
       <a href="parent-app.html" class="other">Parent apps</a>
+      <a href="staff-app.html" class="other">Staff apps</a>
       <a href="provider-portal.html" class="other">Provider portals</a>
       <a href="district-portal.html" class="other">District portals</a>
+      <a href="payment-portal.html" class="other">Payment portals</a>
     </nav>
   </div>
 </div>
@@ -218,9 +224,9 @@ html{scroll-padding-top:124px}
 <main id="content">
 <section class="hero">
   <div class="wrap">
-    <h1>How three competitors equip their drivers</h1>
-    <p class="lede">HopSkipDrive, EverDriven and Zum each run a driver app. Each strip below is one app. Every square is one thing a driver can do, grouped by area and coloured by what we found.</p>
-    <p class="meta">Built from our competitor research packs and our reading of each Android app's code, October 2026. Select a strip to highlight that app across the page.</p>
+    <h1>How four driver apps equip their drivers</h1>
+    <p class="lede">The page now spans alternative transport and yellow bus. HopSkipDrive, EverDriven and Zum each run a driver app. ByteCurve's DriveOn adds a yellow-bus vendor app from the stack Summit runs. Each strip below is one app. Every square is one thing a driver can do, grouped by area and coloured by what we found.</p>
+    <p class="meta">Built from our competitor research packs and our reading of each Android app's code, October 2026. DriveOn was read on 16 October 2026. Select a strip to highlight that app across the page.</p>
     <div class="prints" id="prints"></div>
     <div class="areakey" id="areakey"></div>
     <div class="legend" style="margin-top:16px" id="legend"></div>
@@ -289,7 +295,10 @@ html{scroll-padding-top:124px}
       <li>Zum markets its drivers as hourly employees, yet the Android app also contains weekly payouts and 1099 tax forms used for contractors. Who sees those screens is unknown.</li>
       <li>HopSkipDrive's offline behaviour is not described anywhere we looked.</li>
       <li>No pay or earnings screen was found in EverDriven's app. Drivers are paid by their transport provider.</li>
-      <li>Ratings come from store listings read in September and October 2026.</li>
+      <li>DriveOn: we read its text files and the names in its code, not its logic. Which screen does what is inferred from names. Everything dispatch controls sits on ByteCurve's servers, which we cannot see.</li>
+      <li>Summit runs ByteCurve tools as part of its technology stack, but no source confirms Summit drivers use DriveOn. Read that column as a yellow-bus vendor app, not as Summit's own app.</li>
+      <li>DriveOn has no maps, directions or student lists. Where its drivers get route guidance is unknown.</li>
+      <li>Ratings come from store listings read in September and October 2026. We did not gather a store rating for DriveOn.</li>
     </ul>
   </div>
 </section>
@@ -299,7 +308,7 @@ html{scroll-padding-top:124px}
     <div class="gf-brand"><span class="gh-slash">/</span>The Product Council<p>Expert panels for FirstAlt product decisions, grounded in evidence.</p></div>
     <div><h2>Use</h2><a href="../use.html">Get started</a><a href="../commands.html">Commands</a><a href="../behaviour.html">How it behaves</a><a href="../diagrams.html">Diagrams</a></div>
     <div><h2>Understand</h2><a href="../knowledge.html">Knowledge and context</a><a href="../technical.html">Technical</a><a href="../reference.html">Reference</a></div>
-    <div><h2>Competitors</h2><a href="../comparisons/driver-app.html">Driver apps</a><a href="../comparisons/parent-app.html">Parent apps</a><a href="../comparisons/provider-portal.html">Provider portals</a><a href="../comparisons/district-portal.html">District portals</a></div>
+    <div><h2>Competitors</h2><a href="../comparisons/driver-app.html">Driver apps</a><a href="../comparisons/parent-app.html">Parent apps</a><a href="../comparisons/staff-app.html">Staff apps</a><a href="../comparisons/provider-portal.html">Provider portals</a><a href="../comparisons/district-portal.html">District portals</a><a href="../comparisons/payment-portal.html">Payment portals</a></div>
   </div>
   <p class="gf-note">FirstAlt Product Council v3.7.3, updated 11 October 2026. The repository is the source of truth: update these pages in the same pull request as a skill, agent or persona change.</p>
 </footer>
@@ -353,14 +362,16 @@ const AREAS = [
 const COS = [
  {id:'hsd',name:'HopSkipDrive',app:'CareDriver',model:'Gig drivers who pick their own rides'},
  {id:'ed',name:'EverDriven',app:'SafeRoute',model:'Drivers work for local transport providers'},
- {id:'zum',name:'Zum',app:'Zum Driver',model:'Own fleet, drivers on staff'}
+ {id:'zum',name:'Zum',app:'Zum Driver',model:'Own fleet, drivers on staff'},
+ {id:'bc',name:'ByteCurve',app:'DriveOn',model:'Yellow-bus vendor app in Summit’s Catalyst stack. Summit use unconfirmed'}
 ];
 
 /* plain source names */
 const AN = {
  hsd:{AN1:'Our reading of the CareDriver Android app code (v6.9.9, Oct 2026)',AN3:'Our reading of the HopSkipDrive family app code (Oct 2026)',AN4:'Our reading of the RideIQ web code (Oct 2026)'},
  ed:{AN2:'Our reading of the RideAware Android app code (Oct 2026)',AN4:'Our reading of the SafeRoute Android app code (v3.1.0, Oct 2026)',AN5:'Our reading of the service provider portal code (Oct 2026)'},
- zum:{AN1:'Our reading of the Zum Driver Android app code (v4.0.5, Oct 2026)',AN3:'Our reading of the Zum school portal code (Oct 2026)'}
+ zum:{AN1:'Our reading of the Zum Driver Android app code (v4.0.5, Oct 2026)',AN3:'Our reading of the Zum school portal code (Oct 2026)'},
+ bc:{AN2:'Our reading of the DriveOn Android app code (v2.3.1, Oct 2026)'}
 };
 function srcName(co,keys){
   const c=COS.find(x=>x.id===co).name;
@@ -377,107 +388,131 @@ const ROWS = [
  {a:'signin',w:'Sign in to the app',d:'How a driver gets into their account',
   hsd:['y','Phone number and SMS code, with checks that the driver is in a service area.','AN1','2026-10-15',0,1],
   ed:['y','Company sign-in page inside the app, plus fingerprint or face sign-in.','AN4','2026-10-14',0,1],
-  zum:['y','Shared Zum login: phone, email, PIN or company single sign-on.','AN1','2026-10-15',0,1]},
+  zum:['y','Shared Zum login: phone, email, PIN or company single sign-on.','AN1','2026-10-15',0,1],
+  bc:['y','User ID and password after a company access code from dispatch, with biometric sign-in.','AN2','2026-10-16',0,1]},
  {a:'signin',w:'Upload documents and get approved',d:'Licence, insurance and other papers',
   hsd:['y','You can upload all required documents directly in the CareDriver app','H10','2026-10-10',1,0],
   ed:['y','Streamlined account set-up that allows drivers to upload compliance eligibility documents','A1, H2','2026-08-01',1,0,'The Android app sends drivers to outside compliance websites rather than an upload screen in the app.'],
-  zum:['y','Upload credentials, track certifications, and receive automated renewal reminders.','W2','2026-10-14',1,0]},
+  zum:['y','Upload credentials, track certifications, and receive automated renewal reminders.','W2','2026-10-14',1,0],
+  bc:['u','No document upload found. Drivers register with their name and employee ID.','AN2','2026-10-16',0,0]},
  {a:'signin',w:'Blocked from driving until papers are current',d:'The app stops trips if something has lapsed',
   hsd:['y','failures can pause the account','AN1','2026-10-15',1,1,'Applies to the required Daily Safety Check.'],
   ed:['y',"Your compliance requirements aren't met, so we can't offer you trips right now.",'AN4','2026-10-14',1,1,'There is also a separate check per school district.'],
-  zum:['y','your documents must be current to keep driving','AN1','2026-10-15',1,1]},
+  zum:['y','your documents must be current to keep driving','AN1','2026-10-15',1,1],
+  bc:['u','No document or compliance block found.','AN2','2026-10-16',0,0]},
 
  {a:'trips',w:"See today's trips",d:'A list of the day’s rides and stops',
   hsd:['y','In select markets, you can now join the Consistent CareDriver Program by claiming a program Ride Series in the CareDriver app.','H1, H2','2026-09-23',1,0],
   ed:['y','Drivers can view and accept multiple trips for the current and next day','A1','2026-08-01',1,0],
-  zum:['y','Review your assigned rides, including estimated payments, ride directions, student information and any specific instructions','A3','2026-04-29',1,0]},
+  zum:['y','Review your assigned rides, including estimated payments, ride directions, student information and any specific instructions','A3','2026-04-29',1,0],
+  bc:['y','Assigned tasks by date with scheduled time range, bus, start / end times','AN2','2026-10-16',1,1,'Today or the next 60 days.']},
  {a:'trips',w:'Pick or accept trips',d:'How work reaches the driver',
   hsd:['y','Drivers browse a marketplace of single rides and repeat series, add them to a cart that holds them for 5 minutes, then claim them together.','AN1','2026-10-15',0,1],
   ed:['p','Drivers accept or decline trip offers, but some declines are blocked: “Please call Dispatch to decline this trip.”','AN4','2026-10-14',0,1],
-  zum:['p','Rides are assigned. Drivers can accept or reject an assigned ride and give a reason.','AN1','2026-10-15',0,1]},
+  zum:['p','Rides are assigned. Drivers can accept or reject an assigned ride and give a reason.','AN1','2026-10-15',0,1],
+  bc:['p','Tasks and buses are assigned by dispatch. No accept or decline step found.','AN2','2026-10-16',0,1,'The driver can confirm the assigned bus or pick another one at the yard.']},
  {a:'trips',w:'Handle trip changes',d:'What happens when a trip is changed or cancelled',
   hsd:['y','when a ride is changed after you check in you will still earn at least the estimated fare displayed at the time you checked in.','H2, H1','2026-09-27',1,0],
   ed:['p','Changes are pushed to the driver (“Trip details have changed. Updating route”). Drivers cannot edit a trip.','AN4','2026-10-14',0,1],
-  zum:['y','Automated route updates make it easy to act on last-minute changes without disruption','W1','2026-10-14',1,0]},
+  zum:['y','Automated route updates make it easy to act on last-minute changes without disruption','W1','2026-10-14',1,0],
+  bc:['u','No trip change flow found. What dispatch pushes is not visible.','AN2','2026-10-16',0,0]},
 
  {a:'track',w:'Share live location',d:'Others can see where the driver is',
   hsd:['y',"CareDriver Arrival is the most up-to-date estimated arrival time based on the CareDriver's app data.",'H14','2026-09-24',1,0],
   ed:['y','Through GPS tracking and trip logging, the app provides real-time visibility into driver routes','W7, A1','2026-10-14',1,0],
-  zum:['y','Driver live location status is now displayed on the ride map view!','A4','2024-01-24',1,0,'This quote is from 2024. The 2026 Android code still sends live location in the background.']},
+  zum:['y','Driver live location status is now displayed on the ride map view!','A4','2024-01-24',1,0,'This quote is from 2024. The 2026 Android code still sends live location in the background.'],
+  bc:['p','Location is captured only when the driver clocks in and out. No live sharing found.','AN2','2026-10-16',0,1]},
  {a:'track',w:'Turn-by-turn directions',d:'Spoken directions inside the app',
   hsd:['y','This is required to move forward with the ride, even if you choose not to use Google Maps.','H8','2026-01-10',1,0],
   ed:['y','In October 2025, the company partnered with Google to bring best-in-class navigation to its driver app','P2, A1','2026-07-29',1,0],
-  zum:['y','Turn-by-turn guidance adapts in real-time to traffic and changing conditions.','W2, A3','2026-10-14',1,0]},
+  zum:['y','Turn-by-turn guidance adapts in real-time to traffic and changing conditions.','W2, A3','2026-10-14',1,0],
+  bc:['n','there are no maps, turn-by-turn directions or student lists in this build','AN2','2026-10-16',1,0]},
  {a:'track',w:'Smart routing',d:'The route adjusts itself to save time',
   hsd:['u','We searched the driver help centre. Rides can be sorted and stacked, but we found no optimised routing for drivers.','','',0,0],
   ed:['p','The app utilizes Google Navigation for route optimization','W7','2026-10-14',1,0,'This is Google’s routing, not EverDriven’s own.'],
-  zum:['y','Self-learning traffic models power real-time route adjustments, keeping drivers on the most efficient path','W1','2026-10-14',1,0]},
+  zum:['y','Self-learning traffic models power real-time route adjustments, keeping drivers on the most efficient path','W1','2026-10-14',1,0],
+  bc:['u','No routing found. The app has no maps or directions.','AN2','2026-10-16',0,0]},
  {a:'track',w:'Confirm arrival at the stop',d:'The app checks the driver is really there',
   hsd:['y',"the I've arrived button will be hidden until you are close to the next stop.",'H1','2026-09-23',1,0],
   ed:['y','Drivers tap “I Have Arrived” and the app checks the distance (“Too far from stop”). Automatic arrival exists but may be switched off.','AN4','2026-10-14',0,1],
-  zum:['u','No automatic or distance-checked arrival found on the driver page, product pages, store listings or in the code. Drivers can send an “I have arrived” message.','W2, A3, AN1','2026-10-15',0,0]},
+  zum:['u','No automatic or distance-checked arrival found on the driver page, product pages, store listings or in the code. Drivers can send an “I have arrived” message.','W2, A3, AN1','2026-10-15',0,0],
+  bc:['u','No arrival check found. The post-trip log records times and odometer per stop after the run.','AN2','2026-10-16',0,0]},
 
  {a:'kids',w:'Read student notes',d:'Medical, behaviour and care notes before pickup',
   hsd:['y',"information that is critical to the rider's physical safety, such as allergies. This information is highlighted in a red box.",'H22','2026-10-13',1,0],
   ed:['y','Drivers can view important notes about students—such as medical considerations, behavioral needs, or preferred routines—before pick-up','W7','2026-10-14',1,0],
-  zum:['y','Attendance tracking, individual care instructions, and incident reporting are all accessible in-app','W1, W2','2026-10-14',1,0]},
+  zum:['y','Attendance tracking, individual care instructions, and incident reporting are all accessible in-app','W1, W2','2026-10-14',1,0],
+  bc:['n','No student lists in the build, so no student notes for drivers.','AN2','2026-10-16',0,0]},
  {a:'kids',w:'Check students on and off',d:'Recording who got in and who got out',
   hsd:['y','Tap Pick Up [rider]. ... When you have successfully dropped off the rider, tap Confirm Drop-off.','H4, H5','2026-09-21',1,0],
   ed:['y','Pickup asks “Is this the right passenger?”. Drop-off asks “Are All Passengers and Equipment Out?”.','AN4, A1','2026-10-14',0,1],
-  zum:['y','Drivers receive training on RFID student check-in, safe drop-off protocols, vehicle inspection, and post-ride safety sweeps.','W2, H1','2026-10-14',1,0,'Students tap a card on the bus or the driver scans it with the phone.']},
+  zum:['y','Drivers receive training on RFID student check-in, safe drop-off protocols, vehicle inspection, and post-ride safety sweeps.','W2, H1','2026-10-14',1,0,'Students tap a card on the bus or the driver scans it with the phone.'],
+  bc:['n','No student lists in the build, so no way to check students on or off in this app.','AN2','2026-10-16',0,0]},
 
  {a:'safety',w:'Check the vehicle before driving',d:'A guided inspection in the app',
   hsd:['y','A Daily Safety Check, about 5 minutes: body, lights, engine, brakes and interior. Failing it can pause the account.','AN1','2026-10-15',0,1],
   ed:['y','required safety checklists that drivers complete before and after each trip','W7, W10','2026-10-14',1,0],
-  zum:['y','Step-by-step task workflows ensure drivers complete all pre- and post-ride inspections','W1','2026-10-14',1,0]},
+  zum:['y','Step-by-step task workflows ensure drivers complete all pre- and post-ride inspections','W1','2026-10-14',1,0],
+  bc:['u','No pre-trip inspection found. Drivers confirm or swap the assigned bus.','AN2','2026-10-16',0,0]},
  {a:'safety',w:'Watch over the ride',d:'Cameras, alerts and live monitoring',
   hsd:['y','Our telematics capabilities enable us to utilize a proactive alert system to automatically detect and flag critical events','W4, H14, AN1','2026-10-14',1,0,'The app also has crash detection and an alert if a driver fakes their location.'],
   ed:['y','SafeView camera starts automatically and captures internal and external views of the vehicle with audio and high-resolution video','W10, W8','2026-10-14',1,0],
-  zum:['y','AI-powered cameras, real-time vehicle monitoring, and safe drop-off protocols','W3, AN1','2026-10-14',1,0,'The app locks the screen while the vehicle moves and asks “are any students left in the vehicle?”.']},
+  zum:['y','AI-powered cameras, real-time vehicle monitoring, and safe drop-off protocols','W3, AN1','2026-10-14',1,0,'The app locks the screen while the vehicle moves and asks “are any students left in the vehicle?”.'],
+  bc:['u','No cameras, alerts or live monitoring found in the app.','AN2','2026-10-16',0,0]},
  {a:'safety',w:'Track driving behaviour',d:'Harsh braking, speed, phone use',
   hsd:['y','an audio alert will sound on your phone when hard braking is detected.','H8, H1, AN1','2026-10-14',1,0],
   ed:['y','Detect harsh braking, rapid acceleration, and sharp turns','W8, H4, AN4','2026-10-14',1,0,'The phone also tracks “vehicle speed, turning, braking, and phone usage”.'],
-  zum:['y','Continuously improve driver behavior with real-time performance scoring, data-driven coaching, and targeted training','W3, W4, AN3','2026-10-14',1,0]},
+  zum:['y','Continuously improve driver behavior with real-time performance scoring, data-driven coaching, and targeted training','W3, W4, AN3','2026-10-14',1,0],
+  bc:['u','No driving behaviour tracking found in the app.','AN2','2026-10-16',0,0]},
 
  {a:'pay',w:'See earnings',d:'What the driver has earned and when it arrives',
   hsd:['y',"You'll see payments for the previous week deposited in your bank account by Wednesday each week.",'H7, A4','2026-10-14',1,0,'The app also shows boosts, streak bonuses and toll refunds.'],
   ed:['u','Drivers are paid by their transport provider. No pay screen was found in the app, and reviews say pay is not shown.','W4','2026-10-14',0,0],
-  zum:['y','Clock in and out, complete vehicle inspections, and submit timesheets all from one platform','W1, A3','2026-10-14',1,0,'The Android code also has weekly payouts and tax forms.']},
+  zum:['y','Clock in and out, complete vehicle inspections, and submit timesheets all from one platform','W1, A3','2026-10-14',1,0,'The Android code also has weekly payouts and tax forms.'],
+  bc:['p','Pay periods → days → hours per task code','AN2','2026-10-16',1,1,'Hours only. No pay amounts found.']},
  {a:'pay',w:'Clock in and keep a timesheet',d:'Shift hours recorded in the app',
   hsd:['u','No shifts or timesheets found. Drivers are paid per ride.','AN1','2026-10-15',0,0],
   ed:['u','No timesheet found in the app.','AN4','2026-10-14',0,0],
-  zum:['y','Shift sign-on and sign-off, time punches and change requests against approved hours.','AN1','2026-10-15',0,1]},
+  zum:['y','Shift sign-on and sign-off, time punches and change requests against approved hours.','AN1','2026-10-15',0,1],
+  bc:['y','Clock in and out of each task with GPS. Dispatch can block early or late clock-ins. Drivers can request time corrections.','AN2','2026-10-16',0,1]},
 
  {a:'alerts',w:'Message the office or the family',d:'Chat or call from inside the app',
   hsd:['y','You will not see the actual phone numbers of users you are contacting, and other users will not see yours.','H8','2026-01-10',1,0],
   ed:['p','Easily accessible emergency button with live-chat or call for help options','A1, AN4','2026-08-01',1,0,'iPhone release notes promise chat. The Android code has chat wording but no working chat screen.'],
-  zum:['y','In-app messaging keeps drivers informed of route changes and operational updates','W1, W2','2026-10-14',1,0,'Drivers can also message or call a parent through a masked number.']},
+  zum:['y','In-app messaging keeps drivers informed of route changes and operational updates','W1, W2','2026-10-14',1,0,'Drivers can also message or call a parent through a masked number.'],
+  bc:['p','Drivers read and acknowledge messages from operations. No reply or family contact found.','AN2','2026-10-16',0,1]},
  {a:'alerts',w:'Trip alerts and reminders',d:'Notifications about new, changed or upcoming trips',
   hsd:['y','A “Leave by” reminder before each ride, urgent-ride alerts and alerts on the lock screen.','AN1','2026-10-15',0,1],
   ed:['y','Alerts for trip offers, updates, cancellations and reminders, plus an inbox in the app.','AN4','2026-10-14',0,1],
-  zum:['y','Alerts for new or changed rides, tasks and prompts, messages, expiring documents and payment holds.','AN1','2026-10-15',0,1]},
+  zum:['y','Alerts for new or changed rides, tasks and prompts, messages, expiring documents and payment holds.','AN1','2026-10-15',0,1],
+  bc:['p','Push notifications and operations messages with “remind me later”. What triggers a push is not visible.','AN2','2026-10-16',0,1]},
 
  {a:'help',w:'Handle a late start or no-show',d:'What the driver does when a student is not there',
   hsd:['y','the CareDriver is required to wait for a set time indicated by a countdown timer in the app.','H6','2026-10-12',1,0],
   ed:['p','Improved no-show flow','A1','2026-08-01',1,0,'A wait timer runs, then EverDriven approves the no-show. How late running is handled is not public.'],
-  zum:['p','Drivers report vehicle issues or in-ride incidents quickly using structured in-app workflows.','W2','2026-10-14',1,0,'Drivers can mark a student as a no-show. A late-running flow is not described.']},
+  zum:['p','Drivers report vehicle issues or in-ride incidents quickly using structured in-app workflows.','W2','2026-10-14',1,0,'Drivers can mark a student as a no-show. A late-running flow is not described.'],
+  bc:['u','No no-show flow found. A late clock-in can be blocked or need a reason from a dispatch list.','AN2','2026-10-16',0,0]},
  {a:'help',w:'Report an incident or emergency',d:'Getting help when something goes wrong',
   hsd:['y','Contact ride support from the ride. Crash detection checks for an accident and confirms it with the driver.','AN1','2026-10-15',0,1],
   ed:['y','An emergency option confirms, then calls emergency services or Dispatch.','AN4','2026-10-14',0,1],
-  zum:['y','Incident reports with type, reason, location and people involved, saved as drafts.','AN1','2026-10-15',0,1]},
+  zum:['y','Incident reports with type, reason, location and people involved, saved as drafts.','AN1','2026-10-15',0,1],
+  bc:['u','No incident report or emergency option found.','AN2','2026-10-16',0,0]},
  {a:'help',w:'Get help from support',d:'Help centre, chat or ticket',
   hsd:['p','A help centre and support messaging exist, but some sit behind switches we cannot see.','AN1','2026-10-15',0,1],
   ed:['p','A driver support website and a service status page. In-app chat is not confirmed.','AN4','2026-10-14',0,1],
-  zum:['y','“Contact Zum”, leave a message, and chat with support inside the app.','AN1','2026-10-15',0,1]},
+  zum:['y','“Contact Zum”, leave a message, and chat with support inside the app.','AN1','2026-10-15',0,1],
+  bc:['u','No help centre or support chat found. Messages tell drivers to contact dispatch.','AN2','2026-10-16',0,0]},
 
  {a:'access',w:'Use the app in another language',d:'Languages a driver can choose',
   hsd:['n','English is the only language listed for the CareDriver app.','A4','2026-10-14',0,0],
   ed:['y','Language selector; “English/Spanish strings ship” (English and Spanish only).','AN4, A1','2026-10-14',0,1],
-  zum:['n','The App Store lists English only for Zum Driver.','A3','2026-04-29',0,0]},
+  zum:['n','The App Store lists English only for Zum Driver.','A3','2026-04-29',0,0],
+  bc:['y','English and Spanish.','AN2','2026-10-16',0,1]},
  {a:'access',w:'Keep working with no signal',d:'The app still records the trip offline',
   hsd:['u','Searched help for offline and signal; only “Turning wifi off can often solve connection issues.” found.','H23','2026-10-08',0,0],
   ed:['y','Persistent offline queue for run events and app events, stored in Realm','AN4','2026-10-14',1,1,'Trip events are saved and sent later.'],
-  zum:['p','Pre-configured Mapbox offline regions: Fresno, Humble, Millard, Omaha, Palm Springs, St. Louis, Stockton','AN1','2026-10-15',1,1,'Maps work offline in these areas. Offline trip events were not seen.']}
+  zum:['p','Pre-configured Mapbox offline regions: Fresno, Humble, Millard, Omaha, Palm Springs, St. Louis, Stockton','AN1','2026-10-15',1,1,'Maps work offline in these areas. Offline trip events were not seen.'],
+  bc:['u','Only an error message found: “Unable to connect to the internet”. No offline saving seen.','AN2','2026-10-16',0,0]}
 ];
 
 /* ---------- roles data ---------- */
@@ -515,6 +550,10 @@ const ROLES = {
   {r:'Yard and command centre',i:'office',book:['y','Assigns routes to cover every run'],track:['y','“Live insights for proactive ride monitoring”'],cancel:['y','Pushes route updates and last-minute changes'],pay:['p','Approves timesheet change requests'],watch:['y','Driver no-show detection and performance scoring']},
   {r:'Parent or guardian',i:'family',book:['n','Address and schedule changes go through the school or district'],track:['y','Live tracking with AI arrival times'],cancel:['y','Can cancel same-day and upcoming rides'],pay:['p','The school portal shows parent payment history'],watch:['y','Sees driver and vehicle details before the bus arrives']},
   {r:'Monitor (aide)',i:'aide',book:['x','Not their role'],track:['u','Not seen'],cancel:['x','Not their role'],pay:['u','Not seen'],watch:['y','Signs on and off with a card inside the driver app']}
+ ]},
+ bc:{note:'DriveOn is a time-and-task app for school-bus drivers, and the driver is its only user. Dispatch at the bus operator runs the rest on ByteCurve’s servers, which we cannot see. Summit runs ByteCurve tools, but no source confirms Summit drivers use DriveOn.',rows:[
+  {r:'Driver',i:'driver',book:['p','Sees assigned tasks for today or the next 60 days'],track:['p','Location captured only at clock in and out'],cancel:['u','No decline step found'],pay:['p','Sees hours by pay period and files time corrections'],watch:['x','Is checked: GPS-stamped clock in and out, Child Check confirmation']},
+  {r:'Dispatch at the bus operator',i:'office',book:['y','Issues the access code and assigns tasks and buses'],track:['u','Not visible: runs on the server'],cancel:['u','Not visible'],pay:['p','Approves or denies time requests'],watch:['p','Sets early and late clock rules and the reasons drivers pick']}
  ]}
 };
 
@@ -524,35 +563,36 @@ const STAGES = [
  {id:'road',name:'On the road',icon:'pin'},{id:'drop',name:'At drop-off',icon:'shield'},{id:'vet',name:'Checks on the driver',icon:'key'}
 ];
 const SAFE = [
- {s:'before',w:'Vehicle inspection in the app',hsd:['y','Daily Safety Check, about 5 minutes, required to pick up riders.','AN1',1],ed:['y','required safety checklists that drivers complete before and after each trip','W7',0,1],zum:['y','Inspections before the trip, at the end of a ride and at the end of the day, with photos.','AN1',1]},
- {s:'before',w:'Daily health check-in',hsd:['u','Not found.','',0],ed:['y','A daily health check-in with a “Notify EverDriven” option.','AN4',1],zum:['u','Not found.','',0]},
- {s:'before',w:'Required equipment confirmed',hsd:['p','Booster seats are checked when a ride is claimed. All rides with car seats have a Meet at car Must Be Met requirement.','AN1, H31',1],ed:['y','Car seat, booster seat, buckle guard, safety vest, wheelchair and emergency equipment confirmed per trip.','AN4',1],zum:['u','Not found.','',0]},
- {s:'before',w:'Blocked if documents lapse',hsd:['y','failures can pause the account','AN1',1,1],ed:['y',"Your compliance requirements aren't met, so we can't offer you trips right now.",'AN4',1,1],zum:['y','your documents must be current to keep driving','AN1',1,1]},
- {s:'pickup',w:'Code word',hsd:['y','The driver says the family’s code word at pickup.','AN1, H4',1],ed:['u','Not found.','',0],zum:['u','Not found. Zum uses student cards instead.','',0]},
- {s:'pickup',w:'Birthday check',hsd:['y','The driver asks the rider’s birthday at pickup.','AN1, H4',1],ed:['u','Not found.','',0],zum:['u','Not found.','',0]},
- {s:'pickup',w:'Confirm the right student',hsd:['y','Code word and birthday, then the driver confirms the rider.','AN1',1],ed:['y','Is this the right passenger?','AN4',1,1],zum:['y','Students scan a card by tap or QR; the app checks they are allowed on the ride.','AN1',1]},
- {s:'pickup',w:'Arrival only when near the stop',hsd:['y',"the I've arrived button will be hidden until you are close to the next stop.",'H1',0,1],ed:['y','Distance checked: “Too far from stop”.','AN4',1],zum:['u','Not found.','',0]},
- {s:'pickup',w:'Digital driver ID',hsd:['y','A digital ID (“Waybill”), available after the first ride.','AN1',1],ed:['y','A digital badge so “parents, school staff, and passengers can identify you”.','AN4',1],zum:['u','Not found.','',0]},
- {s:'road',w:'Screen locks while moving',hsd:['u','Not found.','',0],ed:['u','Not found.','',0],zum:['y','Screen locking while the vehicle is moving','AN1',1,1]},
- {s:'road',w:'Driving behaviour tracked',hsd:['y','an audio alert will sound on your phone when hard braking is detected.','H8',0,1],ed:['y','Phone telematics monitors “vehicle speed, turning, braking, and phone usage”.','AN4',1],zum:['y','Continuously improve driver behavior with real-time performance scoring, data-driven coaching, and targeted training','W3',0,1]},
- {s:'road',w:'Crash detection',hsd:['y','crash assist: detects and verifies an accident.','AN1',1],ed:['u','Not found.','',0],zum:['u','Not found.','',0]},
- {s:'road',w:'Camera or ride recording',hsd:['p','Ride recording runs “on rides that require it”, using the driver’s phone.','AN1, H12',1],ed:['y','SafeView camera starts automatically and captures internal and external views of the vehicle with audio and high-resolution video','W10, W8',0,1],zum:['y','AI-powered cameras, real-time vehicle monitoring, and safe drop-off protocols','W3',0,1]},
- {s:'road',w:'Alert if location is faked',hsd:['y','A fake-location alert ships in the app.','AN1',1],ed:['u','Not found.','',0],zum:['u','Not found.','',0]},
- {s:'road',w:'Phone numbers hidden',hsd:['y','You will not see the actual phone numbers of users you are contacting, and other users will not see yours.','H8',0,1],ed:['u','Not found.','',0],zum:['y','Calls go through masked numbers.','AN1',1]},
- {s:'road',w:'Emergency button',hsd:['p','Contact ride support from the ride.','AN1',1],ed:['y','Emergency option calls emergency services or Dispatch.','AN4',1],zum:['p','An emergency unlock on the locked screen; incident reports.','AN1',1]},
- {s:'drop',w:'Hand the student to an adult',hsd:['y','Drop-off tasks include handing the rider to a responsible adult.','AN1, H5',1],ed:['y','Passengers must be handed to an adult.','AN4',1,1],zum:['p','safe drop-off protocols','W3',0,1]},
- {s:'drop',w:'Nobody left on board',hsd:['u','Not found.','',0],ed:['y','Are All Passengers and Equipment Out?','AN4',1,1],zum:['y','are any students left in the vehicle?','AN1',1,1]},
- {s:'vet',w:'Background checks',hsd:['y','HopSkipDrive believes in administering the most extensive background checks possible.','H11',0,1],ed:['y','multi-layered background checks, including the National Sex Offender Registry','W10',0,1],zum:['y','Background check information, such as your credit history, prior employment, and motor vehicle and law enforcement records','W7',0,1]},
- {s:'vet',w:'Drug testing',hsd:['p','Drug test required in California; an in-app drug test booking flow exists.','H11, AN1',0],ed:['y','Random and post-accident drug testing for drivers','W10',0,1],zum:['u','Not stated on careers, driver or operations pages.','W6',0]},
- {s:'vet',w:'Driving record monitored',hsd:['y','the Department of Motor Vehicles will notify HopSkipDrive to any changes to your driving record through ongoing monitoring.','H11',0,1],ed:['y','motor vehicle record reviews and ongoing DMV and criminal monitoring','W10',0,1],zum:['y','motor vehicle and law enforcement records','W7',0,1]},
- {s:'vet',w:'Safety training',hsd:['y','CareDrivers complete a 15-point certification','W4',0,1],ed:['y','An education course, which includes six modules and a 40-question final exam, taken semiannually','W10',0,1],zum:['y','The Zum SafeGuard Driver program is a multi-module, mandatory training course','W2',0,1]}
+ {s:'before',w:'Vehicle inspection in the app',hsd:['y','Daily Safety Check, about 5 minutes, required to pick up riders.','AN1',1],ed:['y','required safety checklists that drivers complete before and after each trip','W7',0,1],zum:['y','Inspections before the trip, at the end of a ride and at the end of the day, with photos.','AN1',1],bc:['u','No inspection found. Drivers confirm or swap the assigned bus.','AN2',0]},
+ {s:'before',w:'Daily health check-in',hsd:['u','Not found.','',0],ed:['y','A daily health check-in with a “Notify EverDriven” option.','AN4',1],zum:['u','Not found.','',0],bc:['u','Not found.','',0]},
+ {s:'before',w:'Required equipment confirmed',hsd:['p','Booster seats are checked when a ride is claimed. All rides with car seats have a Meet at car Must Be Met requirement.','AN1, H31',1],ed:['y','Car seat, booster seat, buckle guard, safety vest, wheelchair and emergency equipment confirmed per trip.','AN4',1],zum:['u','Not found.','',0],bc:['u','Not found.','',0]},
+ {s:'before',w:'Blocked if documents lapse',hsd:['y','failures can pause the account','AN1',1,1],ed:['y',"Your compliance requirements aren't met, so we can't offer you trips right now.",'AN4',1,1],zum:['y','your documents must be current to keep driving','AN1',1,1],bc:['u','Not found.','',0]},
+ {s:'pickup',w:'Code word',hsd:['y','The driver says the family’s code word at pickup.','AN1, H4',1],ed:['u','Not found.','',0],zum:['u','Not found. Zum uses student cards instead.','',0],bc:['u','Not found.','',0]},
+ {s:'pickup',w:'Birthday check',hsd:['y','The driver asks the rider’s birthday at pickup.','AN1, H4',1],ed:['u','Not found.','',0],zum:['u','Not found.','',0],bc:['u','Not found.','',0]},
+ {s:'pickup',w:'Confirm the right student',hsd:['y','Code word and birthday, then the driver confirms the rider.','AN1',1],ed:['y','Is this the right passenger?','AN4',1,1],zum:['y','Students scan a card by tap or QR; the app checks they are allowed on the ride.','AN1',1],bc:['n','No student lists in the build.','AN2',0]},
+ {s:'pickup',w:'Arrival only when near the stop',hsd:['y',"the I've arrived button will be hidden until you are close to the next stop.",'H1',0,1],ed:['y','Distance checked: “Too far from stop”.','AN4',1],zum:['u','Not found.','',0],bc:['u','Not found.','',0]},
+ {s:'pickup',w:'Digital driver ID',hsd:['y','A digital ID (“Waybill”), available after the first ride.','AN1',1],ed:['y','A digital badge so “parents, school staff, and passengers can identify you”.','AN4',1],zum:['u','Not found.','',0],bc:['u','Not found.','',0]},
+ {s:'road',w:'Screen locks while moving',hsd:['u','Not found.','',0],ed:['u','Not found.','',0],zum:['y','Screen locking while the vehicle is moving','AN1',1,1],bc:['u','Not found.','',0]},
+ {s:'road',w:'Driving behaviour tracked',hsd:['y','an audio alert will sound on your phone when hard braking is detected.','H8',0,1],ed:['y','Phone telematics monitors “vehicle speed, turning, braking, and phone usage”.','AN4',1],zum:['y','Continuously improve driver behavior with real-time performance scoring, data-driven coaching, and targeted training','W3',0,1],bc:['u','Not found.','',0]},
+ {s:'road',w:'Crash detection',hsd:['y','crash assist: detects and verifies an accident.','AN1',1],ed:['u','Not found.','',0],zum:['u','Not found.','',0],bc:['u','Not found.','',0]},
+ {s:'road',w:'Camera or ride recording',hsd:['p','Ride recording runs “on rides that require it”, using the driver’s phone.','AN1, H12',1],ed:['y','SafeView camera starts automatically and captures internal and external views of the vehicle with audio and high-resolution video','W10, W8',0,1],zum:['y','AI-powered cameras, real-time vehicle monitoring, and safe drop-off protocols','W3',0,1],bc:['u','Not found.','',0]},
+ {s:'road',w:'Alert if location is faked',hsd:['y','A fake-location alert ships in the app.','AN1',1],ed:['u','Not found.','',0],zum:['u','Not found.','',0],bc:['u','Not found.','',0]},
+ {s:'road',w:'Phone numbers hidden',hsd:['y','You will not see the actual phone numbers of users you are contacting, and other users will not see yours.','H8',0,1],ed:['u','Not found.','',0],zum:['y','Calls go through masked numbers.','AN1',1],bc:['u','Not found.','',0]},
+ {s:'road',w:'Emergency button',hsd:['p','Contact ride support from the ride.','AN1',1],ed:['y','Emergency option calls emergency services or Dispatch.','AN4',1],zum:['p','An emergency unlock on the locked screen; incident reports.','AN1',1],bc:['u','Not found.','',0]},
+ {s:'drop',w:'Hand the student to an adult',hsd:['y','Drop-off tasks include handing the rider to a responsible adult.','AN1, H5',1],ed:['y','Passengers must be handed to an adult.','AN4',1,1],zum:['p','safe drop-off protocols','W3',0,1],bc:['u','Not found.','',0]},
+ {s:'drop',w:'Nobody left on board',hsd:['u','Not found.','',0],ed:['y','Are All Passengers and Equipment Out?','AN4',1,1],zum:['y','are any students left in the vehicle?','AN1',1,1],bc:['y','IMPORTANT REMINDER: Please confirm that you performed a thorough Child Check inspection at the end of your task','AN2',1,1]},
+ {s:'vet',w:'Background checks',hsd:['y','HopSkipDrive believes in administering the most extensive background checks possible.','H11',0,1],ed:['y','multi-layered background checks, including the National Sex Offender Registry','W10',0,1],zum:['y','Background check information, such as your credit history, prior employment, and motor vehicle and law enforcement records','W7',0,1],bc:['x','ByteCurve sells the software. Vetting drivers sits with the bus operator that employs them.','',0]},
+ {s:'vet',w:'Drug testing',hsd:['p','Drug test required in California; an in-app drug test booking flow exists.','H11, AN1',0],ed:['y','Random and post-accident drug testing for drivers','W10',0,1],zum:['u','Not stated on careers, driver or operations pages.','W6',0],bc:['x','ByteCurve sells the software. Drug testing sits with the bus operator.','',0]},
+ {s:'vet',w:'Driving record monitored',hsd:['y','the Department of Motor Vehicles will notify HopSkipDrive to any changes to your driving record through ongoing monitoring.','H11',0,1],ed:['y','motor vehicle record reviews and ongoing DMV and criminal monitoring','W10',0,1],zum:['y','motor vehicle and law enforcement records','W7',0,1],bc:['x','ByteCurve sells the software. Driving records sit with the bus operator.','',0]},
+ {s:'vet',w:'Safety training',hsd:['y','CareDrivers complete a 15-point certification','W4',0,1],ed:['y','An education course, which includes six modules and a 40-question final exam, taken semiannually','W10',0,1],zum:['y','The Zum SafeGuard Driver program is a multi-module, mandatory training course','W2',0,1],bc:['x','ByteCurve sells the software. Training sits with the bus operator.','',0]}
 ];
 
 /* ---------- cards ---------- */
 const VEH = {
  hsd:'<svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="14" fill="#EDF1F3"/><path d="M12 40v-6l5-9c.6-1.2 1.8-2 3.2-2h23.6c1.4 0 2.6.8 3.2 2l5 9v6z" fill="#003D4F"/><path d="M19 32l3.6-6.4h18.8L45 32z" fill="#47A1AD"/><circle cx="21" cy="41" r="4.5" fill="#fff" stroke="#003D4F" stroke-width="3"/><circle cx="43" cy="41" r="4.5" fill="#fff" stroke="#003D4F" stroke-width="3"/><circle cx="48" cy="16" r="6" fill="#F2617A"/><path d="M45.5 16l1.8 1.8 3.3-3.6" stroke="#fff" stroke-width="1.8" fill="none" stroke-linecap="round"/></svg>',
  ed:'<svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="14" fill="#EDF1F3"/><path d="M9 42V24c0-1.7 1.3-3 3-3h30l9 9h3c1.7 0 3 1.3 3 3v9z" fill="#003D4F"/><path d="M14 25h10v6H14zM27 25h11v6H27zM41 25l5 6h-5z" fill="#47A1AD"/><circle cx="19" cy="43" r="4.5" fill="#fff" stroke="#003D4F" stroke-width="3"/><circle cx="46" cy="43" r="4.5" fill="#fff" stroke="#003D4F" stroke-width="3"/><path d="M9 36h48" stroke="#F2617A" stroke-width="2.5"/></svg>',
- zum:'<svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="14" fill="#EDF1F3"/><rect x="8" y="18" width="48" height="24" rx="4" fill="#CC850A"/><path d="M12 22h8v8h-8zM23 22h8v8h-8zM34 22h8v8h-8zM45 22h7v8h-7z" fill="#fff" opacity=".85"/><path d="M8 34h48" stroke="#003D4F" stroke-width="2"/><circle cx="18" cy="43" r="4.5" fill="#fff" stroke="#003D4F" stroke-width="3"/><circle cx="46" cy="43" r="4.5" fill="#fff" stroke="#003D4F" stroke-width="3"/></svg>'
+ zum:'<svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="14" fill="#EDF1F3"/><rect x="8" y="18" width="48" height="24" rx="4" fill="#CC850A"/><path d="M12 22h8v8h-8zM23 22h8v8h-8zM34 22h8v8h-8zM45 22h7v8h-7z" fill="#fff" opacity=".85"/><path d="M8 34h48" stroke="#003D4F" stroke-width="2"/><circle cx="18" cy="43" r="4.5" fill="#fff" stroke="#003D4F" stroke-width="3"/><circle cx="46" cy="43" r="4.5" fill="#fff" stroke="#003D4F" stroke-width="3"/></svg>',
+ bc:'<svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="14" fill="#EDF1F3"/><rect x="14" y="14" width="36" height="30" rx="5" fill="#F2B705"/><rect x="18" y="18" width="28" height="11" rx="2" fill="#fff" opacity=".9"/><path d="M14 33h36" stroke="#003D4F" stroke-width="2"/><circle cx="21" cy="38" r="2" fill="#003D4F"/><circle cx="43" cy="38" r="2" fill="#003D4F"/><rect x="17" y="44" width="6" height="5" rx="1.5" fill="#003D4F"/><rect x="41" y="44" width="6" height="5" rx="1.5" fill="#003D4F"/><circle cx="50" cy="15" r="7" fill="#fff" stroke="#003D4F" stroke-width="2"/><path d="M50 11.5V15l2.5 1.8" stroke="#F2617A" stroke-width="1.8" fill="none" stroke-linecap="round"/></svg>'
 };
 const PLUS='<svg viewBox="0 0 18 18" aria-hidden="true"><circle cx="9" cy="9" r="8" fill="#3F7A50"/><path d="M9 5.5v7M5.5 9h7" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/></svg>';
 const MINUS='<svg viewBox="0 0 18 18" aria-hidden="true"><circle cx="9" cy="9" r="8" fill="#fff" stroke="#D9435C" stroke-width="1.6"/><path d="M5.5 9h7" stroke="#D9435C" stroke-width="1.8" stroke-linecap="round"/></svg>';
@@ -564,11 +604,15 @@ const CARDS = {
  ed:{line:'A tightly controlled app for drivers who work for local providers. It checks the driver, the vehicle and the equipment before every trip.',
   ratings:[['2.8','iPhone, 142 ratings',1],['3.8 to 3.9','Android']],
   good:['Health, cleaning, equipment and vehicle checks before trips','Confirms the right passenger at pickup and that nobody is left at drop-off','Saves trip events with no signal and sends them later','English and Spanish','Digital badge so families and schools can identify the driver'],
-  gaps:['Lowest iPhone rating of the three','Documents are handled on outside websites, not in the app','No earnings screen; pay comes from the provider','Some trips cannot be declined without phoning Dispatch','In-app chat is unconfirmed on Android']},
+  gaps:['Lowest iPhone rating of the apps we rated','Documents are handled on outside websites, not in the app','No earnings screen; pay comes from the provider','Some trips cannot be declined without phoning Dispatch','In-app chat is unconfirmed on Android']},
  zum:{line:'A shift-work app for staff drivers. It runs the day from yard to yard as much as the ride itself.',
   ratings:[['4.4','iPhone, 405 ratings'],['4.8','Android (reviews may be prompted)']],
   good:['Clock in, timesheets and shift sign-off','Links driver to vehicle by tag; fuel cards; Daily Bus Report','Students tap or scan a card to board','Screen locks while the vehicle moves','Asks “are any students left in the vehicle?” at the end of a ride','Practice mode with pretend rides for training'],
-  gaps:['iPhone app is English only','Only one iPhone release in 12 months','No stop-arrival check found','Store listing still sells gig work while the website hires staff']}
+  gaps:['iPhone app is English only','Only one iPhone release in 12 months','No stop-arrival check found','Store listing still sells gig work while the website hires staff']},
+ bc:{line:'A time-and-task app for school-bus drivers. It records when drivers clock in and out, which bus they drove and how far. It does not run the route itself. Summit runs ByteCurve tools, but Summit use of this app is not confirmed.',
+  ratings:[['?','Store rating not gathered']],
+  good:['Clock in and out with GPS; dispatch can block early or late clock-ins','Confirm the assigned bus or pick another at the yard','A required Child Check confirmation at the end of each task','Post-trip odometer and time log that rejects readings going backwards','Hours by pay period, plus time-correction requests','English and Spanish, with screen-reader labels throughout'],
+  gaps:['No maps, directions or student lists','No vehicle inspection, incident report or emergency option found','Messages come one way from operations; no family contact found','Only an error message when offline','Summit use not confirmed: Summit names ByteCurve tools but never this app']}
 };
 
 /* ---------- journeys ---------- [text, isSafety] */
@@ -590,6 +634,12 @@ const JOURNEYS = {
   {t:'Run a route',w:'Each ride',s:[['Accept or reject the assigned ride, with a reason'],['Start the ride and follow the directions, which also work offline in some areas'],['The screen locks while the vehicle moves',1],['Students tap or scan a card; the app flags anyone not on the ride',1],['Mark each student boarded, dropped off or no-show',1],['Message or call a parent through a masked number']]},
   {t:'End the shift',w:'End of the day',s:[['Answer “are any students left in the vehicle?” and log items left behind',1],['Complete the end-of-day inspection',1],['Return to the yard; blocked while a ride is still open'],['Certify and submit the Daily Bus Report'],['Sign off and check the timesheet']]},
   {t:'Get paid',w:'Weekly',s:[['Request changes to recorded hours'],['Payout and tax-form screens are in the code; who sees them is unknown']]}
+ ],
+ bc:[
+  {t:'First use',w:'Once, before the first shift',s:[['Enter the company access code from the dispatch manager'],['Register with first and last name and employee ID'],['Receive a User ID and set a password'],['Turn on biometric sign-in if wanted']]},
+  {t:'Start the shift',w:'Start of each task',s:[['Open the task list for today'],['Confirm the assigned bus or pick another one at the yard'],['Clock in; location must be on',1],['An early or late clock-in may be blocked or need a reason from a dispatch list']]},
+  {t:'End the task',w:'End of each task',s:[['Confirm the Child Check inspection was done',1],['Enter departure and return yard odometer and times, and each stop'],['The app rejects an odometer that goes backwards or a time in the future'],['Submit the post-trip log, which clocks the driver out']]},
+  {t:'Hours and messages',w:'Any time',s:[['Check hours by pay period and day'],['Add a time or task-code correction request'],['Track the request as Pending, Accepted or Denied'],['Read and acknowledge messages from operations']]}
  ]
 };
 

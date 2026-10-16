@@ -1,0 +1,470 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex, notranslate, noai, noimageai">
+<meta name="googlebot" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
+<meta name="bingbot" content="noindex, nofollow, noarchive, nosnippet">
+<meta name="referrer" content="no-referrer">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="What Student Transportation of America's payment portal shows from its public sign-in page. One portal, no comparison yet.">
+<title>STA payment portal: what it shows</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23003D4F'/%3E%3Cpath d='M18 6h5l-9 20H9z' fill='%23F2617A'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="../assets/chrome.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bitter:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --wave:#003D4F;--flamingo:#F2617A;--jade:#6B9E78;--turmeric:#CC850A;--sapphire:#47A1AD;--amethyst:#634F7D;
+  --mist:#EDF1F3;--ink:#14262E;--muted:#55686F;--line:#CBD5DA;--white:#FFFFFF;
+  --yes:#3F7A50;--part:#CC850A;--no:#D9435C;--unk:#8A9AA1;
+  --radius-s:4px;--radius-m:10px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
+body{margin:0;background:var(--white);color:var(--ink);font:16px/1.55 Inter,"Segoe UI",system-ui,-apple-system,sans-serif}
+h1,h2,h3{font-family:Bitter,Georgia,serif;color:var(--wave);margin:0}
+h1{font-size:clamp(30px,4.6vw,48px);line-height:1.08;font-weight:700;letter-spacing:-.01em}
+h2{font-size:clamp(24px,3vw,32px);line-height:1.15;font-weight:700}
+h3{font-size:20px;line-height:1.25;font-weight:700}
+p{margin:0}
+a{color:var(--wave)}
+button{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--flamingo);outline-offset:2px;border-radius:3px}
+.wrap{max-width:1180px;margin:0 auto;padding:0 clamp(16px,4vw,40px)}
+
+/* top bar */
+.bar{position:sticky;top:0;z-index:20;background:var(--wave);color:#fff}
+.bar .wrap{display:flex;align-items:center;gap:18px;min-height:56px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:10px;font-weight:600;white-space:nowrap}
+.brand .mark{width:10px;height:24px;background:var(--flamingo);transform:skewX(-18deg)}
+.bar nav{display:flex;gap:4px;overflow-x:auto;flex:1;scrollbar-width:none}
+.bar nav a{color:#fff;text-decoration:none;padding:8px 10px;border-radius:var(--radius-s);font-size:14px;white-space:nowrap;opacity:.85}
+.bar nav a:hover,.bar nav a.on{opacity:1;background:rgba(255,255,255,.12)}
+
+/* hero */
+.hero{background:var(--mist);padding:48px 0 40px;border-bottom:1px solid var(--line)}
+.hero .lede{max-width:64ch;margin-top:14px;font-size:18px;color:var(--ink)}
+.hero .meta{margin-top:10px;color:var(--muted);font-size:14px;max-width:70ch}
+.prints{margin-top:34px;display:grid;gap:14px}
+.print{display:grid;grid-template-columns:200px 1fr 92px;align-items:center;gap:16px;background:#fff;border:1px solid var(--line);border-radius:var(--radius-m);padding:14px 16px;cursor:pointer;text-align:left;width:100%}
+.print[aria-pressed=true]{border-color:var(--wave);box-shadow:inset 5px 0 0 var(--flamingo)}
+.print .who strong{display:block;font-family:Bitter,Georgia,serif;font-size:19px;color:var(--wave)}
+.print .who span{font-size:13px;color:var(--muted)}
+.cells{display:flex;flex-wrap:wrap;gap:4px 3px}
+.cells .grp{display:flex;gap:3px;padding-right:5px;border-right:1px solid var(--line)}
+.cells .grp:last-child{border-right:0}
+.sq{width:clamp(11px,1.35vw,18px);height:clamp(11px,1.35vw,18px);border-radius:3px;display:inline-block}
+.sq.y{background:var(--yes)}.sq.p{background:linear-gradient(135deg,var(--part) 50%,#F3DDB5 50%)}
+.sq.n{background:#fff;border:2px solid var(--no)}.sq.u{background:#fff;border:2px dashed var(--unk)}
+.score{font-family:Bitter,Georgia,serif;font-size:26px;color:var(--wave);text-align:right;line-height:1}
+.score small{display:block;font:12px Inter,sans-serif;color:var(--muted);margin-top:3px}
+.areakey{display:flex;flex-wrap:wrap;gap:6px 14px;margin-top:14px;font-size:13px;color:var(--muted)}
+
+/* legend */
+.legend{display:flex;flex-wrap:wrap;gap:8px 20px;align-items:center;font-size:14px}
+.legend span{display:inline-flex;align-items:center;gap:7px}
+.ico{width:22px;height:22px;flex:none;display:inline-block;vertical-align:middle}
+
+section.block{padding:56px 0 8px}
+.intro{max-width:68ch;margin-top:10px;color:var(--muted)}
+.tools{display:flex;flex-wrap:wrap;gap:8px;margin:22px 0 14px;align-items:center}
+.chip{border:1px solid var(--line);background:#fff;border-radius:999px;padding:6px 12px 6px 8px;font-size:14px;cursor:pointer;display:inline-flex;align-items:center;gap:7px}
+.chip .dot{width:12px;height:12px;border-radius:50%}
+.chip[aria-pressed=true]{background:var(--wave);color:#fff;border-color:var(--wave)}
+.chip[aria-pressed=true] .dot{box-shadow:0 0 0 2px #fff}
+.toggle{display:inline-flex;align-items:center;gap:8px;font-size:14px;margin-left:auto;cursor:pointer}
+.toggle input{width:18px;height:18px;accent-color:var(--wave)}
+
+/* tables */
+.tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:var(--radius-m);background:#fff}
+table{border-collapse:separate;border-spacing:0;width:100%;min-width:720px}
+caption{caption-side:top;text-align:left;padding:12px 16px;font-size:14px;color:var(--muted);border-bottom:1px solid var(--line);background:var(--mist)}
+th,td{padding:10px 14px;border-bottom:1px solid var(--line);vertical-align:top;text-align:left}
+thead th{position:sticky;top:0;background:#fff;font-size:14px;font-weight:600;color:var(--wave);z-index:1}
+tbody th{font-weight:500;width:34%;background:#fff;position:sticky;left:0;z-index:1}
+tbody th .what{display:block}
+tbody th .plain{display:block;font-weight:400;font-size:13px;color:var(--muted);margin-top:2px}
+tr.areahead th{background:var(--mist);font-family:Bitter,Georgia,serif;font-size:16px;color:var(--wave);padding-top:14px;position:sticky;left:0}
+tr.areahead th .tag{display:inline-flex;align-items:center;gap:8px}
+tr.areahead th .stripe{width:6px;height:20px;border-radius:2px}
+td.cell{padding:6px 8px}
+.cellbtn{display:flex;align-items:flex-start;gap:8px;width:100%;background:none;border:1px solid transparent;border-radius:var(--radius-s);padding:6px;cursor:pointer;text-align:left;font-size:13px;line-height:1.35;color:var(--ink)}
+.cellbtn:hover{border-color:var(--line);background:var(--mist)}
+.cellbtn .lbl{display:block}
+.cellbtn .lbl b{display:block;font-weight:600;font-size:13px}
+.cellbtn .lbl i{font-style:normal;color:var(--muted)}
+.build{display:inline-block;font-size:11px;font-weight:600;color:var(--amethyst);border:1px solid var(--amethyst);border-radius:3px;padding:0 4px;margin-left:4px;vertical-align:1px}
+.dim{opacity:.28}
+tr.hidden{display:none}
+col.focus,th.focus,td.focus{background:#F6FAFB}
+
+/* roles */
+.tabs{display:flex;gap:6px;flex-wrap:wrap;margin:22px 0 14px}
+.tab{border:1px solid var(--line);background:#fff;border-radius:var(--radius-s);padding:9px 16px;cursor:pointer;font-weight:600;color:var(--wave)}
+.tab[aria-selected=true]{background:var(--wave);color:#fff;border-color:var(--wave)}
+.roles td{font-size:13px;line-height:1.35;min-width:150px}
+.roles td .r{display:flex;gap:8px;align-items:flex-start}
+.roles thead th .aico{display:flex;align-items:center;gap:7px}
+.roles tbody th .rico{display:flex;gap:10px;align-items:center}
+.roles tbody th .rico svg,.roles td .r .ico{flex:none}
+.rolenote{margin-top:10px;font-size:14px;color:var(--muted);max-width:75ch}
+
+/* safety */
+.safety tbody th{width:40%}
+.safety td{text-align:center;vertical-align:middle}
+.safety td .ico{width:26px;height:26px}
+.safety tr.same{}
+.stage{display:inline-flex;align-items:center;gap:8px}
+
+/* cards */
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px;margin-top:24px}
+.card{border:1px solid var(--line);border-radius:var(--radius-m);background:#fff;display:flex;flex-direction:column;overflow:hidden}
+.card header{display:flex;gap:14px;align-items:center;padding:18px 18px 14px;border-bottom:1px solid var(--line)}
+.card header svg{width:56px;height:56px;flex:none}
+.card header p{font-size:13px;color:var(--muted)}
+.card .body{padding:14px 18px 18px;display:grid;gap:14px}
+.card .oneline{font-size:15px}
+.card h4{margin:0 0 6px;font-size:14px;font-weight:600;color:var(--wave)}
+.card ul{margin:0;padding-left:0;list-style:none;display:grid;gap:7px;font-size:14px}
+.card li{display:flex;gap:8px;align-items:flex-start}
+.card li svg{width:18px;height:18px;flex:none;margin-top:2px}
+.ratings{display:flex;gap:10px;flex-wrap:wrap}
+.rating{background:var(--mist);border-radius:var(--radius-s);padding:6px 10px;font-size:13px}
+.rating b{font-family:Bitter,Georgia,serif;font-size:18px;color:var(--wave);margin-right:4px}
+.rating.low b{color:var(--no)}
+
+/* journeys */
+.jgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;margin-top:8px}
+.journey{border-top:4px solid var(--wave);background:var(--mist);border-radius:0 0 var(--radius-m) var(--radius-m);padding:16px 18px 18px}
+.journey h3{font-size:18px}
+.journey p.when{font-size:13px;color:var(--muted);margin:4px 0 10px}
+.journey ol{margin:0;padding-left:0;list-style:none;counter-reset:s;display:grid;gap:8px}
+.journey li{counter-increment:s;display:grid;grid-template-columns:28px 1fr;gap:8px;font-size:14px;line-height:1.4}
+.journey li::before{content:counter(s);width:24px;height:24px;border-radius:50%;background:var(--wave);color:#fff;font-size:12px;font-weight:600;display:grid;place-items:center}
+.journey li.safety::before{background:var(--flamingo)}
+.journey li .tagline{display:block;font-size:12px;color:var(--muted)}
+.jkey{font-size:13px;color:var(--muted);display:flex;gap:16px;flex-wrap:wrap;margin-bottom:12px}
+.jkey span{display:inline-flex;gap:6px;align-items:center}
+.jkey i{width:14px;height:14px;border-radius:50%;display:inline-block}
+
+/* notes */
+.notes{margin:56px 0 0;padding:32px 0 48px;background:var(--mist);border-top:1px solid var(--line)}
+.notes ul{margin:12px 0 0;padding-left:20px;max-width:80ch;display:grid;gap:6px;font-size:14px}
+
+/* evidence drawer */
+.drawer{position:fixed;right:16px;bottom:16px;width:min(420px,calc(100vw - 32px));max-height:70vh;overflow:auto;background:#fff;border:1px solid var(--wave);border-radius:var(--radius-m);box-shadow:0 12px 32px rgba(0,61,79,.22);padding:18px 18px 16px;z-index:30;display:none}
+.drawer.open{display:block}
+.drawer .x{position:absolute;right:10px;top:8px;border:0;background:none;font-size:24px;line-height:1;cursor:pointer;color:var(--muted);padding:4px 8px}
+.drawer .co{font-size:13px;color:var(--muted)}
+.drawer h3{font-size:18px;margin:2px 28px 8px 0}
+.drawer .st{display:flex;align-items:center;gap:8px;font-weight:600;margin-bottom:10px}
+.drawer blockquote{margin:0 0 10px;padding:10px 12px;border-left:4px solid var(--flamingo);background:var(--mist);font-size:14px}
+.drawer .note{font-size:14px;margin-bottom:10px}
+.drawer .src{font-size:13px;color:var(--muted)}
+@media (max-width:760px){
+  .print{grid-template-columns:1fr;gap:10px}
+  .score{text-align:left}
+  tbody th{width:auto;min-width:170px}
+  .toggle{margin-left:0}
+  .drawer{right:0;bottom:0;width:100%;border-radius:var(--radius-m) var(--radius-m) 0 0;max-height:60vh}
+}
+@media print{.bar,.drawer,.tools,.tabs{display:none!important}.tablewrap{overflow:visible}section.block{break-inside:avoid-page}[data-panel]{display:block!important}}
+.bar nav a.other{border:1px solid rgba(255,255,255,.35);margin-left:6px}
+.sq.x{background:#E3EBEE}
+.bar.subnav{top:var(--gh-h);z-index:20;background:#0B5163}
+.crumb{display:flex;flex:none;gap:8px;align-items:center;font-weight:600;white-space:nowrap}
+.crumb a{color:#CFE3E8}
+.crumb [aria-current]{color:#fff}
+html{scroll-padding-top:124px}
+.notes{margin-bottom:0}
+.gf{margin-top:0}
+</style>
+</head>
+<body>
+<a class="gh-skip" href="#content">Skip to content</a>
+<header class="gh">
+  <div class="gh-in">
+    <a class="gh-brand" href="../index.html"><span class="gh-slash">/</span>The Product Council</a>
+    <button type="button" class="gh-btn gh-menu" id="ghMenu" aria-expanded="false" aria-controls="ghNav">Menu</button>
+    <nav class="gh-nav" id="ghNav" aria-label="Main">
+      <a href="../index.html">Home</a>
+      <a href="../use.html">Use it</a>
+      <a href="../commands.html">Commands</a>
+      <a href="../behaviour.html">How it behaves</a>
+      <a href="../knowledge.html">Knowledge</a>
+      <a href="../diagrams.html">Diagrams</a>
+      <a href="../technical.html">Technical</a>
+      <a href="../reference.html">Reference</a>
+      <a href="../comparisons.html" aria-current="page">Comparisons</a>
+    </nav>
+  </div>
+</header>
+
+<div class="bar subnav">
+  <div class="wrap">
+    <nav class="crumb" aria-label="Breadcrumb"><a href="../comparisons.html">Comparisons</a><span aria-hidden="true">/</span><span aria-current="page">Payment portals</span></nav>
+    <nav aria-label="Sections">
+      <a href="#matrix">What it shows</a>
+      <a href="#cards">Portal card</a>
+      <a href="#notes">What we could not see</a>
+      <a href="driver-app.html" class="other">Driver apps</a>
+      <a href="parent-app.html" class="other">Parent apps</a>
+      <a href="staff-app.html" class="other">Staff apps</a>
+      <a href="provider-portal.html" class="other">Provider portals</a>
+      <a href="district-portal.html" class="other">District portals</a>
+    </nav>
+  </div>
+</div>
+
+<main id="content">
+<section class="hero">
+  <div class="wrap">
+    <h1>What STA's payment portal shows</h1>
+    <p class="lede">Student Transportation of America runs a separate website for payments. Only its sign-in page is public. The strip below is that portal. Every square is one thing we looked for, grouped by area and coloured by what we found.</p>
+    <p class="meta">Built from our reading of the public sign-in page, October 2026. We did not sign in or fill in any form. We have no other payment portal in our research yet, so this page describes one portal and compares nothing.</p>
+    <div class="prints" id="prints"></div>
+    <div class="areakey" id="areakey"></div>
+    <div class="legend" style="margin-top:16px" id="legend"></div>
+  </div>
+</section>
+
+<section class="block" id="matrix">
+  <div class="wrap">
+    <h2>What the portal shows</h2>
+    <p class="intro">Select any answer to read the evidence behind it. A purple <span class="build">in build</span> tag means we found it in the page's own code or loaded libraries. It exists on the page, but we could not see it used after sign-in. Most rows marked as not found sit behind the sign-in.</p>
+    <div class="tools" id="areaFilter" role="group" aria-label="Filter by area"></div>
+    <div class="tablewrap">
+      <table id="matrixTable"><caption>Payment portal features, by area. Rows: what we looked for. Column: STA's payment portal.</caption></table>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="cards">
+  <div class="wrap">
+    <h2>The portal in plain words</h2>
+    <p class="intro">What the portal seems to be for, what stands out, and where it falls short.</p>
+    <div class="cards" id="cardGrid"></div>
+  </div>
+</section>
+
+<section class="notes" id="notes">
+  <div class="wrap">
+    <h2>What we could not see</h2>
+    <ul>
+      <li>We saw only the public sign-in page. Everything after sign-in is hidden, and the site sends no app code we could read.</li>
+      <li>We did not sign in, create an account or submit any form.</li>
+      <li>What the portal charges for, and who pays, is our inference from the page title and the card payment library. It most likely serves parents or guardians. That is not confirmed.</li>
+      <li>Payment screens, amounts owed, saved cards, receipts and refunds are handled on STA's server. None of them were visible.</li>
+      <li>The password reset page was linked but not opened.</li>
+      <li>Staff or admin roles, emails and other notifications were not visible.</li>
+      <li>This is the only payment portal in our research, so there is nothing to set beside it yet.</li>
+    </ul>
+  </div>
+</section>
+</main>
+<footer class="gf">
+  <div class="gf-in">
+    <div class="gf-brand"><span class="gh-slash">/</span>The Product Council<p>Expert panels for FirstAlt product decisions, grounded in evidence.</p></div>
+    <div><h2>Use</h2><a href="../use.html">Get started</a><a href="../commands.html">Commands</a><a href="../behaviour.html">How it behaves</a><a href="../diagrams.html">Diagrams</a></div>
+    <div><h2>Understand</h2><a href="../knowledge.html">Knowledge and context</a><a href="../technical.html">Technical</a><a href="../reference.html">Reference</a></div>
+    <div><h2>Competitors</h2><a href="../comparisons/driver-app.html">Driver apps</a><a href="../comparisons/parent-app.html">Parent apps</a><a href="../comparisons/staff-app.html">Staff apps</a><a href="../comparisons/provider-portal.html">Provider portals</a><a href="../comparisons/district-portal.html">District portals</a><a href="../comparisons/payment-portal.html">Payment portals</a></div>
+  </div>
+  <p class="gf-note">FirstAlt Product Council v3.7.3, updated 11 October 2026. The repository is the source of truth: update these pages in the same pull request as a skill, agent or persona change.</p>
+</footer>
+
+<aside class="drawer" id="drawer" role="dialog" aria-modal="false" aria-labelledby="dTitle">
+  <button class="x" id="dClose" aria-label="Close evidence">×</button>
+  <div class="co" id="dCo"></div>
+  <h3 id="dTitle"></h3>
+  <div class="st" id="dSt"></div>
+  <div id="dBody"></div>
+</aside>
+
+<script src="../assets/chrome.js"></script>
+<script>
+/* ---------- icons ---------- */
+const S = {
+ y:'<svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="#3F7A50"/><path d="M7 12.5l3.2 3.2L17 9" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+ p:'<svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="#fff" stroke="#CC850A" stroke-width="2"/><path d="M12 2a10 10 0 0 0 0 20z" fill="#CC850A"/></svg>',
+ n:'<svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="#fff" stroke="#D9435C" stroke-width="2"/><path d="M8.5 8.5l7 7M15.5 8.5l-7 7" stroke="#D9435C" stroke-width="2.4" stroke-linecap="round"/></svg>',
+ u:'<svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="#fff" stroke="#8A9AA1" stroke-width="2" stroke-dasharray="3 2.4"/><text x="12" y="16.5" text-anchor="middle" font-size="12" font-weight="700" fill="#55686F" font-family="Inter,sans-serif">?</text></svg>',
+ x:'<svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 12h10" stroke="#B5C1C6" stroke-width="2.4" stroke-linecap="round"/></svg>'
+};
+const SL = {y:'Has it',p:'Partly',n:'Not offered',u:'Not found in our research',x:'Not their role'};
+
+const AREA_ICON = {
+ key:'<path d="M14.5 9.5a4.5 4.5 0 1 1-1.4-3.3" /><circle cx="10" cy="10" r="1.6"/><path d="M13.5 12.5L20 19l-1.6 1.6M17 16l-1.6 1.6"/>',
+ cal:'<rect x="3.5" y="5" width="17" height="15" rx="2"/><path d="M3.5 10h17M8 3v4M16 3v4M8 14h3"/>',
+ pin:'<path d="M12 21s-6.5-6.2-6.5-11a6.5 6.5 0 0 1 13 0c0 4.8-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.4"/>',
+ kid:'<circle cx="12" cy="6.5" r="3"/><path d="M6 21v-4.5a6 6 0 0 1 12 0V21M12 13v8"/>',
+ shield:'<path d="M12 3l7.5 3v5.5c0 4.6-3.2 8-7.5 9.5-4.3-1.5-7.5-4.9-7.5-9.5V6z"/><path d="M8.8 12l2.3 2.3L15.5 10"/>',
+ coin:'<circle cx="12" cy="12" r="8.5"/><path d="M14.6 9.2c-.5-.9-1.5-1.4-2.6-1.4-1.5 0-2.6.8-2.6 2s1.1 1.7 2.6 2 2.6.8 2.6 2-1.1 2-2.6 2c-1.2 0-2.2-.5-2.7-1.5M12 6.3v1.5M12 16.2v1.5"/>',
+ bell:'<path d="M6 16.5V11a6 6 0 0 1 12 0v5.5l1.5 2h-15z"/><path d="M10 20.5a2 2 0 0 0 4 0"/>',
+ buoy:'<circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="3.5"/><path d="M6 6l3.5 3.5M18 6l-3.5 3.5M6 18l3.5-3.5M18 18l-3.5-3.5"/>',
+ stop:'<path d="M8.3 3.5h7.4l4.8 4.8v7.4l-4.8 4.8H8.3l-4.8-4.8V8.3z"/><path d="M9 12h6"/>',
+ globe:'<circle cx="12" cy="12" r="8.5"/><path d="M3.5 12h17M12 3.5c2.6 2.4 3.8 5.2 3.8 8.5s-1.2 6.1-3.8 8.5c-2.6-2.4-3.8-5.2-3.8-8.5S9.4 5.9 12 3.5z"/>'
+};
+function aIco(name,color,size=20){return `<svg width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="${color}" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${AREA_ICON[name]}</svg>`}
+
+const AREAS = [
+ {id:'signin',name:'Sign-in and accounts',color:'#47A1AD',icon:'key'},
+ {id:'pay',name:'Payments',color:'#CC850A',icon:'coin'},
+ {id:'secure',name:'Security and privacy',color:'#F2617A',icon:'shield'},
+ {id:'help',name:'Phones, help and messages',color:'#8E4A5B',icon:'buoy'}
+];
+
+const COS = [
+ {id:'sta',name:'Student Transportation of America',app:'Ridesta payment portal',model:'Payment portal, purpose inferred'}
+];
+
+/* plain source names */
+const AN = {
+ sta:{AN2:'Our reading of the payment portal sign-in page (Oct 2026)'}
+};
+function srcName(co,keys){
+  const c=COS.find(x=>x.id===co).name;
+  return keys.split(/,\s*/).filter(Boolean).map(k=>{
+    if(k.startsWith('AN')) return AN[co][k]||'Our code reading';
+    const t={W:c+' website',H:c+' help centre',A:'App store listing',P:'Press coverage',R:'App store reviews',C:'District contract'}[k[0]];
+    return t||k;
+  }).filter((v,i,a)=>a.indexOf(v)===i).join('; ');
+}
+
+/* ---------- matrix data ----------
+ each cell: [status, text, sourceKeys, date, isQuote, inBuild, optional note]  */
+const ROWS = [
+ {a:'signin',w:'Sign in',d:'How a returning user gets in',
+  sta:['y','Email and password, then a "Sign In" button. The page heading reads "Payment Portal Sign In".','AN2','2026-10-16',0,0]},
+ {a:'signin',w:'Create your own account',d:'Sign up without being invited',
+  sta:['y','Anyone with an email address can create an account. The form asks for email twice, password twice, and first and last name.','AN2','2026-10-16',0,0,'This open sign-up suggests the portal faces the public, most likely parents or guardians. That is our inference.']},
+ {a:'signin',w:'Reset a forgotten password',d:'Get back in without help',
+  sta:['y','A "Forgot Password?" link sits on the sign-in page.','AN2','2026-10-16',0,0,'We saw the link only. We did not open the reset page.']},
+ {a:'signin',w:'Sign in with a company or social account',d:'Single sign-on, Google, Apple and similar',
+  sta:['n','The sign-in page offers email and password only. No single sign-on or social sign-in was seen.','AN2','2026-10-16',0,0]},
+ {a:'signin',w:'Checks on what you type',d:'Messages when a field is missing or wrong',
+  sta:['y','Required fields, email format and matching entries are checked in the browser, with tick and cross icons.','AN2','2026-10-16',0,1,'Messages include "Email is required", "Invalid email format", "Email addresses do not match" and "Passwords do not match".']},
+ {a:'signin',w:'Different kinds of user',d:'Payers, staff or admins with their own views',
+  sta:['u','Only one kind of user is visible: a person who signed up for themselves. Staff or admin roles are not visible.','AN2','2026-10-16',0,0]},
+
+ {a:'pay',w:'Pay by card',d:'Card payment inside the portal',
+  sta:['p','The Stripe card payment library loads on every page, and the layout styles Stripe card fields. The payment screens themselves are not visible.','AN2','2026-10-16',0,1]},
+ {a:'pay',w:'See what you are paying for',d:'Fees, services or trips the payment covers',
+  sta:['u','What is paid for (e.g. transport fees) is not visible','AN2','2026-10-16',1,0]},
+ {a:'pay',w:'See the amount owed',d:'A balance or bill before paying',
+  sta:['u','Balances and pricing are handled on STA\'s server and are not visible.','AN2','2026-10-16',0,0]},
+ {a:'pay',w:'Save a card for next time',d:'Stored cards or automatic payments',
+  sta:['u','Not visible. Nothing on the sign-in page shows saved cards or automatic payments.','AN2','2026-10-16',0,0]},
+ {a:'pay',w:'Receipts and payment history',d:'Proof of payment and past payments',
+  sta:['u','Receipts are handled on STA\'s server and are not visible.','AN2','2026-10-16',0,0]},
+ {a:'pay',w:'Refunds',d:'Getting money back',
+  sta:['u','Not described anywhere on the public page.','AN2','2026-10-16',0,0]},
+ {a:'pay',w:'Other ways to pay',d:'Bank transfer, cheque or cash',
+  sta:['u','Only a card payment library was seen. Other payment methods are not visible.','AN2','2026-10-16',0,0]},
+
+ {a:'secure',w:'Card details kept off STA\'s forms',d:'Who handles the card number',
+  sta:['y','Card numbers are typed into Stripe\'s fields, not STA\'s own forms.','AN2','2026-10-16',0,1,'This is implied by the Stripe card field styles on the page.']},
+ {a:'secure',w:'Password rules',d:'How strong a new password must be',
+  sta:['y','8–16 characters with at least one capital letter and one number','AN2','2026-10-16',1,1,'The confirmation field allows 6 to 16 characters, so the page\'s own rules do not match.']},
+ {a:'secure',w:'Protection against forged form posts',d:'A hidden security check on each form',
+  sta:['y','Each form carries a hidden security token, so another site cannot post to it on a user\'s behalf.','AN2','2026-10-16',0,1]},
+ {a:'secure',w:'Two-step sign-in',d:'A code by text or app as well as a password',
+  sta:['u','Not seen on the sign-in page. Anything after the password is not visible.','AN2','2026-10-16',0,0]},
+ {a:'secure',w:'Fraud checks on payments',d:'Signals that flag suspicious payments',
+  sta:['p','Stripe\'s fraud-signal frame loads on the sign-in page. How STA uses it is not visible.','AN2','2026-10-16',0,1]},
+ {a:'secure',w:'Visitor tracking',d:'Analytics on who visits and how the page performs',
+  sta:['y','Cloudflare tracks page views and page performance.','AN2','2026-10-16',0,1]},
+
+ {a:'help',w:'Works like an app on a phone',d:'Add to the home screen and use full screen',
+  sta:['y','The site supports being saved to an iPhone home screen and keeps links inside that home-screen app.','AN2','2026-10-16',0,1]},
+ {a:'help',w:'Instructions and questions on screen',d:'Guidance text inside the portal',
+  sta:['u','Text styles for instructions and questions exist in the layout. The pages that use them are not visible.','AN2','2026-10-16',0,0]},
+ {a:'help',w:'Emails and reminders',d:'Account, payment or due-date messages',
+  sta:['u','None visible. Password reset and account emails are presumably sent by the server.','AN2','2026-10-16',0,0]},
+ {a:'help',w:'Contact support',d:'A help centre, phone number or chat',
+  sta:['u','Not described in our reading of the sign-in page.','AN2','2026-10-16',0,0]}
+];
+
+/* ---------- card ---------- */
+const VEH = {
+ sta:'<svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="14" fill="#EDF1F3"/><rect x="9" y="17" width="46" height="30" rx="4" fill="#003D4F"/><path d="M9 25h46" stroke="#47A1AD" stroke-width="5"/><rect x="14" y="34" width="14" height="5" rx="1.5" fill="#fff" opacity=".85"/><circle cx="44" cy="38" r="4" fill="#F2617A"/><circle cx="49" cy="38" r="4" fill="#CC850A" opacity=".9"/></svg>'
+};
+const PLUS='<svg viewBox="0 0 18 18" aria-hidden="true"><circle cx="9" cy="9" r="8" fill="#3F7A50"/><path d="M9 5.5v7M5.5 9h7" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/></svg>';
+const MINUS='<svg viewBox="0 0 18 18" aria-hidden="true"><circle cx="9" cy="9" r="8" fill="#fff" stroke="#D9435C" stroke-width="1.6"/><path d="M5.5 9h7" stroke="#D9435C" stroke-width="1.8" stroke-linecap="round"/></svg>';
+const CARDS = {
+ sta:{line:'A separate payments website on an older stack. Only the sign-in page is public. It most likely lets parents or guardians pay STA by card, but that is our inference.',
+  ratings:[],
+  good:['Anyone can create an account with an email address','Card payments run through Stripe, so card numbers stay off STA\'s own forms','Clear checks and messages on every sign-in and sign-up field','Can be saved to an iPhone home screen and used like an app'],
+  gaps:['What you pay for, and who pays, is not visible from outside','Password rules do not match: 8 to 16 characters for the password, 6 to 16 for the confirmation','Most page libraries date from around 2017 to 2018, and its time-zone data ends in 2022','No company or social sign-in']}
+};
+
+/* ---------- render ---------- */
+const $=s=>document.querySelector(s);
+let area=null;
+
+function legendHTML(){return ['y','p','n','u'].map(k=>`<span>${S[k]}${SL[k]}</span>`).join('')+`<span><span class="build" style="margin:0">in build</span> found in the page's code</span>`}
+$('#legend').innerHTML=legendHTML();
+$('#areakey').innerHTML=AREAS.map(a=>`<span style="display:inline-flex;align-items:center;gap:6px">${aIco(a.icon,a.color,16)}${a.name}</span>`).join('');
+
+function renderPrints(){
+  $('#prints').innerHTML=COS.map(c=>{
+    let has=0,part=0;
+    const grps=AREAS.map(a=>`<span class="grp" title="${a.name}">`+ROWS.filter(r=>r.a===a.id).map(r=>{const s=r[c.id][0];if(s==='y')has++;if(s==='p')part++;return `<span class="sq ${s}" title="${r.w}: ${SL[s]}"></span>`}).join('')+'</span>').join('');
+    return `<div class="print" style="cursor:default"><span class="who"><strong>${c.name}</strong><span>${c.app}: ${c.model}</span></span><span class="cells">${grps}</span><span class="score">${has}<small>of ${ROWS.length} in full${part?`, ${part} in part`:''}</small></span></div>`;
+  }).join('');
+}
+
+function renderFilter(){
+  $('#areaFilter').innerHTML=`<button class="chip" data-a="" aria-pressed="${!area}"><span class="dot" style="background:#C9D3D8"></span>All areas</button>`+AREAS.map(a=>`<button class="chip" data-a="${a.id}" aria-pressed="${area===a.id}"><span class="dot" style="background:${a.color}"></span>${a.name}</button>`).join('');
+  document.querySelectorAll('#areaFilter .chip').forEach(b=>b.onclick=()=>{area=b.dataset.a||null;renderFilter();renderMatrix();});
+}
+
+function head(){return `<thead><tr><th scope="col">What we looked for</th>${COS.map(c=>`<th scope="col" data-co="${c.id}">${c.name}<br><span style="font-weight:400;color:var(--muted);font-size:13px">${c.app}</span></th>`).join('')}</tr></thead>`}
+
+function renderMatrix(){
+  let h=`<caption>Payment portal features, by area. Rows: what we looked for. Column: STA's payment portal.</caption>`+head()+'<tbody>';
+  AREAS.forEach(a=>{
+    if(area&&area!==a.id)return;
+    const rows=ROWS.map((r,i)=>[r,i]).filter(([r])=>r.a===a.id);
+    if(!rows.length)return;
+    h+=`<tr class="areahead"><th colspan="${COS.length+1}" scope="rowgroup"><span class="tag"><span class="stripe" style="background:${a.color}"></span>${aIco(a.icon,a.color)}${a.name}</span></th></tr>`;
+    rows.forEach(([r,i])=>{
+      h+=`<tr><th scope="row" style="box-shadow:inset 4px 0 0 ${a.color}"><span class="what">${r.w}</span><span class="plain">${r.d}</span></th>`+COS.map(c=>{const v=r[c.id];return `<td class="cell" data-co="${c.id}"><button class="cellbtn" data-i="${i}" data-co="${c.id}" aria-label="${r.w}: ${SL[v[0]]}. Show evidence">${S[v[0]]}<span class="lbl"><b>${SL[v[0]]}${v[5]?'<span class="build">in build</span>':''}</b><i>${short(v)}</i></span></button></td>`}).join('')+'</tr>';
+    });
+  });
+  $('#matrixTable').innerHTML=h+'</tbody>';
+  bindCells('#matrixTable');
+}
+function short(v){let t=v[6]||v[1];t=t.replace(/^[“"]|[”"]$/g,'');return t.length>78?t.slice(0,76).replace(/\s\S*$/,'')+'…':t}
+
+function renderCards(){
+  $('#cardGrid').innerHTML=COS.map(c=>{const k=CARDS[c.id];return `<article class="card" data-co="${c.id}"><header>${VEH[c.id]}<div><h3>${c.app}</h3><p>${c.name}. ${c.model}</p></div></header><div class="body"><p class="oneline">${k.line}</p>${k.ratings.length?`<div class="ratings">${k.ratings.map(r=>`<span class="rating${r[2]?' low':''}"><b>${r[0]}</b>${r[1]}</span>`).join('')}</div>`:''}<div><h4>Stands out</h4><ul>${k.good.map(g=>`<li>${PLUS}<span>${g}</span></li>`).join('')}</ul></div><div><h4>Falls short</h4><ul>${k.gaps.map(g=>`<li>${MINUS}<span>${g}</span></li>`).join('')}</ul></div></div></article>`}).join('');
+}
+
+function bindCells(sel){document.querySelectorAll(sel+' .cellbtn').forEach(b=>b.onclick=()=>openDrawer(b));}
+let lastBtn=null;
+function openDrawer(b){
+  lastBtn=b;
+  const co=COS.find(c=>c.id===b.dataset.co), r=ROWS[+b.dataset.i], v=r[co.id];
+  const quote=v[4], src=v[2], date=v[3], extra=v[6]||'', build=v[5];
+  $('#dCo').textContent=co.app;
+  $('#dTitle').textContent=r.w;
+  $('#dSt').innerHTML=S[v[0]]+SL[v[0]]+(build?'<span class="build">in build</span>':'');
+  $('#dBody').innerHTML=(quote?`<blockquote>“${esc(v[1])}”</blockquote>`:`<p class="note">${esc(v[1])}</p>`)+(extra?`<p class="note">${esc(extra)}</p>`:'')+`<p class="src">${src?'Source: '+esc(srcName(co.id,src))+'.':'No source found after searching.'}${date?' Dated '+date+'.':''}${quote?' Quoted in the source’s own words.':' Summarised in our words.'}</p>`;
+  $('#drawer').classList.add('open');$('#dClose').focus();
+}
+function esc(s){return String(s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]))}
+$('#dClose').onclick=()=>{$('#drawer').classList.remove('open');lastBtn&&lastBtn.focus();};
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&$('#drawer').classList.contains('open'))$('#dClose').click();});
+
+renderPrints();renderFilter();renderMatrix();renderCards();
+
+/* highlight current section in the bar */
+const links=[...document.querySelectorAll('.bar nav a')];
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)links.forEach(l=>l.classList.toggle('on',l.getAttribute('href')==='#'+e.target.id))}),{rootMargin:'-40% 0px -55% 0px'});
+['matrix','cards','notes'].forEach(id=>io.observe(document.getElementById(id)));
+
+</script>
+</body>
+</html>

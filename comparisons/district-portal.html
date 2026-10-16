@@ -2,9 +2,13 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex, notranslate, noai, noimageai">
+<meta name="googlebot" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
+<meta name="bingbot" content="noindex, nofollow, noarchive, nosnippet">
+<meta name="referrer" content="no-referrer">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="School and district portals compared: HopSkipDrive, EverDriven and Zum, side by side.">
-<title>School and district portals compared: HopSkipDrive, EverDriven, Zum</title>
+<meta name="description" content="School and district portals compared: HopSkipDrive, EverDriven, Zum and Beacon Mobility, side by side.">
+<title>School and district portals compared: HopSkipDrive, EverDriven, Zum, Beacon Mobility</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23003D4F'/%3E%3Cpath d='M18 6h5l-9 20H9z' fill='%23F2617A'/%3E%3C/svg%3E">
 <link rel="stylesheet" href="../assets/chrome.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -76,11 +80,11 @@ section.block{padding:56px 0 8px}
 
 /* tables */
 .tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:var(--radius-m);background:#fff}
-table{border-collapse:separate;border-spacing:0;width:100%;min-width:720px}
+table{border-collapse:separate;border-spacing:0;width:100%;min-width:860px}
 caption{caption-side:top;text-align:left;padding:12px 16px;font-size:14px;color:var(--muted);border-bottom:1px solid var(--line);background:var(--mist)}
 th,td{padding:10px 14px;border-bottom:1px solid var(--line);vertical-align:top;text-align:left}
 thead th{position:sticky;top:0;background:#fff;font-size:14px;font-weight:600;color:var(--wave);z-index:1}
-tbody th{font-weight:500;width:34%;background:#fff;position:sticky;left:0;z-index:1}
+tbody th{font-weight:500;width:28%;background:#fff;position:sticky;left:0;z-index:1}
 tbody th .what{display:block}
 tbody th .plain{display:block;font-weight:400;font-size:13px;color:var(--muted);margin-top:2px}
 tr.areahead th{background:var(--mist);font-family:Bitter,Georgia,serif;font-size:16px;color:var(--wave);padding-top:14px;position:sticky;left:0}
@@ -211,7 +215,9 @@ html{scroll-padding-top:124px}
       <a href="#notes">What we could not see</a>
       <a href="driver-app.html" class="other">Driver apps</a>
       <a href="parent-app.html" class="other">Parent apps</a>
+      <a href="staff-app.html" class="other">Staff apps</a>
       <a href="provider-portal.html" class="other">Provider portals</a>
+      <a href="payment-portal.html" class="other">Payment portals</a>
     </nav>
   </div>
 </div>
@@ -219,9 +225,9 @@ html{scroll-padding-top:124px}
 <main id="content">
 <section class="hero">
   <div class="wrap">
-    <h1>What three competitors give schools and districts</h1>
-    <p class="lede">District transport teams use these web portals to request rides, follow them, cancel them, pay for them and report on them. School staff use them to see who is arriving. Each strip below is one portal. Every square is one thing a district can do.</p>
-    <p class="meta">EverDriven Ride Manager, HopSkipDrive RideIQ and the Zum school portal. Built from our competitor research packs and our reading of each portal's code from its public sign-in page, October 2026. Select a strip to highlight that portal across the page.</p>
+    <h1>What four competitors give schools and districts</h1>
+    <p class="lede">District transport teams use these web portals to request rides, follow them, cancel them, pay for them and report on them. School staff use them to see who is arriving. EverDriven, HopSkipDrive and Zum serve alternative transport. Beacon Mobility runs yellow buses. Each strip below is one portal. Every square is one thing a district can do.</p>
+    <p class="meta">EverDriven Ride Manager, HopSkipDrive RideIQ, the Zum school portal and the Beacon Connect client portal. Built from our competitor research packs, Beacon's public help guides and our reading of each portal's code from its public sign-in page, October 2026. Select a strip to highlight that portal across the page.</p>
     <div class="prints" id="prints"></div>
     <div class="areakey" id="areakey"></div>
     <div class="legend" style="margin-top:16px" id="legend"></div>
@@ -290,6 +296,10 @@ html{scroll-padding-top:124px}
       <li>EverDriven markets its district hub as TripCentral. The portal code calls it the District Portal or Ride Manager.</li>
       <li>HopSkipDrive's SIS import and some other features may be switched off for some accounts.</li>
       <li>Zum's portal includes tools for AI agents. What they do is not visible.</li>
+      <li>Beacon's portal loads its 16 feature screens only after sign-in. We saw their names and the permissions that guard them, not what they show. Where the help guides describe a screen, we used them.</li>
+      <li>No billing or invoice screen appears in Beacon's portal code or help guides. How Beacon bills districts is unknown.</li>
+      <li>Beacon's portal has an ETA screen. What it shows and how the times are worked out is not visible.</li>
+      <li>Beacon's help guides date from July 2025 to June 2026, so some details may have changed.</li>
     </ul>
   </div>
 </section>
@@ -299,7 +309,7 @@ html{scroll-padding-top:124px}
     <div class="gf-brand"><span class="gh-slash">/</span>The Product Council<p>Expert panels for FirstAlt product decisions, grounded in evidence.</p></div>
     <div><h2>Use</h2><a href="../use.html">Get started</a><a href="../commands.html">Commands</a><a href="../behaviour.html">How it behaves</a><a href="../diagrams.html">Diagrams</a></div>
     <div><h2>Understand</h2><a href="../knowledge.html">Knowledge and context</a><a href="../technical.html">Technical</a><a href="../reference.html">Reference</a></div>
-    <div><h2>Competitors</h2><a href="../comparisons/driver-app.html">Driver apps</a><a href="../comparisons/parent-app.html">Parent apps</a><a href="../comparisons/provider-portal.html">Provider portals</a><a href="../comparisons/district-portal.html">District portals</a></div>
+    <div><h2>Competitors</h2><a href="../comparisons/driver-app.html">Driver apps</a><a href="../comparisons/parent-app.html">Parent apps</a><a href="../comparisons/staff-app.html">Staff apps</a><a href="../comparisons/provider-portal.html">Provider portals</a><a href="../comparisons/district-portal.html">District portals</a><a href="../comparisons/payment-portal.html">Payment portals</a></div>
   </div>
   <p class="gf-note">FirstAlt Product Council v3.7.3, updated 11 October 2026. The repository is the source of truth: update these pages in the same pull request as a skill, agent or persona change.</p>
 </footer>
@@ -355,13 +365,15 @@ const AREAS = [
 const COS = [
  {id:'ed',name:'EverDriven',app:'Ride Manager',model:'District portal for EverDriven trips'},
  {id:'hsd',name:'HopSkipDrive',app:'RideIQ',model:'Booking and management portal for organisations'},
- {id:'zum',name:'Zum',app:'school portal',model:'One platform for districts and Zum’s own operations'}
+ {id:'zum',name:'Zum',app:'school portal',model:'One platform for districts and Zum’s own operations'},
+ {id:'bcn',name:'Beacon Mobility',app:'Beacon Connect client portal',model:'Yellow-bus operator portal for districts, part of one platform with family and driver roles'}
 ];
 
 const AN = {
  ed:{AN2:'Our reading of the RideAware Android app code (Oct 2026)',AN3:'Our reading of the Ride Manager district portal code (Oct 2026)'},
  hsd:{AN3:'Our reading of the HopSkipDrive family app code (Oct 2026)',AN4:'Our reading of the RideIQ portal code (Oct 2026)'},
- zum:{AN2:'Our reading of the Zum parent app code (Oct 2026)',AN3:'Our reading of the Zum school portal code (Oct 2026)'}
+ zum:{AN2:'Our reading of the Zum parent app code (Oct 2026)',AN3:'Our reading of the Zum school portal code (Oct 2026)'},
+ bcn:{AN2:'Our reading of the Beacon Connect client portal code loaded before sign-in (Oct 2026)'}
 };
 function srcName(co,keys){
   const c=COS.find(x=>x.id===co).name;
@@ -377,119 +389,146 @@ const ROWS = [
  {a:'signin',w:'Sign in to the portal',d:'Accounts for district and school staff',
   ed:['y','Company sign-in page, with invitations sent to new users.','AN3','2026-10-15',0,1],
   hsd:['y','Email and password, single sign-on, and a second check by code.','AN4','2026-10-15',0,1],
-  zum:['y','Email-first sign-in, with single sign-on set up per account.','AN3','2026-10-15',0,1]},
+  zum:['y','Email-first sign-in, with single sign-on set up per account.','AN3','2026-10-15',0,1],
+  bcn:['y','Email and password, or Google or Microsoft accounts, seen on the sign-in page.','AN2','2026-10-16',0,1]},
  {a:'signin',w:'Sign in with the district’s own login',d:'Single sign-on',
   ed:['u','Not named in the portal code.','AN3','2026-10-15',0,0],
   hsd:['y','Your organization uses single sign-on','AN4','2026-10-15',1,1],
-  zum:['y','Districts can set up and test their own single sign-on.','AN3','2026-10-15',0,1]},
+  zum:['y','Districts can set up and test their own single sign-on.','AN3','2026-10-15',0,1],
+  bcn:['y','email / password or Google / Microsoft SSO','AN2','2026-10-16',1,1]},
  {a:'signin',w:'Manage users and roles',d:'Who can do what in the portal',
   ed:['p','Add or remove users, assign roles, and manage caregiver RideAware App access.','W2','2026-10-14',1,0],
   hsd:['p','pending approval by an Account Admin or Full-Access Organizer','AN4','2026-10-15',1,1,'Roles include admins, organisers and view-only onsite staff.'],
-  zum:['y','Roles, permissions, approval groups and paths, and handing a role to someone else.','AN3','2026-10-15',0,1]},
+  zum:['y','Roles, permissions, approval groups and paths, and handing a role to someone else.','AN3','2026-10-15',0,1],
+  bcn:['p','Each module has its own permission. Staff users can be added, edited and given a status.','AN2','2026-10-16',0,1,'Screens exist, contents not visible.']},
  {a:'signin',w:'A view for school staff',d:'The front office sees who is coming and going',
   ed:['y','Schools get notifications when a student is picked up','P3, A3, AN2','2026-10-14',1,0,'Staff use the RideAware app, which works only on campus.'],
   hsd:['y','The Daily Queue allows you to see information for all HopSkipDrive transportation to or from your location(s).','H14, W2','2026-08-19',1,0],
-  zum:['y','Self-service, comprehensive web dashboard with iOS and Android app accessibility','W1','2026-10-14',1,0]},
+  zum:['y','Self-service, comprehensive web dashboard with iOS and Android app accessibility','W1','2026-10-14',1,0],
+  bcn:['p','real-time visibility into bus locations during active routes','P2, AN2','2025-06-04',1,1,'Schools share the district portal. No separate school view found.']},
 
  {a:'trips',w:'Request a trip',d:'Asking for transport for a student',
   ed:['y','upload multiple students at once','W2, AN3','2026-10-15',1,0,'Also a detailed request form with drafts and attachments.'],
   hsd:['y','A Ride Series is a set of repeating rides that happen on a consistent schedule for the same rider or riders.','H16','2026-09-12',1,0],
-  zum:['y','Convenient registration with automated integrations ensures accurate eligibility and routing information','W1','2026-10-14',1,0]},
+  zum:['y','Convenient registration with automated integrations ensures accurate eligibility and routing information','W1','2026-10-14',1,0],
+  bcn:['y','The Routing Requests tool lets you quickly request new bus routes or make changes for individual students','H5, AN2','2025-07',1,1,'Beacon dispatch builds the route.']},
  {a:'trips',w:'Name the program',d:'McKinney-Vento, foster care, special education',
   ed:['y','Program types include McKinney-Vento, ESSA or foster care, special education, Adult Transition Program, school choice, magnet and out-of-district.','AN3','2026-10-15',0,1],
   hsd:['y','We can facilitate same-day McKinney-Vento rides and enable seamless location updates','W8','2026-10-14',1,0,'This is a company claim on its services page.'],
-  zum:['p','District programs with grades exist. McKinney-Vento and foster care are not named.','AN3','2026-10-15',0,1]},
+  zum:['p','District programs with grades exist. McKinney-Vento and foster care are not named.','AN3','2026-10-15',0,1],
+  bcn:['p','choose the routing type by selecting Regular Education or Special Education','H5','2025-07',1,0,'McKinney-Vento and foster care are not named in the portal.']},
  {a:'trips',w:'Record equipment and aide needs',d:'Car seats, wheelchairs, monitors',
   ed:['y','Booster, car seat, five-point harness, buckle guard, safety vest, wheelchair; “District Monitor” or “EverDriven Monitor”.','AN3','2026-10-15',0,1],
   hsd:['y','Booster seat, code word, gender and needs notes for each rider. Wheelchair rides and Rider Assistants can be added.','AN4, H21','2026-10-15',0,1],
-  zum:['p','Equipment and special needs are on the student record; monitors are assigned to runs.','AN2, AN3','2026-10-15',0,1]},
+  zum:['p','Equipment and special needs are on the student record; monitors are assigned to runs.','AN2, AN3','2026-10-15',0,1],
+  bcn:['p','Routing Request (start, destination, seats, wheelchairs)','AN2','2026-10-16',1,1,'Seat and wheelchair counts only. Car seats and monitors are not named.']},
  {a:'trips',w:'Import students in bulk',d:'From the student information system or a spreadsheet',
   ed:['p','upload multiple students at once','W2','2026-10-14',1,0,'No link to a student information system is named.'],
   hsd:['y','Import rider information (SIS import, CSV template)','AN4','2026-10-15',1,1,'May be switched off for some accounts.'],
-  zum:['y','syncs directly with a district\'s student information system (SIS)','W4','2026-10-14',1,0]},
+  zum:['y','syncs directly with a district\'s student information system (SIS)','W4','2026-10-14',1,0],
+  bcn:['y','Districts with SIS integration don\'t need to upload anything further. For others, a simple roster upload is required.','H8, H5','2025-10',1,0,'Routing requests can also be uploaded in bulk from routing software files.']},
  {a:'trips',w:'Upload school calendars',d:'Holidays, late starts, early releases',
   ed:['y','the system extracts info for confirmation before saving','AN3','2026-10-15',1,1],
   hsd:['y','School calendars are assigned to locations.','AN4','2026-10-15',0,1],
-  zum:['y','District and campus calendars, exceptions and bell schedules.','AN3','2026-10-15',0,1]},
+  zum:['y','District and campus calendars, exceptions and bell schedules.','AN3','2026-10-15',0,1],
+  bcn:['p','A Calendar and Events screen exists.','AN2','2026-10-16',0,1,'Screen exists, contents not visible.']},
  {a:'trips',w:'Change a schedule',d:'Self-serve changes and approvals',
   ed:['p','Upload school calendars to flag holidays, late starts, and early releases','W2','2026-10-14',1,0],
   hsd:['p','You can make changes to a ride series at any time, as long as there are more than two hours remaining before the next upcoming ride.','H16','2026-02-18',1,0],
-  zum:['y','Request and manage campus trips with streamlined digital scheduling','W1','2026-10-14',1,0,'The portal also has schedule change requests with approval.']},
+  zum:['y','Request and manage campus trips with streamlined digital scheduling','W1','2026-10-14',1,0,'The portal also has schedule change requests with approval.'],
+  bcn:['p','From the drop down you can choose to Add, Delete, or Change a route request.','H5','2025-07',1,0,'Beacon approves the change.']},
  {a:'trips',w:'Cancel trips',d:'One trip or many',
   ed:['y','You may be charged for canceling within 2 hours of the trip start time','AN3','2026-10-15',1,1],
   hsd:['y','Cancel one, selected, all or a date range, with reasons.','AN4','2026-10-15',0,1],
-  zum:['u','District cancelling is not described.','','',0,0]},
+  zum:['u','District cancelling is not described.','','',0,0],
+  bcn:['p','Ride Cancellation request type shown in the portal (likely relayed from parents)','AN2','2026-10-16',1,1,'A cancellation request type exists. Who sends it is not clear.']},
 
  {a:'route',w:'Plan and optimise routes',d:'Building efficient routes',
   ed:['y','Optimize existing bus routes with intelligent routing services.','W14, P1','2026-10-14',1,0],
   hsd:['p','RouteWise integrates with your routing software to provide intelligent recommendations based on your district\'s unique data.','W5','2026-10-14',1,0,'Advice on top of the district’s own routing, not a routing engine.'],
-  zum:['y','build and optimise routes for students','W4, AN3','2026-10-14',1,1,'Whether districts can use this themselves is not confirmed.']},
+  zum:['y','build and optimise routes for students','W4, AN3','2026-10-14',1,1,'Whether districts can use this themselves is not confirmed.'],
+  bcn:['p','When routing is complete, you\'ll receive a notification','H5','2025-07',1,0,'Beacon dispatch builds routes on request. No district route planner found.']},
  {a:'route',w:'Combine rides to save money',d:'Sharing or merging trips',
   ed:['u','Not described.','','',0,0],
   hsd:['p','RideIQ now offers you existing rides that match the new route','AN4','2026-10-15',1,1,'Merging happens when booking, not live.'],
-  zum:['y','Respond instantly to absences, emergencies, and last-minute changes','W4','2026-10-14',1,0]},
+  zum:['y','Respond instantly to absences, emergencies, and last-minute changes','W4','2026-10-14',1,0],
+  bcn:['u','Not stated.','','',0,0]},
  {a:'route',w:'Share riders with another district',d:'Split cost across districts',
   ed:['y','Neighboring districts who are both under contract with EverDriven have the option to share trips and reduce transportation costs.','C2, C1','2025-09-04',1,0,'This evidence is from 2023 to 2025.'],
   hsd:['y','The total fare listed for shared Riders is the total amount your district is responsible for','H15','2026-02-18',1,0],
-  zum:['u','Not described on any public page.','','',0,0]},
+  zum:['u','Not described on any public page.','','',0,0],
+  bcn:['u','Not stated.','','',0,0]},
 
  {a:'track',w:'Track trips live',d:'Where every vehicle is now',
   ed:['y','Track trips in real time with ETAs, driver status, and no-show reporting.','W2','2026-10-14',1,0],
   hsd:['y','Statuses update in real time as the ride progresses.','H14','2026-08-17',1,0],
-  zum:['y','A map in bird\'s-eye view tracks all the buses on the road, in real-time','W1','2026-10-14',1,0]},
+  zum:['y','A map in bird\'s-eye view tracks all the buses on the road, in real-time','W1','2026-10-14',1,0],
+  bcn:['y','Beacon Connect Live Map gives you real-time visibility of every bus on the road','H7, AN2','2026-06',1,0,'Icons show if a vehicle is moving, idle, stopped or offline.']},
  {a:'track',w:'See driver and route details',d:'Who is driving and the run sheet',
   ed:['y','New Feature: View Route Details in the District Portal!','AN3, W2','2026-10-15',1,1,'Run sheets can be downloaded.'],
   hsd:['y','Rides that have not yet been claimed will say Confirmed.','H14','2026-08-27',1,0],
-  zum:['y','full visibility across routes, vehicles, and driver performance, all from a real-time command center','W2','2026-10-14',1,0]},
+  zum:['y','full visibility across routes, vehicles, and driver performance, all from a real-time command center','W2','2026-10-14',1,0],
+  bcn:['y','search for a vehicle by the route number, vehicle number, or driver name','H7, AN2','2026-06',1,0,'Each vehicle also has a history and a trip replay.']},
  {a:'track',w:'Warnings when trips go wrong',d:'Late, no-show, exceptions',
   ed:['p','Send alerts for forward collisions and near misses','W8','2026-10-14',1,0,'Camera alerts. Trip status also shows late or estimated late.'],
   hsd:['p','If a pickup at a school location is delayed by 20 minutes or more, HopSkipDrive will contact your organization.','H14','2026-05-15',1,0],
-  zum:['y','Proactive issue detection including driver no-show notification','W3, W1','2026-10-14',1,0]},
+  zum:['y','Proactive issue detection including driver no-show notification','W3, W1','2026-10-14',1,0],
+  bcn:['p','stop-arm, motion, idle and driver-alert events, plus activity replay and video requests','AN2','2026-10-16',1,1,'Events show in reports. Live late alerts to the district are not visible.']},
  {a:'track',w:'Record attendance',d:'Who actually rode',
   ed:['u','Not found.','','',0,0],
   hsd:['u','Not found.','','',0,0],
-  zum:['y','Rider attendance records and exceptions, with student card requests.','AN3','2026-10-15',0,1]},
+  zum:['y','Rider attendance records and exceptions, with student card requests.','AN3','2026-10-15',0,1],
+  bcn:['u','Not found. No boarding scan is stated.','','',0,0]},
 
  {a:'safety',w:'Get ride video',d:'Footage from inside the vehicle',
   ed:['p','Requests older than 27 days cannot be processed.','H6, W8','2026-10-14',1,0,'Districts request recordings from EverDriven.'],
   hsd:['y','Recordings can be listed, filtered and downloaded, and are “stored 30 days”.','AN4','2026-10-15',0,1],
-  zum:['u','District access to footage is not described.','','',0,0]},
+  zum:['u','District access to footage is not described.','','',0,0],
+  bcn:['p','submit a request for footage from a specific bus, date, and time','H6, AN2','2025-07',1,0,'Districts request footage from Beacon. It comes as an MP4 file.']},
  {a:'safety',w:'Record incidents',d:'Accidents and conduct problems',
   ed:['y','Trip events include incident or accident, and student no-show.','AN3','2026-10-15',0,1],
   hsd:['y','Deactivating a rider for a “safety or conduct incident” alerts HopSkipDrive.','AN4','2026-10-15',0,1],
-  zum:['p','Incident management: Document, escalate, and resolve safety incidents efficiently','W3','2026-10-14',1,0,'No audit export described.']},
+  zum:['p','Incident management: Document, escalate, and resolve safety incidents efficiently','W3','2026-10-14',1,0,'No audit export described.'],
+  bcn:['y','view all submitted reports in one sortable, exportable table','H4, AN2','2025-07',1,0,'Drivers file reports. Districts add notes and download a PDF.']},
  {a:'safety',w:'Control who can follow a student',d:'Parent and staff app access',
   ed:['y','only District Portal admins may grant app access','AN3','2026-10-15',1,1],
   hsd:['p','Caregivers are added during rider set-up and can be allowed to cancel.','AN4','2026-10-15',0,1],
-  zum:['y','The district approves which parents can see which students.','AN3','2026-10-15',0,1]},
+  zum:['y','The district approves which parents can see which students.','AN3','2026-10-15',0,1],
+  bcn:['y','guardian users and student links (SASID) are administered here','AN2, H8','2026-10-16',1,1,'Families must be on the district’s approved list.']},
 
  {a:'pay',w:'See invoices',d:'What the district owes',
   ed:['p','An invoicing page exists; its contents load after sign-in and were not seen.','AN3, C2','2026-10-15',0,1],
   hsd:['y','Invoice groups are custom lists of riders who will be invoiced together.','H26, H15','2026-03-30',1,0],
-  zum:['p','Finance transactions and reports; parent pay history','AN3','2026-10-15',1,1,'Field trips have quotes and invoices. Which finance screens districts see is unclear.']},
+  zum:['p','Finance transactions and reports; parent pay history','AN3','2026-10-15',1,1,'Field trips have quotes and invoices. Which finance screens districts see is unclear.'],
+  bcn:['u','No billing or invoice screen in the portal code or the help guides.','AN2','2026-10-16',0,0]},
 
  {a:'alerts',w:'Keep families informed',d:'Access to tracking for parents',
   ed:['y','Manage access to the EverDriven RideAware app, the real-time ride-tracking tool for parents, guardians, and designated school staff.','W2','2026-10-14',1,0],
   hsd:['y','riders receive a dedicated link to the Track My Ride page, where they can view ride information.','H14, H19','2026-04-30',1,0],
-  zum:['y','Streamlined messaging management for all daily operations and unexpected transportation scenarios','W1, W8','2026-10-14',1,0]},
+  zum:['y','Streamlined messaging management for all daily operations and unexpected transportation scenarios','W1, W8','2026-10-14',1,0],
+  bcn:['y','alerts for boarding, drop-off, and more','H2, H8','2026-10-14',1,0,'Through the BC Family app. The district decides which guardians can use it.']},
  {a:'alerts',w:'Message all parents at once',d:'Bulk notices for a district or a route',
   ed:['u','Not found.','','',0,0],
   hsd:['u','Not found.','','',0,0],
-  zum:['y','Bulk notices to parents for a whole district or one ride, plus ride-delay notices.','AN3','2026-10-15',0,1]},
+  zum:['y','Bulk notices to parents for a whole district or one ride, plus ride-delay notices.','AN3','2026-10-15',0,1],
+  bcn:['u','Not found. Portal messages go to the Beacon transport team, not to families.','H3, AN2','2026-10-16',0,0]},
 
  {a:'reports',w:'Run reports',d:'Ready-made and custom reports',
   ed:['y','Review onboarding activity, consecutive no-shows, and end-of-year student lists.','W2','2026-10-14',1,0,'Reports update 4 times a day.'],
   hsd:['y','RideIQ Reports allow you to answer questions about how your organization uses RideIQ','H15','2026-10-02',1,0,'Custom reports and saved filters.'],
-  zum:['y','On-demand, predefined, and custom reports for operational management','W1','2026-10-14',1,0]},
+  zum:['y','On-demand, predefined, and custom reports for operational management','W1','2026-10-14',1,0],
+  bcn:['y','Filter by date range, district, region, location, school, vehicle, vehicle type','AN2, H7','2026-10-16',1,1,'A historical vehicles and events report, exportable to Excel.']},
 
  {a:'help',w:'Get help',d:'Guides, chat or tickets',
   ed:['y','A support website and a user guide built into the portal.','AN3','2026-10-15',0,1],
   hsd:['y','Chat support and a help centre.','AN4','2026-10-15',0,1],
-  zum:['y','Helpdesk tickets and cases from the portal.','AN3','2026-10-15',0,1]},
+  zum:['y','Helpdesk tickets and cases from the portal.','AN3','2026-10-15',0,1],
+  bcn:['y','Message tickets to Beacon from the portal, plus a public help hub with guides and videos.','AN2, H1','2026-10-16',0,1]},
  {a:'help',w:'Portal in another language',d:'Languages for district staff',
   ed:['y','The portal ships in English and Spanish.','AN3','2026-10-15',0,1],
   hsd:['u','Not described.','','',0,0],
-  zum:['u','Not described.','','',0,0]}
+  zum:['u','Not described.','','',0,0],
+  bcn:['u','Not described.','','',0,0]}
 ];
 
 /* ---------- roles ---------- */
@@ -526,6 +565,12 @@ const ROLES = {
   {r:'Campus staff',i:'desk',book:['p','Requests and manages campus trips'],track:['y','Web dashboard and mobile app'],cancel:['u','Not stated'],pay:['x','Does not apply'],watch:['p','Sees ride and student details']},
   {r:'Parent or guardian',i:'parent',book:['n','Changes go through the school or district'],track:['y','Live map and past routes'],cancel:['y','Same-day and upcoming rides'],pay:['p','Parent pay history exists'],watch:['y','Must confirm the student first']},
   {r:'Zum operations',i:'office',book:['y','Optimises routes and assigns drivers'],track:['y','Command centre'],cancel:['y','Pushes route changes'],pay:['y','Runs payroll and finance'],watch:['y','Incident management and no-show detection']}
+ ]},
+ bcn:{note:'Beacon Connect is one platform. District and school staff share the client portal, and each module is switched on by its own permission. Families use the BC Family app. Beacon dispatch builds routes and handles requests.',rows:[
+  {r:'District transport team',i:'admin',book:['p','Sends routing requests; Beacon builds the route'],track:['y','Live map of every bus, with history and trip replay'],cancel:['p','A ride cancellation request type exists'],pay:['u','No billing screen found'],watch:['y','Manages guardian access; requests video; reviews incidents']},
+  {r:'School staff',i:'desk',book:['u','Not seen'],track:['y','Real-time bus locations, per launch coverage'],cancel:['u','Not seen'],pay:['x','Does not apply'],watch:['u','Depends on permissions we cannot see']},
+  {r:'Parent or guardian',i:'parent',book:['p','Launch coverage says families can ask for route changes; the guide shows district staff do it'],track:['y','Live bus location and zone alerts in BC Family'],cancel:['p','Sends a cancellation request to support'],pay:['x','Does not apply'],watch:['y','Added only by the district']},
+  {r:'Beacon dispatch',i:'office',book:['y','Builds routes from district requests'],track:['y','Watches the same live map'],cancel:['u','Not seen'],pay:['u','Billing not public'],watch:['y','Lytx cameras, driving events and incident reports']}
  ]}
 };
 
@@ -535,28 +580,29 @@ const STAGES = [
  {id:'during',name:'During the ride',icon:'pin'},{id:'after',name:'Afterwards',icon:'star'}
 ];
 const SAFE = [
- {s:'setup',w:'Equipment needs recorded',ed:['y','Booster, car seat, five-point harness, buckle guard, safety vest and wheelchair on the request form.','AN3',1],hsd:['y','Booster seat and needs notes per rider.','AN4',1],zum:['p','Equipment needs on the student record.','AN2',1]},
- {s:'setup',w:'Aide or monitor requested',ed:['y','District Monitor or EverDriven Monitor, chosen on the request.','AN3',1],hsd:['y','Rider Assistants can be added to rides.','H28',0],zum:['y','Monitors are assigned to runs.','AN3',1]},
- {s:'setup',w:'Medical and allergy notes',ed:['y','Rider notes for allergies and medications.','AN3',1],hsd:['y','Needs notes per rider; safety notes show in red for the driver.','AN4, H22',1],zum:['p','Special needs flag on the student record.','AN2',1]},
- {s:'setup',w:'Emergency contacts',ed:['y','Up to three emergency contacts, with phone checks.','AN3',1],hsd:['y','A contacts step when creating a rider.','AN4',1],zum:['u','Not found.','',0]},
- {s:'setup',w:'Drop-off rules',ed:['u','Not found in the portal.','',0],hsd:['y','Drop-off procedures (“must-be-met instructions”) per location or per rider.','AN4',1],zum:['u','Not found.','',0]},
- {s:'setup',w:'Only approved adults follow the student',ed:['y','only District Portal admins may grant app access','AN3',1,1],hsd:['p','Caregivers are added during set-up.','AN4',1],zum:['y','The district approves parent access to each student.','AN3',1]},
- {s:'before',w:'Code word for pickup',ed:['u','Not found.','',0],hsd:['y','A code word is part of each rider’s safety settings.','AN4',1],zum:['u','Not found. Zum uses student cards.','',0]},
- {s:'before',w:'Student cards for boarding',ed:['u','Not found.','',0],hsd:['n','No card or scan; identity is by code word and birthday.','H4',0],zum:['y','The portal handles student card requests.','AN3',1]},
- {s:'before',w:'Driver gender preference',ed:['u','Not found.','',0],hsd:['y','Gender is part of each rider’s safety settings.','AN4',1],zum:['u','Not found.','',0]},
- {s:'during',w:'Live tracking',ed:['y','Track trips in real time with ETAs, driver status, and no-show reporting.','W2',0,1],hsd:['y','Statuses update in real time as the ride progresses.','H14',0,1],zum:['y','A map in bird\'s-eye view tracks all the buses on the road, in real-time','W1',0,1]},
- {s:'during',w:'Late-running alerts',ed:['y','Trip status shows late or estimated late.','AN3',1],hsd:['y','If a pickup at a school location is delayed by 20 minutes or more, HopSkipDrive will contact your organization.','H14',0,1],zum:['y','Ride-delay notices to parents.','AN3',1]},
- {s:'during',w:'Collision and near-miss alerts',ed:['y','Send alerts for forward collisions and near misses','W8',0,1],hsd:['u','Not found for districts.','',0],zum:['u','Not found for districts.','',0]},
- {s:'after',w:'Ride video for the district',ed:['p','Requests older than 27 days cannot be processed.','H6',0,1],hsd:['y','Recordings listed and downloaded; “stored 30 days”.','AN4',1],zum:['u','Not found.','',0]},
- {s:'after',w:'Incident records',ed:['y','Trip events include incident or accident.','AN3',1],hsd:['y','A “safety or conduct incident” reason alerts HopSkipDrive.','AN4',1],zum:['p','Incident management: Document, escalate, and resolve safety incidents efficiently','W3',0,1]},
- {s:'after',w:'No-show reports',ed:['y','A Consecutive No Show Report.','AN3',1],hsd:['p','General ride reports; no no-show report named.','H15',0],zum:['y','Attendance records and exceptions.','AN3',1]}
+ {s:'setup',w:'Equipment needs recorded',ed:['y','Booster, car seat, five-point harness, buckle guard, safety vest and wheelchair on the request form.','AN3',1],hsd:['y','Booster seat and needs notes per rider.','AN4',1],zum:['p','Equipment needs on the student record.','AN2',1],bcn:['p','Wheelchair and seat counts on routing requests.','AN2',1]},
+ {s:'setup',w:'Aide or monitor requested',ed:['y','District Monitor or EverDriven Monitor, chosen on the request.','AN3',1],hsd:['y','Rider Assistants can be added to rides.','H28',0],zum:['y','Monitors are assigned to runs.','AN3',1],bcn:['u','Not found in the portal.','',0]},
+ {s:'setup',w:'Medical and allergy notes',ed:['y','Rider notes for allergies and medications.','AN3',1],hsd:['y','Needs notes per rider; safety notes show in red for the driver.','AN4, H22',1],zum:['p','Special needs flag on the student record.','AN2',1],bcn:['u','Not found.','',0]},
+ {s:'setup',w:'Emergency contacts',ed:['y','Up to three emergency contacts, with phone checks.','AN3',1],hsd:['y','A contacts step when creating a rider.','AN4',1],zum:['u','Not found.','',0],bcn:['u','Not found. A contacts list exists, but what it holds is not visible.','AN2',0]},
+ {s:'setup',w:'Drop-off rules',ed:['u','Not found in the portal.','',0],hsd:['y','Drop-off procedures (“must-be-met instructions”) per location or per rider.','AN4',1],zum:['u','Not found.','',0],bcn:['u','Not found.','',0]},
+ {s:'setup',w:'Only approved adults follow the student',ed:['y','only District Portal admins may grant app access','AN3',1,1],hsd:['p','Caregivers are added during set-up.','AN4',1],zum:['y','The district approves parent access to each student.','AN3',1],bcn:['y','guardian users and student links (SASID) are administered here','AN2',1,1]},
+ {s:'before',w:'Code word for pickup',ed:['u','Not found.','',0],hsd:['y','A code word is part of each rider’s safety settings.','AN4',1],zum:['u','Not found. Zum uses student cards.','',0],bcn:['u','Not found.','',0]},
+ {s:'before',w:'Student cards for boarding',ed:['u','Not found.','',0],hsd:['n','No card or scan; identity is by code word and birthday.','H4',0],zum:['y','The portal handles student card requests.','AN3',1],bcn:['u','Not found.','',0]},
+ {s:'before',w:'Driver gender preference',ed:['u','Not found.','',0],hsd:['y','Gender is part of each rider’s safety settings.','AN4',1],zum:['u','Not found.','',0],bcn:['u','Not found.','',0]},
+ {s:'during',w:'Live tracking',ed:['y','Track trips in real time with ETAs, driver status, and no-show reporting.','W2',0,1],hsd:['y','Statuses update in real time as the ride progresses.','H14',0,1],zum:['y','A map in bird\'s-eye view tracks all the buses on the road, in real-time','W1',0,1],bcn:['y','Beacon Connect Live Map gives you real-time visibility of every bus on the road','H7',0,1]},
+ {s:'during',w:'Late-running alerts',ed:['y','Trip status shows late or estimated late.','AN3',1],hsd:['y','If a pickup at a school location is delayed by 20 minutes or more, HopSkipDrive will contact your organization.','H14',0,1],zum:['y','Ride-delay notices to parents.','AN3',1],bcn:['p','Families get delay alerts in the app. District alerts not seen.','H8',0]},
+ {s:'during',w:'Collision and near-miss alerts',ed:['y','Send alerts for forward collisions and near misses','W8',0,1],hsd:['u','Not found for districts.','',0],zum:['u','Not found for districts.','',0],bcn:['p','Driver alert and stop-arm events show in the portal. Buses carry Lytx cameras.','AN2, W2',1]},
+ {s:'after',w:'Ride video for the district',ed:['p','Requests older than 27 days cannot be processed.','H6',0,1],hsd:['y','Recordings listed and downloaded; “stored 30 days”.','AN4',1],zum:['u','Not found.','',0],bcn:['p','submit a request for footage from a specific bus, date, and time','H6',0,1]},
+ {s:'after',w:'Incident records',ed:['y','Trip events include incident or accident.','AN3',1],hsd:['y','A “safety or conduct incident” reason alerts HopSkipDrive.','AN4',1],zum:['p','Incident management: Document, escalate, and resolve safety incidents efficiently','W3',0,1],bcn:['y','Incident reports pass from driver to dispatch to school, with district notes.','H4',0]},
+ {s:'after',w:'No-show reports',ed:['y','A Consecutive No Show Report.','AN3',1],hsd:['p','General ride reports; no no-show report named.','H15',0],zum:['y','Attendance records and exceptions.','AN3',1],bcn:['u','Not found.','',0]}
 ];
 
 /* ---------- cards ---------- */
 const VEH = {
  ed:'<svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="14" fill="#EDF1F3"/><rect x="9" y="12" width="46" height="32" rx="3" fill="#003D4F"/><rect x="13" y="16" width="38" height="24" rx="1.5" fill="#fff"/><path d="M17 21h14M17 26h20M17 31h10M17 36h16" stroke="#47A1AD" stroke-width="2.2" stroke-linecap="round"/><circle cx="44" cy="30" r="5" fill="#F2617A"/><path d="M24 50h16M32 44v6" stroke="#003D4F" stroke-width="3" stroke-linecap="round"/></svg>',
  hsd:'<svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="14" fill="#EDF1F3"/><rect x="9" y="12" width="46" height="32" rx="3" fill="#003D4F"/><rect x="13" y="16" width="38" height="24" rx="1.5" fill="#fff"/><rect x="17" y="20" width="8" height="6" rx="1" fill="#47A1AD"/><rect x="28" y="20" width="8" height="6" rx="1" fill="#47A1AD"/><rect x="39" y="20" width="8" height="6" rx="1" fill="#F2617A"/><rect x="17" y="29" width="8" height="6" rx="1" fill="#47A1AD"/><rect x="28" y="29" width="8" height="6" rx="1" fill="#47A1AD"/><path d="M24 50h16M32 44v6" stroke="#003D4F" stroke-width="3" stroke-linecap="round"/></svg>',
- zum:'<svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="14" fill="#EDF1F3"/><rect x="9" y="12" width="46" height="32" rx="3" fill="#003D4F"/><rect x="13" y="16" width="38" height="24" rx="1.5" fill="#fff"/><path d="M18 34c4-10 8-2 12-8s7-4 10 0 5 2 7-4" stroke="#CC850A" stroke-width="2.4" fill="none" stroke-linecap="round"/><circle cx="18" cy="34" r="2.4" fill="#F2617A"/><path d="M24 50h16M32 44v6" stroke="#003D4F" stroke-width="3" stroke-linecap="round"/></svg>'
+ zum:'<svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="14" fill="#EDF1F3"/><rect x="9" y="12" width="46" height="32" rx="3" fill="#003D4F"/><rect x="13" y="16" width="38" height="24" rx="1.5" fill="#fff"/><path d="M18 34c4-10 8-2 12-8s7-4 10 0 5 2 7-4" stroke="#CC850A" stroke-width="2.4" fill="none" stroke-linecap="round"/><circle cx="18" cy="34" r="2.4" fill="#F2617A"/><path d="M24 50h16M32 44v6" stroke="#003D4F" stroke-width="3" stroke-linecap="round"/></svg>',
+ bcn:'<svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="14" fill="#EDF1F3"/><rect x="9" y="12" width="46" height="32" rx="3" fill="#003D4F"/><rect x="13" y="16" width="38" height="24" rx="1.5" fill="#fff"/><path d="M17 22h30M17 30h30M25 17v22M39 17v22" stroke="#CBD5DA" stroke-width="1.6"/><rect x="27" y="25" width="14" height="8" rx="2" fill="#CC850A"/><circle cx="30" cy="34" r="1.6" fill="#003D4F"/><circle cx="38" cy="34" r="1.6" fill="#003D4F"/><circle cx="20" cy="20" r="2.4" fill="#F2617A"/><path d="M24 50h16M32 44v6" stroke="#003D4F" stroke-width="3" stroke-linecap="round"/></svg>'
 };
 const PLUS='<svg viewBox="0 0 18 18" aria-hidden="true"><circle cx="9" cy="9" r="8" fill="#3F7A50"/><path d="M9 5.5v7M5.5 9h7" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/></svg>';
 const MINUS='<svg viewBox="0 0 18 18" aria-hidden="true"><circle cx="9" cy="9" r="8" fill="#fff" stroke="#D9435C" stroke-width="1.6"/><path d="M5.5 9h7" stroke="#D9435C" stroke-width="1.8" stroke-linecap="round"/></svg>';
@@ -572,7 +618,11 @@ const CARDS = {
  zum:{line:'One large platform for districts and Zum’s own operations: registration, routes, tracking, attendance and field trips.',
   ratings:[['Web','portal and mobile app']],
   good:['Route planning and optimisation tools','Student registration with school boundaries','Attendance records, with student cards','Bulk messages to all parents or one route','Field trip quotes and invoices','Links to the student information system','Detailed roles and approval paths'],
-  gaps:['We cannot tell which tools district users actually see','District cancelling and video access are not described','District billing is not public','Every admin screen’s code loads on the public sign-in page']}
+  gaps:['We cannot tell which tools district users actually see','District cancelling and video access are not described','District billing is not public','Every admin screen’s code loads on the public sign-in page']},
+ bcn:{line:'A portal where districts watch every bus live, replay trips, and send routing, video and incident requests to Beacon.',
+  ratings:[['Web','portal on computer, tablet and phone']],
+  good:['Live map of every bus, with vehicle status, history and trip replay','Stop-arm, motion, idle and driver-alert events in a filtered report','Routing requests carry seat and wheelchair counts','Video and incident requests from the portal','Sign-in with Google or Microsoft','The district decides which guardians can follow a student','One platform with the BC Family parent app'],
+  gaps:['Beacon builds routes on request; no district route planner','No billing or invoice screen found','Portal messages go to Beacon, not to families','Only for districts that use Beacon for transport','Screen contents load after sign-in and were not seen']}
 };
 
 /* ---------- journeys ---------- */
@@ -594,6 +644,12 @@ const JOURNEYS = {
   {t:'Enrol students',w:'Each student',s:[['Process the transport registration'],['Approve which parents can see the student',1],['Request student cards for boarding',1]]},
   {t:'Plan routes',w:'Before and during the year',s:[['Build and optimise routes'],['Assign stops to students with route problems'],['Approve schedule change requests']]},
   {t:'Run the day',w:'Daily',s:[['Watch active rides on the live map'],['Check attendance and exceptions',1],['Send delay notices or bulk messages to parents'],['Document and resolve incidents',1]]}
+ ],
+ bcn:[
+  {t:'Set up access',w:'Start of year',s:[['Sign in with email, Google or Microsoft'],['Add staff users; each module has its own permission'],['Link guardians to students using the state student ID',1]]},
+  {t:'Request a route',w:'Each new student or change',s:[['Open Routing Requests and choose add, change or delete'],['Pick regular or special education'],['Enter start, destination, seats and wheelchair needs',1],['Submit; Beacon dispatch builds the route'],['Get a notice when routing is complete']]},
+  {t:'Run the day',w:'Daily',s:[['Open the live map and find a bus by route, vehicle or driver'],['Check vehicle status and the ETA screen'],['Message the Beacon transport team, with files or a location']]},
+  {t:'Look into a problem',w:'As needed',s:[['Run the historical vehicles and events report',1],['Replay a vehicle’s trip',1],['Request video for a bus, date and time',1],['Review incident reports and add notes',1]]}
  ]
 };
 

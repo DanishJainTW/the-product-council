@@ -2,9 +2,13 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex, notranslate, noai, noimageai">
+<meta name="googlebot" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
+<meta name="bingbot" content="noindex, nofollow, noarchive, nosnippet">
+<meta name="referrer" content="no-referrer">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="Parent apps compared: HopSkipDrive, EverDriven and Zum, side by side.">
-<title>Parent apps compared: HopSkipDrive, EverDriven, Zum</title>
+<meta name="description" content="Six parent apps compared side by side: HopSkipDrive, EverDriven and Zum in alternative transport, and BC Family, Here Comes the Bus and ByteCurve's SafeStop and BusZone on yellow buses.">
+<title>Parent apps compared: six apps across alternative transport and yellow bus</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23003D4F'/%3E%3Cpath d='M18 6h5l-9 20H9z' fill='%23F2617A'/%3E%3C/svg%3E">
 <link rel="stylesheet" href="../assets/chrome.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -177,6 +181,12 @@ col.focus,th.focus,td.focus{background:#F6FAFB}
 html{scroll-padding-top:124px}
 .notes{margin-bottom:0}
 .gf{margin-top:0}
+/* six columns: keep cells readable, let the table scroll */
+#matrixTable{min-width:1240px}
+#matrixTable tbody th{width:18%;min-width:210px}
+table.safety{min-width:1060px}
+.safety tbody th{width:24%;min-width:200px}
+.cards{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
 </style>
 </head>
 <body>
@@ -210,8 +220,10 @@ html{scroll-padding-top:124px}
       <a href="#journeys">Journeys</a>
       <a href="#notes">What we could not see</a>
       <a href="driver-app.html" class="other">Driver apps</a>
+      <a href="staff-app.html" class="other">Staff apps</a>
       <a href="provider-portal.html" class="other">Provider portals</a>
       <a href="district-portal.html" class="other">District portals</a>
+      <a href="payment-portal.html" class="other">Payment portals</a>
     </nav>
   </div>
 </div>
@@ -219,9 +231,9 @@ html{scroll-padding-top:124px}
 <main id="content">
 <section class="hero">
   <div class="wrap">
-    <h1>What three competitors give parents</h1>
-    <p class="lede">HopSkipDrive, EverDriven and Zum each give families an app to follow their child's ride. Each strip below is one app. Every square is one thing a parent can do, grouped by area and coloured by what we found.</p>
-    <p class="meta">Built from our competitor research packs and our reading of each Android parent app's code, October 2026. Select a strip to highlight that app across the page.</p>
+    <h1>What six parent apps give families</h1>
+    <p class="lede">Three apps come from alternative transport: HopSkipDrive, EverDriven and Zum. Three serve yellow bus routes: Beacon Mobility's BC Family, Here Comes the Bus, and ByteCurve's SafeStop, which shares its code with BusZone, Summit's parent app. Each strip below is one app. Every square is one thing a parent can do, grouped by area and coloured by what we found.</p>
+    <p class="meta">Built from our competitor research packs and our reading of each Android parent app's code, October 2026. Here Comes the Bus and BusZone are third-party apps, not the bus operators' own. Select a strip to highlight that app across the page.</p>
     <div class="prints" id="prints"></div>
     <div class="areakey" id="areakey"></div>
     <div class="legend" style="margin-top:16px" id="legend"></div>
@@ -290,8 +302,14 @@ html{scroll-padding-top:124px}
       <li>Zum's parent app still carries code for carpools, babysitting and promo codes from its earlier consumer days. No parent screen uses it.</li>
       <li>Zum ships driver vetting badges in the app, such as criminal record and DMV checks. We cannot tell which drivers carry them today.</li>
       <li>HopSkipDrive carpools sit behind a switch we cannot see.</li>
-      <li>None of the three states a formal accessibility standard for its parent app.</li>
-      <li>Ratings come from store listings read in September and October 2026.</li>
+      <li>Many Here Comes the Bus features, such as adding children and Skip Ride, are switched on by each district. We cannot see which ones Omaha uses on STA routes.</li>
+      <li>The Here Comes the Bus Android build calls itself a beta of a rebuilt app, with activity trips switched off. The iPhone app may differ.</li>
+      <li>SafeStop is one white-label app shared by SafeStop, BusAlert, BusZone and Zonar MyView. We read the shared features. Each brand's settings come from the server, so BusZone may not show all of them.</li>
+      <li>BusZone dropped text alerts for card scans in 2024, but the shared code still offers them.</li>
+      <li>Beacon's help centre promises boarding and drop-off alerts, but the BC Family code lists none. The help centre also says the bus shows only inside your zone, while the code points to a live map. Both are open.</li>
+      <li>For all six we read the Android app only. iPhone versions may differ.</li>
+      <li>None of the six states a formal accessibility standard for its parent app.</li>
+      <li>Ratings come from iPhone store listings read in September and October 2026. Android ratings for the three yellow bus apps were not readable. The Here Comes the Bus rating covers all districts.</li>
     </ul>
   </div>
 </section>
@@ -301,7 +319,7 @@ html{scroll-padding-top:124px}
     <div class="gf-brand"><span class="gh-slash">/</span>The Product Council<p>Expert panels for FirstAlt product decisions, grounded in evidence.</p></div>
     <div><h2>Use</h2><a href="../use.html">Get started</a><a href="../commands.html">Commands</a><a href="../behaviour.html">How it behaves</a><a href="../diagrams.html">Diagrams</a></div>
     <div><h2>Understand</h2><a href="../knowledge.html">Knowledge and context</a><a href="../technical.html">Technical</a><a href="../reference.html">Reference</a></div>
-    <div><h2>Competitors</h2><a href="../comparisons/driver-app.html">Driver apps</a><a href="../comparisons/parent-app.html">Parent apps</a><a href="../comparisons/provider-portal.html">Provider portals</a><a href="../comparisons/district-portal.html">District portals</a></div>
+    <div><h2>Competitors</h2><a href="../comparisons/driver-app.html">Driver apps</a><a href="../comparisons/parent-app.html">Parent apps</a><a href="../comparisons/staff-app.html">Staff apps</a><a href="../comparisons/provider-portal.html">Provider portals</a><a href="../comparisons/district-portal.html">District portals</a><a href="../comparisons/payment-portal.html">Payment portals</a></div>
   </div>
   <p class="gf-note">FirstAlt Product Council v3.7.3, updated 11 October 2026. The repository is the source of truth: update these pages in the same pull request as a skill, agent or persona change.</p>
 </footer>
@@ -358,18 +376,25 @@ const AREAS = [
 const COS = [
  {id:'hsd',name:'HopSkipDrive',app:'family app',model:'Families can book and pay, or follow rides a school booked'},
  {id:'ed',name:'EverDriven',app:'RideAware app',model:'Follow trips the district booked'},
- {id:'zum',name:'Zum',app:'parent app',model:'Follow district bus and van rides'}
+ {id:'zum',name:'Zum',app:'parent app',model:'Follow district bus and van rides'},
+ {id:'bcn',name:'Beacon Mobility',app:'BC Family',model:'Beacon’s own app: follow a bus route, set alert zones and message support'},
+ {id:'hctb',name:'Here Comes the Bus',app:'Synovia app',model:'A third-party app the district chooses, not STA’s own; used on Omaha routes STA runs'},
+ {id:'bc',name:'ByteCurve',app:'SafeStop / BusZone',model:'One white-label app sold under several names; Summit families use it as BusZone'}
 ];
 
 const AN = {
  hsd:{AN1:'Our reading of the CareDriver Android app code (v6.9.9, Oct 2026)',AN3:'Our reading of the HopSkipDrive family Android app code (v4.1.1, Oct 2026)',AN4:'Our reading of the RideIQ web code (Oct 2026)'},
  ed:{AN2:'Our reading of the RideAware Android app code (v3.4.1, Oct 2026)',AN3:'Our reading of the district portal code (Oct 2026)',AN4:'Our reading of the SafeRoute driver app code (Oct 2026)'},
- zum:{AN1:'Our reading of the Zum Driver Android app code (Oct 2026)',AN2:'Our reading of the Zum parent Android app code (v3.0.12, Oct 2026)',AN3:'Our reading of the Zum school portal code (Oct 2026)'}
+ zum:{AN1:'Our reading of the Zum Driver Android app code (Oct 2026)',AN2:'Our reading of the Zum parent Android app code (v3.0.12, Oct 2026)',AN3:'Our reading of the Zum school portal code (Oct 2026)'},
+ bcn:{AN1:'Our reading of the BC Family Android app code (v1.0.16, Oct 2026)',H2:'Beacon Connect help centre FAQs',H5:'Beacon Connect help guide on routing requests (2025)',H7:'Beacon Connect help guide on the live map (2026)',H8:'Beacon Connect family app help guide (Oct 2025)',H9:'Beacon Connect family setup guides (2026)',A1:'BC Family App Store listing',R1:'BC Family App Store reviews'},
+ hctb:{AN3:'Our reading of the Here Comes the Bus Android app code (v4.0.6, Oct 2026)',A1:'Here Comes the Bus App Store listing'},
+ bc:{AN1:'Our reading of the SafeStop Android app code, shared by BusZone (v2.1.7, Oct 2026)',A1:'BusZone App Store listing',SUM:'Summit School Services website',DIS:'A Summit district’s BusZone page'}
 };
 function srcName(co,keys){
   const c=COS.find(x=>x.id===co).name;
   return keys.split(/,\s*/).filter(Boolean).map(k=>{
-    if(k.startsWith('AN')) return AN[co][k]||'Our code reading';
+    if(AN[co]&&AN[co][k]) return AN[co][k];
+    if(k.startsWith('AN')) return 'Our code reading';
     const t={W:c+' website',H:c+' help centre',A:'App store listing',P:'Press coverage',R:'App store reviews',C:'District contract'}[k[0]];
     return t||k;
   }).filter((v,i,a)=>a.indexOf(v)===i).join('; ');
@@ -380,107 +405,179 @@ const ROWS = [
  {a:'signin',w:'Sign in to the app',d:'How a parent gets into their account',
   hsd:['y','Phone number and text code, home address, then name, email and password. Out-of-area families join a waitlist.','AN3','2026-10-15',0,1],
   ed:['y','The app first asks “Will you be using the app as a parent or school employee?”. Access is authorised by the school district.','AN2','2026-10-14',0,1],
-  zum:['y','Mobile number and one-time code, email, or the district’s own login. Parents must use “the mobile number on file with your school/district”.','AN2','2026-10-14',0,1]},
+  zum:['y','Mobile number and one-time code, email, or the district’s own login. Parents must use “the mobile number on file with your school/district”.','AN2','2026-10-14',0,1],
+  bcn:['y','Phone number given to the district, a password and a 6-digit text code. Fingerprint or face login too.','AN1','2026-10-16',0,1],
+  hctb:['y','Email and password after a ZIP search, a district pick and the school district code, then a 4-digit email code. District single sign-on too.','AN3','2026-10-16',0,1,'Students have a separate login with student ID and PIN.'],
+  bc:['y','Email and password, Google or Apple sign-in, and fingerprint login.','AN1','2026-10-16',0,1,'A district access code is needed to start.']},
  {a:'signin',w:'Prove you are the child’s guardian',d:'Stops the wrong adult seeing a child',
   hsd:['y','Invited caregivers confirm the rider’s birthday, with limited attempts, before they can follow rides.','AN3','2026-10-15',0,1],
   ed:['y','only authorized adults may track a student\'s location','W9','2026-10-14',1,0,'The district provides the list of authorised parents or guardians.'],
-  zum:['y','you will not see student details until you have confirmed a student','AN2','2026-10-14',1,1,'Parents answer questions about the student before details show.']},
+  zum:['y','you will not see student details until you have confirmed a student','AN2','2026-10-14',1,1,'Parents answer questions about the student before details show.'],
+  bcn:['y','registration requires the State Assigned Student ID and the phone number held by the district','AN1','2026-10-16',1,1,'The state student ID and school are checked against district records before the account is made.'],
+  hctb:['p','Parents need the school district code, then add each child by student ID, with a PIN where the district asks for one.','AN3','2026-10-16',0,1,'The PIN and adding students are switched on per district.'],
+  bc:['p','You must enter an access code','AN1','2026-10-16',1,1,'Children are then matched by student ID, first name and last initial only.']},
 
  {a:'family',w:'Several children in one account',d:'One login for brothers and sisters',
   hsd:['y','Several riders can share one booking, with group pickup and drop-off and a rider order.','AN3','2026-10-15',0,1],
   ed:['y','Filter Students, Search Students and Select all, with a colour for each student.','AN2','2026-10-14',0,1],
-  zum:['y','Access route information for multiple students or cancel same-day rides via the app','W1','2026-10-14',1,0]},
+  zum:['y','Access route information for multiple students or cancel same-day rides via the app','W1','2026-10-14',1,0],
+  bcn:['y','Link several students by state student ID and school, and see each one’s grade, school and address.','AN1','2026-10-16',0,1],
+  hctb:['p','Add another student by ID, where the district switches this on.','AN3','2026-10-16',0,1,'Switched on per district. Omaha’s setting is not visible.'],
+  bc:['y','select every route the household\'s students ride','AN1','2026-10-16',1,1]},
  {a:'family',w:'Add more guardians',d:'Other adults can follow the same child',
   hsd:['p','you can add an additional caregiver to your rider\'s account','H25','2026-03-22',1,0,'Families who book their own rides are limited to one caregiver.'],
   ed:['y','we ask the school district to provide a list of authorized parents or guardians','W11','2026-10-14',1,0],
-  zum:['y','Zum supports unlimited guardians per student','H1','2026-10-14',1,0,'Each guardian has their own login.']},
+  zum:['y','Zum supports unlimited guardians per student','H1','2026-10-14',1,0,'Each guardian has their own login.'],
+  bcn:['p','you will need to contact your district first to add them to an approved family members list','H8','2025-10',1,0,'Only the district can add another guardian.'],
+  hctb:['p','add, edit, validate and remove notification contacts','AN3','2026-10-16',1,1,'These are extra alert contacts, not co-guardian accounts.'],
+  bc:['p','Invite Members','AN1','2026-10-16',1,1,'Invited family get alerts. Their rights are not visible, and whether BusZone shows this is not known.']},
  {a:'family',w:'School staff can see rides',d:'The front office knows who is coming and going',
   hsd:['y','The Daily Queue allows you to see information for all HopSkipDrive transportation to or from your location(s).','H14','2026-08-19',1,0],
   ed:['y','To preserve student privacy, this app only works when you\'re on-campus.','AN2','2026-10-14',1,1,'Staff use the same app in a staff mode, limited to their schools.'],
-  zum:['y','Instantly access live ride tracking and important details from rides, routes, and student information','W1','2026-10-14',1,0]},
+  zum:['y','Instantly access live ride tracking and important details from rides, routes, and student information','W1','2026-10-14',1,0],
+  bcn:['y','real-time visibility into bus locations during active routes','P2, H7','2025-06-04',1,0,'School staff see this in the Beacon Connect portal, not the family app.'],
+  hctb:['u','No school staff view found in the parent app. The district controls the app from its side.','AN3','2026-10-16',0,0],
+  bc:['u','No school staff view found in the parent app.','AN1','2026-10-16',0,0]},
 
  {a:'trips',w:'Book a ride',d:'The parent arranges the ride themselves',
   hsd:['y','scheduling a Ride Series allows a CareDriver to claim up to 21 of your rides at a time','H30','2026-10-06',1,0,'This is for families who book their own rides. Families of school-booked riders follow rides read-only.'],
   ed:['x','Your child\'s transportation schedule is determined by the school district','W11','2026-10-14',1,0],
-  zum:['n','For any address or schedule change, please reach out to your school or district.','H1','2026-10-14',1,0]},
+  zum:['n','For any address or schedule change, please reach out to your school or district.','H1','2026-10-14',1,0],
+  bcn:['n','The family app has no booking screen.','AN1, H5','2026-10-16',0,0,'Press said families could send route changes digitally. The help guide shows district staff sending those requests.'],
+  hctb:['n','No booking. The district sets routes and controls the app.','AN3','2026-10-16',0,0],
+  bc:['n','No booking. The district owns route and student data.','AN1','2026-10-16',0,0]},
  {a:'trips',w:'Repeat a ride',d:'Set up the same ride every week',
   hsd:['y','Repeating rides run weekly on chosen days until an end date. Completed rides have “Schedule Again”.','AN3','2026-10-15',0,1],
   ed:['x','The district sets the schedule.','W11','2026-10-14',0,0],
-  zum:['n','Schedule changes go through the school or district.','H1','2026-10-14',0,0]},
+  zum:['n','Schedule changes go through the school or district.','H1','2026-10-14',0,0],
+  bcn:['n','No booking or repeat rides in the family app.','AN1','2026-10-16',0,0],
+  hctb:['n','No booking or repeat rides.','AN3','2026-10-16',0,0],
+  bc:['n','No booking or repeat rides.','AN1','2026-10-16',0,0]},
  {a:'trips',w:'Cancel a ride',d:'Tell them the child is not riding',
   hsd:['y','You can cancel a ride any time before the rider has been picked up.','H17','2026-10-05',1,0,'A cancellation fee can apply and is shown.'],
   ed:['p',"Trips can't be canceled in the app within an hour of their start time. Please call us to cancel.",'AN2','2026-10-14',1,1,'Parents can cancel one trip or all trips for the day.'],
-  zum:['y','You can cancel same-day and upcoming rides directly in the app without needing to call or email your school.','H1','2026-10-14',1,0,'A reason is asked for, up to a cut-off time.']},
+  zum:['y','You can cancel same-day and upcoming rides directly in the app without needing to call or email your school.','H1','2026-10-14',1,0,'A reason is asked for, up to a cut-off time.'],
+  bcn:['p','app sends a cancellation message to support','AN1','2026-10-16',1,1,'Parents pick the student, the AM, mid-day or PM ride and the date. It is a request to support. We cannot see if it is applied automatically.'],
+  hctb:['p','Skip Ride: ask to skip a date range, in the morning, midday or afternoon, with a reason. Edit or cancel the request later.','AN3','2026-10-16',0,1,'Switched on per district, and same-day skips need a second switch. Omaha’s setting is not visible.'],
+  bc:['u','No cancel or absence screen found.','AN1','2026-10-16',0,0]},
 
  {a:'track',w:'See the vehicle on a map',d:'Live position during the ride',
   hsd:['y','You can monitor a HopSkipDrive ride from beginning to end in the HopSkipDrive app','H17','2026-10-11',1,0],
   ed:['y','New Trip Tracking with real-time driver location','A3','2026-07-24',1,0],
-  zum:['y','You can track your child\'s ride live at any time, including the bus location on the map','H1, A4','2026-10-14',1,0,'Reviews say substitute buses cannot be tracked.']},
+  zum:['y','You can track your child\'s ride live at any time, including the bus location on the map','H1, A4','2026-10-14',1,0,'Reviews say substitute buses cannot be tracked.'],
+  bcn:['p','A live map of the buses a parent follows, with a warning when tracking is 5 minutes old.','AN1, H2, R1','2026-10-16',0,1,'The help centre says the bus shows only once it is inside your zone. About half of recent reviews say the bus is missing or wrong.'],
+  hctb:['y','Your school district controls when your bus appears on the map','AN3','2026-10-16',1,1,'Live map with planned stops. The bus shows only in district-set windows.'],
+  bc:['y','Live bus locations, refreshed at an interval the parent picks.','AN1, A1','2026-10-16',0,1,'Parents follow routes, not the actual bus.']},
  {a:'track',w:'See the arrival time',d:'When the ride will reach the stop',
   hsd:['y',"On the map, you can see the CareDriver's current location and an updated ETA",'H17','2026-09-04',1,0],
   ed:['y','Upgraded trip tracking ETA','A3','2026-10-08',1,0,'The app flags “Arriving early” and “Running late”.'],
-  zum:['y','AI-powered ETAs and automated notifications keep families informed','W1','2026-10-14',1,0]},
+  zum:['y','AI-powered ETAs and automated notifications keep families informed','W1','2026-10-14',1,0],
+  bcn:['p','no ETA field appears in the client','AN1','2026-10-16',1,1,'Parents get an alert when the bus enters a zone they drew, instead of an arrival time.'],
+  hctb:['p','Planned stops with scheduled arrival times, and “Arrived” or “Not Arrived” at each stop.','AN3','2026-10-16',0,1,'Scheduled times, not a live estimate, as far as the code shows. Arrival logic sits on the server.'],
+  bc:['p','When the buses you follow enter or leave these alert zones, we\'ll send you a notification','AN1','2026-10-16',1,1,'Zone alerts stand in for an arrival time. Summit also claims arrival notifications.']},
  {a:'track',w:'See the driver and vehicle',d:'Name, photo, car and plate',
   hsd:['y','License plate number','H17','2026-09-23',1,0,'Shown with the CareDriver’s photo, name and car before pickup.'],
   ed:['y','updates parents, guardians, and school staff with ETAs, vehicle details, and driver information','W9','2026-10-14',1,0],
-  zum:['y','Detailed driver and vehicle profiles promote trust and safety before the bus even arrives','W1, A4','2026-10-14',1,0]},
+  zum:['y','Detailed driver and vehicle profiles promote trust and safety before the bus even arrives','W1, A4','2026-10-14',1,0],
+  bcn:['p','Route number and vehicle number only. No driver details shown.','H8, AN1','2026-10-16',0,1],
+  hctb:['p','Notifies if a different vehicle is used','AN3','2026-10-16',1,1,'Vehicle only. No driver details found.'],
+  bc:['u','Not stated. Parents pick routes, not the actual buses.','A1','2026-10-16',0,0]},
  {a:'track',w:'Look back at past rides',d:'A history of completed rides',
   hsd:['y','Completed rides tab, with “Schedule Again” on each ride.','AN3, H30','2026-10-15',0,1],
   ed:['u','Not mentioned in the listing, release notes or help. The app has only Today and Future trip lists.','AN2','2026-10-14',0,0],
-  zum:['y','Upcoming and Past rides, with a trace of the route the ride took.','AN2, H1','2026-10-14',0,1]},
+  zum:['y','Upcoming and Past rides, with a trace of the route the ride took.','AN2, H1','2026-10-14',0,1],
+  bcn:['u','A Rides tab exists, but we could not see if it lists past rides. Cancel requests have their own history.','AN1, H8','2026-10-16',0,0],
+  hctb:['p','Alert history for the last 14 days. No list of past rides found.','AN3','2026-10-16',0,1],
+  bc:['p','Activity list / detail with bus location','AN1','2026-10-16',1,1,'An alert history, not a ride history.']},
 
  {a:'safety',w:'Proof the child got on',d:'A check at pickup that the right child boarded',
   hsd:['p','The driver says the code word and checks the birthday, then taps Pick Up. There is no card scan.','H4','2026-09-28',0,0],
   ed:['u','No card or scan check named on the site or listings.','','',0,0],
-  zum:['y','Zum Bus Cards use contactless RFID technology, the same technology found in metro transit passes.','H1, AN2','2026-10-14',1,0,'The card can also be a QR code or the parent’s phone, set per district.']},
+  zum:['y','Zum Bus Cards use contactless RFID technology, the same technology found in metro transit passes.','H1, AN2','2026-10-14',1,0,'The card can also be a QR code or the parent’s phone, set per district.'],
+  bcn:['u','The help guide mentions boarding notifications, but no card or scan check was found in the app.','H8, AN1','2026-10-16',0,0],
+  hctb:['p','boarding / exiting events with scan time and scan location','AN3','2026-10-16',1,1,'The child shows a Bus Pass QR code or barcode. Needs scanners on the bus; we cannot see if Omaha STA buses have them.'],
+  bc:['p','Alerts when the child scans a Zonar ZPass card, where the district uses the cards.','AN1, DIS','2026-10-16',0,1,'One Summit district is known to use the cards.']},
  {a:'safety',w:'Set safety needs for each child',d:'Booster seat, front seat, code word',
   hsd:['y','Booster seat, front seat allowed, code word, and a CareDriver gender requirement for each rider.','AN3','2026-10-15',0,1],
   ed:['u','No parent safety settings found.','AN2','2026-10-14',0,0],
-  zum:['p','Equipment needs such as a booster seat are held on the student record. No parent screen to change them was described.','AN2','2026-10-14',0,1]},
+  zum:['p','Equipment needs such as a booster seat are held on the student record. No parent screen to change them was described.','AN2','2026-10-14',0,1],
+  bcn:['u','No parent safety settings found.','AN1','2026-10-16',0,0],
+  hctb:['u','No parent safety settings found.','AN3','2026-10-16',0,0],
+  bc:['u','No parent safety settings found.','AN1','2026-10-16',0,0]},
 
  {a:'pay',w:'Pay in the app',d:'Card or phone wallet',
   hsd:['y','Cards, Google Pay and card scan. A card is needed only when the family books the ride.','AN3','2026-10-15',0,1],
   ed:['x','No payment screen found. The district arranges the rides.','AN2','2026-10-14',0,0],
-  zum:['u','No payment screen in the parent app. The school portal shows a “parent pay history”.','AN3','2026-10-15',0,0]},
+  zum:['u','No payment screen in the parent app. The school portal shows a “parent pay history”.','AN3','2026-10-15',0,0],
+  bcn:['x','No payment screen found. The district arranges the rides.','AN1','2026-10-16',0,0],
+  hctb:['x','No payment screen found. The district arranges the rides.','AN3','2026-10-16',0,0],
+  bc:['x','No payment screen found. The district arranges the rides.','AN1','2026-10-16',0,0]},
  {a:'pay',w:'See the price before booking',d:'Fare, peak prices and fees',
   hsd:['y','A fare estimate before booking, a peak-pricing marker and the cancellation fee.','AN3','2026-10-15',0,1],
   ed:['x','Parents do not book or pay.','W11','2026-10-14',0,0],
-  zum:['x','Parents do not book.','H1','2026-10-14',0,0]},
+  zum:['x','Parents do not book.','H1','2026-10-14',0,0],
+  bcn:['x','Parents do not book or pay.','AN1','2026-10-16',0,0],
+  hctb:['x','Parents do not book or pay.','AN3','2026-10-16',0,0],
+  bc:['x','Parents do not book or pay.','AN1','2026-10-16',0,0]},
 
  {a:'alerts',w:'Pickup and drop-off alerts',d:'A message when the child gets on and off',
   hsd:['y','A message when the CareDriver picks up your rider. ... A message when the CareDriver drops off your rider.','H17','2026-10-14',1,0],
   ed:['y','notifications when my child is dropped off and picked up','W9, P3','2026-08-05',1,0,'This is a caregiver quote on the company page.'],
-  zum:['y','the driver logs the pickup in the app and you receive a confirmation notification','H1','2026-10-14',1,0]},
+  zum:['y','the driver logs the pickup in the app and you receive a confirmation notification','H1','2026-10-14',1,0],
+  bcn:['y','alerts for boarding, drop-off, and more','H2','2026-10-14',1,0,'Open question: the app code lists no boarding or drop-off alert. It names zone, support reply, school and cancel alerts only.'],
+  hctb:['y','student boarding / exiting scan','AN3','2026-10-16',1,1,'Also alerts when the bus reaches the stop or school. Scan alerts need scanners on the bus.'],
+  bc:['y','Bus enters / leaves the parent\'s alert zones (by route, day and direction)','AN1','2026-10-16',1,1,'These are bus alerts. Alerts for the child getting on and off need ZPass cards.']},
  {a:'alerts',w:'Delay and change alerts',d:'Running late, cancelled, driver changed',
   hsd:['y','A message when a CareDriver is on their way to pick up your rider.','H17','2026-10-14',1,0,'Help also lists scheduled, edited, cancelled and delayed alerts.'],
   ed:['y','New in-app Alerts screen, easier trip management, improved contact support options, Spanish push notifications','A3','2026-04-15',1,0,'The code includes running-late, delay and driver-change alerts.'],
-  zum:['y','By default, Zum sends in-app notifications to parents who are logged in.','H1, A4','2026-10-14',1,0,'A delay banner shows “We have an unexpected ride delay”.']},
+  zum:['y','By default, Zum sends in-app notifications to parents who are logged in.','H1, A4','2026-10-14',1,0,'A delay banner shows “We have an unexpected ride delay”.'],
+  bcn:['y','alerts for delays or emergencies','H8','2025-10',1,0,'The app code names school notifications but no separate delay alert.'],
+  hctb:['y','delays, early dismissal, closures for today','AN3','2026-10-16',1,1,'Also alerts for route time changes and a substitute bus.'],
+  bc:['y','districts / transportation operators can send messages to parents regarding substitutions, delays, closures','A1','2026-10-14',1,0]},
  {a:'alerts',w:'Choose how alerts arrive',d:'Push, text message, extra numbers',
   hsd:['u','Account switches for text and email trip alerts exist in the code. No parent settings screen was described.','AN3','2026-10-15',0,0],
   ed:['p','An alert inbox: mark read, delete and undo. No channel settings found.','AN2','2026-10-14',0,1],
-  zum:['y','Choose push, text or none for each alert type, and add extra numbers, including the child’s mobile.','AN2','2026-10-14',0,1]},
+  zum:['y','Choose push, text or none for each alert type, and add extra numbers, including the child’s mobile.','AN2','2026-10-14',0,1],
+  bcn:['p','Push only. Parents draw alert zones from 230 ft to 2 miles and pick the days and hours alerts can arrive.','AN1','2026-10-16',0,1,'No text or email option found.'],
+  hctb:['y','Push and email, extra alert contacts, rules for each child and day, and a stop radius slider.','AN3','2026-10-16',0,1,'The app also checks that alerts are reaching the phone.'],
+  bc:['y','Push or email for zone alerts, push or text for card-scan alerts, and a choice of school notifications for each child.','AN1, A1, DIS','2026-10-16',0,1,'BusZone dropped text ridership alerts in 2024, though the shared code still offers them.']},
 
  {a:'help',w:'Contact the driver',d:'Call or text without sharing numbers',
   hsd:['y','Caregivers can also contact CareDrivers directly through the app.','H14','2026-02-18',1,0,'Calls and texts are masked.'],
   ed:['u','No way to contact the driver was found. Parents call support.','AN2','2026-10-14',0,0],
-  zum:['u','Not found in the parent app. Drivers can message parents.','AN2, AN1','2026-10-15',0,0]},
+  zum:['u','Not found in the parent app. Drivers can message parents.','AN2, AN1','2026-10-15',0,0],
+  bcn:['u','No way to contact the driver was found. Messages go to Beacon support.','AN1','2026-10-16',0,0],
+  hctb:['u','No way to contact the driver found.','AN3','2026-10-16',0,0],
+  bc:['u','No way to contact the driver found.','AN1','2026-10-16',0,0]},
  {a:'help',w:'Get help',d:'Chat, call or a help page',
   hsd:['y','Help centre, chat, and call, text or email support.','AN3','2026-10-15',0,1],
   ed:['p',"'Report an Issue' support pages",'A3','2026-07-24',1,0,'No in-app chat found. Parents can call.'],
-  zum:['y','Call Zum or the district, chat, or leave a message answered by email in 24 to 48 hours.','AN2','2026-10-14',0,1]},
+  zum:['y','Call Zum or the district, chat, or leave a message answered by email in 24 to 48 hours.','AN2','2026-10-14',0,1],
+  bcn:['y','with categories, ticket numbers and attachments (photos, files, live location) replaces phone calls','AN1','2026-10-16',1,1,'Two-way messages with Beacon support, plus a Call Customer Care option.'],
+  hctb:['p','A help centre and an app feedback or bug report form. No chat or messaging found.','AN3','2026-10-16',0,1],
+  bc:['p','Help articles and a contact form with fixed subjects. Messages to parents are one-way.','AN1, SUM, A1','2026-10-16',0,1,'Urgent issues go to local dispatch by phone.']},
  {a:'help',w:'Rate the ride',d:'Feedback on the driver and the trip',
   hsd:['y',"you'll see a screen in the Caregiver app prompting you to give the CareDriver a rating",'H17','2026-02-12',1,0],
   ed:['y','New feedback survey is being introduced to caregivers after child\'s first completed trip and 30 days after.','A3','2026-08-25',1,0],
-  zum:['y','Leave feedback about the driver or your child\'s experience on the ride.','A4','2026-09-03',1,0]},
+  zum:['y','Leave feedback about the driver or your child\'s experience on the ride.','A4','2026-09-03',1,0],
+  bcn:['u','No post-trip rating found in the app.','AN1','2026-10-16',0,0],
+  hctb:['u','No ride rating found. There is a form for app feedback.','AN3','2026-10-16',0,0],
+  bc:['p','No ride rating in the app. Summit takes concerns or praise through a web form.','AN1, SUM','2026-10-14',0,0]},
 
  {a:'access',w:'Use the app in another language',d:'Languages a parent can choose',
   hsd:['p','The HopSkipDrive caregiver app is currently available in English and Spanish.','H18, W12','2026-07-14',1,0,'Two languages. More are planned for 2026-27.'],
   ed:['y','Seven new languages (Amharic, Arabic, Dari, French, Nepali, Somali and Vietnamese)','A3, P5','2026-10-08',1,0,'Nine languages in total, with English and Spanish.'],
-  zum:['y','The Zum app supports English, Spanish, Portuguese, French, Vietnamese, Simplified Chinese, Arabic, Haitian Creole, Somali, and Cape Verdean Creole.','H1, A4, AN2','2026-10-14',1,0]},
+  zum:['y','The Zum app supports English, Spanish, Portuguese, French, Vietnamese, Simplified Chinese, Arabic, Haitian Creole, Somali, and Cape Verdean Creole.','H1, A4, AN2','2026-10-14',1,0],
+  bcn:['p','English, Spanish and Haitian Creole in the app. Setup guides come in 9 languages.','AN1, H9','2026-10-16',0,1,'Three languages in the app.'],
+  hctb:['p','English, French, Spanish','AN3','2026-10-16',1,1,'Three languages. Alerts have their own language setting.'],
+  bc:['p','English, Spanish','AN1','2026-10-16',1,1,'Two languages.']},
  {a:'access',w:'Accessibility for disabled users',d:'Screen readers, larger text',
   hsd:['u','We searched the help centre and listings for screen-reader support and found none.','','',0,0],
   ed:['p','Text Accessibility Improvements','A3','2026-06-25',1,0,'No formal accessibility standard is claimed.'],
-  zum:['u','Accessibility is not mentioned in the FAQs or app listings.','H1, A4','2026-10-14',0,0]}
+  zum:['u','Accessibility is not mentioned in the FAQs or app listings.','H1, A4','2026-10-14',0,0],
+  bcn:['u','We searched the listings and guides and found no accessibility statement.','','',0,0],
+  hctb:['u','Not mentioned in our code reading or the store listing.','AN3, A1','2026-10-16',0,0],
+  bc:['p','Improved accessibility across the app, including better screen reader support','A1','2026-08-06',1,0,'BusZone release notes, August 2026. No formal standard is claimed.']}
 ];
 
 /* ---------- roles ---------- */
@@ -517,6 +614,25 @@ const ROLES = {
   {r:'Extra guardians',i:'invite',book:['n','As for parents'],track:['y','Each has their own login'],cancel:['u','Not stated'],pay:['u','Not stated'],watch:['y','Unlimited guardians per student']},
   {r:'Student',i:'kid',book:['x','Does not apply'],track:['u','A separate student app exists; what it shows was not read'],cancel:['x','Does not apply'],pay:['x','Does not apply'],watch:['y','Checks in with a Zum Card, QR code or phone']},
   {r:'School or district',i:'school',book:['y','“build and optimise routes for students”'],track:['y','Live ride tracking for rides, routes and students'],cancel:['u','Not stated'],pay:['y','Quotes and invoices in the school portal'],watch:['y','Sees vehicle GPS locations']}
+ ]},
+ bcn:{note:'Beacon parents follow district bus routes. They cannot book, but they can ask Beacon support to cancel a ride and message support with photos and files. Only the district can add another guardian.',rows:[
+  {r:'Parent or guardian',i:'parent',book:['n','No booking screen in the app'],track:['p','Follows chosen routes on a live map; zone alerts, no arrival time'],cancel:['p','Sends a cancel request to Beacon support'],pay:['x','Does not apply'],watch:['y','Registers with the state student ID and the district’s phone number']},
+  {r:'Extra guardians',i:'invite',book:['n','As for parents'],track:['p','Only after the district adds them to an approved list'],cancel:['u','Not stated'],pay:['x','Does not apply'],watch:['u','Not stated']},
+  {r:'Beacon support',i:'office',book:['u','Not seen'],track:['u','Not seen'],cancel:['y','Receives cancel requests as messages'],pay:['x','Does not apply'],watch:['p','Answers family messages, each with a ticket number']},
+  {r:'School or district',i:'school',book:['p','Staff send routing requests to Beacon dispatch'],track:['y','Live map in the Beacon Connect portal'],cancel:['p','The portal shows ride cancellation requests'],pay:['u','Not in the parent research'],watch:['y','Keeps the approved list of guardians']}
+ ]},
+ hctb:{note:'Here Comes the Bus is Synovia’s app, not STA’s. The district chooses it, sets when the bus shows on the map and switches features on or off. Omaha uses it on routes STA runs.',rows:[
+  {r:'Parent or guardian',i:'parent',book:['n','No booking'],track:['y','Live map, in the windows the district sets'],cancel:['p','Skip Ride requests, where the district allows'],pay:['x','Does not apply'],watch:['p','Sees boarding and exit scans, where buses scan']},
+  {r:'Extra alert contacts',i:'invite',book:['x','Does not apply'],track:['p','Get alerts; not co-guardian accounts'],cancel:['u','Not stated'],pay:['x','Does not apply'],watch:['p','Get the alerts sent to them']},
+  {r:'Student',i:'kid',book:['x','Does not apply'],track:['u','Own login with student ID and PIN; what it shows is not clear'],cancel:['x','Does not apply'],pay:['x','Does not apply'],watch:['y','Shows a Bus Pass QR code or barcode to the bus scanner']},
+  {r:'School district',i:'school',book:['u','Not seen'],track:['y','Controls when the bus shows on the map'],cancel:['p','Decides if Skip Ride is switched on'],pay:['u','Not seen'],watch:['p','Decides who can register and which features show']}
+ ]},
+ bc:{note:'ByteCurve sells one parent app under several names, including BusZone for Summit. The district issues access codes and owns route and student data. Parents follow routes and draw their own alert zones.',rows:[
+  {r:'Parent or guardian',i:'parent',book:['n','No booking'],track:['y','Live map of followed routes, plus their own alert zones'],cancel:['u','No cancel screen found'],pay:['x','Does not apply'],watch:['p','Card-scan alerts only where the district uses ZPass cards']},
+  {r:'Invited family members',i:'invite',book:['u','Not stated'],track:['p','Receive alerts; exact rights not visible'],cancel:['u','Not stated'],pay:['x','Does not apply'],watch:['u','Not stated']},
+  {r:'Student',i:'kid',book:['x','Does not apply'],track:['u','Not seen'],cancel:['x','Does not apply'],pay:['x','Does not apply'],watch:['p','Scans a ZPass card where the district uses them']},
+  {r:'School district',i:'school',book:['u','Not seen'],track:['u','Not seen'],cancel:['u','Not seen'],pay:['u','Not seen'],watch:['y','Issues access codes; owns student and route data']},
+  {r:'Bus operator, such as Summit',i:'office',book:['u','Not seen'],track:['u','Not seen'],cancel:['u','Not seen'],pay:['u','Not seen'],watch:['p','Sends messages on substitutions, delays and closures']}
  ]}
 };
 
@@ -526,34 +642,37 @@ const STAGES = [
  {id:'road',name:'On the road',icon:'pin'},{id:'drop',name:'At drop-off',icon:'shield'},{id:'after',name:'Afterwards',icon:'star'}
 ];
 const SAFE = [
- {s:'setup',w:'Only approved adults see the child',hsd:['y','Invited caregivers must confirm the rider’s birthday, with limited attempts.','AN3',1],ed:['y','only authorized adults may track a student\'s location','W9',0,1],zum:['y','you will not see student details until you have confirmed a student','AN2',1,1]},
- {s:'setup',w:'Each guardian has their own login',hsd:['p','If you manage and schedule rides yourself, your account is limited to one caregiver.','H25',0,1],ed:['u','Not stated.','',0],zum:['y','Unlimited guardian access per student with independent logins for extra security','W1',0,1]},
- {s:'setup',w:'Safety needs for each child',hsd:['y','Booster seat, front seat allowed, code word and driver gender requirement.','AN3',1],ed:['u','Not found.','',0],zum:['p','Equipment needs are on the student record; parents cannot set them in the app.','AN2',1]},
- {s:'setup',w:'Emergency contacts',hsd:['y','Emergency contacts per rider, for internal use only.','AN3',1],ed:['u','Not found.','',0],zum:['u','Not found.','',0]},
- {s:'before',w:'Driver photo, car and plate',hsd:['y','License plate number','H17',0,1],ed:['y','Driver name and gender, car make, model, colour and plate.','AN2',1],zum:['y','Driver photo, name, completed rides, car and plate.','AN2',1]},
- {s:'before',w:'Driver vetting shown',hsd:['y','The driver bio mentions a “15-point certification process”.','AN3',1],ed:['u','Not found.','',0],zum:['p','Vetting badges such as criminal record and DMV checks ship in the app; which drivers carry them is unclear.','AN2',1]},
- {s:'before',w:'Alert if the driver changes',hsd:['u','Not found.','',0],ed:['y','A driver-change alert is in the app code.','AN2',1],zum:['u','Not found.','',0]},
- {s:'pickup',w:'Code word',hsd:['y','The CareDriver says the code word at pickup.','AN3',1],ed:['u','Not found.','',0],zum:['u','Not found. Zum uses cards instead.','',0]},
- {s:'pickup',w:'Birthday check',hsd:['y','The CareDriver checks the birthday at pickup.','AN3',1],ed:['u','Not found.','',0],zum:['u','Not found.','',0]},
- {s:'pickup',w:'Card or phone check-in',hsd:['n','No card or scan; identity is by code word and birthday.','H4',0],ed:['u','Not found.','',0],zum:['y','Zum Bus Cards use contactless RFID technology, the same technology found in metro transit passes.','H1',0,1]},
- {s:'pickup',w:'Picked-up alert',hsd:['y','A message when the CareDriver picks up your rider.','H17',0,1],ed:['y','notifications when my child is dropped off and picked up','W9',0,1],zum:['y','the driver logs the pickup in the app and you receive a confirmation notification','H1',0,1]},
- {s:'pickup',w:'Alert if picked up at a different stop',hsd:['u','Not found.','',0],ed:['u','Not found.','',0],zum:['y','A “picked up at another stop” alert is in the app code.','AN2',1]},
- {s:'road',w:'Live map',hsd:['y','You can monitor a HopSkipDrive ride from beginning to end in the HopSkipDrive app','H17',0,1],ed:['y','New Trip Tracking with real-time driver location','A3',0,1],zum:['y','You can track your child\'s ride live at any time, including the bus location on the map','H1',0,1]},
- {s:'road',w:'Told when the ride is recorded',hsd:['y','Recording is on. Your Ride Organizer requested it','AN3',1,1],ed:['u','Not found in the parent app.','',0],zum:['u','Not found in the parent app.','',0]},
- {s:'road',w:'Contact the driver without sharing numbers',hsd:['y','Masked calls and texts to the CareDriver.','AN3',1],ed:['u','Not found.','',0],zum:['u','Not found in the parent app.','',0]},
- {s:'road',w:'Delay alert',hsd:['y','Help lists delayed-ride alerts.','H17',0],ed:['y','“Running late” and “Delay” alerts are in the app code.','AN2',1],zum:['y','A delay banner: “We have an unexpected ride delay”.','AN2',1]},
- {s:'drop',w:'Dropped-off alert',hsd:['y','A message when the CareDriver drops off your rider.','H17',0,1],ed:['y','A “student dropped off” alert is in the app code.','AN2',1],zum:['y','A “dropped off” status and alert.','AN2',1]},
- {s:'drop',w:'No-show alert',hsd:['y','A no-show alert is in the app code.','AN3',1],ed:['y','A no-show alert is in the app code.','AN2',1],zum:['y','A no-show alert is in the app code.','AN2',1]},
- {s:'drop',w:'Told if drop-off failed',hsd:['u','Not found.','',0],ed:['u','Not found.','',0],zum:['y','Statuses for “Attempted dropoff” and “Unable to dropoff”.','AN2',1]},
- {s:'after',w:'Rate the driver',hsd:['y','Three-level rating with follow-up feedback.','AN3',1],ed:['y','A feedback survey after the first trip and 30 days later.','A3',0],zum:['y','Rate cleanliness and timeliness, and say what went well.','AN2',1]},
- {s:'after',w:'Report a safety concern',hsd:['y','A Zero Tolerance Hotline in the app menu.','AN3',1],ed:['p',"'Report an Issue' support pages",'A3',0,1],zum:['p','Leave a message or send feedback to the district.','AN2',1]}
+ {s:'setup',w:'Only approved adults see the child',hsd:['y','Invited caregivers must confirm the rider’s birthday, with limited attempts.','AN3',1],ed:['y','only authorized adults may track a student\'s location','W9',0,1],zum:['y','you will not see student details until you have confirmed a student','AN2',1,1],bcn:['y','registration requires the State Assigned Student ID and the phone number held by the district','AN1',1,1],hctb:['p','A school district code, then the student ID, with a PIN where the district asks.','AN3',1],bc:['p','A district access code, then student ID, first name and last initial.','AN1',1]},
+ {s:'setup',w:'Each guardian has their own login',hsd:['p','If you manage and schedule rides yourself, your account is limited to one caregiver.','H25',0,1],ed:['u','Not stated.','',0],zum:['y','Unlimited guardian access per student with independent logins for extra security','W1',0,1],bcn:['p','Extra guardians come only through the district’s approved list.','H8',0],hctb:['u','Not found. Extra contacts get alerts only.','AN3',1],bc:['p','Invited members get alerts; their login rights are not visible.','AN1',1]},
+ {s:'setup',w:'Safety needs for each child',hsd:['y','Booster seat, front seat allowed, code word and driver gender requirement.','AN3',1],ed:['u','Not found.','',0],zum:['p','Equipment needs are on the student record; parents cannot set them in the app.','AN2',1],bcn:['u','Not found.','',0],hctb:['u','Not found.','',0],bc:['u','Not found.','',0]},
+ {s:'setup',w:'Emergency contacts',hsd:['y','Emergency contacts per rider, for internal use only.','AN3',1],ed:['u','Not found.','',0],zum:['u','Not found.','',0],bcn:['u','Not found.','',0],hctb:['u','Not found.','',0],bc:['u','Not found.','',0]},
+ {s:'before',w:'Driver photo, car and plate',hsd:['y','License plate number','H17',0,1],ed:['y','Driver name and gender, car make, model, colour and plate.','AN2',1],zum:['y','Driver photo, name, completed rides, car and plate.','AN2',1],bcn:['p','Route and vehicle number; no driver details.','H8',0],hctb:['p','Vehicle only; no driver details found.','AN3',1],bc:['u','Not stated.','',0]},
+ {s:'before',w:'Driver vetting shown',hsd:['y','The driver bio mentions a “15-point certification process”.','AN3',1],ed:['u','Not found.','',0],zum:['p','Vetting badges such as criminal record and DMV checks ship in the app; which drivers carry them is unclear.','AN2',1],bcn:['u','Not found.','',0],hctb:['u','Not found.','',0],bc:['u','Not found.','',0]},
+ {s:'before',w:'Alert if the driver changes',hsd:['u','Not found.','',0],ed:['y','A driver-change alert is in the app code.','AN2',1],zum:['u','Not found.','',0],bcn:['u','Not found.','',0],hctb:['p','Notifies if a different vehicle is used','AN3',1,1],bc:['p','Operators can message parents about substitutions.','A1',0]},
+ {s:'pickup',w:'Code word',hsd:['y','The CareDriver says the code word at pickup.','AN3',1],ed:['u','Not found.','',0],zum:['u','Not found. Zum uses cards instead.','',0],bcn:['u','Not found.','',0],hctb:['u','Not found.','',0],bc:['u','Not found.','',0]},
+ {s:'pickup',w:'Birthday check',hsd:['y','The CareDriver checks the birthday at pickup.','AN3',1],ed:['u','Not found.','',0],zum:['u','Not found.','',0],bcn:['u','Not found.','',0],hctb:['u','Not found.','',0],bc:['u','Not found.','',0]},
+ {s:'pickup',w:'Card or phone check-in',hsd:['n','No card or scan; identity is by code word and birthday.','H4',0],ed:['u','Not found.','',0],zum:['y','Zum Bus Cards use contactless RFID technology, the same technology found in metro transit passes.','H1',0,1],bcn:['u','Not found.','',0],hctb:['y','A Bus Pass shows the student’s ID as a QR code or barcode for the bus scanner.','AN3',1],bc:['p','Zonar ZPass card scans, where the district uses the cards.','AN1',1]},
+ {s:'pickup',w:'Picked-up alert',hsd:['y','A message when the CareDriver picks up your rider.','H17',0,1],ed:['y','notifications when my child is dropped off and picked up','W9',0,1],zum:['y','the driver logs the pickup in the app and you receive a confirmation notification','H1',0,1],bcn:['y','The help centre says “alerts for boarding, drop-off, and more”. The app code lists no boarding alert.','H2, AN1',0],hctb:['y','student boarding / exiting scan','AN3',1,1],bc:['p','Card-scan alerts where ZPass is used; otherwise a bus zone alert.','AN1',1]},
+ {s:'pickup',w:'Alert if picked up at a different stop',hsd:['u','Not found.','',0],ed:['u','Not found.','',0],zum:['y','A “picked up at another stop” alert is in the app code.','AN2',1],bcn:['u','Not found.','',0],hctb:['u','Not found.','',0],bc:['u','Not found.','',0]},
+ {s:'road',w:'Live map',hsd:['y','You can monitor a HopSkipDrive ride from beginning to end in the HopSkipDrive app','H17',0,1],ed:['y','New Trip Tracking with real-time driver location','A3',0,1],zum:['y','You can track your child\'s ride live at any time, including the bus location on the map','H1',0,1],bcn:['p','A live map of followed buses. The help centre says the bus shows only once it is inside your zone.','AN1, H2',1],hctb:['y','Your school district controls when your bus appears on the map','AN3',1,1],bc:['y','Live bus locations, refreshed at an interval the parent picks.','AN1',1]},
+ {s:'road',w:'Told when the ride is recorded',hsd:['y','Recording is on. Your Ride Organizer requested it','AN3',1,1],ed:['u','Not found in the parent app.','',0],zum:['u','Not found in the parent app.','',0],bcn:['u','Not found in the parent app.','',0],hctb:['u','Not found in the parent app.','',0],bc:['u','Not found in the parent app.','',0]},
+ {s:'road',w:'Contact the driver without sharing numbers',hsd:['y','Masked calls and texts to the CareDriver.','AN3',1],ed:['u','Not found.','',0],zum:['u','Not found in the parent app.','',0],bcn:['u','Not found. Messages go to Beacon support.','AN1',0],hctb:['u','Not found.','',0],bc:['u','Not found.','',0]},
+ {s:'road',w:'Delay alert',hsd:['y','Help lists delayed-ride alerts.','H17',0],ed:['y','“Running late” and “Delay” alerts are in the app code.','AN2',1],zum:['y','A delay banner: “We have an unexpected ride delay”.','AN2',1],bcn:['y','alerts for delays or emergencies','H8',0,1],hctb:['y','delays, early dismissal, closures for today','AN3',1,1],bc:['y','districts / transportation operators can send messages to parents regarding substitutions, delays, closures','A1',0,1]},
+ {s:'drop',w:'Dropped-off alert',hsd:['y','A message when the CareDriver drops off your rider.','H17',0,1],ed:['y','A “student dropped off” alert is in the app code.','AN2',1],zum:['y','A “dropped off” status and alert.','AN2',1],bcn:['y','The help centre lists drop-off alerts. The app code lists no drop-off alert.','H2, AN1',0],hctb:['y','Exit scan alerts and an alert when the bus reaches school.','AN3',1],bc:['p','School arrival and departure zone alerts, or a card scan where ZPass is used.','AN1',1]},
+ {s:'drop',w:'No-show alert',hsd:['y','A no-show alert is in the app code.','AN3',1],ed:['y','A no-show alert is in the app code.','AN2',1],zum:['y','A no-show alert is in the app code.','AN2',1],bcn:['u','Not found.','',0],hctb:['u','Not found.','',0],bc:['u','Not found.','',0]},
+ {s:'drop',w:'Told if drop-off failed',hsd:['u','Not found.','',0],ed:['u','Not found.','',0],zum:['y','Statuses for “Attempted dropoff” and “Unable to dropoff”.','AN2',1],bcn:['u','Not found.','',0],hctb:['u','Not found.','',0],bc:['u','Not found.','',0]},
+ {s:'after',w:'Rate the driver',hsd:['y','Three-level rating with follow-up feedback.','AN3',1],ed:['y','A feedback survey after the first trip and 30 days later.','A3',0],zum:['y','Rate cleanliness and timeliness, and say what went well.','AN2',1],bcn:['u','Not found.','',0],hctb:['u','Not found.','',0],bc:['u','Not found. Summit takes concerns through a web form.','SUM',0]},
+ {s:'after',w:'Report a safety concern',hsd:['y','A Zero Tolerance Hotline in the app menu.','AN3',1],ed:['p',"'Report an Issue' support pages",'A3',0,1],zum:['p','Leave a message or send feedback to the district.','AN2',1],bcn:['p','Message Beacon support with photos, files and the current location.','AN1',1],hctb:['p','An app feedback and bug report form.','AN3',1],bc:['p','Summit takes safety or service concerns through a web form.','SUM',0]}
 ];
 
 /* ---------- cards ---------- */
 const VEH = {
  hsd:'<svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="14" fill="#EDF1F3"/><rect x="20" y="9" width="24" height="44" rx="4" fill="#003D4F"/><rect x="23" y="14" width="18" height="30" rx="1.5" fill="#fff"/><path d="M32 38s-6-5.4-6-9.3a6 6 0 0 1 12 0c0 3.9-6 9.3-6 9.3z" fill="#F2617A"/><circle cx="32" cy="28.5" r="2.2" fill="#fff"/><circle cx="32" cy="48.5" r="1.8" fill="#47A1AD"/></svg>',
  ed:'<svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="14" fill="#EDF1F3"/><rect x="18" y="9" width="24" height="44" rx="4" fill="#003D4F"/><rect x="21" y="14" width="18" height="30" rx="1.5" fill="#fff"/><path d="M24 21h12M24 26h9M24 31h12M24 36h7" stroke="#47A1AD" stroke-width="2" stroke-linecap="round"/><circle cx="44" cy="18" r="8" fill="#F2617A"/><path d="M40.5 20.5v-3a3.5 3.5 0 0 1 7 0v3l1 1.2h-9z" fill="#fff"/></svg>',
- zum:'<svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="14" fill="#EDF1F3"/><rect x="10" y="18" width="36" height="24" rx="3.5" fill="#CC850A" transform="rotate(-8 28 30)"/><rect x="14" y="22" width="10" height="7" rx="1" fill="#fff" transform="rotate(-8 28 30)"/><path d="M44 22c3 2.4 4.6 5.4 4.6 8.6S47 36.8 44 39.2M48.5 18c4.2 3.4 6.4 7.6 6.4 12.6s-2.2 9.2-6.4 12.6" stroke="#003D4F" stroke-width="2.6" fill="none" stroke-linecap="round"/></svg>'
+ zum:'<svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="14" fill="#EDF1F3"/><rect x="10" y="18" width="36" height="24" rx="3.5" fill="#CC850A" transform="rotate(-8 28 30)"/><rect x="14" y="22" width="10" height="7" rx="1" fill="#fff" transform="rotate(-8 28 30)"/><path d="M44 22c3 2.4 4.6 5.4 4.6 8.6S47 36.8 44 39.2M48.5 18c4.2 3.4 6.4 7.6 6.4 12.6s-2.2 9.2-6.4 12.6" stroke="#003D4F" stroke-width="2.6" fill="none" stroke-linecap="round"/></svg>',
+ bcn:'<svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="14" fill="#EDF1F3"/><circle cx="32" cy="32" r="18" fill="none" stroke="#47A1AD" stroke-width="2.4" stroke-dasharray="4 3"/><rect x="22" y="24" width="20" height="15" rx="3" fill="#CC850A"/><rect x="25" y="27" width="6" height="5" rx="1" fill="#fff"/><rect x="33" y="27" width="6" height="5" rx="1" fill="#fff"/><circle cx="27" cy="40" r="2" fill="#003D4F"/><circle cx="37" cy="40" r="2" fill="#003D4F"/><path d="M44 46h10l-4 4" fill="#F2617A"/><rect x="42" y="40" width="14" height="8" rx="2" fill="#F2617A"/></svg>',
+ hctb:'<svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="14" fill="#EDF1F3"/><rect x="14" y="20" width="30" height="20" rx="3.5" fill="#CC850A"/><rect x="18" y="24" width="7" height="6" rx="1" fill="#fff"/><rect x="28" y="24" width="7" height="6" rx="1" fill="#fff"/><circle cx="21" cy="42" r="2.6" fill="#003D4F"/><circle cx="37" cy="42" r="2.6" fill="#003D4F"/><rect x="40" y="30" width="14" height="14" rx="2" fill="#fff" stroke="#003D4F" stroke-width="1.6"/><path d="M43 33h3v3h-3zM48 33h3v3h-3zM43 38h3v3h-3zM48.5 38.5h2v2h-2z" fill="#003D4F"/></svg>',
+ bc:'<svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="14" fill="#EDF1F3"/><rect x="12" y="14" width="18" height="32" rx="3" fill="#47A1AD"/><rect x="22" y="16" width="18" height="32" rx="3" fill="#634F7D"/><rect x="32" y="18" width="20" height="34" rx="3.5" fill="#003D4F"/><rect x="35" y="22" width="14" height="22" rx="1.2" fill="#fff"/><circle cx="42" cy="33" r="5.5" fill="none" stroke="#F2617A" stroke-width="2"/><circle cx="42" cy="33" r="1.8" fill="#F2617A"/></svg>'
 };
 const PLUS='<svg viewBox="0 0 18 18" aria-hidden="true"><circle cx="9" cy="9" r="8" fill="#3F7A50"/><path d="M9 5.5v7M5.5 9h7" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/></svg>';
 const MINUS='<svg viewBox="0 0 18 18" aria-hidden="true"><circle cx="9" cy="9" r="8" fill="#fff" stroke="#D9435C" stroke-width="1.6"/><path d="M5.5 9h7" stroke="#D9435C" stroke-width="1.8" stroke-linecap="round"/></svg>';
@@ -565,11 +684,23 @@ const CARDS = {
  ed:{line:'A tracking app for trips the district booked. Parents follow and cancel; school staff see their students while on campus.',
   ratings:[['3.1','iPhone, 99 ratings',1],['3.3','Android, about 190 reviews',1]],
   good:['Nine languages','Live map with early and late flags','An alert when the driver changes','Cancel one trip or every trip that day','Staff mode works only on campus, to protect student privacy'],
-  gaps:['Lowest ratings of the three','No history of past rides','No cancelling in the app within an hour of the trip; parents must call','No in-app chat and no way to contact the driver','Reviews report endless loading and connection errors']},
+  gaps:['Lowest ratings on this page','No history of past rides','No cancelling in the app within an hour of the trip; parents must call','No in-app chat and no way to contact the driver','Reviews report endless loading and connection errors']},
  zum:{line:'A tracking and check-in app for district bus and van routes. Strong on guardians, languages and alerts; no booking.',
   ratings:[['4.8','iPhone, 7.5K ratings'],['4.4 to 4.5','Android, about 1.26K reviews']],
   good:['Unlimited guardians, each with their own login','Parents must confirm the student before any details show','Students check in with a card, a QR code or the parent’s phone','Past rides with a trace of the route taken','Choose push or text for each alert, including the child’s own phone','Ten languages'],
-  gaps:['Parents cannot book or change a schedule','Reviews say buses often vanish from the map and substitute buses cannot be tracked','No way to contact the driver from the parent app','Accessibility not mentioned']}
+  gaps:['Parents cannot book or change a schedule','Reviews say buses often vanish from the map and substitute buses cannot be tracked','No way to contact the driver from the parent app','Accessibility not mentioned']},
+ bcn:{line:'Beacon’s own app for families on its bus routes. Parents follow a route, draw alert zones and message Beacon support. There is no arrival time.',
+  ratings:[['4.11','iPhone, 1,359 ratings']],
+  good:['Sign-up is checked against the state student ID and the district’s phone number','Two-way messages with Beacon support, with photos, files and location','Alert zones from 230 ft to 2 miles, with set days and hours','Ask to cancel a ride by child, ride period and date','English, Spanish and Haitian Creole'],
+  gaps:['No arrival time; zone alerts only','Only the district can add a guardian','No driver details','Messages go to Beacon support, not the school','About half of recent reviews say the bus is missing or wrong','Placeholder text left in some shipped screens']},
+ hctb:{line:'Synovia’s app, chosen by the district. It is not STA’s own app; Omaha uses it on routes STA runs. Strong on alerts and scans, but the district decides what parents see.',
+  ratings:[['4.55','iPhone, 74K ratings across all districts']],
+  good:['Boarding and exit scans with time and place','Alert rules for each child and day: stop, school, radius, route start and end, substitute bus','Email alerts and extra alert contacts','A digital Bus Pass the child shows to the scanner','Skip Ride requests by date range and time of day, where the district allows','Checks that alerts are actually reaching the phone'],
+  gaps:['The district controls when the bus shows on the map','Many features are switched on per district; Omaha’s settings are not visible','No messaging and no way to contact the driver','The Android build is a beta of a rebuilt app, with activity trips switched off','Reviews say locations can be wrong or stale and alerts late']},
+ bc:{line:'One white-label app from ByteCurve, sold as SafeStop, BusAlert, BusZone and Zonar MyView. Summit families use it as BusZone. Parents follow routes and draw their own alert zones.',
+  ratings:[['4.6','BusZone, iPhone, 3.9K ratings'],['4.09','SafeStop, iPhone, 448 ratings']],
+  good:['Sign in with Google, Apple or a fingerprint','Alert zones by route, day and direction to or from school','A setup checklist walks parents through routes, children and zones','Card-scan alerts where the district uses Zonar ZPass cards','Invite family members to get alerts','Better screen reader support in BusZone’s August 2026 release'],
+  gaps:['English and Spanish only','Messages are one-way; urgent issues need a call to dispatch','No arrival time or driver details found','BusZone dropped text ridership alerts in 2024','Reviews mention late alerts, missing buses and forced logouts']}
 };
 
 /* ---------- journeys: [text, isSafety] ---------- */
@@ -591,6 +722,24 @@ const JOURNEYS = {
   {t:'Ride day',w:'Each ride',s:[['See Today and Upcoming rides'],['Get an alert when a driver is assigned and on the way'],['Follow the bus on the map, with arrival time and when it last updated'],['The child taps a Zum Card, shows a QR code or uses the phone at the reader',1],['Get a picked-up alert, or a warning if it happened at another stop',1],['See a delay banner if the ride is late'],['Get a dropped-off alert, or a warning if drop-off failed',1]]},
   {t:'Cancel a ride',w:'When the child is not riding',s:[['Pick the ride and give a reason'],['Cancel before the cut-off time'],['The app reminds the parent to tell the school']]},
   {t:'After the ride',w:'Any time',s:[['Look back at past rides and the route taken'],['Rate the ride for cleanliness and timeliness'],['Contact Zum or the district, by call, chat or message']]}
+ ],
+ bcn:[
+  {t:'Register',w:'Once',s:[['Choose a language'],['Enter name, phone number and a password'],['Enter the state student ID and school',1],['Confirm with a text code',1]]},
+  {t:'Set up tracking',w:'Once per route',s:[['Search the route number and follow the bus'],['Draw an alert zone around an address or a pin, 230 ft to 2 miles',1],['Choose the days and hours alerts can arrive']]},
+  {t:'Ride day',w:'Each ride',s:[['Open the map of followed buses'],['See a warning if tracking is 5 minutes old'],['Get a push when the bus enters the zone',1]]},
+  {t:'Absent day or a problem',w:'When needed',s:[['Open Rides and choose Cancel Ride'],['Pick the child, the AM, mid-day or PM ride and the date'],['The app sends the request to Beacon support'],['For anything else, open a message with a category and subject'],['Add photos, files or the current location; follow the reply by ticket number']]}
+ ],
+ hctb:[
+  {t:'Get started',w:'Once',s:[['Enter a ZIP code and pick the district'],['Enter the school district code',1],['Accept the terms; set name, email and password'],['Confirm with a 4-digit email code'],['Add each child by student ID, with a PIN if the district asks',1]]},
+  {t:'Set up alerts',w:'Once',s:[['Name the device for push alerts'],['Pick rules: stop, school, radius, substitute bus, scans, calendar'],['Choose the days'],['Add email or extra alert contacts']]},
+  {t:'Ride day',w:'Each ride',s:[['Open the map when the district shows the bus'],['See planned stops, scheduled times and “Arrived” or “Not Arrived”'],['The child shows the Bus Pass to the scanner',1],['Get a boarding or exit scan alert, with time and place',1],['Get a notice if a different bus runs the route',1],['Look back over 14 days of alerts']]},
+  {t:'Skip a ride',w:'Where the district allows',s:[['Choose the child, the dates and morning, midday or afternoon'],['Give a reason and submit'],['Edit or cancel the request later']]}
+ ],
+ bc:[
+  {t:'Sign up',w:'Once',s:[['Sign up with email, Google or Apple'],['Choose push or email for alerts'],['Enter the district access code',1]]},
+  {t:'Set up',w:'Once, with a checklist',s:[['Pick the routes the family rides'],['Add each child by student ID, first name and last initial',1],['Confirm the match and pick a bell time'],['Draw alert zones: place, radius, routes, days, to or from school',1],['Zones start the next day'],['Choose school notifications; turn on card-scan alerts where offered'],['Invite family members']]},
+  {t:'Ride day',w:'Each ride',s:[['Open the map of followed buses'],['Get an alert when a bus enters or leaves a zone',1],['Get a card-scan alert where the district uses ZPass',1],['Read operator messages on delays or substitutions']]},
+  {t:'Get help',w:'When needed',s:[['Read the help articles'],['Send the contact form with a fixed subject'],['For urgent issues, call local dispatch']]}
  ]
 };
 

@@ -1,0 +1,10 @@
+the-product-council/      The full site. Publish it as the GitHub Pages site for the
+                          the-product-council repository (https://danishjaintw.github.io/the-product-council/).
+                          Every page carries noindex, nofollow, noarchive, nosnippet and noai meta tags.
+                          robots.txt and ai.txt are included, but crawlers only read robots.txt at the domain root.
+
+danishjaintw.github.io/   Put robots.txt at the root of the danishjaintw.github.io repository
+                          (create that repository if it does not exist). That is the copy crawlers actually read.
+
+These files ask well-behaved crawlers to stay away. They do not stop a person or a bot that ignores them.
+GitHub Pages sites are public to anyone with the URL.
